@@ -1,0 +1,187 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING_QUOTE
+  ORDER_PLACED
+  PURCHASED_IN_US
+  IN_TRANSIT_FORWARDER
+  ARRIVED_IN_PH
+  OUT_FOR_LOCAL_DELIVERY
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentOption {
+  FULL_PAYMENT
+  DOWNPAYMENT_50
+}
+
+enum PaymentStatus {
+  UNPAID
+  PARTIALLY_PAID
+  FULLY_PAID
+  REFUNDED
+}
+
+enum PaymentMethod {
+  GCASH
+  MAYA
+  BDO_BANK_TRANSFER
+  BPI_BANK_TRANSFER
+  CREDIT_CARD
+  CASH_ON_PICKUP
+}
+
+enum ReceiptReviewStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id              String        @id @default(uuid()) @db.Uuid
+  email           String        @unique @db.VarChar(255)
+  passwordHash    String        @map("password_hash") @db.VarChar(255)
+  fullName        String        @map("full_name") @db.VarChar(150)
+  phoneNumber     String        @map("phone_number") @db.VarChar(30)
+  role            UserRole      @default(CUSTOMER)
+  shippingAddress Json?         @map("shipping_address")
+  createdAt       DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime      @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  orders          Order[]
+  statusUpdates   OrderStatusHistory[]
+  verifiedPayments Payment[]    @relation("VerifiedPayments")
+
+  @@index([role], name: "idx_users_role")
+  @@map("users")
+}
+
+model Product {
+  id                String       @id @default(uuid()) @db.Uuid
+  title             String       @db.VarChar(255)
+  description       String?      @db.Text
+  category          String?      @db.VarChar(100)
+  retailerName      String?      @map("retailer_name") @db.VarChar(100)
+  sourceUrl         String?      @map("source_url") @db.Text
+  imageUrls         String[]     @default([]) @map("image_urls")
+  weightLbs         Decimal      @default(1.00) @map("weight_lbs") @db.Decimal(6, 2)
+  basePriceUsd      Decimal      @map("base_price_usd") @db.Decimal(10, 2)
+  sellingPricePhp   Decimal      @map("selling_price_php") @db.Decimal(12, 2)
+  isCustomRequest   Boolean      @default(false) @map("is_custom_request")
+  isActive          Boolean      @default(true) @map("is_active")
+  stockQuantity     Int          @default(0) @map("stock_quantity")
+  createdAt         DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt         DateTime     @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  orderItems        OrderItem[]
+
+  @@map("products")
+}
+
+model Order {
+  id                  String         @id @default(uuid()) @db.Uuid
+  orderNumber         String         @unique @map("order_number") @db.VarChar(30)
+  userId              String         @map("user_id") @db.Uuid
+  status              OrderStatus    @default(PENDING_QUOTE)
+  paymentPlan         PaymentOption  @default(DOWNPAYMENT_50) @map("payment_plan")
+  paymentStatus       PaymentStatus  @default(UNPAID) @map("payment_status")
+
+  subtotalPhp         Decimal        @map("subtotal_php") @db.Decimal(12, 2)
+  shippingFeePhPhp    Decimal        @default(0.00) @map("shipping_fee_ph_php") @db.Decimal(10, 2)
+  totalAmountPhp      Decimal        @map("total_amount_php") @db.Decimal(12, 2)
+  amountPaidPhp       Decimal        @default(0.00) @map("amount_paid_php") @db.Decimal(12, 2)
+
+  usStoreOrderRef     String?        @map("us_store_order_ref") @db.VarChar(100)
+  cargoTrackingNumber String?        @map("cargo_tracking_number") @db.VarChar(100)
+  localCourierName    String?        @map("local_courier_name") @db.VarChar(50)
+  localTrackingNumber String?        @map("local_tracking_number") @db.VarChar(100)
+
+  deliveryAddress     Json           @map("delivery_address")
+  customerNotes       String?        @map("customer_notes") @db.Text
+  adminNotes          String?        @map("admin_notes") @db.Text
+  createdAt           DateTime       @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt           DateTime       @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  user                User           @relation(fields: [userId], references: [id], onDelete: Restrict)
+  items               OrderItem[]
+  statusHistory       OrderStatusHistory[]
+  payments            Payment[]
+
+  @@index([userId], name: "idx_orders_user_id")
+  @@index([status], name: "idx_orders_status")
+  @@index([paymentStatus], name: "idx_orders_payment_status")
+  @@map("orders")
+}
+
+model OrderItem {
+  id                 String    @id @default(uuid()) @db.Uuid
+  orderId            String    @map("order_id") @db.Uuid
+  productId          String?   @map("product_id") @db.Uuid
+  productTitle       String    @map("product_title") @db.VarChar(255)
+  sourceUrl          String?   @map("source_url") @db.Text
+  variantDetails     Json?     @map("variant_details")
+  quantity           Int       @default(1)
+  unitPriceUsd       Decimal   @map("unit_price_usd") @db.Decimal(10, 2)
+  unitPricePhp       Decimal   @map("unit_price_php") @db.Decimal(12, 2)
+  landedCostSnapshot Json      @map("landed_cost_snapshot")
+  createdAt          DateTime  @default(now()) @map("created_at") @db.Timestamptz
+
+  order              Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product            Product?  @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@index([orderId], name: "idx_order_items_order_id")
+  @@map("order_items")
+}
+
+model OrderStatusHistory {
+  id        String       @id @default(uuid()) @db.Uuid
+  orderId   String       @map("order_id") @db.Uuid
+  stage     OrderStatus
+  comment   String?      @db.Text
+  updatedBy String?      @map("updated_by") @db.Uuid
+  createdAt DateTime     @default(now()) @map("created_at") @db.Timestamptz
+
+  order     Order        @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  admin     User?        @relation(fields: [updatedBy], references: [id], onDelete: SetNull)
+
+  @@map("order_status_history")
+}
+
+model Payment {
+  id               String              @id @default(uuid()) @db.Uuid
+  orderId          String              @map("order_id") @db.Uuid
+  amountPhp        Decimal             @map("amount_php") @db.Decimal(12, 2)
+  paymentType      PaymentOption       @map("payment_type")
+  method           PaymentMethod
+  referenceNumber  String?             @map("reference_number") @db.VarChar(100)
+  proofReceiptUrl  String              @map("proof_receipt_url") @db.Text
+  reviewStatus     ReceiptReviewStatus @default(PENDING_REVIEW) @map("review_status")
+  verifiedBy       String?             @map("verified_by") @db.Uuid
+  verifiedAt       DateTime?           @map("verified_at") @db.Timestamptz
+  rejectionReason  String?             @map("rejection_reason") @db.Text
+  createdAt        DateTime            @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt        DateTime            @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  order            Order               @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  reviewer         User?               @relation("VerifiedPayments", fields: [verifiedBy], references: [id], onDelete: SetNull)
+
+  @@index([orderId], name: "idx_payments_order_id")
+  @@index([reviewStatus], name: "idx_payments_review_status")
+  @@map("payments")
+}
