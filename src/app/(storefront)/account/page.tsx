@@ -2,12 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useAuth } from '@/context/auth-context';
+import { useWishlist } from '@/context/wishlist-context';
 import { INITIAL_ORDERS } from '@/data/mock-data';
-import { User, MapPin, Package, Phone, Mail, LogOut, ArrowRight, ShieldCheck, Clock } from 'lucide-react';
+import { User, MapPin, Package, Phone, Mail, LogOut, ArrowRight, ShieldCheck, Clock, Heart, Trash2, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export default function CustomerAccountPage() {
   const { user, isLoggedIn, logout } = useAuth();
+  const { wishlist, removeFromWishlist } = useWishlist();
 
   if (!isLoggedIn || !user) {
     return (
@@ -148,6 +151,120 @@ export default function CustomerAccountPage() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* 3. My Restock Wishlist Section */}
+      <div id="wishlist" className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600">
+                <Heart className="w-4 h-4 fill-rose-500 text-rose-500" />
+              </div>
+              <h2 className="text-lg font-black text-slate-900">
+                My Restock Wishlist ({wishlist.length})
+              </h2>
+            </div>
+            <p className="text-xs text-slate-500 mt-1">
+              Sold-out outlet items you requested. We automatically notify our personal shoppers to hunt for these on upcoming US outlet trips.
+            </p>
+          </div>
+
+          <Link
+            href="/products"
+            className="text-xs font-bold text-brand-800 hover:text-brand-900 inline-flex items-center gap-1 self-start sm:self-auto"
+          >
+            <span>Browse Outlet Catalog</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        {wishlist.length === 0 ? (
+          <div className="p-8 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-200 space-y-3">
+            <div className="w-12 h-12 rounded-full bg-rose-50 border border-rose-100 flex items-center justify-center mx-auto text-rose-400">
+              <Heart className="w-6 h-6" />
+            </div>
+            <div className="max-w-md mx-auto space-y-1">
+              <h4 className="text-sm font-bold text-slate-800">Your restock wishlist is empty</h4>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Whenever an item or size is marked &ldquo;Sold Out&rdquo; in Shop Deals, click <strong>&ldquo;Add to Wishlist&rdquo;</strong> to request a restock from our seller.
+              </p>
+            </div>
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-brand-800 hover:bg-brand-900 text-white font-bold rounded-xl text-xs transition shadow-sm"
+            >
+              <span>Explore Shop Deals</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {wishlist.map((item) => (
+              <div
+                key={item.productId}
+                className="bg-slate-50/80 p-4 rounded-2xl border border-slate-200 hover:border-gold-300 transition flex gap-4 items-start justify-between"
+              >
+                <div className="flex gap-3.5 items-start">
+                  <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-slate-200 shrink-0 border border-slate-200">
+                    <Image
+                      src={item.product.imageUrls?.[0] || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'}
+                      alt={item.product.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#06241c] text-gold-300">
+                        {item.product.brand || item.product.retailerName}
+                      </span>
+                      <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-white border border-slate-200 text-slate-700">
+                        Size: {item.desiredSize || 'Standard'}
+                      </span>
+                    </div>
+
+                    <h4 className="text-xs font-bold text-slate-900 line-clamp-1">
+                      <Link href={`/products/${item.productId}`} className="hover:text-brand-800">
+                        {item.product.title}
+                      </Link>
+                    </h4>
+
+                    <div className="text-[11px] text-slate-600">
+                      <span>₱{item.product.sellingPricePhp.toLocaleString()} PHP</span>
+                      <span className="text-slate-400 mx-1">•</span>
+                      <span className="text-brand-700 font-semibold">50% Deposit: ₱{Math.ceil(item.product.sellingPricePhp * 0.5).toLocaleString()}</span>
+                    </div>
+
+                    <div className="pt-1">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
+                        <Sparkles className="w-2.5 h-2.5 text-amber-700" />
+                        <span>Restock Requested • Seller Notified</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-end gap-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => removeFromWishlist(item.productId)}
+                    className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition"
+                    title="Remove from wishlist"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                  <Link
+                    href={`/products/${item.productId}`}
+                    className="text-[11px] font-bold text-brand-800 hover:underline"
+                  >
+                    View
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

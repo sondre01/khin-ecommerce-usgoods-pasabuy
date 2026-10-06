@@ -116,10 +116,12 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
     setProducts((prev) =>
       prev.map((p) => {
         if (p.id !== id) return p;
-        const isOutOfStock = p.stockQuantity <= 0;
+        const total = p.allocatedSlots || 10;
+        const isOutOfStock = p.stockQuantity <= 0 || (p.claimedSlots !== undefined && p.claimedSlots >= total);
         return {
           ...p,
           stockQuantity: isOutOfStock ? 5 : 0,
+          claimedSlots: isOutOfStock ? Math.max(0, total - 5) : total,
         };
       })
     );

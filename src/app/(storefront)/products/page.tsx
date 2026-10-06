@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
 import { useProducts } from '@/context/products-context';
-import { Search, Tag, ExternalLink, ArrowRight, Radio, Sparkles, Flame, CheckCircle2, Lock, UserCheck } from 'lucide-react';
+import { useWishlist } from '@/context/wishlist-context';
+import { Search, Tag, ExternalLink, ArrowRight, Radio, Sparkles, Flame, CheckCircle2, Lock, UserCheck, Heart } from 'lucide-react';
 
 const CATEGORIES = ['ALL', 'Clothes', 'Bags', 'Watches', 'Wallets', 'Caps'];
 const BRANDS = ['ALL', 'Calvin Klein', 'Tommy Hilfiger', 'Polo Ralph Lauren', 'Lacoste'];
@@ -16,6 +17,7 @@ function ProductsContent() {
   const searchParams = useSearchParams();
   const { isLoggedIn, requireAuth } = useAuth();
   const { products } = useProducts();
+  const { isInWishlist, addToWishlist, wishlist } = useWishlist();
 
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
@@ -69,14 +71,14 @@ function ProductsContent() {
             Genuine clothes, bags, watches, wallets, and caps from <strong className="text-slate-900">Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste</strong>. Sourced tax-free directly from US brand outlets.
           </p>
         </div>
-        <button
-          type="button"
-          onClick={() => requireAuth(() => router.push('/custom-quote'), 'Please sign in or create an account to request an item restock.')}
+        <Link
+          href="/account#wishlist"
           className="inline-flex items-center gap-2 px-4 py-2.5 bg-brand-800 hover:bg-brand-900 text-white rounded-xl text-xs font-bold shadow-sm ring-1 ring-gold-400/30 transition shrink-0"
         >
-          <span>Request Restock</span>
+          <Heart className="w-3.5 h-3.5 text-rose-300 fill-rose-300" />
+          <span>My Restock Wishlist {wishlist.length > 0 && `(${wishlist.length})`}</span>
           <ArrowRight className="w-3.5 h-3.5 text-gold-300" />
-        </button>
+        </Link>
       </div>
 
       {/* Filter and Search Bar */}
@@ -228,11 +230,17 @@ function ProductsContent() {
             const claimed = prod.claimedSlots || 7;
             const remaining = Math.max(0, total - claimed);
             const percentClaimed = Math.min(100, Math.round((claimed / total) * 100));
+            const isOutOfStock = !prod.isActive || prod.stockQuantity <= 0 || (prod.allocatedSlots !== undefined && prod.claimedSlots !== undefined && prod.claimedSlots >= prod.allocatedSlots);
+            const inWishlist = isInWishlist(prod.id);
 
             return (
               <div
                 key={prod.id}
-                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md hover:border-gold-400 transition flex flex-col justify-between group"
+                className={`bg-white rounded-2xl border transition flex flex-col justify-between group overflow-hidden ${
+                  isOutOfStock
+                    ? 'border-slate-300 shadow-sm'
+                    : 'border-slate-200 shadow-sm hover:shadow-md hover:border-gold-400'
+                }`}
               >
                 {/* Product Image Thumbnail */}
                 <Link href={`/products/${prod.id}`} className="block relative aspect-[16/10] w-full bg-slate-100 overflow-hidden">
@@ -240,7 +248,9 @@ function ProductsContent() {
                     src={prod.imageUrls?.[0] || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'}
                     alt={prod.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className={`object-cover transition-transform duration-300 ${
+                      isOutOfStock ? 'opacity-85 grayscale-[20%]' : 'group-hover:scale-105'
+                    }`}
                   />
                   <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
                     <span className="px-2.5 py-0.5 rounded-md bg-[#06241c]/90 backdrop-blur-md text-gold-300 font-extrabold text-[10px] border border-gold-400/40 shadow">
@@ -249,12 +259,25 @@ function ProductsContent() {
                     <span className="px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-md text-slate-800 font-bold text-[10px] shadow">
                       {prod.category}
                     </span>
+                    {isOutOfStock && (
+                      <span className="px-2 py-0.5 rounded-md bg-rose-600 text-white font-extrabold text-[10px] shadow uppercase tracking-wide">
+                        Sold Out
+                      </span>
+                    )}
                   </div>
                   {prod.isLiveShoppingDrop && (
                     <div className="absolute top-3 right-3">
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-500 text-slate-950 text-[10px] font-black shadow">
                         <Radio className="w-2.5 h-2.5 animate-pulse" />
                         Live Drop
+                      </span>
+                    </div>
+                  )}
+
+                  {isOutOfStock && (
+                    <div className="absolute inset-0 bg-slate-950/25 backdrop-blur-[1px] flex items-center justify-center pointer-events-none">
+                      <span className="px-3 py-1 rounded-full bg-slate-950/90 text-rose-300 font-black text-xs tracking-wider uppercase border border-rose-500/40 shadow-xl">
+                        Out of Stock • Wishlist to Restock
                       </span>
                     </div>
                   )}
@@ -279,16 +302,24 @@ function ProductsContent() {
                   <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1.5">
                     <div className="flex justify-between items-center text-[11px]">
                       <span className="font-semibold text-slate-600">
-                        Stock: <strong className="text-slate-900">{claimed}/{total} Taken</strong>
+                        Stock: <strong className="text-slate-900">{isOutOfStock ? `${total}/${total} Taken` : `${claimed}/${total} Taken`}</strong>
                       </span>
-                      <span className={`font-bold ${remaining <= 3 ? 'text-amber-600' : 'text-emerald-700'}`}>
-                        {remaining} left
-                      </span>
+                      {isOutOfStock ? (
+                        <span className="font-black text-rose-600">
+                          0 left (Sold Out)
+                        </span>
+                      ) : (
+                        <span className={`font-bold ${remaining <= 3 ? 'text-amber-600' : 'text-emerald-700'}`}>
+                          {remaining} left
+                        </span>
+                      )}
                     </div>
                     <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-brand-700 to-gold-500 h-full rounded-full transition-all duration-500"
-                        style={{ width: `${percentClaimed}%` }}
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          isOutOfStock ? 'bg-rose-500' : 'bg-gradient-to-r from-brand-700 to-gold-500'
+                        }`}
+                        style={{ width: `${isOutOfStock ? 100 : percentClaimed}%` }}
                       ></div>
                     </div>
                   </div>
@@ -321,14 +352,42 @@ function ProductsContent() {
                     >
                       Details
                     </Link>
-                    <button
-                      type="button"
-                      onClick={() => requireAuth(() => router.push(`/products/${prod.id}`), `Please sign in or create an account to pick and buy "${prod.title}".`)}
-                      className="w-full py-2.5 text-center text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-lg shadow-sm ring-1 ring-gold-400/30 transition flex items-center justify-center gap-1"
-                    >
-                      <span>Pick & Buy</span>
-                      <ArrowRight className="w-3 h-3 text-gold-300" />
-                    </button>
+                    {isOutOfStock ? (
+                      inWishlist ? (
+                        <button
+                          type="button"
+                          disabled
+                          className="w-full py-2.5 text-center text-xs font-bold text-amber-900 bg-amber-50 border border-gold-300 rounded-lg shadow-sm flex items-center justify-center gap-1 cursor-default"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                          <span className="truncate">✓ In Wishlist</span>
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            requireAuth(
+                              () => addToWishlist(prod),
+                              `Please sign in or create an account to request a restock for "${prod.title}".`
+                            )
+                          }
+                          className="w-full py-2.5 text-center text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-sm ring-1 ring-rose-400/30 transition flex items-center justify-center gap-1 active:scale-95"
+                          title="Notify seller to restock this item"
+                        >
+                          <Heart className="w-3.5 h-3.5 fill-white text-white shrink-0" />
+                          <span className="truncate">Add to Wishlist</span>
+                        </button>
+                      )
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => requireAuth(() => router.push(`/products/${prod.id}`), `Please sign in or create an account to pick and buy "${prod.title}".`)}
+                        className="w-full py-2.5 text-center text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-lg shadow-sm ring-1 ring-gold-400/30 transition flex items-center justify-center gap-1"
+                      >
+                        <span>Pick & Buy</span>
+                        <ArrowRight className="w-3 h-3 text-gold-300" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

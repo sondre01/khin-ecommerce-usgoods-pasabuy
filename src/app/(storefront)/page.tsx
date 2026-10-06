@@ -6,12 +6,14 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
 import { useProducts } from '@/context/products-context';
+import { useWishlist } from '@/context/wishlist-context';
 import LandedCostCalculator from '@/components/landed-cost-calculator';
 import {
   ShoppingBag,
   Plane,
   ShieldCheck,
   CheckCircle,
+  CheckCircle2,
   ArrowRight,
   TrendingUp,
   Tag,
@@ -26,13 +28,15 @@ import {
   Wallet,
   Clock,
   Lock,
-  UserCheck
+  UserCheck,
+  Heart
 } from 'lucide-react';
 
 export default function HomePage() {
   const router = useRouter();
   const { isLoggedIn, requireAuth, user } = useAuth();
   const { products } = useProducts();
+  const { isInWishlist, addToWishlist } = useWishlist();
 
   const liveDropProducts = products.filter((p) => p.isLiveShoppingDrop);
   const displayedLiveDrops = isLoggedIn ? liveDropProducts.slice(0, 4) : liveDropProducts.slice(0, 2);
@@ -69,13 +73,13 @@ export default function HomePage() {
                 <span>Shop All Items</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <button
-                type="button"
-                onClick={() => requireAuth(() => router.push('/custom-quote'), 'Please sign in or create an account to request an item restock.')}
-                className="px-6 py-3.5 bg-[#0b382c]/80 hover:bg-[#0f4738] text-emerald-100 font-semibold rounded-xl border border-gold-500/30 transition backdrop-blur-sm"
+              <Link
+                href="/products"
+                className="px-6 py-3.5 bg-[#0b382c]/80 hover:bg-[#0f4738] text-emerald-100 font-semibold rounded-xl border border-gold-500/30 transition backdrop-blur-sm flex items-center gap-2"
               >
-                Sold Out? Request Restock
-              </button>
+                <span>Sold Out? Wishlist Restock</span>
+                <Heart className="w-4 h-4 text-rose-300 fill-rose-300/30" />
+              </Link>
             </div>
 
             {/* US Retailers & Core Brands Badges */}
@@ -196,6 +200,8 @@ export default function HomePage() {
               const total = item.allocatedSlots || 15;
               const claimed = item.claimedSlots || 11;
               const remaining = Math.max(0, total - claimed);
+              const isOutOfStock = !item.isActive || item.stockQuantity <= 0 || (item.allocatedSlots !== undefined && item.claimedSlots !== undefined && item.claimedSlots >= item.allocatedSlots);
+              const inWishlist = isInWishlist(item.id);
 
               return (
                 <div
@@ -207,7 +213,13 @@ export default function HomePage() {
                       <span className="px-2 py-0.5 rounded bg-brand-500/20 text-gold-300 font-bold border border-gold-400/30">
                         {item.brand} • {item.category}
                       </span>
-                      <span className="text-amber-300 font-bold">{remaining} items left</span>
+                      {isOutOfStock ? (
+                        <span className="text-rose-300 font-black bg-rose-950/80 border border-rose-500/50 px-2 py-0.5 rounded text-[10px] uppercase tracking-wide">
+                          Sold Out
+                        </span>
+                      ) : (
+                        <span className="text-amber-300 font-bold">{remaining} items left</span>
+                      )}
                     </div>
 
                     <h4 className="font-bold text-sm text-white line-clamp-2">
@@ -233,13 +245,41 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => requireAuth(() => router.push(`/products/${item.id}`), `Please sign in or create an account to view and order "${item.title}".`)}
-                      className="w-full py-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-slate-950 font-bold rounded-lg text-xs text-center block transition shadow-md"
-                    >
-                      View & Buy
-                    </button>
+                    {isOutOfStock ? (
+                      inWishlist ? (
+                        <button
+                          type="button"
+                          disabled
+                          className="w-full py-2 bg-amber-500/20 border border-gold-400/50 text-gold-300 font-bold rounded-lg text-xs text-center flex items-center justify-center gap-1.5 cursor-default"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5 text-gold-400" />
+                          <span>✓ In Wishlist</span>
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            requireAuth(
+                              () => addToWishlist(item),
+                              `Please sign in or create an account to request a restock for "${item.title}".`
+                            )
+                          }
+                          className="w-full py-2 bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 text-white font-bold rounded-lg text-xs text-center flex items-center justify-center gap-1.5 transition shadow-md active:scale-95"
+                          title="Notify seller to restock this item"
+                        >
+                          <Heart className="w-3.5 h-3.5 fill-rose-100 text-white" />
+                          <span>Add to Wishlist</span>
+                        </button>
+                      )
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => requireAuth(() => router.push(`/products/${item.id}`), `Please sign in or create an account to view and order "${item.title}".`)}
+                        className="w-full py-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-slate-950 font-bold rounded-lg text-xs text-center block transition shadow-md"
+                      >
+                        View & Buy
+                      </button>
+                    )}
                   </div>
                 </div>
               );
@@ -380,11 +420,17 @@ export default function HomePage() {
             const claimed = prod.claimedSlots || 7;
             const remaining = Math.max(0, total - claimed);
             const percentClaimed = Math.min(100, Math.round((claimed / total) * 100));
+            const isOutOfStock = !prod.isActive || prod.stockQuantity <= 0 || (prod.allocatedSlots !== undefined && prod.claimedSlots !== undefined && prod.claimedSlots >= prod.allocatedSlots);
+            const inWishlist = isInWishlist(prod.id);
 
             return (
               <div
                 key={prod.id}
-                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md hover:border-gold-300 transition flex flex-col justify-between group"
+                className={`bg-white rounded-2xl border transition flex flex-col justify-between group overflow-hidden ${
+                  isOutOfStock
+                    ? 'border-slate-300 shadow-sm'
+                    : 'border-slate-200 shadow-sm hover:shadow-md hover:border-gold-300'
+                }`}
               >
                 {/* Product Image Thumbnail */}
                 <Link href={`/products/${prod.id}`} className="block relative aspect-[16/10] w-full bg-slate-100 overflow-hidden">
@@ -392,7 +438,9 @@ export default function HomePage() {
                     src={prod.imageUrls?.[0] || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'}
                     alt={prod.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className={`object-cover transition-transform duration-300 ${
+                      isOutOfStock ? 'opacity-85 grayscale-[20%]' : 'group-hover:scale-105'
+                    }`}
                   />
                   <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
                     <span className="px-2.5 py-0.5 rounded-md bg-[#06241c]/90 backdrop-blur-md text-gold-300 font-extrabold text-[10px] border border-gold-400/40 shadow">
@@ -401,7 +449,20 @@ export default function HomePage() {
                     <span className="px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-md text-slate-800 font-bold text-[10px] shadow">
                       {prod.category}
                     </span>
+                    {isOutOfStock && (
+                      <span className="px-2 py-0.5 rounded-md bg-rose-600 text-white font-extrabold text-[10px] shadow uppercase tracking-wide">
+                        Sold Out
+                      </span>
+                    )}
                   </div>
+
+                  {isOutOfStock && (
+                    <div className="absolute inset-0 bg-slate-950/25 backdrop-blur-[1px] flex items-center justify-center pointer-events-none">
+                      <span className="px-3 py-1 rounded-full bg-slate-950/90 text-rose-300 font-black text-xs tracking-wider uppercase border border-rose-500/40 shadow-xl">
+                        Out of Stock • Wishlist to Restock
+                      </span>
+                    </div>
+                  )}
                 </Link>
 
                 <div className="p-5 space-y-4">
@@ -425,16 +486,24 @@ export default function HomePage() {
                   <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100 space-y-1">
                     <div className="flex justify-between items-center text-[10px]">
                       <span className="font-semibold text-slate-600">
-                        Stock: <strong className="text-slate-900">{claimed}/{total} Taken</strong>
+                        Stock: <strong className="text-slate-900">{isOutOfStock ? `${total}/${total} Taken` : `${claimed}/${total} Taken`}</strong>
                       </span>
-                      <span className={`font-bold ${remaining <= 3 ? 'text-amber-600' : 'text-emerald-700'}`}>
-                        {remaining} left
-                      </span>
+                      {isOutOfStock ? (
+                        <span className="font-black text-rose-600">
+                          0 left (Sold Out)
+                        </span>
+                      ) : (
+                        <span className={`font-bold ${remaining <= 3 ? 'text-amber-600' : 'text-emerald-700'}`}>
+                          {remaining} left
+                        </span>
+                      )}
                     </div>
                     <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-brand-700 to-gold-500 h-full rounded-full"
-                        style={{ width: `${percentClaimed}%` }}
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          isOutOfStock ? 'bg-rose-500' : 'bg-gradient-to-r from-brand-700 to-gold-500'
+                        }`}
+                        style={{ width: `${isOutOfStock ? 100 : percentClaimed}%` }}
                       ></div>
                     </div>
                   </div>
@@ -467,13 +536,41 @@ export default function HomePage() {
                     >
                       Details
                     </Link>
-                    <button
-                      type="button"
-                      onClick={() => requireAuth(() => router.push(`/products/${prod.id}`), `Please sign in or create an account to pick and buy "${prod.title}".`)}
-                      className="w-full py-2 text-center text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-lg transition shadow-sm"
-                    >
-                      Pick & Buy
-                    </button>
+                    {isOutOfStock ? (
+                      inWishlist ? (
+                        <button
+                          type="button"
+                          disabled
+                          className="w-full py-2 text-center text-xs font-bold text-amber-900 bg-amber-50 border border-gold-300 rounded-lg shadow-sm flex items-center justify-center gap-1 cursor-default"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                          <span className="truncate">✓ In Wishlist</span>
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            requireAuth(
+                              () => addToWishlist(prod),
+                              `Please sign in or create an account to request a restock for "${prod.title}".`
+                            )
+                          }
+                          className="w-full py-2 text-center text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-sm ring-1 ring-rose-400/30 transition flex items-center justify-center gap-1 active:scale-95"
+                          title="Notify seller to restock this item"
+                        >
+                          <Heart className="w-3.5 h-3.5 fill-white text-white shrink-0" />
+                          <span className="truncate">Add to Wishlist</span>
+                        </button>
+                      )
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => requireAuth(() => router.push(`/products/${prod.id}`), `Please sign in or create an account to pick and buy "${prod.title}".`)}
+                        className="w-full py-2 text-center text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-lg transition shadow-sm"
+                      >
+                        Pick & Buy
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
