@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
 import { useProducts } from '@/context/products-context';
 import { Search, Tag, ExternalLink, ArrowRight, Radio, Sparkles, Flame, CheckCircle2, Lock, UserCheck } from 'lucide-react';
@@ -11,8 +11,9 @@ import { Search, Tag, ExternalLink, ArrowRight, Radio, Sparkles, Flame, CheckCir
 const CATEGORIES = ['ALL', 'Clothes', 'Bags', 'Watches', 'Wallets', 'Caps'];
 const BRANDS = ['ALL', 'Calvin Klein', 'Tommy Hilfiger', 'Polo Ralph Lauren', 'Lacoste'];
 
-export default function ProductsPage() {
+function ProductsContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { isLoggedIn, requireAuth } = useAuth();
   const { products } = useProducts();
 
@@ -20,6 +21,13 @@ export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [selectedBrand, setSelectedBrand] = useState<string>('ALL');
   const [onlyLiveDrops, setOnlyLiveDrops] = useState<boolean>(false);
+
+  useEffect(() => {
+    const b = searchParams.get('brand');
+    const c = searchParams.get('category');
+    if (b) setSelectedBrand(b);
+    if (c) setSelectedCategory(c);
+  }, [searchParams]);
 
   const filtered = useMemo(() => {
     return products.filter((prod) => {
@@ -364,5 +372,19 @@ export default function ProductsPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="max-w-7xl mx-auto px-4 py-20 text-center text-xs text-slate-400">
+          Loading outlet catalog...
+        </div>
+      }
+    >
+      <ProductsContent />
+    </Suspense>
   );
 }

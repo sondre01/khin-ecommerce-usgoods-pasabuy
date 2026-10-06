@@ -84,12 +84,12 @@ export default function HomePage() {
                 Featured Brands:
               </p>
               <div className="flex flex-wrap gap-2.5 text-xs text-emerald-100">
-                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/30 font-bold text-gold-300">Calvin Klein (CK)</span>
-                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/30 font-bold text-gold-300">Tommy Hilfiger</span>
-                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/30 font-bold text-gold-300">Polo Ralph Lauren</span>
-                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/30 font-bold text-gold-300">Lacoste (Live Deals)</span>
-                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/20">Coach Outlet</span>
-                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/20">0% US Sales Tax</span>
+                <Link href="/products?brand=Calvin+Klein" className="px-3 py-1.5 rounded-lg bg-[#072b22] hover:bg-[#0c4033] border border-gold-400/30 font-bold text-gold-300 transition shadow-sm">Calvin Klein (CK)</Link>
+                <Link href="/products?brand=Tommy+Hilfiger" className="px-3 py-1.5 rounded-lg bg-[#072b22] hover:bg-[#0c4033] border border-gold-400/30 font-bold text-gold-300 transition shadow-sm">Tommy Hilfiger</Link>
+                <Link href="/products?brand=Polo+Ralph+Lauren" className="px-3 py-1.5 rounded-lg bg-[#072b22] hover:bg-[#0c4033] border border-gold-400/30 font-bold text-gold-300 transition shadow-sm">Polo Ralph Lauren</Link>
+                <Link href="/products?brand=Lacoste" className="px-3 py-1.5 rounded-lg bg-[#072b22] hover:bg-[#0c4033] border border-gold-400/30 font-bold text-gold-300 transition shadow-sm">Lacoste (Live Deals)</Link>
+                <Link href="/products" className="px-3 py-1.5 rounded-lg bg-[#072b22] hover:bg-[#0c4033] border border-gold-400/20 text-emerald-200 transition">Coach Outlet</Link>
+                <Link href="/#calculator" className="px-3 py-1.5 rounded-lg bg-[#072b22] hover:bg-[#0c4033] border border-gold-400/20 text-emerald-200 transition">0% US Sales Tax</Link>
               </div>
             </div>
           </div>

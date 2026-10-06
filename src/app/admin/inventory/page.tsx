@@ -282,7 +282,7 @@ export default function AdminInventoryPage() {
                           <div className="flex items-center gap-1.5 mt-0.5">
                             <span className="text-[10px] text-slate-400">{p.category}</span>
                             {p.isLiveShoppingDrop && (
-                              <span className="text-[9px] font-bold text-amber-300 bg-amber-500/20 px-1.5 py-0.2 rounded border border-amber-500/30">
+                              <span className="text-[9px] font-bold text-amber-300 bg-amber-500/20 px-1.5 py-0.5 rounded border border-amber-500/30">
                                 Live Drop
                               </span>
                             )}

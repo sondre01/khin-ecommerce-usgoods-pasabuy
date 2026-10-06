@@ -134,7 +134,7 @@ export default function Navbar() {
             <RefreshCw className="w-3.5 h-3.5 text-gold-600" />
             <span>{currentUserRole === 'ADMIN' ? 'Restock Inquiries' : 'Request Restock'}</span>
             {currentUserRole === 'ADMIN' && pendingCount > 0 && (
-              <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-rose-500 text-white">
+              <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500 text-white">
                 {pendingCount}
               </span>
             )}
