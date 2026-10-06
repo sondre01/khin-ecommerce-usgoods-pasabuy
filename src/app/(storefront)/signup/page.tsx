@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
 import { User, Mail, Phone, Lock, MapPin, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import PhilippineAddressSelector from '@/components/philippine-address-selector';
 
 function SignupFormContent() {
   const router = useRouter();
@@ -165,7 +166,7 @@ function SignupFormContent() {
           <div className="pt-4 border-t border-slate-100 space-y-3">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-brand-700" />
-              <span>Delivery Address (Philippines)</span>
+              <span>Delivery Address</span>
             </h3>
 
             <div>
@@ -180,55 +181,16 @@ function SignupFormContent() {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Barangay *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Fort Bonifacio"
-                  value={barangay}
-                  onChange={(e) => setBarangay(e.target.value)}
-                  className="w-full px-4 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-700 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">City / Municipality *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Taguig City"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  className="w-full px-4 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-700 focus:outline-none"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Province / Region *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Metro Manila"
-                  value={province}
-                  onChange={(e) => setProvince(e.target.value)}
-                  className="w-full px-4 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-700 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Postal Code *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="1634"
-                  value={postalCode}
-                  onChange={(e) => setPostalCode(e.target.value)}
-                  className="w-full px-4 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-700 focus:outline-none"
-                />
-              </div>
-            </div>
+            <PhilippineAddressSelector
+              province={province}
+              onProvinceChange={setProvince}
+              city={city}
+              onCityChange={setCity}
+              barangay={barangay}
+              onBarangayChange={setBarangay}
+              postalCode={postalCode}
+              onPostalCodeChange={setPostalCode}
+            />
           </div>
 
           <button

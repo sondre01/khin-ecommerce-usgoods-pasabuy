@@ -18,6 +18,7 @@ import {
   AlertCircle,
   Lock
 } from 'lucide-react';
+import PhilippineAddressSelector, { formatPhilippineAddress } from '@/components/philippine-address-selector';
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -131,9 +132,11 @@ export default function CheckoutPage() {
             <span className="text-slate-500">Payment Method:</span>
             <span className="font-bold text-slate-900">{paymentMethod.replace(/_/g, ' ')}</span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-slate-500">Delivery To:</span>
-            <span className="font-bold text-slate-900 text-right">{street}, {city}</span>
+          <div className="flex justify-between items-start">
+            <span className="text-slate-500 shrink-0">Delivery Address:</span>
+            <span className="font-bold text-slate-900 text-right max-w-[280px]">
+              {formatPhilippineAddress({ street, barangay, city, province, postalCode })}
+            </span>
           </div>
         </div>
 
@@ -208,38 +211,16 @@ export default function CheckoutPage() {
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Barangay *</label>
-                <input
-                  type="text"
-                  required
-                  value={barangay}
-                  onChange={(e) => setBarangay(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-700 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">City *</label>
-                <input
-                  type="text"
-                  required
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-700 focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Postal Code *</label>
-                <input
-                  type="text"
-                  required
-                  value={postalCode}
-                  onChange={(e) => setPostalCode(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-700 focus:outline-none"
-                />
-              </div>
-            </div>
+            <PhilippineAddressSelector
+              province={province}
+              onProvinceChange={setProvince}
+              city={city}
+              onCityChange={setCity}
+              barangay={barangay}
+              onBarangayChange={setBarangay}
+              postalCode={postalCode}
+              onPostalCodeChange={setPostalCode}
+            />
           </div>
 
           {/* Section 2: Choose Payment Option */}
@@ -418,6 +399,16 @@ export default function CheckoutPage() {
               <span>Amount Due Now:</span>
               <span className="text-base font-black text-brand-900">₱{grandTotal.toLocaleString()} PHP</span>
             </div>
+          </div>
+
+          {/* Delivery Address Preview (No Philippines) */}
+          <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-1">
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+              Delivery Address Preview:
+            </span>
+            <p className="font-semibold text-slate-800 leading-relaxed text-[11px]">
+              {formatPhilippineAddress({ street, barangay, city, province, postalCode }) || 'Please select your province, city, and barangay'}
+            </p>
           </div>
 
           <button
