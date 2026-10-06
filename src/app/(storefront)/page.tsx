@@ -1,6 +1,10 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/auth-context';
 import { INITIAL_PRODUCTS } from '@/data/mock-data';
 import LandedCostCalculator from '@/components/landed-cost-calculator';
 import {
@@ -13,111 +17,140 @@ import {
   Tag,
   CreditCard,
   Building2,
-  PackageCheck
+  PackageCheck,
+  Radio,
+  Flame,
+  Sparkles,
+  Shirt,
+  Watch,
+  Wallet,
+  Clock,
+  Lock,
+  UserCheck
 } from 'lucide-react';
 
 export default function HomePage() {
+  const router = useRouter();
+  const { isLoggedIn, requireAuth, user } = useAuth();
+
+  const liveDropProducts = INITIAL_PRODUCTS.filter((p) => p.isLiveShoppingDrop);
+  const displayedLiveDrops = isLoggedIn ? liveDropProducts.slice(0, 4) : liveDropProducts.slice(0, 2);
+  const featuredProducts = isLoggedIn ? INITIAL_PRODUCTS.slice(0, 6) : INITIAL_PRODUCTS.slice(0, 3);
+
   return (
     <div className="space-y-16 pb-16">
       {/* 1. Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-blue-900 via-slate-900 to-slate-950 text-white pt-16 pb-20 px-4 sm:px-8">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.15),transparent_50%)]"></div>
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#051c16] via-[#093529] to-[#041913] text-white pt-16 pb-20 px-4 sm:px-8 border-b border-[#0d3d30]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(223,183,56,0.18),transparent_60%)]"></div>
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-              Direct US-to-PH Cargo Pipeline • 0% US State Tax
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/20 border border-gold-400/30 text-gold-300 text-xs font-semibold backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+              Authentic US Outlet Deals • 0% US Sales Tax • 50% Downpayment
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
-              Shop Any US Store. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-amber-300">
+              Authentic US Goods. <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-amber-200 to-yellow-100 font-serif italic">
                 Delivered Straight to PH.
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Skip overpriced local resellers. Get authentic items from Amazon, Sephora, Target, and Coach with transparent landed costs and a <strong>50% downpayment</strong> option.
+            <p className="text-base sm:text-lg text-emerald-100/90 max-w-2xl leading-relaxed">
+              We shop 100% original <strong className="text-gold-300">clothes, bags, watches, wallets, and caps</strong> directly from top US outlets: <strong className="text-white">Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren</strong>, and official live-selling specials for <strong className="text-white">Lacoste</strong>.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
-                href="/custom-quote"
-                className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg shadow-blue-600/30 flex items-center gap-2 transition"
+                href="/products"
+                className="px-7 py-3.5 bg-gradient-to-r from-gold-500 via-gold-400 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-[#06241c] font-black rounded-xl shadow-lg shadow-gold-500/20 flex items-center gap-2 transition ring-1 ring-gold-300/40"
               >
-                <span>Paste US Product Link</span>
+                <span>Shop All Items</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/products"
-                className="px-6 py-3.5 bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 font-semibold rounded-xl border border-slate-700 transition"
+                href="/custom-quote"
+                className="px-6 py-3.5 bg-[#0b382c]/80 hover:bg-[#0f4738] text-emerald-100 font-semibold rounded-xl border border-gold-500/30 transition backdrop-blur-sm"
               >
-                Browse Featured Finds
+                Request a Specific Size
               </Link>
             </div>
 
-            {/* US Retailers Badges */}
-            <div className="pt-6 border-t border-slate-800">
-              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
-                Supported US Merchants:
+            {/* US Retailers & Core Brands Badges */}
+            <div className="pt-6 border-t border-[#0e4435]">
+              <p className="text-xs font-semibold text-gold-300/90 uppercase tracking-wider mb-3">
+                Featured Brands:
               </p>
-              <div className="flex flex-wrap gap-3 text-xs text-slate-300">
-                <span className="px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/50">Amazon US</span>
-                <span className="px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/50">Sephora US</span>
-                <span className="px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/50">Target</span>
-                <span className="px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/50">Coach Outlet</span>
-                <span className="px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/50">Trader Joe's</span>
-                <span className="px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/50">Best Buy</span>
+              <div className="flex flex-wrap gap-2.5 text-xs text-emerald-100">
+                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/30 font-bold text-gold-300">Calvin Klein (CK)</span>
+                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/30 font-bold text-gold-300">Tommy Hilfiger</span>
+                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/30 font-bold text-gold-300">Polo Ralph Lauren</span>
+                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/30 font-bold text-gold-300">Lacoste (Live Deals)</span>
+                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/20">Coach Outlet</span>
+                <span className="px-3 py-1.5 rounded-lg bg-[#072b22] border border-gold-400/20">0% US Sales Tax</span>
               </div>
             </div>
           </div>
 
-          {/* Hero Side Metric Card */}
+          {/* Hero Side Metric Card with Official Logo */}
           <div className="lg:col-span-5">
-            <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
-              <h3 className="text-lg font-bold text-white flex items-center justify-between">
-                <span>The PasaBuy Advantage</span>
-                <ShieldCheck className="w-5 h-5 text-emerald-400" />
-              </h3>
+            <div className="bg-[#06241c]/80 backdrop-blur-xl border border-gold-500/30 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+              <div className="flex items-center gap-4 pb-4 border-b border-[#0f4d3d]">
+                <div className="relative w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr from-gold-600 via-gold-400 to-amber-200 shrink-0 shadow-lg">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-[#06241c]">
+                    <Image
+                      src="/logo.jpg"
+                      alt="US Goods PasaBuy"
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-white">How It Works</h3>
+                  <p className="text-xs text-gold-300/80">Easy, safe, and transparent PasaBuy</p>
+                </div>
+              </div>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
-                    <Building2 className="w-4 h-4" />
+                  <div className="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 border border-gold-400/30">
+                    <Flame className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-white">Oregon Tax-Free Address</h4>
-                    <p className="text-xs text-slate-400">Save 7% to 10% on US state taxes automatically when shopping through our hub.</p>
+                    <h4 className="text-sm font-semibold text-white">Limited Outlet Pieces</h4>
+                    <p className="text-xs text-emerald-200/70">Hand-picked per shopping trip. Lock in your size before items sell out.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-300 flex items-center justify-center shrink-0 border border-brand-400/30">
                     <CreditCard className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-white">50% Downpayment Option</h4>
-                    <p className="text-xs text-slate-400">Pay 50% upon ordering via GCash or Maya. Settle remaining 50% only when the item lands in Manila.</p>
+                    <h4 className="text-sm font-semibold text-white">Pay Only 50% Downpayment</h4>
+                    <p className="text-xs text-emerald-200/70">Reserve with 50% deposit via GCash or Maya. Pay the rest only when your parcel arrives in Manila.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 border border-gold-400/30">
                     <PackageCheck className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-white">Zero Surprise Customs Tax</h4>
-                    <p className="text-xs text-slate-400">All prices include freight forwarder customs clearance. No BOC fees upon delivery.</p>
+                    <h4 className="text-sm font-semibold text-white">0% US Sales Tax</h4>
+                    <p className="text-xs text-emerald-200/70">Purchased in tax-free US locations, saving you money. All customs fees covered.</p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-700 text-center">
+              <div className="pt-4 border-t border-[#0f4d3d] text-center">
                 <Link
-                  href="#calculator"
-                  className="text-xs font-semibold text-sky-400 hover:text-sky-300 inline-flex items-center gap-1"
+                  href="#live-shopping"
+                  className="text-xs font-semibold text-gold-300 hover:text-gold-200 inline-flex items-center gap-1"
                 >
-                  Estimate cost with our live pricing formula ↓
+                  See live shopping specials below ↓
                 </Link>
               </div>
             </div>
@@ -125,158 +158,439 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. Interactive Landed Cost Calculator */}
+      {/* 2. Official Live-Shopping Event Announcements Section (Lacoste & Core Lineup) */}
+      <section id="live-shopping" className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="bg-gradient-to-r from-[#041d16] via-[#093529] to-[#041d16] rounded-3xl p-6 sm:p-10 border border-gold-500/40 text-white shadow-2xl relative overflow-hidden space-y-8">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(223,183,56,0.15),transparent_70%)] pointer-events-none"></div>
+
+          {/* Event Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#0f4d3d] pb-6">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-gold-400/50 text-gold-300 text-xs font-bold">
+                <Radio className="w-3.5 h-3.5 text-gold-400 animate-pulse" />
+                <span>LIVE SELLING SPECIALS</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white">
+                Lacoste & US Outlet Specials
+              </h2>
+              <p className="text-xs sm:text-sm text-emerald-100/90 max-w-2xl leading-relaxed">
+                Direct from California & Las Vegas Premium Outlets. Sourcing official <strong>Lacoste</strong> iconic polos, crocodile caps, leather wallets, watches, and totes alongside our core brand deals.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="text-right">
+                <span className="text-[10px] text-gold-300 uppercase font-bold tracking-wider block">Status</span>
+                <span className="text-xs font-black text-emerald-300 bg-emerald-950/80 px-2.5 py-1 rounded-md border border-emerald-600/50">
+                  🔴 OPEN FOR ORDERS
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Featured Lacoste Core Lineup Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {displayedLiveDrops.map((item) => {
+              const total = item.allocatedSlots || 15;
+              const claimed = item.claimedSlots || 11;
+              const remaining = Math.max(0, total - claimed);
+
+              return (
+                <div
+                  key={item.id}
+                  className="bg-[#06241c]/90 rounded-2xl border border-gold-500/30 p-4 flex flex-col justify-between hover:border-gold-400 transition"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="px-2 py-0.5 rounded bg-brand-500/20 text-gold-300 font-bold border border-gold-400/30">
+                        {item.brand} • {item.category}
+                      </span>
+                      <span className="text-amber-300 font-bold">{remaining} items left</span>
+                    </div>
+
+                    <h4 className="font-bold text-sm text-white line-clamp-2">
+                      <Link href={`/products/${item.id}`} className="hover:text-gold-300 transition">
+                        {item.title}
+                      </Link>
+                    </h4>
+
+                    <div className="text-xs text-emerald-200/70 line-clamp-2">
+                      {item.description}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-[#0e4435] mt-3 space-y-2">
+                    <div className="flex justify-between items-baseline">
+                      <div>
+                        <span className="text-[10px] text-gold-300/80 uppercase font-semibold block">Total Price</span>
+                        <span className="text-base font-black text-white">₱{item.sellingPricePhp.toLocaleString()}</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[10px] text-emerald-300 uppercase font-semibold block">50% Deposit</span>
+                        <span className="text-xs font-bold text-gold-300">₱{(Math.ceil(item.sellingPricePhp * 0.5)).toLocaleString()}</span>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => requireAuth(() => router.push(`/products/${item.id}`), `Please sign in or create an account to view and order "${item.title}".`)}
+                      className="w-full py-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-slate-950 font-bold rounded-lg text-xs text-center block transition shadow-md"
+                    >
+                      View & Buy
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {!isLoggedIn && (
+            <div className="pt-2 text-center border-t border-[#0e4435]">
+              <Link
+                href="/signup?callbackUrl=/products"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-gold-300 hover:text-gold-200 bg-brand-900/60 hover:bg-brand-900 px-4 py-2 rounded-xl border border-gold-400/30 transition shadow-sm"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+                <span>Guest Preview: Sign up to load all {liveDropProducts.length} Live Drops →</span>
+              </Link>
+            </div>
+          )}
+
+          {/* Core Lineup Brands Strip */}
+          <div className="bg-[#051e17]/80 rounded-2xl p-5 border border-gold-500/20 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div className="space-y-1">
+              <span className="font-black text-gold-300 text-sm block">Calvin Klein (CK) Lineup</span>
+              <p className="text-emerald-100/70 text-[11px] leading-relaxed">
+                Men’s & women’s crewneck t-shirts, archive logo tees, regular and relaxed fit tops, plus leather bifold wallets.
+              </p>
+            </div>
+            <div className="space-y-1">
+              <span className="font-black text-gold-300 text-sm block">Tommy Hilfiger Lineup</span>
+              <p className="text-emerald-100/70 text-[11px] leading-relaxed">
+                Women’s classic V-neck t-shirts, nautical striped tops, and 2-piece loungewear sets with matching dad caps.
+              </p>
+            </div>
+            <div className="space-y-1">
+              <span className="font-black text-gold-300 text-sm block">Polo Ralph Lauren Lineup</span>
+              <p className="text-emerald-100/70 text-[11px] leading-relaxed">
+                Men’s classic fit crewneck tees, embroidered pony oxford shirts, teen graphic tees, and full-zip fleece hoodies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Category Allocation Showcase (Clothes, Bags, Watches, Wallets, Caps) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-8 space-y-6">
+        <div>
+          <span className="text-xs font-bold text-brand-800 uppercase tracking-wider block">
+            What We Allocate
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+            Browse by Product Category
+          </h2>
+          <p className="text-sm text-slate-600 mt-1">
+            Five specialized categories sourced directly from US brand outlets.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <Link
+            href="/products?category=Clothes"
+            className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-gold-400 hover:shadow-md transition text-center space-y-2 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 border border-brand-100 flex items-center justify-center mx-auto group-hover:bg-brand-900 group-hover:text-gold-300 transition">
+              <Shirt className="w-6 h-6" />
+            </div>
+            <h4 className="font-extrabold text-slate-900 text-sm group-hover:text-brand-800 transition">Clothes</h4>
+            <p className="text-[11px] text-slate-500">Crewnecks, V-Necks, Hoodies, Polos</p>
+          </Link>
+
+          <Link
+            href="/products?category=Bags"
+            className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-gold-400 hover:shadow-md transition text-center space-y-2 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 border border-brand-100 flex items-center justify-center mx-auto group-hover:bg-brand-900 group-hover:text-gold-300 transition">
+              <ShoppingBag className="w-6 h-6" />
+            </div>
+            <h4 className="font-extrabold text-slate-900 text-sm group-hover:text-brand-800 transition">Bags</h4>
+            <p className="text-[11px] text-slate-500">Totes, Camera Bags, Duffels</p>
+          </Link>
+
+          <Link
+            href="/products?category=Watches"
+            className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-gold-400 hover:shadow-md transition text-center space-y-2 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 border border-brand-100 flex items-center justify-center mx-auto group-hover:bg-brand-900 group-hover:text-gold-300 transition">
+              <Watch className="w-6 h-6" />
+            </div>
+            <h4 className="font-extrabold text-slate-900 text-sm group-hover:text-brand-800 transition">Watches</h4>
+            <p className="text-[11px] text-slate-500">Quartz, Chrono, Sport Watches</p>
+          </Link>
+
+          <Link
+            href="/products?category=Wallets"
+            className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-gold-400 hover:shadow-md transition text-center space-y-2 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 border border-brand-100 flex items-center justify-center mx-auto group-hover:bg-brand-900 group-hover:text-gold-300 transition">
+              <Wallet className="w-6 h-6" />
+            </div>
+            <h4 className="font-extrabold text-slate-900 text-sm group-hover:text-brand-800 transition">Wallets</h4>
+            <p className="text-[11px] text-slate-500">Leather Bifolds, Passcases, Gift Sets</p>
+          </Link>
+
+          <Link
+            href="/products?category=Caps"
+            className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-gold-400 hover:shadow-md transition text-center space-y-2 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-brand-50 text-brand-800 border border-brand-100 flex items-center justify-center mx-auto group-hover:bg-brand-900 group-hover:text-gold-300 transition">
+              <Tag className="w-6 h-6" />
+            </div>
+            <h4 className="font-extrabold text-slate-900 text-sm group-hover:text-brand-800 transition">Caps</h4>
+            <p className="text-[11px] text-slate-500">Chino Ball Caps, Dad Hats, Strapbacks</p>
+          </Link>
+        </div>
+      </section>
+
+      {/* 4. Featured Allocated Items */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-bold text-brand-800 uppercase tracking-wider mb-1">
+              <Sparkles className="w-4 h-4 text-gold-600" />
+              Trending Now
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Featured US Outlet Deals Ready to Order
+            </h2>
+          </div>
+          <Link
+            href="/products"
+            className="text-sm font-semibold text-brand-800 hover:text-brand-900 inline-flex items-center gap-1"
+          >
+            View all {INITIAL_PRODUCTS.length} items <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredProducts.map((prod) => {
+            const total = prod.allocatedSlots || 10;
+            const claimed = prod.claimedSlots || 7;
+            const remaining = Math.max(0, total - claimed);
+            const percentClaimed = Math.min(100, Math.round((claimed / total) * 100));
+
+            return (
+              <div
+                key={prod.id}
+                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md hover:border-gold-300 transition flex flex-col justify-between group"
+              >
+                {/* Product Image Thumbnail */}
+                <Link href={`/products/${prod.id}`} className="block relative aspect-[16/10] w-full bg-slate-100 overflow-hidden">
+                  <Image
+                    src={prod.imageUrls?.[0] || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'}
+                    alt={prod.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
+                    <span className="px-2.5 py-0.5 rounded-md bg-[#06241c]/90 backdrop-blur-md text-gold-300 font-extrabold text-[10px] border border-gold-400/40 shadow">
+                      {prod.brand || prod.retailerName}
+                    </span>
+                    <span className="px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-md text-slate-800 font-bold text-[10px] shadow">
+                      {prod.category}
+                    </span>
+                  </div>
+                </Link>
+
+                <div className="p-5 space-y-4">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-slate-500 font-medium text-[11px]">{prod.retailerName}</span>
+                    <span className="text-slate-500 font-medium text-[11px]">
+                      ${prod.basePriceUsd.toFixed(2)} USD
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-base line-clamp-1 hover:text-brand-800 transition">
+                      <Link href={`/products/${prod.id}`}>{prod.title}</Link>
+                    </h3>
+                    <p className="text-xs text-slate-500 line-clamp-2 mt-1.5 leading-relaxed">
+                      {prod.description}
+                    </p>
+                  </div>
+
+                  {/* Availability Progress Bar */}
+                  <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100 space-y-1">
+                    <div className="flex justify-between items-center text-[10px]">
+                      <span className="font-semibold text-slate-600">
+                        Stock: <strong className="text-slate-900">{claimed}/{total} Taken</strong>
+                      </span>
+                      <span className={`font-bold ${remaining <= 3 ? 'text-amber-600' : 'text-emerald-700'}`}>
+                        {remaining} left
+                      </span>
+                    </div>
+                    <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                      <div
+                        className="bg-gradient-to-r from-brand-700 to-gold-500 h-full rounded-full"
+                        style={{ width: `${percentClaimed}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-5 pt-0 border-t border-slate-100 mt-2 space-y-3">
+                  <div className="flex items-baseline justify-between pt-3">
+                    <div>
+                      <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">
+                        Total Price
+                      </span>
+                      <span className="text-xl font-black text-slate-900">
+                        ₱{prod.sellingPricePhp.toLocaleString()} <span className="text-xs font-normal text-slate-500">PHP</span>
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] text-brand-700 font-semibold block uppercase">
+                        50% Downpayment
+                      </span>
+                      <span className="text-sm font-bold text-brand-800">
+                        ₱{(Math.ceil(prod.sellingPricePhp * 0.5)).toLocaleString()}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 pt-2">
+                    <Link
+                      href={`/products/${prod.id}`}
+                      className="w-full py-2 text-center text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition"
+                    >
+                      Details
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => requireAuth(() => router.push(`/products/${prod.id}`), `Please sign in or create an account to pick and buy "${prod.title}".`)}
+                      className="w-full py-2 text-center text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-lg transition shadow-sm"
+                    >
+                      Pick & Buy
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Sign Up to Load More Wall for Guests vs Full Link for Members */}
+        {!isLoggedIn ? (
+          <div className="mt-10 bg-gradient-to-r from-[#051c16] via-[#093529] to-[#051c16] rounded-3xl p-8 sm:p-10 border border-gold-400/40 text-white shadow-xl text-center space-y-5 relative overflow-hidden">
+            <div className="w-14 h-14 rounded-2xl bg-gold-500/20 text-gold-300 border border-gold-400/40 flex items-center justify-center mx-auto shadow-sm">
+              <Lock className="w-7 h-7 text-gold-400" />
+            </div>
+            <div className="max-w-xl mx-auto space-y-2">
+              <span className="text-xs font-bold text-gold-300 uppercase tracking-wider block">
+                Guest Preview • 3 of {INITIAL_PRODUCTS.length} Deals Shown
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                Sign Up to Load More US Outlet Deals
+              </h3>
+              <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed">
+                Sign up or log in to unlock our complete catalog for Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste, view real-time available stock, and order with a 50% deposit.
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3 pt-2">
+              <Link
+                href="/signup?callbackUrl=/products"
+                className="px-8 py-3.5 bg-gradient-to-r from-gold-500 via-gold-400 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-[#06241c] font-black rounded-xl shadow-lg shadow-gold-500/20 text-xs flex items-center gap-2 transition ring-1 ring-gold-300/40"
+              >
+                <span>Sign Up to Load More Deals</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/login?callbackUrl=/products"
+                className="px-6 py-3.5 bg-[#0b382c] hover:bg-[#0f4738] text-emerald-100 font-bold rounded-xl border border-gold-500/30 text-xs transition"
+              >
+                Log In to Existing Account
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-8 text-center">
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-800 hover:bg-brand-900 text-white font-bold rounded-xl text-xs transition shadow-md ring-1 ring-gold-400/30"
+            >
+              <span>Browse All {INITIAL_PRODUCTS.length} US Outlet Finds</span>
+              <ArrowRight className="w-4 h-4 text-gold-300" />
+            </Link>
+          </div>
+        )}
+      </section>
+
+      {/* 5. Interactive Landed Cost Calculator */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Transparent Landed Cost Calculator
+            Transparent Price Calculator
           </h2>
           <p className="text-sm text-slate-600 mt-2">
-            See exactly how retail USD price converts to Philippine Pesos, including forwarder air freight and packaging.
+            See exactly how US store prices convert to Philippine Pesos, with international shipping and packaging included.
           </p>
         </div>
         <LandedCostCalculator />
       </section>
 
-      {/* 3. Featured US Finds */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">
-              <Tag className="w-4 h-4" />
-              Trending US Catalog
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              Popular Items Ready for PasaBuy
-            </h2>
-          </div>
-          <Link
-            href="/products"
-            className="text-sm font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1"
-          >
-            View all items ({INITIAL_PRODUCTS.length}) <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {INITIAL_PRODUCTS.slice(0, 6).map((prod) => (
-            <div
-              key={prod.id}
-              className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between"
-            >
-              <div className="p-5 space-y-4">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-semibold">
-                    {prod.retailerName}
-                  </span>
-                  <span className="text-slate-500 font-medium">
-                    ${prod.basePriceUsd.toFixed(2)} USD
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="font-bold text-slate-900 text-base line-clamp-1 hover:text-blue-600 transition">
-                    <Link href={`/products/${prod.id}`}>{prod.title}</Link>
-                  </h3>
-                  <p className="text-xs text-slate-500 line-clamp-2 mt-1.5 leading-relaxed">
-                    {prod.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-5 pt-0 border-t border-slate-100 mt-4 space-y-3">
-                <div className="flex items-baseline justify-between pt-3">
-                  <div>
-                    <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">
-                      Landed PH Price
-                    </span>
-                    <span className="text-xl font-black text-slate-900">
-                      ₱{prod.sellingPricePhp.toLocaleString()} <span className="text-xs font-normal text-slate-500">PHP</span>
-                    </span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-[10px] text-emerald-600 font-semibold block uppercase">
-                      50% Deposit
-                    </span>
-                    <span className="text-sm font-bold text-emerald-700">
-                      ₱{(Math.ceil(prod.sellingPricePhp * 0.5)).toLocaleString()}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 pt-2">
-                  <Link
-                    href={`/products/${prod.id}`}
-                    className="w-full py-2 text-center text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition"
-                  >
-                    View Breakdown
-                  </Link>
-                  <Link
-                    href={`/custom-quote?url=${encodeURIComponent(prod.sourceUrl)}`}
-                    className="w-full py-2 text-center text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition"
-                  >
-                    Order Now
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. How PasaBuy Works (5 Stages) */}
-      <section className="bg-slate-100/70 py-16 px-4 sm:px-8">
+      {/* 6. How The Process Works (5 Steps) */}
+      <section className="bg-brand-50/60 py-16 px-4 sm:px-8 border-y border-brand-100">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
-              Transparency First
+            <span className="text-xs font-bold text-brand-800 uppercase tracking-wider">
+              Simple 5-Step Process
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
-              How The PasaBuy Pipeline Works
+              How Your Order Gets Delivered
             </h2>
             <p className="text-sm text-slate-600 mt-2">
-              From our US tax-free warehouse to your Philippine front door in 5 simple steps.
+              From our US outlet shopping trip to your Philippine doorstep in 5 simple steps.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
-              <span className="w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">1</span>
-              <h4 className="font-bold text-sm text-slate-900">Place Order & 50% Deposit</h4>
+            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
+              <span className="w-7 h-7 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">1</span>
+              <h4 className="font-bold text-sm text-slate-900">Pick Item & 50% Deposit</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Submit custom US link or catalog item. Upload GCash or Maya payment receipt.
+                Choose your item and size. Pay only 50% deposit via GCash or Maya to lock in your order.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
-              <span className="w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">2</span>
-              <h4 className="font-bold text-sm text-slate-900">Purchased in US</h4>
+            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
+              <span className="w-7 h-7 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">2</span>
+              <h4 className="font-bold text-sm text-slate-900">We Buy in US Outlets</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Our US shoppers purchase items directly from Amazon, Sephora, or Target to Oregon hub.
+                Our personal shopper buys your item at CK, Tommy, Ralph Lauren, or Lacoste with official receipt.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
-              <span className="w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">3</span>
-              <h4 className="font-bold text-sm text-slate-900">In Transit (Air Cargo)</h4>
+            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
+              <span className="w-7 h-7 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">3</span>
+              <h4 className="font-bold text-sm text-slate-900">Fast Air Cargo</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Consolidated and dispatched via freight forwarder. Live cargo AWB tracking assigned.
+                Packed safely in our tax-free US warehouse and dispatched via direct commercial air cargo to NAIA.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
-              <span className="w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">4</span>
-              <h4 className="font-bold text-sm text-slate-900">Arrived in PH Hub</h4>
+            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
+              <span className="w-7 h-7 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">4</span>
+              <h4 className="font-bold text-sm text-slate-900">Arrives in Manila & Balance</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Customs cleared in Manila. Settle remaining 50% balance before local dispatch.
+                Customs cleared in Manila. Settle the remaining 50% balance before delivery dispatch.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
-              <span className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">5</span>
-              <h4 className="font-bold text-sm text-slate-900">Local Delivery</h4>
+            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
+              <span className="w-7 h-7 rounded-full bg-gold-100 text-gold-900 font-bold text-xs flex items-center justify-center border border-gold-400">5</span>
+              <h4 className="font-bold text-sm text-slate-900">Doorstep Delivery</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Dispatched via Lalamove (Metro Manila) or J&T Express (Provincial) to your door.
+                Delivered straight to your home via Lalamove (Metro Manila) or J&T Express (Provincial).
               </p>
             </div>
           </div>

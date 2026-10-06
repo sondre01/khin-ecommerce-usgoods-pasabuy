@@ -44,6 +44,7 @@ export interface Product {
   title: string;
   description: string;
   category: string;
+  brand?: 'Calvin Klein' | 'Tommy Hilfiger' | 'Polo Ralph Lauren' | 'Lacoste' | string;
   retailerName: string;
   sourceUrl: string;
   imageUrls: string[];
@@ -53,6 +54,10 @@ export interface Product {
   isCustomRequest: boolean;
   isActive: boolean;
   stockQuantity: number;
+  allocatedSlots?: number;
+  claimedSlots?: number;
+  isLiveShoppingDrop?: boolean;
+  lineupTag?: string;
 }
 
 export interface OrderItem {

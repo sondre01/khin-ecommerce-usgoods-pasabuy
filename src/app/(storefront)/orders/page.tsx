@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { useAuth } from '@/context/auth-context';
 import { INITIAL_ORDERS } from '@/data/mock-data';
 import { Order, OrderStatus } from '@/types';
 import {
@@ -13,19 +15,21 @@ import {
   CreditCard,
   FileCheck,
   AlertCircle,
-  ExternalLink
+  ExternalLink,
+  Lock
 } from 'lucide-react';
 
 const PIPELINE_STAGES: { key: OrderStatus; label: string; desc: string }[] = [
-  { key: 'ORDER_PLACED', label: 'Order Placed', desc: 'Downpayment submitted' },
-  { key: 'PURCHASED_IN_US', label: 'Purchased in US', desc: 'Bought from US retailer' },
-  { key: 'IN_TRANSIT_FORWARDER', label: 'In Transit Cargo', desc: 'Air/Sea freight to PH' },
-  { key: 'ARRIVED_IN_PH', label: 'Arrived in PH', desc: 'Customs cleared in Manila' },
-  { key: 'OUT_FOR_LOCAL_DELIVERY', label: 'Out for Delivery', desc: 'Lalamove / J&T courier' },
-  { key: 'COMPLETED', label: 'Completed', desc: 'Delivered to customer' },
+  { key: 'ORDER_PLACED', label: 'Order Placed', desc: 'Deposit confirmed' },
+  { key: 'PURCHASED_IN_US', label: 'Bought in US', desc: 'Purchased at outlet' },
+  { key: 'IN_TRANSIT_FORWARDER', label: 'Air Shipping', desc: 'On the way to PH' },
+  { key: 'ARRIVED_IN_PH', label: 'Arrived in Manila', desc: 'Ready for final balance' },
+  { key: 'OUT_FOR_LOCAL_DELIVERY', label: 'Out for Delivery', desc: 'Courier on the way' },
+  { key: 'COMPLETED', label: 'Delivered', desc: 'Received at doorstep' },
 ];
 
 export default function CustomerOrdersPage() {
+  const { isLoggedIn } = useAuth();
   const [orders, setOrders] = useState<Order[]>(INITIAL_ORDERS);
   const [selectedOrder, setSelectedOrder] = useState<Order>(INITIAL_ORDERS[0]);
   const [uploadRefNumber, setUploadRefNumber] = useState('');
@@ -44,12 +48,43 @@ export default function CustomerOrdersPage() {
     }, 4000);
   };
 
+  if (!isLoggedIn) {
+    return (
+      <div className="max-w-md mx-auto px-4 py-20 text-center space-y-5">
+        <div className="w-16 h-16 bg-brand-50 text-brand-800 rounded-3xl flex items-center justify-center mx-auto border border-brand-200 shadow-sm">
+          <Lock className="w-8 h-8 text-brand-700" />
+        </div>
+        <div className="space-y-1">
+          <span className="text-xs font-bold text-brand-800 uppercase tracking-wider block">Sign In Required</span>
+          <h2 className="text-2xl font-black text-slate-900 tracking-tight">Sign In to Track Orders</h2>
+          <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
+            Please sign in or create an account to view your order milestones, air cargo tracking, and upload payment receipts.
+          </p>
+        </div>
+        <div className="pt-2 flex justify-center gap-3">
+          <Link
+            href="/signup?callbackUrl=/orders"
+            className="px-6 py-2.5 bg-brand-800 hover:bg-brand-900 text-white rounded-xl text-xs font-bold transition shadow-sm ring-1 ring-gold-400/30"
+          >
+            Create an Account
+          </Link>
+          <Link
+            href="/login?callbackUrl=/orders"
+            className="px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition"
+          >
+            Sign In
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-8 py-10 space-y-8">
       <div>
-        <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Order Tracking & Receipts</h1>
+        <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Track Your Orders</h1>
         <p className="text-sm text-slate-600 mt-1">
-          Monitor your US goods across international cargo stages and upload payment verification slips.
+          See live updates on your US outlet orders and upload payment receipts.
         </p>
       </div>
 
@@ -63,15 +98,15 @@ export default function CustomerOrdersPage() {
               onClick={() => setSelectedOrder(ord)}
               className={`w-full p-4 rounded-xl border text-left transition ${
                 selectedOrder.id === ord.id
-                  ? 'border-blue-600 bg-blue-50/50 ring-2 ring-blue-600/10'
+                  ? 'border-brand-700 bg-brand-50/60 ring-2 ring-brand-700/10'
                   : 'border-slate-200 bg-white hover:border-slate-300'
               }`}
             >
               <div className="flex justify-between items-start">
                 <span className="font-bold text-xs text-slate-900">{ord.orderNumber}</span>
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                  ord.status === 'ARRIVED_IN_PH' ? 'bg-amber-100 text-amber-800' :
-                  ord.status === 'IN_TRANSIT_FORWARDER' ? 'bg-blue-100 text-blue-800' :
+                  ord.status === 'ARRIVED_IN_PH' ? 'bg-gold-100 text-gold-900 border border-gold-300' :
+                  ord.status === 'IN_TRANSIT_FORWARDER' ? 'bg-brand-100 text-brand-800' :
                   'bg-emerald-100 text-emerald-800'
                 }`}>
                   {ord.status.replace(/_/g, ' ')}
@@ -82,7 +117,7 @@ export default function CustomerOrdersPage() {
               </p>
               <div className="flex justify-between items-baseline mt-3 text-xs">
                 <span className="text-slate-500 font-medium">Total: ₱{ord.totalAmountPhp.toLocaleString()}</span>
-                <span className="text-emerald-700 font-bold">
+                <span className="text-brand-800 font-bold">
                   {ord.paymentStatus === 'FULLY_PAID' ? 'Fully Paid' : `Bal: ₱${ord.remainingBalancePhp.toLocaleString()}`}
                 </span>
               </div>
@@ -101,8 +136,8 @@ export default function CustomerOrdersPage() {
               </div>
               {selectedOrder.cargoTrackingNumber && (
                 <div className="text-left sm:text-right">
-                  <span className="text-[11px] text-slate-400 block font-semibold">Air Cargo Forwarder AWB</span>
-                  <span className="font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-200">
+                  <span className="text-[11px] text-slate-400 block font-semibold">Air Cargo Tracking</span>
+                  <span className="font-mono text-xs font-bold text-brand-800 bg-brand-50 px-2 py-1 rounded border border-brand-200">
                     {selectedOrder.cargoTrackingNumber}
                   </span>
                 </div>
@@ -122,18 +157,18 @@ export default function CustomerOrdersPage() {
                       key={stage.key}
                       className={`p-3 rounded-xl border flex flex-col justify-between ${
                         isCurrent
-                          ? 'border-blue-600 bg-blue-50/70 ring-2 ring-blue-500/20'
+                          ? 'border-brand-700 bg-brand-50/70 ring-2 ring-brand-700/20'
                           : isDone
-                          ? 'border-emerald-300 bg-emerald-50/50'
+                          ? 'border-brand-300 bg-brand-50/40'
                           : 'border-slate-200 bg-slate-50 opacity-60'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
                         <span className={`w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center ${
                           isCurrent
-                            ? 'bg-blue-600 text-white'
+                            ? 'bg-brand-700 text-white ring-1 ring-gold-400'
                             : isDone
-                            ? 'bg-emerald-600 text-white'
+                            ? 'bg-brand-600 text-white'
                             : 'bg-slate-300 text-slate-600'
                         }`}>
                           {idx + 1}
@@ -150,7 +185,7 @@ export default function CustomerOrdersPage() {
 
             {/* Status History Logs */}
             <div className="space-y-3 pt-2">
-              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Milestone History</h4>
+              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Order Timeline</h4>
               <div className="space-y-2 text-xs">
                 {selectedOrder.statusHistory.map((hist) => (
                   <div key={hist.id} className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
@@ -172,9 +207,9 @@ export default function CustomerOrdersPage() {
           <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div>
-                <h3 className="text-base font-bold text-slate-900">Payment Breakdown & Proof Upload</h3>
+                <h3 className="text-base font-bold text-slate-900">Payment & Receipts</h3>
                 <p className="text-xs text-slate-500">
-                  Plan: {selectedOrder.paymentPlan === 'DOWNPAYMENT_50' ? '50% Downpayment Scheme' : 'Full Payment'}
+                  Payment: {selectedOrder.paymentPlan === 'DOWNPAYMENT_50' ? '50% Downpayment (Pay Half Later)' : 'Paid in Full'}
                 </p>
               </div>
               <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${
@@ -186,7 +221,7 @@ export default function CustomerOrdersPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs">
               <div>
-                <span className="text-slate-500 block">Total Landed Amount:</span>
+                <span className="text-slate-500 block">Total Price:</span>
                 <span className="text-base font-black text-slate-900">₱{selectedOrder.totalAmountPhp.toLocaleString()}</span>
               </div>
               <div>
@@ -203,16 +238,16 @@ export default function CustomerOrdersPage() {
             {selectedOrder.remainingBalancePhp > 0 ? (
               <form onSubmit={handleSimulateReceiptUpload} className="p-5 border-2 border-dashed border-slate-300 rounded-xl space-y-4">
                 <div className="flex items-center gap-2">
-                  <CreditCard className="w-5 h-5 text-blue-600" />
+                  <CreditCard className="w-5 h-5 text-brand-700" />
                   <span className="text-xs font-bold text-slate-900 uppercase">
-                    Upload GCash / Maya / BDO Proof-of-Payment
+                    Upload Payment Receipt (GCash / Maya / BDO)
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[11px] font-semibold text-slate-600 uppercase mb-1">
-                      Reference Number / Transaction ID *
+                      Reference Number (Ref #) *
                     </label>
                     <input
                       type="text"
@@ -220,7 +255,7 @@ export default function CustomerOrdersPage() {
                       placeholder="e.g. GCASH-98129038"
                       value={uploadRefNumber}
                       onChange={(e) => setUploadRefNumber(e.target.value)}
-                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-600"
                     />
                   </div>
 
@@ -232,34 +267,34 @@ export default function CustomerOrdersPage() {
                       type="file"
                       accept="image/*,.pdf"
                       required
-                      className="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                      className="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-800 hover:file:bg-brand-100"
                     />
                   </div>
                 </div>
 
                 <div className="flex justify-between items-center pt-2">
                   <span className="text-[11px] text-slate-400">
-                    Target Accounts: GCash (0917-XXX-XXXX) / Maya / BDO Acct #0012-XXXX-XXXX
+                    Accounts: GCash (0917-888-9999) / Maya / BDO Online
                   </span>
                   <button
                     type="submit"
-                    className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-sm transition"
+                    className="px-5 py-2 bg-gradient-to-r from-brand-700 to-brand-600 hover:from-brand-800 hover:to-brand-700 text-white rounded-lg text-xs font-semibold shadow-sm ring-1 ring-gold-400/20 transition"
                   >
-                    Submit Proof of Payment
+                    Submit Receipt
                   </button>
                 </div>
 
                 {uploadSuccess && (
                   <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-xs flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-emerald-600" />
-                    <span>Receipt submitted successfully! An admin will review and verify within 1-2 hours.</span>
+                    <span>Receipt submitted successfully! We will verify it within 1-2 hours.</span>
                   </div>
                 )}
               </form>
             ) : (
               <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center gap-2 font-medium">
                 <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
-                <span>This order is fully settled. No further payments are required.</span>
+                <span>This order is fully paid. No further payments needed!</span>
               </div>
             )}
           </div>

@@ -1,0 +1,10 @@
+{
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "terminal.integrated.sendKeybindingsToShell": false,
+  "terminal.integrated.rightClickBehavior": "paste",
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.terminal.paste",
+    "workbench.action.terminal.copySelection"
+  ]
+}

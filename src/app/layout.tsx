@@ -9,7 +9,13 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'US Goods PasaBuy - Authentic US Retail Delivered to the Philippines',
   description: 'Shop Amazon, Sephora, Target, and Coach directly from the US. Transparent landed costs, Oregon tax-free freight forwarder, and 50% downpayment option.',
+  icons: {
+    icon: '/logo.jpg',
+    apple: '/logo.jpg',
+  },
 };
+
+import Providers from '@/components/providers';
 
 export default function RootLayout({
   children,
@@ -19,9 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen flex flex-col bg-slate-50 text-slate-900`}>
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

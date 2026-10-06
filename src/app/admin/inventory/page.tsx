@@ -59,14 +59,14 @@ export default function AdminInventoryPage() {
               max="50"
               value={marginMultiplier}
               onChange={(e) => setMarginMultiplier(parseInt(e.target.value) || 15)}
-              className="w-24 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-bold text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-24 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-bold text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none"
             />
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-bold">%</span>
           </div>
 
           <button
             onClick={handleBulkRecalculate}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5"
+            className="px-4 py-2 bg-gradient-to-r from-brand-700 to-brand-600 hover:from-brand-800 hover:to-brand-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 ring-1 ring-gold-400/30 shadow-sm"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Apply to Catalog</span>
@@ -88,12 +88,12 @@ export default function AdminInventoryPage() {
             <thead className="bg-slate-900/60 text-slate-400 font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-5">Product Title</th>
-                <th className="py-3 px-5">Retailer</th>
+                <th className="py-3 px-5">Brand / Retailer</th>
                 <th className="py-3 px-5">US Price (USD)</th>
                 <th className="py-3 px-5">Weight (lbs)</th>
                 <th className="py-3 px-5">Landed Price (PHP)</th>
                 <th className="py-3 px-5">50% Downpayment</th>
-                <th className="py-3 px-5">Stock</th>
+                <th className="py-3 px-5">Allocated Slots</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60 text-slate-300">
@@ -103,7 +103,10 @@ export default function AdminInventoryPage() {
                     <span className="font-bold text-white block">{p.title}</span>
                     <span className="text-[10px] text-slate-400">{p.category}</span>
                   </td>
-                  <td className="py-3.5 px-5 font-semibold text-blue-400">{p.retailerName}</td>
+                  <td className="py-3.5 px-5">
+                    <span className="font-semibold text-gold-400 block">{p.brand || 'Outlet'}</span>
+                    <span className="text-[10px] text-slate-400">{p.retailerName}</span>
+                  </td>
                   <td className="py-3.5 px-5 font-mono">${p.basePriceUsd.toFixed(2)}</td>
                   <td className="py-3.5 px-5 font-mono">{p.weightLbs} lbs</td>
                   <td className="py-3.5 px-5 font-bold text-emerald-400 font-mono">
@@ -113,8 +116,8 @@ export default function AdminInventoryPage() {
                     ₱{(Math.ceil(p.sellingPricePhp * 0.5)).toLocaleString()}
                   </td>
                   <td className="py-3.5 px-5">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300">
-                      {p.stockQuantity} units
+                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-gold-300 border border-slate-700">
+                      {p.claimedSlots || 0} / {p.allocatedSlots || p.stockQuantity} claimed
                     </span>
                   </td>
                 </tr>

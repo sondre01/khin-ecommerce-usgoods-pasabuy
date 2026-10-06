@@ -6,6 +6,33 @@
 [![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL%2016-336791?style=flat-square&logo=postgresql)](https://www.postgresql.org/)
 [![Prisma](https://img.shields.io/badge/ORM-Prisma-2D3748?style=flat-square&logo=prisma)](https://www.prisma.io/)
 
+---
+
+## ⚡ Permanent Local Run Links (Quick Reference)
+
+### 🛍️ Customer Storefront Links (Shopee/Lazada Pick & Buy Flow)
+- **Main Storefront Home**: [http://localhost:3000](http://localhost:3000)
+- **Allocated Product Catalog**: [http://localhost:3000/products](http://localhost:3000/products) (Clothes, Bags, Watches, Wallets, Caps)
+- **Shopping Cart**: [http://localhost:3000/cart](http://localhost:3000/cart) (Adjust quantities, see subtotal & 50% deposit)
+- **Checkout & Slot Reservation**: [http://localhost:3000/checkout](http://localhost:3000/checkout) (PH address, 50% deposit, GCash/Maya upload)
+- **Customer Sign In**: [http://localhost:3000/login](http://localhost:3000/login) (1-Click demo customer login)
+- **Customer Registration**: [http://localhost:3000/signup](http://localhost:3000/signup) (Create account with saved PH shipping address)
+- **Customer Account & Orders**: [http://localhost:3000/account](http://localhost:3000/account) (Saved address, order history)
+- **Order Tracking & Downpayments**: [http://localhost:3000/orders](http://localhost:3000/orders)
+- **VS Code "Go Live" Button**: [http://127.0.0.1:5500](http://127.0.0.1:5500) (Fixed launcher on Port 5500 that auto-connects to store)
+
+### 🛡️ Admin Portal Links (Manager / Owner View)
+- **Admin Dashboard**: [http://localhost:3000/admin](http://localhost:3000/admin) *(Direct dashboard access; auto-redirects to login if unauthenticated)*
+- **Admin Login Screen**: [http://localhost:3000/admin/login](http://localhost:3000/admin/login) *(Includes 1-Click "Sign In as Head Admin")*
+- **Order Pipeline Manager**: [http://localhost:3000/admin/orders](http://localhost:3000/admin/orders)
+- **Inventory & Margin Manager**: [http://localhost:3000/admin/inventory](http://localhost:3000/admin/inventory)
+
+> **Port Guide:**
+> - **Port 3000**: Next.js full-stack app engine (runs `npm run dev`).
+> - **Port 5500**: VS Code Live Server ("Go Live" button). Reserved so it never changes ports.
+
+---
+
 A full-stack, enterprise-grade e-commerce application targeting the Philippine market for personal shopping and freight consolidation (*"PasaBuy"*) of US retail merchandise (Amazon, Sephora, Target, Coach, Best Buy).
 
 ---
@@ -169,7 +196,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to view the application.
+Visit [http://localhost:5500](http://localhost:5500) to view the application.
 
 ### Testing Role-Based Access Control (RBAC)
 

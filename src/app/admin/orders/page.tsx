@@ -116,13 +116,13 @@ export default function AdminOrdersManagerPage() {
               }}
               className={`w-full p-4 rounded-xl border text-left transition ${
                 selectedOrder.id === ord.id
-                  ? 'border-blue-500 bg-slate-950 ring-2 ring-blue-500/20'
+                  ? 'border-brand-500 bg-slate-950 ring-2 ring-brand-500/20'
                   : 'border-slate-800 bg-slate-950/60 hover:border-slate-700'
               }`}
             >
               <div className="flex justify-between items-start">
                 <span className="font-mono text-xs font-bold text-white">{ord.orderNumber}</span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-900/60 text-blue-300 border border-blue-800">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-900/60 text-brand-300 border border-brand-800">
                   {ord.status.replace(/_/g, ' ')}
                 </span>
               </div>
@@ -166,7 +166,7 @@ export default function AdminOrdersManagerPage() {
                       onClick={() => handleUpdateStatus(stage)}
                       className={`p-3 rounded-xl text-left border text-xs font-bold transition flex flex-col justify-between ${
                         isActive
-                          ? 'border-blue-500 bg-blue-600 text-white'
+                          ? 'border-gold-500 bg-gradient-to-r from-brand-700 to-brand-600 text-white ring-1 ring-gold-400/40 shadow-sm'
                           : 'border-slate-800 bg-slate-900 text-slate-300 hover:border-slate-700 hover:text-white'
                       }`}
                     >
@@ -187,7 +187,7 @@ export default function AdminOrdersManagerPage() {
                   placeholder="e.g. BNS-AIR-941829"
                   value={awbInput}
                   onChange={(e) => setAwbInput(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-mono focus:ring-2 focus:ring-brand-500 focus:outline-none"
                 />
               </div>
 
@@ -198,7 +198,7 @@ export default function AdminOrdersManagerPage() {
                   placeholder="e.g. Lalamove or J&T Express"
                   value={localCourierInput}
                   onChange={(e) => setLocalCourierInput(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-brand-500 focus:outline-none"
                 />
               </div>
 
@@ -209,7 +209,7 @@ export default function AdminOrdersManagerPage() {
                   placeholder="e.g. JT-991823901"
                   value={localTrackingInput}
                   onChange={(e) => setLocalTrackingInput(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-mono focus:ring-2 focus:ring-brand-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -241,7 +241,7 @@ export default function AdminOrdersManagerPage() {
                     href={pmt.proofReceiptUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 font-semibold text-[11px] pt-1"
+                    className="inline-flex items-center gap-1 text-gold-400 hover:text-gold-300 font-semibold text-[11px] pt-1"
                   >
                     <span>View customer uploaded receipt image</span>
                     <ExternalLink className="w-3 h-3" />

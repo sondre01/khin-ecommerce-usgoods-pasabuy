@@ -6,11 +6,13 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const role: UserRole = body.role === 'ADMIN' ? 'ADMIN' : 'CUSTOMER';
+    const email = body.email || (role === 'ADMIN' ? 'admin@usgoodspasabuy.ph' : 'maria.santos@gmail.com');
+    const fullName = body.fullName || (role === 'ADMIN' ? 'Head Logistics Admin' : 'Maria Santos');
 
     const sessionPayload = {
       userId: role === 'ADMIN' ? 'usr-admin-01' : 'usr-customer-01',
-      email: role === 'ADMIN' ? 'admin@usgoodspasabuy.ph' : 'maria.santos@gmail.com',
-      fullName: role === 'ADMIN' ? 'Head Logistics Admin' : 'Maria Santos',
+      email: email.toLowerCase().trim(),
+      fullName: fullName.trim(),
       role,
     };
 
@@ -21,7 +23,6 @@ export async function POST(req: NextRequest) {
       user: sessionPayload,
     });
 
-    // Set secure HTTP-only cookie
     response.cookies.set('auth_token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',

@@ -117,7 +117,7 @@ export default function AdminDashboardPage() {
           </div>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition whitespace-nowrap"
+            className="px-4 py-2 bg-gradient-to-r from-brand-700 to-brand-600 hover:from-brand-800 hover:to-brand-700 text-white rounded-lg text-xs font-bold transition whitespace-nowrap ring-1 ring-gold-400/30"
           >
             {fxSaved ? 'Saved!' : 'Update FX Buffer'}
           </button>
@@ -130,7 +130,7 @@ export default function AdminDashboardPage() {
           <h3 className="text-sm font-bold text-white">Recent Orders in Pipeline</h3>
           <Link
             href="/admin/orders"
-            className="text-xs font-semibold text-blue-400 hover:text-blue-300 inline-flex items-center gap-1"
+            className="text-xs font-semibold text-gold-400 hover:text-gold-300 inline-flex items-center gap-1"
           >
             Manage Pipeline <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>

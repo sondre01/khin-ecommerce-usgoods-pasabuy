@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US Goods PasaBuy - Live Server Launcher</title>
+  <link rel="icon" href="/logo.jpg">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body {
+      background: radial-gradient(circle at top center, #093529 0%, #051c16 60%, #031510 100%);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-x: hidden;
+    }
+    .launcher-card {
+      background: rgba(6, 36, 28, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(223, 183, 56, 0.3);
+      border-radius: 24px;
+      padding: 36px 32px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(223, 183, 56, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .logo-ring {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, #dfb738, #f5d77f, #b88f1d);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #051c16;
+      display: block;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    h1 span {
+      background: linear-gradient(90deg, #dfb738, #fef8e1, #dfb738);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: serif;
+      font-style: italic;
+    }
+    .tagline {
+      font-size: 13px;
+      color: #a7f3d0;
+      opacity: 0.8;
+      margin-bottom: 24px;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+    .status-badge.checking {
+      background: rgba(223, 183, 56, 0.15);
+      color: #f5d77f;
+      border: 1px solid rgba(223, 183, 56, 0.3);
+    }
+    .status-badge.online {
+      background: rgba(16, 185, 129, 0.2);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .status-badge.offline {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .dot.pulse {
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #dfb738 0%, #c49d26 100%);
+      color: #041913;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(223, 183, 56, 0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(223, 183, 56, 0.4);
+    }
+    .btn-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(10, 53, 41, 0.8);
+      color: #d1fae5;
+      border: 1px solid rgba(223, 183, 56, 0.25);
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: rgba(15, 75, 58, 0.9);
+      border-color: rgba(223, 183, 56, 0.5);
+    }
+    .grid-links {
+      display: grid;
+      grid-cols: 2;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .offline-box {
+      background: rgba(4, 25, 19, 0.8);
+      border: 1px solid rgba(223, 183, 56, 0.2);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      text-align: left;
+      font-size: 12px;
+      color: #cbd5e1;
+      display: none;
+    }
+    .offline-box code {
+      background: #0f3d30;
+      color: #dfb738;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: bold;
+    }
+    .embed-container {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 100;
+      background: #051c16;
+    }
+    .embed-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .footer-note {
+      font-size: 11px;
+      color: rgba(167, 243, 208, 0.6);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="launcherCard" class="launcher-card">
+    <div class="logo-ring">
+      <img src="/logo.jpg" alt="US Goods PasaBuy Logo" class="logo-img">
+    </div>
+    <h1>US Goods <span>PasaBuy</span></h1>
+    <p class="tagline">Direct US Outlet Allocations & Live-Shopping Pipeline</p>
+
+    <div id="statusBadge" class="status-badge checking">
+      <div class="dot pulse"></div>
+      <span id="statusText">Connecting to Next.js Engine (Port 3000)...</span>
+    </div>
+
+    <div id="offlineBox" class="offline-box">
+      <p style="font-weight: bold; color: #f5d77f; margin-bottom: 6px;">Next.js Engine is Starting:</p>
+      <p style="line-height: 1.5;">The backend engine is compiling on port 3000. If this is your first run, please open a terminal and run: <code>npm run dev</code>.</p>
+    </div>
+
+    <div class="actions">
+      <a id="openBtn" href="http://localhost:3000" class="btn-primary">
+        <span>Open Storefront (Port 3000)</span> ↗
+      </a>
+      <div class="grid-links">
+        <button id="embedBtn" type="button" class="btn-secondary">
+          <span>Embed inside Port 5500</span>
+        </button>
+        <a href="http://localhost:3000/admin" class="btn-secondary">
+          <span>Admin Portal</span> ↗
+        </a>
+      </div>
+    </div>
+
+    <p id="countdownNote" class="footer-note">
+      Auto-redirecting to Storefront in <span id="timer">2</span>s... (or click above)
+    </p>
+  </div>
+
+  <!-- Fullscreen Embedded Container for Users Who Prefer Staying on Port 5500 -->
+  <div id="embedContainer" class="embed-container">
+    <iframe id="embedIframe" class="embed-iframe" src="about:blank"></iframe>
+  </div>
+
+  <script>
+    const ENGINE_URL = 'http://localhost:3000';
+    const statusBadge = document.getElementById('statusBadge');
+    const statusText = document.getElementById('statusText');
+    const offlineBox = document.getElementById('offlineBox');
+    const openBtn = document.getElementById('openBtn');
+    const embedBtn = document.getElementById('embedBtn');
+    const embedContainer = document.getElementById('embedContainer');
+    const embedIframe = document.getElementById('embedIframe');
+    const countdownNote = document.getElementById('countdownNote');
+    const timerSpan = document.getElementById('timer');
+
+    let countdown = 2;
+    let redirectTimer = null;
+
+    async function checkEngine() {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 1200);
+        await fetch(ENGINE_URL, { mode: 'no-cors', signal: controller.signal });
+        clearTimeout(timeoutId);
+
+        // Server is online!
+        statusBadge.className = 'status-badge online';
+        statusText.textContent = 'Next.js Online • Port 5500 Ready!';
+        offlineBox.style.display = 'none';
+
+        // Start countdown to redirect
+        if (!redirectTimer) {
+          redirectTimer = setInterval(() => {
+            countdown--;
+            timerSpan.textContent = countdown;
+            if (countdown <= 0) {
+              clearInterval(redirectTimer);
+              window.location.replace(ENGINE_URL);
+            }
+          }, 1000);
+        }
+      } catch (err) {
+        // Server offline
+        statusBadge.className = 'status-badge offline';
+        statusText.textContent = 'Engine Offline on Port 3000';
+        offlineBox.style.display = 'block';
+        countdownNote.style.display = 'none';
+        if (redirectTimer) {
+          clearInterval(redirectTimer);
+          redirectTimer = null;
+        }
+        setTimeout(checkEngine, 2000);
+      }
+    }
+
+    // Embed Mode: Click to stay on Port 5500 full-screen
+    embedBtn.addEventListener('click', () => {
+      if (redirectTimer) clearInterval(redirectTimer);
+      embedIframe.src = ENGINE_URL;
+      embedContainer.style.display = 'block';
+    });
+
+    checkEngine();
+  </script>
+</body>
+</html>
