@@ -155,3 +155,34 @@ export interface LandedCostBreakdown {
   finalSellingPricePhp: number;
   minimum50PctDownpaymentPhp: number;
 }
+
+export type RestockRequestStatus =
+  | 'PENDING_REVIEW'
+  | 'SELLER_CONTACTED'
+  | 'SOURCED_AT_OUTLET'
+  | 'DEPOSIT_COLLECTED'
+  | 'FULFILLED'
+  | 'UNAVAILABLE';
+
+export interface RestockRequest {
+  id: string;
+  referenceCode: string;
+  userId?: string;
+  customerName: string;
+  customerContact: string;
+  customerEmail: string;
+  productId: string;
+  productTitle: string;
+  productBrand: string;
+  productCategory: string;
+  basePriceUsd: number;
+  estimatedSellingPricePhp: number;
+  minimum50PctDownpaymentPhp: number;
+  desiredSize: string;
+  preferredColor: string;
+  notes?: string;
+  sellerNotes?: string;
+  status: RestockRequestStatus;
+  createdAt: string;
+  updatedAt: string;
+}

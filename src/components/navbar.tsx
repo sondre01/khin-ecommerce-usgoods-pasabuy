@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useCart } from '@/context/cart-context';
 import { useAuth } from '@/context/auth-context';
+import { useRestock } from '@/context/restock-context';
 import {
   ShoppingBag,
   Package,
@@ -25,6 +26,7 @@ export default function Navbar() {
   const isAdmin = pathname.startsWith('/admin');
   const { totalItemsCount } = useCart();
   const { user, isLoggedIn, logout } = useAuth();
+  const { pendingCount } = useRestock();
   const [currentUserRole, setCurrentUserRole] = useState<'CUSTOMER' | 'ADMIN' | 'GUEST'>('CUSTOMER');
 
   useEffect(() => {
@@ -124,13 +126,18 @@ export default function Navbar() {
             Shop Deals
           </Link>
           <Link
-            href="/custom-quote"
+            href={currentUserRole === 'ADMIN' ? '/admin/restocks' : '/custom-quote'}
             className={`transition hover:text-brand-700 flex items-center gap-1.5 ${
-              pathname === '/custom-quote' ? 'text-brand-700 font-semibold' : ''
+              pathname === '/custom-quote' || pathname === '/admin/restocks' ? 'text-brand-700 font-semibold' : ''
             }`}
           >
             <RefreshCw className="w-3.5 h-3.5 text-gold-600" />
-            Request Restock
+            <span>{currentUserRole === 'ADMIN' ? 'Restock Inquiries' : 'Request Restock'}</span>
+            {currentUserRole === 'ADMIN' && pendingCount > 0 && (
+              <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-rose-500 text-white">
+                {pendingCount}
+              </span>
+            )}
           </Link>
           <Link
             href="/orders"

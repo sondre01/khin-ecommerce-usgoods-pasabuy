@@ -9,8 +9,10 @@ import {
   Package,
   Layers,
   ArrowLeft,
-  LogOut
+  LogOut,
+  RefreshCw
 } from 'lucide-react';
+import { useRestock } from '@/context/restock-context';
 
 export default function AdminLayout({
   children,
@@ -19,6 +21,7 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+  const { pendingCount } = useRestock();
 
   // If on login page, don't show admin sidebar
   if (pathname === '/admin/login') {
@@ -81,6 +84,24 @@ export default function AdminLayout({
             >
               <Layers className="w-4 h-4 text-gold-300" />
               <span>Inventory & Margins</span>
+            </Link>
+            <Link
+              href="/admin/restocks"
+              className={`flex items-center justify-between px-3 py-2.5 rounded-lg transition ${
+                pathname === '/admin/restocks'
+                  ? 'bg-brand-900 text-gold-300 ring-1 ring-gold-400/40 shadow-sm'
+                  : 'text-slate-300 hover:bg-[#082a20] hover:text-white'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <RefreshCw className="w-4 h-4 text-gold-400" />
+                <span>Restock Inquiries</span>
+              </div>
+              {pendingCount > 0 && (
+                <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500 text-white animate-pulse">
+                  {pendingCount}
+                </span>
+              )}
             </Link>
           </nav>
         </div>

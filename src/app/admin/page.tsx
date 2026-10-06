@@ -12,10 +12,13 @@ import {
   ShieldCheck,
   CheckCircle,
   Truck,
-  ExternalLink
+  ExternalLink,
+  RefreshCw
 } from 'lucide-react';
+import { useRestock } from '@/context/restock-context';
 
 export default function AdminDashboardPage() {
+  const { pendingCount, requests } = useRestock();
   const [currentFxRate, setCurrentFxRate] = useState<number>(59.0);
   const [fxSaved, setFxSaved] = useState(false);
 
@@ -49,15 +52,15 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {/* Card 1 */}
         <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-2">
           <div className="flex justify-between items-center text-slate-400">
-            <span className="text-xs font-semibold uppercase tracking-wider">Total Pipeline Gross</span>
+            <span className="text-xs font-semibold uppercase tracking-wider">Pipeline Gross</span>
             <DollarSign className="w-4 h-4 text-emerald-400" />
           </div>
           <div className="text-2xl font-black text-white">₱{totalRevenue.toLocaleString()}</div>
-          <p className="text-[11px] text-slate-400">Sum of all confirmed orders in PHP</p>
+          <p className="text-[11px] text-slate-400">Sum of confirmed orders</p>
         </div>
 
         {/* Card 2 */}
@@ -67,7 +70,7 @@ export default function AdminDashboardPage() {
             <TrendingUp className="w-4 h-4 text-blue-400" />
           </div>
           <div className="text-2xl font-black text-emerald-400">₱{totalCollected.toLocaleString()}</div>
-          <p className="text-[11px] text-slate-400">Verified GCash / Maya downpayments</p>
+          <p className="text-[11px] text-slate-400">Verified downpayments</p>
         </div>
 
         {/* Card 3 */}
@@ -79,7 +82,7 @@ export default function AdminDashboardPage() {
           <div className="text-2xl font-black text-white">
             {INITIAL_ORDERS.filter((o) => o.status !== 'COMPLETED').length}
           </div>
-          <p className="text-[11px] text-slate-400">In US or in transit to Manila</p>
+          <p className="text-[11px] text-slate-400">In US or in transit to PH</p>
         </div>
 
         {/* Card 4 */}
@@ -89,8 +92,31 @@ export default function AdminDashboardPage() {
             <Clock className="w-4 h-4 text-rose-400" />
           </div>
           <div className="text-2xl font-black text-rose-400">{pendingReceipts.length}</div>
-          <p className="text-[11px] text-slate-400">Awaiting admin transaction check</p>
+          <p className="text-[11px] text-slate-400">Awaiting payment check</p>
         </div>
+
+        {/* Card 5: Restock Inquiries */}
+        <Link
+          href="/admin/restocks"
+          className="bg-slate-950 p-5 rounded-2xl border border-gold-800/60 hover:border-gold-500 transition space-y-2 group block"
+        >
+          <div className="flex justify-between items-center text-gold-400">
+            <span className="text-xs font-semibold uppercase tracking-wider">Restock Requests</span>
+            <RefreshCw className="w-4 h-4 text-gold-400 group-hover:rotate-180 transition-transform duration-500" />
+          </div>
+          <div className="text-2xl font-black text-gold-400 flex items-center gap-2">
+            <span>{requests.length}</span>
+            {pendingCount > 0 && (
+              <span className="text-xs font-bold text-rose-400 bg-rose-950 px-2 py-0.5 rounded-full border border-rose-800">
+                {pendingCount} new
+              </span>
+            )}
+          </div>
+          <p className="text-[11px] text-gold-300/70 flex items-center justify-between">
+            <span>Customer size/inquiries</span>
+            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </p>
+        </Link>
       </div>
 
       {/* FX Buffer & Forwarder Configuration */}
