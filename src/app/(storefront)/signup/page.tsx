@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
 import { User, Mail, Phone, Lock, MapPin, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 
-export default function SignupPage() {
+function SignupFormContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/account';
@@ -243,10 +243,22 @@ export default function SignupPage() {
         <div className="pt-4 border-t border-slate-100 text-center text-xs text-slate-500">
           Already have an account?{' '}
           <Link href="/login" className="text-brand-800 font-bold hover:underline">
-            Log in here
+            Sign in here
           </Link>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-xl mx-auto px-4 py-20 text-center text-xs text-slate-400">
+        Loading sign up...
+      </div>
+    }>
+      <SignupFormContent />
+    </Suspense>
   );
 }

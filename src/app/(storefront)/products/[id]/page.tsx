@@ -420,10 +420,10 @@ export default function ProductDetailPage() {
 
               <button
                 type="button"
-                onClick={() => requireAuth(() => router.push(`/custom-quote?productId=${product.id}`), 'Please sign in or create an account to request a size or color.')}
+                onClick={() => requireAuth(() => router.push(`/custom-quote?productId=${product.id}`), 'Please sign in or create an account to request an item restock.')}
                 className="w-full py-2.5 text-center text-xs font-semibold text-slate-600 hover:text-brand-800 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 block transition"
               >
-                Need another size or color? Message us →
+                Size out of stock? Request a Restock & Message Seller →
               </button>
 
               <div className="flex items-center justify-center gap-3 text-xs text-slate-400 pt-1">

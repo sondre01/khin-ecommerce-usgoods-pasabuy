@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
 import { Mail, Lock, ArrowRight, UserCheck, ShieldCheck } from 'lucide-react';
 
-export default function LoginPage() {
+function LoginFormContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/account';
@@ -95,7 +95,7 @@ export default function LoginPage() {
           </button>
         </form>
 
-        {/* 1-Click Demo Login */}
+        {/* 1-Click Fast Track Sign In */}
         <div className="pt-2">
           <button
             type="button"
@@ -118,5 +118,17 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-md mx-auto px-4 py-20 text-center text-xs text-slate-400">
+        Loading sign in...
+      </div>
+    }>
+      <LoginFormContent />
+    </Suspense>
   );
 }

@@ -60,13 +60,14 @@ export default function ProductsPage() {
             Genuine clothes, bags, watches, wallets, and caps from <strong className="text-slate-900">Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste</strong>. Sourced tax-free directly from US brand outlets.
           </p>
         </div>
-        <Link
-          href="/custom-quote"
+        <button
+          type="button"
+          onClick={() => requireAuth(() => router.push('/custom-quote'), 'Please sign in or create an account to request an item restock.')}
           className="inline-flex items-center gap-2 px-4 py-2.5 bg-brand-800 hover:bg-brand-900 text-white rounded-xl text-xs font-bold shadow-sm ring-1 ring-gold-400/30 transition shrink-0"
         >
-          <span>Request a Size</span>
+          <span>Request Restock</span>
           <ArrowRight className="w-3.5 h-3.5 text-gold-300" />
-        </Link>
+        </button>
       </div>
 
       {/* Filter and Search Bar */}
@@ -341,7 +342,7 @@ export default function ProductsPage() {
               Sign Up to Load More US Outlet Deals
             </h3>
             <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed">
-              You are viewing a guest preview. Create a free account or log in to unlock our complete catalog across Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste, view real-time available stock, and order with a 50% deposit.
+              You are viewing a guest preview. Create a free account or sign in to unlock our complete catalog across Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste, view real-time available stock, and order with a 50% deposit.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-3 pt-2">
@@ -356,7 +357,7 @@ export default function ProductsPage() {
               href="/login?callbackUrl=/products"
               className="px-6 py-3.5 bg-[#0b382c] hover:bg-[#0f4738] text-emerald-100 font-bold rounded-xl border border-gold-500/30 text-xs transition"
             >
-              Log In to Existing Account
+              Sign In to Existing Account
             </Link>
           </div>
         </div>

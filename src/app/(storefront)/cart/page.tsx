@@ -30,7 +30,7 @@ export default function CartPage() {
           <span className="text-xs font-bold text-brand-800 uppercase tracking-wider block">Account Required</span>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight">Sign In to View Cart</h2>
           <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
-            Your shopping cart and 50% deposit reservations are saved to your account. Sign up or log in to manage your items and proceed to checkout.
+            Your shopping cart and 50% deposit reservations are saved to your account. Sign up or sign in to manage your items and proceed to checkout.
           </p>
         </div>
         <div className="pt-2 flex justify-center gap-3">

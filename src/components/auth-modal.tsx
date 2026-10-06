@@ -113,7 +113,7 @@ export default function AuthModal({
               onClick={onClose}
               className="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs flex items-center justify-center transition text-center"
             >
-              Log In to Existing Account
+              Sign In to Existing Account
             </Link>
           </div>
 

@@ -40,7 +40,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-gold-300 uppercase tracking-wider mb-3">Shop & Services</h4>
             <ul className="space-y-2 text-xs text-emerald-200/70">
               <li><Link href="/products" className="hover:text-gold-200 transition">Shop US Finds</Link></li>
-              <li><Link href="/custom-quote" className="hover:text-gold-200 transition">Request Size or Color</Link></li>
+              <li><Link href="/custom-quote" className="hover:text-gold-200 transition">Request Restock</Link></li>
               <li><Link href="/orders" className="hover:text-gold-200 transition">Track Your Order</Link></li>
               <li><Link href="/#calculator" className="hover:text-gold-200 transition">Price Calculator</Link></li>
             </ul>

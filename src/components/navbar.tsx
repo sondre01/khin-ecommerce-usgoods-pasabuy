@@ -16,7 +16,8 @@ import {
   ArrowRight,
   ExternalLink,
   Sparkles,
-  LogOut
+  LogOut,
+  RefreshCw
 } from 'lucide-react';
 
 export default function Navbar() {
@@ -128,8 +129,8 @@ export default function Navbar() {
               pathname === '/custom-quote' ? 'text-brand-700 font-semibold' : ''
             }`}
           >
-            <Calculator className="w-4 h-4 text-gold-600" />
-            Request Size
+            <RefreshCw className="w-3.5 h-3.5 text-gold-600" />
+            Request Restock
           </Link>
           <Link
             href="/orders"
@@ -206,7 +207,7 @@ export default function Navbar() {
                 href="/login"
                 className="px-3 py-1.5 text-xs font-bold text-slate-700 hover:text-brand-800 hover:bg-slate-100 rounded-xl transition"
               >
-                Log In
+                Sign In
               </Link>
               <Link
                 href="/signup"

@@ -68,12 +68,13 @@ export default function HomePage() {
                 <span>Shop All Items</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link
-                href="/custom-quote"
+              <button
+                type="button"
+                onClick={() => requireAuth(() => router.push('/custom-quote'), 'Please sign in or create an account to request an item restock.')}
                 className="px-6 py-3.5 bg-[#0b382c]/80 hover:bg-[#0f4738] text-emerald-100 font-semibold rounded-xl border border-gold-500/30 transition backdrop-blur-sm"
               >
-                Request a Specific Size
-              </Link>
+                Sold Out? Request Restock
+              </button>
             </div>
 
             {/* US Retailers & Core Brands Badges */}
@@ -493,7 +494,7 @@ export default function HomePage() {
                 Sign Up to Load More US Outlet Deals
               </h3>
               <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed">
-                Sign up or log in to unlock our complete catalog for Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste, view real-time available stock, and order with a 50% deposit.
+                Sign up or sign in to unlock our complete catalog for Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste, view real-time available stock, and order with a 50% deposit.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
@@ -508,7 +509,7 @@ export default function HomePage() {
                 href="/login?callbackUrl=/products"
                 className="px-6 py-3.5 bg-[#0b382c] hover:bg-[#0f4738] text-emerald-100 font-bold rounded-xl border border-gold-500/30 text-xs transition"
               >
-                Log In to Existing Account
+                Sign In to Existing Account
               </Link>
             </div>
           </div>
@@ -538,60 +539,78 @@ export default function HomePage() {
         <LandedCostCalculator />
       </section>
 
-      {/* 6. How The Process Works (5 Steps) */}
+      {/* 6. How The Process Works */}
       <section className="bg-brand-50/60 py-16 px-4 sm:px-8 border-y border-brand-100">
         <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center max-w-2xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold text-brand-800 uppercase tracking-wider">
-              Simple 5-Step Process
+              How We Work
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
-              How Your Order Gets Delivered
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Simple Shopping Flow
             </h2>
-            <p className="text-sm text-slate-600 mt-2">
-              From our US outlet shopping trip to your Philippine doorstep in 5 simple steps.
+            <p className="text-sm text-slate-600 leading-relaxed">
+              We bring 100% authentic US outlet finds directly to the Philippines. Pick, checkout, and receive your items at your doorstep.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
-              <span className="w-7 h-7 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">1</span>
-              <h4 className="font-bold text-sm text-slate-900">Pick Item & 50% Deposit</h4>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="bg-white p-5 rounded-2xl border border-brand-100/80 shadow-sm space-y-2">
+              <span className="w-8 h-8 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">1</span>
+              <h4 className="font-bold text-sm text-slate-900">US Outlet Sourcing & Drops</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Choose your item and size. Pay only 50% deposit via GCash or Maya to lock in your order.
+                We personally source authentic items from CK, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste. Once items arrive in the Philippines, available stock is posted directly with real photos and prices.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
-              <span className="w-7 h-7 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">2</span>
-              <h4 className="font-bold text-sm text-slate-900">We Buy in US Outlets</h4>
+            <div className="bg-white p-5 rounded-2xl border border-brand-100/80 shadow-sm space-y-2">
+              <span className="w-8 h-8 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">2</span>
+              <h4 className="font-bold text-sm text-slate-900">Browse & Add to Cart</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Our personal shopper buys your item at CK, Tommy, Ralph Lauren, or Lacoste with official receipt.
+                Sign in to view our full collection. Pick your size and add items to your cart—just like shopping on Shopee or Lazada.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
-              <span className="w-7 h-7 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">3</span>
-              <h4 className="font-bold text-sm text-slate-900">Fast Air Cargo</h4>
+            <div className="bg-white p-5 rounded-2xl border border-brand-100/80 shadow-sm space-y-2">
+              <span className="w-8 h-8 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">3</span>
+              <h4 className="font-bold text-sm text-slate-900">Checkout & Easy Payment</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Packed safely in our tax-free US warehouse and dispatched via direct commercial air cargo to NAIA.
+                Enter your delivery address and settle payment via GCash, Maya, or online bank transfer (BDO / BPI) with convenient downpayment or full settlement.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
-              <span className="w-7 h-7 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">4</span>
-              <h4 className="font-bold text-sm text-slate-900">Arrives in Manila & Balance</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Customs cleared in Manila. Settle the remaining 50% balance before delivery dispatch.
-              </p>
-            </div>
-
-            <div className="bg-white p-5 rounded-xl border border-brand-100/80 shadow-sm space-y-2">
-              <span className="w-7 h-7 rounded-full bg-gold-100 text-gold-900 font-bold text-xs flex items-center justify-center border border-gold-400">5</span>
+            <div className="bg-white p-5 rounded-2xl border border-brand-100/80 shadow-sm space-y-2">
+              <span className="w-8 h-8 rounded-full bg-gold-100 text-gold-900 font-bold text-xs flex items-center justify-center border border-gold-400">4</span>
               <h4 className="font-bold text-sm text-slate-900">Doorstep Delivery</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Delivered straight to your home via Lalamove (Metro Manila) or J&T Express (Provincial).
+                Carefully packed and dispatched straight to your home via Lalamove for Metro Manila or J&T Express for Provincial deliveries.
               </p>
+            </div>
+          </div>
+
+          {/* Out of Stock & Restock Communication Callout */}
+          <div className="bg-gradient-to-r from-brand-900 via-brand-800 to-[#07362a] text-white p-6 sm:p-8 rounded-3xl border border-gold-400/40 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-2 max-w-2xl text-center md:text-left">
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-gold-500/20 text-gold-300 border border-gold-400/30 text-[11px] font-bold uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 text-gold-300" />
+                <span>Restock Requests for Sold-Out Items</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+                Item or Size Out of Stock? Request a Restock!
+              </h3>
+              <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+                Because our items sell out fast, you can request a restock for any sold-out item displayed in our store. Direct communication between you and our seller ensures we know what size to find on our upcoming US outlet trip.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto">
+              <button
+                type="button"
+                onClick={() => requireAuth(() => router.push('/custom-quote'), 'Please sign in or create an account to request an item restock.')}
+                className="px-6 py-3.5 bg-gradient-to-r from-gold-500 via-gold-400 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-slate-950 font-black rounded-xl text-xs transition shadow-md flex items-center justify-center gap-2"
+              >
+                <span>Request Restock</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>

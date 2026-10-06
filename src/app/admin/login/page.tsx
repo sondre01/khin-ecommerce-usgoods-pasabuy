@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ShieldCheck, Lock, Mail, ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 
-export default function AdminLoginPage() {
+function AdminLoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/admin';
@@ -65,7 +65,7 @@ export default function AdminLoginPage() {
               <ShieldCheck className="w-3.5 h-3.5" />
               Privileged Access
             </span>
-            <h1 className="text-2xl font-black text-white tracking-tight">Admin Portal Login</h1>
+            <h1 className="text-2xl font-black text-white tracking-tight">Admin Portal Sign In</h1>
             <p className="text-xs text-emerald-200/70 mt-1">
               Authorized access for store metrics, orders, and catalog management.
             </p>
@@ -139,5 +139,17 @@ export default function AdminLoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#051c16] flex items-center justify-center text-xs text-emerald-300">
+        Loading admin sign in...
+      </div>
+    }>
+      <AdminLoginContent />
+    </Suspense>
   );
 }
