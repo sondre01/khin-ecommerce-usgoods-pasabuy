@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { INITIAL_PRODUCTS } from '@/data/mock-data';
+import { useProducts } from '@/context/products-context';
 import { calculateLandedCost, DEFAULT_CONFIG } from '@/lib/pricing';
 import { useAuth } from '@/context/auth-context';
 import {
@@ -26,7 +26,8 @@ import {
 function RestockInquiryContent() {
   const searchParams = useSearchParams();
   const { user, isLoggedIn, openAuthModal } = useAuth();
-  const initialProductId = searchParams.get('productId') || INITIAL_PRODUCTS[0].id;
+  const { products } = useProducts();
+  const initialProductId = searchParams.get('productId') || products[0]?.id || 'prod-ck-01';
 
   const [selectedProductId, setSelectedProductId] = useState<string>(initialProductId);
   const [selectedSize, setSelectedSize] = useState<string>('M');
@@ -39,10 +40,10 @@ function RestockInquiryContent() {
   // Synchronize when query param changes
   useEffect(() => {
     const qId = searchParams.get('productId');
-    if (qId && INITIAL_PRODUCTS.some((p) => p.id === qId)) {
+    if (qId && products.some((p) => p.id === qId)) {
       setSelectedProductId(qId);
     }
-  }, [searchParams]);
+  }, [searchParams, products]);
 
   useEffect(() => {
     if (user) {
@@ -51,15 +52,22 @@ function RestockInquiryContent() {
     }
   }, [user]);
 
-  const product = INITIAL_PRODUCTS.find((p) => p.id === selectedProductId) || INITIAL_PRODUCTS[0];
+  const product = products.find((p) => p.id === selectedProductId) || products[0];
 
-  const breakdown = calculateLandedCost({
-    basePriceUsd: product.basePriceUsd,
-    weightLbs: product.weightLbs,
-    usdToPhpRate: DEFAULT_CONFIG.usdToPhpRate,
-  });
+  const breakdown = product
+    ? calculateLandedCost({
+        basePriceUsd: product.basePriceUsd,
+        weightLbs: product.weightLbs,
+        usdToPhpRate: DEFAULT_CONFIG.usdToPhpRate,
+      })
+    : {
+        usBasePriceUsd: 0,
+        estCargoFeeUsd: 0,
+        finalSellingPricePhp: 0,
+        minimum50PctDownpaymentPhp: 0,
+      };
 
-  const isApparel = product.category === 'Clothes';
+  const isApparel = product?.category === 'Clothes';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,6 +154,18 @@ function RestockInquiryContent() {
   }
 
   // 2. Authenticated View
+  if (!product) {
+    return (
+      <div className="max-w-xl mx-auto px-4 sm:px-6 py-16 text-center space-y-4">
+        <h2 className="text-xl font-bold text-slate-800">No items currently available in catalog</h2>
+        <p className="text-xs text-slate-500">Please check back soon when new outlet items arrive.</p>
+        <Link href="/products" className="inline-block px-5 py-2.5 bg-brand-800 text-white rounded-xl text-xs font-bold">
+          View Catalog
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-8 py-12 space-y-8">
       {/* Header */}
@@ -279,7 +299,7 @@ function RestockInquiryContent() {
                 onChange={(e) => setSelectedProductId(e.target.value)}
                 className="w-full px-4 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-600 focus:outline-none font-semibold text-slate-900"
               >
-                {INITIAL_PRODUCTS.map((p) => (
+                {products.map((p) => (
                   <option key={p.id} value={p.id}>
                     [{p.brand || 'Outlet'}] {p.title} (${p.basePriceUsd.toFixed(2)})
                   </option>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
-import { INITIAL_PRODUCTS } from '@/data/mock-data';
+import { useProducts } from '@/context/products-context';
 import LandedCostCalculator from '@/components/landed-cost-calculator';
 import {
   ShoppingBag,
@@ -32,10 +32,11 @@ import {
 export default function HomePage() {
   const router = useRouter();
   const { isLoggedIn, requireAuth, user } = useAuth();
+  const { products } = useProducts();
 
-  const liveDropProducts = INITIAL_PRODUCTS.filter((p) => p.isLiveShoppingDrop);
+  const liveDropProducts = products.filter((p) => p.isLiveShoppingDrop);
   const displayedLiveDrops = isLoggedIn ? liveDropProducts.slice(0, 4) : liveDropProducts.slice(0, 2);
-  const featuredProducts = isLoggedIn ? INITIAL_PRODUCTS.slice(0, 6) : INITIAL_PRODUCTS.slice(0, 3);
+  const featuredProducts = isLoggedIn ? products.slice(0, 6) : products.slice(0, 3);
 
   return (
     <div className="space-y-16 pb-16">
@@ -369,7 +370,7 @@ export default function HomePage() {
             href="/products"
             className="text-sm font-semibold text-brand-800 hover:text-brand-900 inline-flex items-center gap-1"
           >
-            View all {INITIAL_PRODUCTS.length} items <ArrowRight className="w-4 h-4" />
+            View all {products.length} items <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
@@ -488,7 +489,7 @@ export default function HomePage() {
             </div>
             <div className="max-w-xl mx-auto space-y-2">
               <span className="text-xs font-bold text-gold-300 uppercase tracking-wider block">
-                Guest Preview • 3 of {INITIAL_PRODUCTS.length} Deals Shown
+                Guest Preview • 3 of {products.length} Deals Shown
               </span>
               <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                 Sign Up to Load More US Outlet Deals
@@ -519,7 +520,7 @@ export default function HomePage() {
               href="/products"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-800 hover:bg-brand-900 text-white font-bold rounded-xl text-xs transition shadow-md ring-1 ring-gold-400/30"
             >
-              <span>Browse All {INITIAL_PRODUCTS.length} US Outlet Finds</span>
+              <span>Browse All {products.length} US Outlet Finds</span>
               <ArrowRight className="w-4 h-4 text-gold-300" />
             </Link>
           </div>

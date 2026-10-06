@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
-import { INITIAL_PRODUCTS } from '@/data/mock-data';
+import { useProducts } from '@/context/products-context';
 import { Search, Tag, ExternalLink, ArrowRight, Radio, Sparkles, Flame, CheckCircle2, Lock, UserCheck } from 'lucide-react';
 
 const CATEGORIES = ['ALL', 'Clothes', 'Bags', 'Watches', 'Wallets', 'Caps'];
@@ -14,6 +14,7 @@ const BRANDS = ['ALL', 'Calvin Klein', 'Tommy Hilfiger', 'Polo Ralph Lauren', 'L
 export default function ProductsPage() {
   const router = useRouter();
   const { isLoggedIn, requireAuth } = useAuth();
+  const { products } = useProducts();
 
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
@@ -21,7 +22,7 @@ export default function ProductsPage() {
   const [onlyLiveDrops, setOnlyLiveDrops] = useState<boolean>(false);
 
   const filtered = useMemo(() => {
-    return INITIAL_PRODUCTS.filter((prod) => {
+    return products.filter((prod) => {
       const q = search.toLowerCase();
       const matchSearch =
         prod.title.toLowerCase().includes(q) ||

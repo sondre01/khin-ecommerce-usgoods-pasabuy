@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { INITIAL_PRODUCTS } from '@/data/mock-data';
+import { useProducts } from '@/context/products-context';
 import { calculateLandedCost, DEFAULT_CONFIG } from '@/lib/pricing';
 import { useCart } from '@/context/cart-context';
 import { useAuth } from '@/context/auth-context';
@@ -41,9 +42,10 @@ export default function ProductDetailPage() {
   const router = useRouter();
   const { addToCart } = useCart();
   const { isLoggedIn, openAuthModal, requireAuth } = useAuth();
+  const { products } = useProducts();
   const productId = params?.id as string;
 
-  const product = INITIAL_PRODUCTS.find((p) => p.id === productId) || INITIAL_PRODUCTS[0];
+  const product = products.find((p) => p.id === productId) || products[0] || INITIAL_PRODUCTS[0];
 
   const availableSizes = SIZES_BY_CATEGORY[product.category] || ['Standard'];
   const [selectedSize, setSelectedSize] = useState<string>(availableSizes[1] || availableSizes[0]);

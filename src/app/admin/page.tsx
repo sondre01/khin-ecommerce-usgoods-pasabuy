@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { INITIAL_ORDERS, INITIAL_PRODUCTS } from '@/data/mock-data';
+import { INITIAL_ORDERS } from '@/data/mock-data';
 import {
   TrendingUp,
   Package,
