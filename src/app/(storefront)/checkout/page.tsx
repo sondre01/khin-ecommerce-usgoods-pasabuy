@@ -25,14 +25,32 @@ export default function CheckoutPage() {
   const { items, subtotalPhp, total50PctDownpaymentPhp, clearCart } = useCart();
   const { user, isLoggedIn } = useAuth();
 
+  const userAddresses = user?.addresses || [];
+  const defaultAddr = userAddresses.find((a) => a.isDefault) || userAddresses[0];
+
   // Delivery Address
-  const [fullName, setFullName] = useState(user?.fullName || 'Maria Santos');
-  const [phone, setPhone] = useState(user?.phoneNumber || '0917 123 4567');
-  const [street, setStreet] = useState(user?.shippingAddress?.street || 'Unit 14B, Tower 2, One Serendra');
-  const [barangay, setBarangay] = useState(user?.shippingAddress?.barangay || 'Fort Bonifacio');
-  const [city, setCity] = useState(user?.shippingAddress?.city || 'Taguig City');
-  const [province, setProvince] = useState(user?.shippingAddress?.province || 'Metro Manila');
-  const [postalCode, setPostalCode] = useState(user?.shippingAddress?.postalCode || '1634');
+  const [selectedLocationId, setSelectedLocationId] = useState<string | null>(defaultAddr?.id || null);
+  const [fullName, setFullName] = useState(defaultAddr?.recipientName || user?.fullName || 'Maria Santos');
+  const [phone, setPhone] = useState(defaultAddr?.phoneNumber || user?.phoneNumber || '0917 123 4567');
+  const [street, setStreet] = useState(defaultAddr?.street || user?.shippingAddress?.street || 'Unit 14B, Tower 2, One Serendra');
+  const [barangay, setBarangay] = useState(defaultAddr?.barangay || user?.shippingAddress?.barangay || 'Fort Bonifacio');
+  const [city, setCity] = useState(defaultAddr?.city || user?.shippingAddress?.city || 'Taguig City');
+  const [province, setProvince] = useState(defaultAddr?.province || user?.shippingAddress?.province || 'Metro Manila');
+  const [postalCode, setPostalCode] = useState(defaultAddr?.postalCode || user?.shippingAddress?.postalCode || '1634');
+
+  React.useEffect(() => {
+    if (user?.addresses && user.addresses.length > 0 && !selectedLocationId) {
+      const def = user.addresses.find((a) => a.isDefault) || user.addresses[0];
+      setSelectedLocationId(def.id);
+      setFullName(def.recipientName || user.fullName || '');
+      setPhone(def.phoneNumber || user.phoneNumber || '');
+      setStreet(def.street);
+      setProvince(def.province);
+      setCity(def.city);
+      setBarangay(def.barangay);
+      setPostalCode(def.postalCode);
+    }
+  }, [user, selectedLocationId]);
 
   // Payment Scheme
   const [paymentPlan, setPaymentPlan] = useState<'DOWNPAYMENT_50' | 'FULL_PAYMENT'>('DOWNPAYMENT_50');
@@ -172,10 +190,66 @@ export default function CheckoutPage() {
         <div className="lg:col-span-7 space-y-6">
           {/* Section 1: Delivery Address */}
           <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-brand-700" />
-              <span>1. Delivery Address</span>
-            </h3>
+            <div className="flex items-center justify-between">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-brand-700" />
+                <span>1. Delivery Address</span>
+              </h3>
+              {userAddresses.length > 0 && (
+                <Link
+                  href="/account"
+                  className="text-[11px] font-bold text-brand-800 hover:text-brand-900 hover:underline"
+                >
+                  Manage Locations →
+                </Link>
+              )}
+            </div>
+
+            {userAddresses.length > 0 && (
+              <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3 space-y-2">
+                <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">
+                  Select Saved Delivery Location:
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {userAddresses.map((addr) => {
+                    const isSelected = selectedLocationId === addr.id;
+                    return (
+                      <button
+                        key={addr.id}
+                        type="button"
+                        onClick={() => {
+                          setSelectedLocationId(addr.id);
+                          setFullName(addr.recipientName || user?.fullName || 'Receiver');
+                          setPhone(addr.phoneNumber || user?.phoneNumber || '');
+                          setStreet(addr.street);
+                          setProvince(addr.province);
+                          setCity(addr.city);
+                          setBarangay(addr.barangay);
+                          setPostalCode(addr.postalCode);
+                        }}
+                        className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
+                          isSelected
+                            ? 'bg-brand-800 text-white shadow-sm ring-2 ring-brand-700/30'
+                            : 'bg-white border border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-100/50'
+                        }`}
+                      >
+                        <Building2 className={`w-3.5 h-3.5 ${isSelected ? 'text-gold-400' : 'text-slate-400'}`} />
+                        <span>{addr.label}</span>
+                        {addr.isDefault && (
+                          <span
+                            className={`text-[9px] px-1.5 py-0.5 rounded-full uppercase tracking-wider font-extrabold ${
+                              isSelected ? 'bg-gold-400/20 text-gold-300' : 'bg-brand-50 text-brand-800'
+                            }`}
+                          >
+                            Default
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>

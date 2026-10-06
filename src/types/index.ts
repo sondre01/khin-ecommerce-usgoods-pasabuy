@@ -24,6 +24,19 @@ export type PaymentMethod =
 
 export type ReceiptReviewStatus = 'PENDING_REVIEW' | 'APPROVED' | 'REJECTED';
 
+export interface UserAddress {
+  id: string;
+  label: string; // e.g. "Home", "Office / Work", "Condo", "Provincial"
+  recipientName?: string;
+  phoneNumber?: string;
+  street: string;
+  barangay: string;
+  city: string;
+  province: string;
+  postalCode: string;
+  isDefault?: boolean;
+}
+
 export interface User {
   id: string;
   email: string;
@@ -37,6 +50,7 @@ export interface User {
     province: string;
     postalCode: string;
   };
+  addresses?: UserAddress[];
 }
 
 export interface Product {
