@@ -1,8 +1,18 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { ShieldCheck, Plane, Ship, CheckCircle2, Sparkles } from 'lucide-react';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Do not render storefront footer in admin view
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <footer className="bg-[#051c16] text-emerald-100/80 border-t border-[#0e3d30] pt-14 pb-8 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">

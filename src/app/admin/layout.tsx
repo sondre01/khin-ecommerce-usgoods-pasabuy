@@ -35,7 +35,7 @@ export default function AdminLayout({
   };
 
   return (
-    <div className="min-h-screen bg-[#051c16] text-slate-100 flex flex-col md:flex-row">
+    <div className="min-h-full flex-1 bg-[#051c16] text-slate-100 flex flex-col md:flex-row">
       {/* Admin Sidebar */}
       <aside className="w-full md:w-64 bg-[#031510] border-r border-[#0d3d30] p-6 flex flex-col justify-between shrink-0">
         <div className="space-y-6">
