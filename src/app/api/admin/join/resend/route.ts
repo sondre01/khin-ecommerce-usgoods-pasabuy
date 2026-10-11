@@ -11,12 +11,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing invitation token' }, { status: 400 });
     }
 
-    const result = await resendAdminOtp(token);
+    await resendAdminOtp(token);
 
     return NextResponse.json({
       success: true,
       message: 'A new 6-digit verification code has been dispatched to your Gmail.',
-      simulatedOtp: result.simulatedOtp,
     });
   } catch (error: any) {
     return NextResponse.json(

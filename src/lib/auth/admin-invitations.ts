@@ -95,7 +95,7 @@ export async function createAdminInvitation({
   fullName: string;
   email: string;
   invitedBy?: string;
-}): Promise<{ invitation: AdminInvitation; simulatedOtp?: string }> {
+}): Promise<{ invitation: AdminInvitation }> {
   const cleanEmail = email.toLowerCase().trim();
   const cleanName = fullName.trim();
   const username = generateUsername(cleanName);
@@ -133,9 +133,7 @@ export async function createAdminInvitation({
     createdAt: new Date().toISOString(),
   };
 
-  globalStore.__adminInvitations?.push(invitation);
-
-  // Send the OTP via Email
+  // Send the OTP via Email to Gmail inbox
   const html = getAdminOtpEmailHtml(cleanName, verificationCode, 15);
   await sendEmail({
     to: cleanEmail,
@@ -144,13 +142,16 @@ export async function createAdminInvitation({
     text: `Hello ${cleanName}, your PasaBuy admin verification code is: ${verificationCode}. This code is valid for 15 minutes.`,
   });
 
-  return { invitation, simulatedOtp: verificationCode };
+  // Only register invitation after email successfully sends
+  globalStore.__adminInvitations?.push(invitation);
+
+  return { invitation };
 }
 
 /**
  * Resend verification OTP code for an invitation
  */
-export async function resendAdminOtp(inviteToken: string): Promise<{ success: boolean; simulatedOtp: string }> {
+export async function resendAdminOtp(inviteToken: string): Promise<{ success: boolean }> {
   const invitation = getInvitationByToken(inviteToken);
   if (!invitation) {
     throw new Error('Invitation not found or has expired.');
@@ -161,8 +162,6 @@ export async function resendAdminOtp(inviteToken: string): Promise<{ success: bo
   }
 
   const newCode = Math.floor(100000 + Math.random() * 900000).toString();
-  invitation.verificationCode = newCode;
-  invitation.codeExpiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString();
 
   const html = getAdminOtpEmailHtml(invitation.fullName, newCode, 15);
   await sendEmail({
@@ -172,7 +171,10 @@ export async function resendAdminOtp(inviteToken: string): Promise<{ success: bo
     text: `Hello ${invitation.fullName}, your new PasaBuy admin verification code is: ${newCode}. Valid for 15 minutes.`,
   });
 
-  return { success: true, simulatedOtp: newCode };
+  invitation.verificationCode = newCode;
+  invitation.codeExpiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString();
+
+  return { success: true };
 }
 
 /**

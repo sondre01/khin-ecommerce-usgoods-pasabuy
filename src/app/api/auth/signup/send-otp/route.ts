@@ -32,7 +32,6 @@ export async function POST(req: NextRequest) {
       success: true,
       message: `Verification code sent to ${result.email}`,
       email: result.email,
-      simulatedOtp: result.simulatedOtp,
     });
   } catch (error: any) {
     console.error('Send OTP error:', error);

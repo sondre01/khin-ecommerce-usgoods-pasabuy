@@ -41,7 +41,7 @@ export async function sendCustomerSignupOtp({
   email: string;
   phoneNumber?: string;
   shippingAddress?: any;
-}): Promise<{ success: boolean; email: string; simulatedOtp?: string }> {
+}): Promise<{ success: boolean; email: string }> {
   const cleanEmail = email.toLowerCase().trim();
   const cleanName = fullName.trim();
 
@@ -65,9 +65,7 @@ export async function sendCustomerSignupOtp({
     attempts: 0,
   };
 
-  globalStore.__customerOtps?.set(cleanEmail, pendingRecord);
-
-  // Dispatch branded verification email
+  // Dispatch branded verification email directly to customer's Gmail
   const html = getCustomerOtpEmailHtml(cleanName, verificationCode, 10);
   await sendEmail({
     to: cleanEmail,
@@ -76,10 +74,12 @@ export async function sendCustomerSignupOtp({
     text: `Hello ${cleanName}, your 6-digit verification code is: ${verificationCode}. Valid for 10 minutes.`,
   });
 
+  // Only store in pending store after email is successfully dispatched
+  globalStore.__customerOtps?.set(cleanEmail, pendingRecord);
+
   return {
     success: true,
     email: cleanEmail,
-    simulatedOtp: verificationCode,
   };
 }
 
@@ -88,7 +88,7 @@ export async function sendCustomerSignupOtp({
  */
 export async function resendCustomerSignupOtp(
   email: string
-): Promise<{ success: boolean; simulatedOtp: string }> {
+): Promise<{ success: boolean }> {
   const cleanEmail = email.toLowerCase().trim();
   const record = globalStore.__customerOtps?.get(cleanEmail);
 
@@ -97,9 +97,6 @@ export async function resendCustomerSignupOtp(
   }
 
   const newCode = Math.floor(100000 + Math.random() * 900000).toString();
-  record.verificationCode = newCode;
-  record.codeExpiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString();
-  record.attempts = 0;
 
   const html = getCustomerOtpEmailHtml(record.fullName, newCode, 10);
   await sendEmail({
@@ -109,7 +106,11 @@ export async function resendCustomerSignupOtp(
     text: `Hello ${record.fullName}, your new 6-digit verification code is: ${newCode}. Valid for 10 minutes.`,
   });
 
-  return { success: true, simulatedOtp: newCode };
+  record.verificationCode = newCode;
+  record.codeExpiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString();
+  record.attempts = 0;
+
+  return { success: true };
 }
 
 /**

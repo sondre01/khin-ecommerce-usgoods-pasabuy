@@ -42,14 +42,14 @@ interface AuthContextType {
     email: string;
     phoneNumber?: string;
     shippingAddress?: any;
-  }) => Promise<{ success: boolean; email?: string; error?: string; simulatedOtp?: string }>;
+  }) => Promise<{ success: boolean; email?: string; error?: string }>;
   verifySignupOtp: (data: {
     email: string;
     code: string;
   }) => Promise<{ success: boolean; error?: string; user?: UserSession }>;
   resendSignupOtp: (
     email: string
-  ) => Promise<{ success: boolean; error?: string; simulatedOtp?: string }>;
+  ) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
   updateProfile: (data: { fullName?: string; phoneNumber?: string; email?: string }) => void;
@@ -395,7 +395,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     email: string;
     phoneNumber?: string;
     shippingAddress?: any;
-  }): Promise<{ success: boolean; email?: string; error?: string; simulatedOtp?: string }> => {
+  }): Promise<{ success: boolean; email?: string; error?: string }> => {
     try {
       const res = await fetch('/api/auth/signup/send-otp', {
         method: 'POST',
@@ -409,7 +409,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return {
         success: true,
         email: result.email,
-        simulatedOtp: result.simulatedOtp,
       };
     } catch (err: any) {
       return { success: false, error: err.message || 'Network error sending verification code.' };
@@ -444,7 +443,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const resendSignupOtp = async (
     email: string
-  ): Promise<{ success: boolean; error?: string; simulatedOtp?: string }> => {
+  ): Promise<{ success: boolean; error?: string }> => {
     try {
       const res = await fetch('/api/auth/signup/resend-otp', {
         method: 'POST',
@@ -455,7 +454,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (!res.ok) {
         return { success: false, error: result.error || 'Failed to resend code.' };
       }
-      return { success: true, simulatedOtp: result.simulatedOtp };
+      return { success: true };
     } catch (err: any) {
       return { success: false, error: err.message || 'Network error resending code.' };
     }

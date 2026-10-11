@@ -45,7 +45,6 @@ function SignupFormContent() {
 
   // OTP State
   const [otpCode, setOtpCode] = useState(['', '', '', '', '', '']);
-  const [simulatedOtp, setSimulatedOtp] = useState<string | null>(null);
   const [resendCountdown, setResendCountdown] = useState(0);
 
   // UI state
@@ -103,9 +102,6 @@ function SignupFormContent() {
       if (res.success) {
         setStep(2);
         setResendCountdown(60);
-        if (res.simulatedOtp) {
-          setSimulatedOtp(res.simulatedOtp);
-        }
       } else {
         setError(res.error || 'Failed to dispatch verification code to your email.');
       }
@@ -197,9 +193,6 @@ function SignupFormContent() {
         setResendCountdown(60);
         setOtpCode(['', '', '', '', '', '']);
         inputRefs.current[0]?.focus();
-        if (res.simulatedOtp) {
-          setSimulatedOtp(res.simulatedOtp);
-        }
       } else {
         setError(res.error || 'Could not resend code. Please try again.');
       }
@@ -386,28 +379,6 @@ function SignupFormContent() {
               </div>
             </div>
 
-            {/* Simulated code display for quick dev testing */}
-            {simulatedOtp && (
-              <div className="p-3 bg-amber-50 border border-amber-300/80 rounded-xl text-amber-900 text-xs flex items-center justify-between">
-                <div>
-                  <span className="font-bold">⚡ Preview Verification Code: </span>
-                  <span className="font-mono font-black text-sm tracking-widest text-brand-900">
-                    {simulatedOtp}
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const digits = simulatedOtp.split('');
-                    setOtpCode(digits);
-                    inputRefs.current[5]?.focus();
-                  }}
-                  className="text-[10px] bg-white px-2 py-1 border border-amber-300 rounded font-bold hover:bg-amber-100"
-                >
-                  Auto-Fill
-                </button>
-              </div>
-            )}
 
             {/* 6-Digit Code Inputs */}
             <div>

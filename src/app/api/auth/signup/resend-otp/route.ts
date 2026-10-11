@@ -13,12 +13,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const result = await resendCustomerSignupOtp(email);
+    await resendCustomerSignupOtp(email);
 
     return NextResponse.json({
       success: true,
-      message: 'A new 6-digit verification code has been dispatched.',
-      simulatedOtp: result.simulatedOtp,
+      message: 'A new 6-digit verification code has been dispatched to your Gmail.',
     });
   } catch (error: any) {
     console.error('Resend OTP error:', error);

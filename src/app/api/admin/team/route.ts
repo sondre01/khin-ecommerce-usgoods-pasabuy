@@ -67,7 +67,6 @@ export const POST = withAdminGuard(async (req: NextRequest, { user }) => {
       success: true,
       invitation: result.invitation,
       inviteLink,
-      simulatedOtp: result.simulatedOtp,
     });
   } catch (error: any) {
     return NextResponse.json(

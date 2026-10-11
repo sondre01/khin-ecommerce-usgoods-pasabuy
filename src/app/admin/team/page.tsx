@@ -60,7 +60,6 @@ export default function AdminTeamPage() {
   // Success State inside Modal
   const [createdInvite, setCreatedInvite] = useState<{
     inviteLink: string;
-    simulatedOtp?: string;
     fullName: string;
     email: string;
   } | null>(null);
@@ -129,11 +128,10 @@ export default function AdminTeamPage() {
       if (res.ok && data.success) {
         setCreatedInvite({
           inviteLink: data.inviteLink,
-          simulatedOtp: data.simulatedOtp,
           fullName: fullName.trim(),
           email: gmail.trim(),
         });
-        showNotification(`Invitation code generated and dispatched to ${gmail.trim()}`);
+        showNotification(`Invitation link generated and 6-digit code dispatched to ${gmail.trim()}`);
         fetchTeamData();
       } else {
         setError(data.error || 'Failed to create invitation.');
@@ -439,20 +437,15 @@ export default function AdminTeamPage() {
                   </div>
                 </div>
 
-                {/* Simulated OTP Preview in dev */}
-                {createdInvite.simulatedOtp && (
-                  <div className="p-3.5 bg-amber-950/60 rounded-xl border border-amber-800/80 text-xs space-y-1">
-                    <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider block">
-                      Generated OTP Code:
-                    </span>
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xl font-black text-white tracking-widest">
-                        {createdInvite.simulatedOtp}
-                      </span>
-                      <span className="text-[10px] text-amber-300/80 font-medium">Valid for 15 mins</span>
-                    </div>
-                  </div>
-                )}
+                {/* Email Dispatch Notice */}
+                <div className="p-3.5 bg-emerald-950/60 rounded-xl border border-emerald-800/80 text-xs space-y-1">
+                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block">
+                    Security Verification Sent:
+                  </span>
+                  <p className="text-[11px] text-emerald-200/90 leading-relaxed">
+                    A single-use 6-digit authentication code has been delivered to <strong>{createdInvite.email}</strong>. The user must provide this code at the activation link to confirm account ownership.
+                  </p>
+                </div>
 
                 <div className="pt-2 flex justify-end gap-3">
                   <button

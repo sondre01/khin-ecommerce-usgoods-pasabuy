@@ -1,3 +1,5 @@
+import { sendSmtpMail } from './smtp';
+
 export interface SendEmailOptions {
   to: string;
   subject: string;
@@ -6,17 +8,52 @@ export interface SendEmailOptions {
 }
 
 /**
- * Sends an email via Resend API if configured in environment,
- * or gracefully runs in development/simulation mode with console logging.
+ * Sends an email via Gmail SMTP (using Google App Password), custom SMTP, or Resend API.
+ * Ensures genuine delivery across the internet directly to the user's Gmail inbox.
  */
 export async function sendEmail({
   to,
   subject,
   html,
   text,
-}: SendEmailOptions): Promise<{ success: boolean; simulated?: boolean; error?: string }> {
-  const resendApiKey = process.env.RESEND_API_KEY;
+}: SendEmailOptions): Promise<{ success: boolean; simulated?: boolean; messageId?: string }> {
+  const gmailUser = process.env.GMAIL_USER || process.env.SMTP_USER;
+  const gmailPass = process.env.GMAIL_APP_PASSWORD || process.env.SMTP_PASS;
 
+  // 1. Direct Gmail / SMTP Transport (High Deliverability, zero third-party domain setup)
+  if (gmailUser && gmailPass) {
+    try {
+      const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+      const smtpPort = parseInt(process.env.SMTP_PORT || '465', 10);
+      const fromName = process.env.EMAIL_FROM_NAME || 'US Goods PasaBuy';
+      const fromAddress = process.env.EMAIL_FROM || `"${fromName}" <${gmailUser}>`;
+
+      const result = await sendSmtpMail(
+        {
+          host: smtpHost,
+          port: smtpPort,
+          user: gmailUser,
+          pass: gmailPass,
+        },
+        {
+          from: fromAddress,
+          to,
+          subject,
+          html,
+          text: text || subject,
+        }
+      );
+
+      console.log(`[EMAIL DISPATCH] Successfully delivered email via SMTP to: ${to}`);
+      return { success: true, messageId: result.messageId };
+    } catch (smtpErr: any) {
+      console.error('[EMAIL DISPATCH ERROR - SMTP]:', smtpErr.message);
+      throw new Error(`Failed to deliver email to ${to} via SMTP: ${smtpErr.message}`);
+    }
+  }
+
+  // 2. Resend API Transport
+  const resendApiKey = process.env.RESEND_API_KEY;
   if (resendApiKey) {
     try {
       const res = await fetch('https://api.resend.com/emails', {
@@ -35,23 +72,29 @@ export async function sendEmail({
       });
 
       if (res.ok) {
+        console.log(`[EMAIL DISPATCH] Successfully sent email via Resend to: ${to}`);
         return { success: true };
       }
-      const data = await res.json();
-      console.warn('Resend API returned error, falling back to simulated log:', data);
-    } catch (err: any) {
-      console.error('Error invoking Resend API:', err);
+
+      const data = await res.json().catch(() => ({}));
+      throw new Error(`Resend delivery failed (${res.status}): ${data.message || res.statusText}`);
+    } catch (resendErr: any) {
+      console.error('[EMAIL DISPATCH ERROR - Resend]:', resendErr.message);
+      throw new Error(`Failed to send email to ${to} via Resend: ${resendErr.message}`);
     }
   }
 
-  // Development / fallback simulation mode
+  // 3. Fallback when credentials are missing
   console.log('\n=========================================================');
-  console.log(`[EMAIL DISPATCHER] To: ${to}`);
-  console.log(`[EMAIL DISPATCHER] Subject: ${subject}`);
-  console.log(`[EMAIL DISPATCHER] Content Preview: ${text || 'Branded HTML Code'}`);
+  console.log(`[EMAIL DISPATCH WARNING] No email service configured!`);
+  console.log(`[EMAIL DISPATCH] To: ${to}`);
+  console.log(`[EMAIL DISPATCH] Subject: ${subject}`);
+  console.log(`[EMAIL DISPATCH] Content: ${text || 'HTML code'}`);
   console.log('=========================================================\n');
 
-  return { success: true, simulated: true };
+  throw new Error(
+    'No outgoing email service configured. Please add your Gmail App Password to .env (GMAIL_USER and GMAIL_APP_PASSWORD) or configure RESEND_API_KEY to send real codes to Gmail.'
+  );
 }
 
 /**
