@@ -10,9 +10,11 @@ import {
   Layers,
   ArrowLeft,
   LogOut,
-  RefreshCw
+  RefreshCw,
+  UserCheck
 } from 'lucide-react';
 import { useRestock } from '@/context/restock-context';
+import { useAuth } from '@/context/auth-context';
 
 export default function AdminLayout({
   children,
@@ -22,9 +24,10 @@ export default function AdminLayout({
   const pathname = usePathname();
   const router = useRouter();
   const { pendingCount } = useRestock();
+  const { user } = useAuth();
 
-  // If on login page, don't show admin sidebar
-  if (pathname === '/admin/login') {
+  // If on login page or invitation onboarding page, don't show admin sidebar
+  if (pathname === '/admin/login' || pathname === '/admin/join') {
     return <>{children}</>;
   }
 
@@ -103,16 +106,29 @@ export default function AdminLayout({
                 </span>
               )}
             </Link>
+            <Link
+              href="/admin/team"
+              className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg transition ${
+                pathname === '/admin/team'
+                  ? 'bg-brand-900 text-gold-300 ring-1 ring-gold-400/40 shadow-sm'
+                  : 'text-slate-300 hover:bg-[#082a20] hover:text-white'
+              }`}
+            >
+              <UserCheck className="w-4 h-4 text-emerald-400" />
+              <span>Admin Team & Access</span>
+            </Link>
           </nav>
         </div>
 
         <div className="pt-6 border-t border-[#0d3d30] space-y-3 text-xs">
           <div className="p-3 bg-[#051c16] rounded-lg border border-[#0d3d30]">
             <span className="text-[11px] text-emerald-300/60 block">Logged In Admin:</span>
-            <div className="font-bold text-white text-xs mt-0.5">Khin Andrei Gamboa</div>
+            <div className="font-bold text-white text-xs mt-0.5">
+              {user?.fullName || 'Khin Andrei Gamboa'}
+            </div>
             <span className="font-semibold text-gold-400 flex items-center gap-1.5 mt-0.5 text-[11px]">
               <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
-              @khinag • Head Admin
+              @{user?.username || 'khinag'} • {user?.username === 'khinag' || !user ? 'Head Admin' : 'Admin'}
             </span>
           </div>
 

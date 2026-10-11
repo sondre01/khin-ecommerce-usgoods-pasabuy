@@ -135,7 +135,16 @@ function AdminLoginContent() {
           </button>
         </form>
 
-        <div className="pt-4 border-t border-[#0e4d3a] text-center">
+        <div className="p-3 bg-[#051c16] rounded-xl border border-[#0d3d30] text-center space-y-1 text-xs">
+          <span className="text-[11px] text-gold-400 font-bold block">
+            Invited via Gmail to join the Admin Team?
+          </span>
+          <p className="text-[10px] text-slate-400 leading-relaxed">
+            Click the invitation link shared with you or check your Gmail for your 6-digit OTP code to activate privileges.
+          </p>
+        </div>
+
+        <div className="pt-2 border-t border-[#0e4d3a] text-center">
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 text-xs text-emerald-300 hover:text-white transition"

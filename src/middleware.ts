@@ -7,8 +7,8 @@ export async function middleware(req: NextRequest) {
 
   // 1. ADMIN ROUTE ACCESS & PROTECTION
   if (pathname.startsWith('/admin')) {
-    // Always allow admin login page
-    if (pathname === '/admin/login') {
+    // Always allow admin login page and invitation onboarding page
+    if (pathname === '/admin/login' || pathname === '/admin/join') {
       return NextResponse.next();
     }
 
