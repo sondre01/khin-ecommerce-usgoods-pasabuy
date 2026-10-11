@@ -233,8 +233,8 @@ export default function AdminInventoryPage() {
       )}
 
       {/* Inventory Table */}
-      <div className="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
-        <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+      <div className="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col">
+        <div className="p-4 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shrink-0 bg-slate-950">
           <div className="flex items-center gap-2">
             <Package className="w-4 h-4 text-gold-400" />
             <h3 className="font-bold text-white text-xs">
@@ -246,9 +246,9 @@ export default function AdminInventoryPage() {
           </span>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto overflow-y-auto max-h-[540px] xl:max-h-[600px] custom-scrollbar">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/60 text-slate-400 font-semibold border-b border-slate-800">
+            <thead className="sticky top-0 z-10 bg-[#08281f] text-slate-300 font-semibold border-b border-slate-800 shadow-sm backdrop-blur-md">
               <tr>
                 <th className="py-3 px-5">Product Title</th>
                 <th className="py-3 px-5">Brand / Retailer</th>
@@ -348,7 +348,7 @@ export default function AdminInventoryPage() {
       {/* Modal: Add Product to Sell */}
       {isAddModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-150">
-          <div className="bg-slate-950 border border-slate-800 rounded-3xl max-w-2xl w-full max-h-[92vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl">
+          <div className="bg-slate-950 border border-slate-800 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-6 sm:p-8 space-y-6 shadow-2xl">
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div className="space-y-1">

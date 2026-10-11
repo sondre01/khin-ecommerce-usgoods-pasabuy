@@ -242,7 +242,7 @@ export default function AdminRestocksPage() {
       </div>
 
       {/* Requests List */}
-      <div className="space-y-4">
+      <div className="space-y-4 max-h-[calc(100vh-320px)] overflow-y-auto custom-scrollbar pr-1.5">
         {filteredRequests.length === 0 ? (
           <div className="bg-slate-950 rounded-2xl border border-slate-800 p-12 text-center space-y-3">
             <RefreshCw className="w-10 h-10 text-slate-600 mx-auto" />

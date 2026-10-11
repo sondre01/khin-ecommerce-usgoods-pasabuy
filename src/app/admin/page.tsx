@@ -151,8 +151,8 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Orders In Pipeline Quick Table */}
-      <div className="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
-        <div className="p-5 border-b border-slate-800 flex justify-between items-center">
+      <div className="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden shadow-lg flex flex-col">
+        <div className="p-5 border-b border-slate-800 flex justify-between items-center shrink-0 bg-slate-950">
           <h3 className="text-sm font-bold text-white">Recent Orders in Pipeline</h3>
           <Link
             href="/admin/orders"
@@ -162,9 +162,9 @@ export default function AdminDashboardPage() {
           </Link>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto overflow-y-auto max-h-[360px] custom-scrollbar">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/60 text-slate-400 font-semibold border-b border-slate-800">
+            <thead className="sticky top-0 z-10 bg-[#08281f] text-slate-300 font-semibold border-b border-slate-800 shadow-sm backdrop-blur-md">
               <tr>
                 <th className="py-3 px-5">Order #</th>
                 <th className="py-3 px-5">Customer</th>

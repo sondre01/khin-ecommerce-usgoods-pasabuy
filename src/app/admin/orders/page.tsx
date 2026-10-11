@@ -101,44 +101,46 @@ export default function AdminOrdersManagerPage() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Order Selector List */}
         <div className="lg:col-span-4 space-y-3">
           <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider">All Customer Orders</h3>
-          {orders.map((ord) => (
-            <button
-              key={ord.id}
-              onClick={() => {
-                setSelectedOrder(ord);
-                setAwbInput(ord.cargoTrackingNumber || '');
-                setLocalCourierInput(ord.localCourierName || '');
-                setLocalTrackingInput(ord.localTrackingNumber || '');
-              }}
-              className={`w-full p-4 rounded-xl border text-left transition ${
-                selectedOrder.id === ord.id
-                  ? 'border-brand-500 bg-slate-950 ring-2 ring-brand-500/20'
-                  : 'border-slate-800 bg-slate-950/60 hover:border-slate-700'
-              }`}
-            >
-              <div className="flex justify-between items-start">
-                <span className="font-mono text-xs font-bold text-white">{ord.orderNumber}</span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-900/60 text-brand-300 border border-brand-800">
-                  {ord.status.replace(/_/g, ' ')}
-                </span>
-              </div>
-              <div className="text-xs text-slate-300 font-semibold mt-1.5">{ord.userName}</div>
-              <div className="flex justify-between items-baseline mt-2 text-xs">
-                <span className="text-slate-400">Total: ₱{ord.totalAmountPhp.toLocaleString()}</span>
-                <span className={ord.paymentStatus === 'FULLY_PAID' ? 'text-emerald-400 font-bold' : 'text-amber-400 font-bold'}>
-                  {ord.paymentStatus}
-                </span>
-              </div>
-            </button>
-          ))}
+          <div className="space-y-3 max-h-[calc(100vh-220px)] overflow-y-auto custom-scrollbar pr-1.5">
+            {orders.map((ord) => (
+              <button
+                key={ord.id}
+                onClick={() => {
+                  setSelectedOrder(ord);
+                  setAwbInput(ord.cargoTrackingNumber || '');
+                  setLocalCourierInput(ord.localCourierName || '');
+                  setLocalTrackingInput(ord.localTrackingNumber || '');
+                }}
+                className={`w-full p-4 rounded-xl border text-left transition ${
+                  selectedOrder.id === ord.id
+                    ? 'border-brand-500 bg-slate-950 ring-2 ring-brand-500/20 shadow-md'
+                    : 'border-slate-800 bg-slate-950/60 hover:border-slate-700'
+                }`}
+              >
+                <div className="flex justify-between items-start">
+                  <span className="font-mono text-xs font-bold text-white">{ord.orderNumber}</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-900/60 text-brand-300 border border-brand-800">
+                    {ord.status.replace(/_/g, ' ')}
+                  </span>
+                </div>
+                <div className="text-xs text-slate-300 font-semibold mt-1.5">{ord.userName}</div>
+                <div className="flex justify-between items-baseline mt-2 text-xs">
+                  <span className="text-slate-400">Total: ₱{ord.totalAmountPhp.toLocaleString()}</span>
+                  <span className={ord.paymentStatus === 'FULLY_PAID' ? 'text-emerald-400 font-bold' : 'text-amber-400 font-bold'}>
+                    {ord.paymentStatus}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Order Controller */}
-        <div className="lg:col-span-8 space-y-6">
+        <div className="lg:col-span-8 space-y-6 max-h-[calc(100vh-220px)] overflow-y-auto custom-scrollbar pr-1.5">
           {/* Status Controls */}
           <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-800 pb-4">

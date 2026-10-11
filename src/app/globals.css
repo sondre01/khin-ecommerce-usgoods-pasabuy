@@ -18,3 +18,25 @@ body {
     rgb(var(--background-start-rgb));
   min-height: 100vh;
 }
+
+/* Custom sleek scrollbar for admin cards and local containers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(6, 32, 25, 0.4);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(30, 77, 63, 0.7);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 119, 6, 0.8);
+}
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(30, 77, 63, 0.7) rgba(6, 32, 25, 0.4);
+}
+

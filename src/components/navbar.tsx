@@ -26,7 +26,7 @@ export default function Navbar() {
   const { user, isLoggedIn, logout } = useAuth();
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-100 shadow-sm">
+    <header className="sticky top-0 z-50 h-16 shrink-0 bg-white/95 backdrop-blur-md border-b border-brand-100 shadow-sm">
 
       {/* Main Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
