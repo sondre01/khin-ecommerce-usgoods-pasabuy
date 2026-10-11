@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start -p 3000",
     "lint": "next lint",
-    "prisma:generate": "prisma generate"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "clsx": "^2.1.1",
