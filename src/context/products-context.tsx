@@ -41,10 +41,11 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
     }
 
     // Attempt to fetch fresh products from Supabase
-    if (supabase) {
+    const client = supabase;
+    if (client) {
       const fetchProducts = async () => {
         try {
-          const { data, error } = await supabase.from('products').select('*');
+          const { data, error } = await client.from('products').select('*');
           if (!error && Array.isArray(data) && data.length > 0) {
             const mapped: Product[] = data.map((r: any) => ({
               id: r.id,
@@ -112,8 +113,9 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
     setProducts((prev) => [newProduct, ...prev]);
 
     // Sync to Supabase products table
-    if (supabase) {
-      supabase
+    const client = supabase;
+    if (client) {
+      client
         .from('products')
         .insert([
           {
@@ -165,7 +167,8 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
         };
 
         // Sync to Supabase
-        if (supabase) {
+        const client = supabase;
+        if (client) {
           const payload: any = {};
           if (updates.title !== undefined) payload.title = updates.title;
           if (updates.description !== undefined) payload.description = updates.description;
@@ -177,7 +180,7 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
           if (updates.isActive !== undefined) payload.is_active = updates.isActive;
 
           if (Object.keys(payload).length > 0) {
-            supabase
+            client
               .from('products')
               .update(payload)
               .eq('id', id)
@@ -194,8 +197,9 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
 
   const deleteProduct = (id: string) => {
     setProducts((prev) => prev.filter((p) => p.id !== id));
-    if (supabase) {
-      supabase
+    const client = supabase;
+    if (client) {
+      client
         .from('products')
         .delete()
         .eq('id', id)

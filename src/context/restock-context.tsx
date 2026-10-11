@@ -70,8 +70,9 @@ export function RestockProvider({ children }: { children: React.ReactNode }) {
     setRequests((prev) => [newReq, ...prev]);
 
     // Sync to Supabase restock_requests table
-    if (supabase) {
-      supabase
+    const client = supabase;
+    if (client) {
+      client
         .from('restock_requests')
         .insert([
           {
