@@ -3,6 +3,10 @@
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+-- 0. DEDICATED SCHEMA
+CREATE SCHEMA IF NOT EXISTS "khin-ecommerce";
+SET search_path TO "khin-ecommerce", public;
+
 -- 1. ENUMS
 CREATE TYPE user_role AS ENUM ('CUSTOMER', 'ADMIN');
 
