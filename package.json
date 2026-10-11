@@ -10,6 +10,8 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.78.0",
     "clsx": "^2.1.1",
     "jose": "^5.9.6",
     "lucide-react": "^0.460.0",
