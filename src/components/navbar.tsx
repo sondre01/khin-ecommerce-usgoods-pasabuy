@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -24,67 +24,9 @@ export default function Navbar() {
   const isAdmin = pathname.startsWith('/admin');
   const { totalItemsCount } = useCart();
   const { user, isLoggedIn, logout } = useAuth();
-  const [currentUserRole, setCurrentUserRole] = useState<'CUSTOMER' | 'ADMIN' | 'GUEST'>('CUSTOMER');
-
-  useEffect(() => {
-    // Check active auth cookie via /api/auth/me
-    fetch('/api/auth/me')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.user) {
-          setCurrentUserRole(data.user.role);
-        } else {
-          setCurrentUserRole('GUEST');
-        }
-      })
-      .catch(() => setCurrentUserRole('GUEST'));
-  }, [pathname]);
-
-  const switchRole = async (targetRole: 'CUSTOMER' | 'ADMIN') => {
-    await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ role: targetRole }),
-    });
-    window.location.reload();
-  };
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-100 shadow-sm">
-      {/* Top Banner: PH-US PasaBuy Notice & Role Switcher */}
-      <div className="bg-[#06241c] text-emerald-100 text-xs py-1.5 px-4 sm:px-8 border-b border-[#0d3d30]">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
-            <span>🇺🇸 Direct US Outlets • 0% US Sales Tax • Today&apos;s Rate: <strong className="text-gold-300">$1.00 = ₱59.00 PHP</strong></span>
-          </div>
-
-          {/* Quick Preview Role Switcher */}
-          <div className="flex items-center gap-2 text-xs">
-            <span className="text-emerald-300/70">Switch View:</span>
-            <button
-              onClick={() => switchRole('CUSTOMER')}
-              className={`px-2 py-0.5 rounded font-medium transition ${
-                currentUserRole === 'CUSTOMER'
-                  ? 'bg-brand-600 text-white ring-1 ring-gold-400/50'
-                  : 'bg-[#0a3529] text-emerald-200 hover:text-white'
-              }`}
-            >
-              Customer View
-            </button>
-            <button
-              onClick={() => switchRole('ADMIN')}
-              className={`px-2 py-0.5 rounded font-medium transition ${
-                currentUserRole === 'ADMIN'
-                  ? 'bg-gold-600 text-white ring-1 ring-gold-300/60 font-semibold'
-                  : 'bg-[#0a3529] text-emerald-200 hover:text-white'
-              }`}
-            >
-              Admin View
-            </button>
-          </div>
-        </div>
-      </div>
 
       {/* Main Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
@@ -131,7 +73,7 @@ export default function Navbar() {
             <Package className="w-4 h-4 text-brand-600" />
             Track Orders
           </Link>
-          {currentUserRole === 'ADMIN' && (
+          {user?.role === 'ADMIN' && (
             <Link
               href="/admin"
               className={`transition hover:text-gold-700 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gold-50 text-gold-900 border border-gold-300 font-bold text-xs ${
