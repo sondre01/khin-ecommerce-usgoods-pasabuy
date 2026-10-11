@@ -6,6 +6,11 @@ import { useAuth } from '@/context/auth-context';
 import { INITIAL_ORDERS } from '@/data/mock-data';
 import { Order, OrderStatus } from '@/types';
 import {
+  ORDER_PIPELINE_STAGES,
+  getCourierTrackingUrl,
+  SELLER_COURIER_HANDOFF_DISCLOSURE,
+} from '@/lib/couriers';
+import {
   Package,
   Plane,
   Truck,
@@ -16,17 +21,13 @@ import {
   FileCheck,
   AlertCircle,
   ExternalLink,
-  Lock
+  Lock,
+  Copy,
+  Check,
+  ShieldCheck,
+  Info
 } from 'lucide-react';
 
-const PIPELINE_STAGES: { key: OrderStatus; label: string; desc: string }[] = [
-  { key: 'ORDER_PLACED', label: 'Order Placed', desc: 'Deposit confirmed' },
-  { key: 'PURCHASED_IN_US', label: 'Bought in US', desc: 'Purchased at outlet' },
-  { key: 'IN_TRANSIT_FORWARDER', label: 'Air Shipping', desc: 'On the way to PH' },
-  { key: 'ARRIVED_IN_PH', label: 'Arrived in Manila', desc: 'Ready for final balance' },
-  { key: 'OUT_FOR_LOCAL_DELIVERY', label: 'Out for Delivery', desc: 'Courier on the way' },
-  { key: 'COMPLETED', label: 'Delivered', desc: 'Received at doorstep' },
-];
 
 export default function CustomerOrdersPage() {
   const { isLoggedIn } = useAuth();
@@ -35,8 +36,16 @@ export default function CustomerOrdersPage() {
   const [uploadRefNumber, setUploadRefNumber] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
+  const [copiedTracking, setCopiedTracking] = useState(false);
+
   const getStageIndex = (status: OrderStatus) => {
-    return PIPELINE_STAGES.findIndex((s) => s.key === status);
+    return ORDER_PIPELINE_STAGES.findIndex((s) => s.key === status);
+  };
+
+  const handleCopyTracking = (code: string) => {
+    navigator.clipboard.writeText(code);
+    setCopiedTracking(true);
+    setTimeout(() => setCopiedTracking(false), 2000);
   };
 
   const handleSimulateReceiptUpload = (e: React.FormEvent) => {
@@ -81,7 +90,7 @@ export default function CustomerOrdersPage() {
       <div>
         <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Track Your Orders</h1>
         <p className="text-sm text-slate-600 mt-1">
-          See live updates on your US outlet orders and upload payment receipts.
+          Monitor your personal shopper procurement, US cargo freight, and 3rd-party courier delivery handoff.
         </p>
       </div>
 
@@ -95,13 +104,14 @@ export default function CustomerOrdersPage() {
               onClick={() => setSelectedOrder(ord)}
               className={`w-full p-4 rounded-xl border text-left transition ${
                 selectedOrder.id === ord.id
-                  ? 'border-brand-700 bg-brand-50/60 ring-2 ring-brand-700/10'
+                  ? 'border-brand-700 bg-brand-50/60 ring-2 ring-brand-700/10 shadow-sm'
                   : 'border-slate-200 bg-white hover:border-slate-300'
               }`}
             >
               <div className="flex justify-between items-start">
                 <span className="font-bold text-xs text-slate-900">{ord.orderNumber}</span>
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                  ord.status === 'OUT_FOR_LOCAL_DELIVERY' ? 'bg-amber-100 text-amber-900 border border-amber-300' :
                   ord.status === 'ARRIVED_IN_PH' ? 'bg-gold-100 text-gold-900 border border-gold-300' :
                   ord.status === 'IN_TRANSIT_FORWARDER' ? 'bg-brand-100 text-brand-800' :
                   'bg-emerald-100 text-emerald-800'
@@ -133,7 +143,7 @@ export default function CustomerOrdersPage() {
               </div>
               {selectedOrder.cargoTrackingNumber && (
                 <div className="text-left sm:text-right">
-                  <span className="text-[11px] text-slate-400 block font-semibold">Air Cargo Tracking</span>
+                  <span className="text-[11px] text-slate-400 block font-semibold">Oregon Air Cargo Tracking</span>
                   <span className="font-mono text-xs font-bold text-brand-800 bg-brand-50 px-2 py-1 rounded border border-brand-200">
                     {selectedOrder.cargoTrackingNumber}
                   </span>
@@ -141,10 +151,24 @@ export default function CustomerOrdersPage() {
               )}
             </div>
 
+            {/* Visual Process Boundary Legend */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+              <div className="flex items-center gap-2 text-slate-700">
+                <span className="w-2.5 h-2.5 rounded-full bg-brand-700"></span>
+                <span className="font-bold text-slate-900">Stages 1–4:</span>
+                <span className="text-slate-600">Personal Shopper & US Air Cargo (Seller Managed)</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-700">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+                <span className="font-bold text-slate-900">Stages 5–6:</span>
+                <span className="text-slate-600">3rd-Party Delivery Partner (Courier Managed)</span>
+              </div>
+            </div>
+
             {/* Stepper Dots */}
-            <div className="py-4">
+            <div className="py-2">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-                {PIPELINE_STAGES.map((stage, idx) => {
+                {ORDER_PIPELINE_STAGES.map((stage, idx) => {
                   const currentIdx = getStageIndex(selectedOrder.status);
                   const isDone = idx <= currentIdx;
                   const isCurrent = idx === currentIdx;
@@ -152,7 +176,7 @@ export default function CustomerOrdersPage() {
                   return (
                     <div
                       key={stage.key}
-                      className={`p-3 rounded-xl border flex flex-col justify-between ${
+                      className={`p-3 rounded-xl border flex flex-col justify-between transition ${
                         isCurrent
                           ? 'border-brand-700 bg-brand-50/70 ring-2 ring-brand-700/20'
                           : isDone
@@ -172,13 +196,102 @@ export default function CustomerOrdersPage() {
                         </span>
                         {isDone && <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />}
                       </div>
-                      <span className="text-xs font-bold text-slate-900 block leading-tight">{stage.label}</span>
-                      <span className="text-[10px] text-slate-500 block mt-1">{stage.desc}</span>
+                      <div>
+                        <span className="text-xs font-bold text-slate-900 block leading-tight">{stage.label}</span>
+                        <span className="text-[10px] text-slate-500 block mt-1 leading-snug">{stage.desc}</span>
+                      </div>
+                      <div className="mt-2 pt-2 border-t border-slate-200/60">
+                        <span className={`text-[9px] font-bold uppercase tracking-wider block ${
+                          stage.isSellerResponsible ? 'text-brand-800' : 'text-amber-800'
+                        }`}>
+                          {stage.isSellerResponsible ? 'Shopper Handled' : 'Courier Handled'}
+                        </span>
+                      </div>
                     </div>
                   );
                 })}
               </div>
             </div>
+
+            {/* 3rd-Party Parcel Courier Handoff Card */}
+            {selectedOrder.localTrackingNumber || selectedOrder.status === 'OUT_FOR_LOCAL_DELIVERY' || selectedOrder.status === 'COMPLETED' ? (
+              <div className="p-5 sm:p-6 bg-gradient-to-br from-amber-50/60 via-brand-50/40 to-slate-50 rounded-2xl border border-amber-300/80 shadow-sm space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-amber-200/60 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-black shadow-sm shrink-0">
+                      <Truck className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-200/80 text-amber-950 px-2 py-0.5 rounded-full border border-amber-300">
+                          Handed Over to 3rd-Party Carrier
+                        </span>
+                      </div>
+                      <h3 className="text-sm font-black text-slate-900 mt-0.5">
+                        {selectedOrder.localCourierName || 'Domestic Courier Partner'}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {selectedOrder.localTrackingNumber && (
+                    <div className="flex items-center gap-2">
+                      <div className="bg-white px-3 py-1.5 rounded-xl border border-slate-300 shadow-xs flex items-center gap-2">
+                        <span className="text-[11px] text-slate-500 font-semibold">Waybill:</span>
+                        <span className="font-mono text-xs font-black text-slate-900">
+                          {selectedOrder.localTrackingNumber}
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleCopyTracking(selectedOrder.localTrackingNumber!)}
+                        className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-1 transition"
+                        title="Copy tracking code"
+                      >
+                        {copiedTracking ? (
+                          <>
+                            <Check className="w-3.5 h-3.5 text-emerald-600" />
+                            <span className="text-emerald-700 font-bold">Copied!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-3.5 h-3.5 text-slate-500" />
+                            <span>Copy</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <p className="text-xs text-slate-600 leading-relaxed max-w-xl">
+                    {SELLER_COURIER_HANDOFF_DISCLOSURE}
+                  </p>
+
+                  {selectedOrder.localTrackingNumber && (
+                    <a
+                      href={getCourierTrackingUrl(selectedOrder.localCourierName, selectedOrder.localTrackingNumber) || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2.5 bg-gradient-to-r from-brand-800 to-brand-700 hover:from-brand-900 hover:to-brand-800 text-gold-300 font-bold rounded-xl text-xs transition shadow-sm ring-1 ring-gold-400/40 inline-flex items-center gap-2 shrink-0 justify-center"
+                    >
+                      <span>Track on {selectedOrder.localCourierName || 'Courier'} Portal</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-gold-400" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div className="p-4 bg-brand-50/50 rounded-xl border border-brand-200/60 flex items-start gap-3 text-xs text-slate-600">
+                <Info className="w-4 h-4 text-brand-700 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-slate-900 block">Personal Shopper Handling Active:</span>
+                  <span>
+                    Your order is currently being procured and freight-forwarded from Oregon. Once your items land at our Manila sorting hub and are handed over to our local delivery partner, your courier waybill tracking number and direct portal link will be published here.
+                  </span>
+                </div>
+              </div>
+            )}
 
             {/* Status History Logs */}
             <div className="space-y-3 pt-2">

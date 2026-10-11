@@ -16,7 +16,8 @@ import {
   QrCode,
   Upload,
   AlertCircle,
-  Lock
+  Lock,
+  Truck
 } from 'lucide-react';
 import PhilippineAddressSelector, { formatPhilippineAddress } from '@/components/philippine-address-selector';
 
@@ -485,6 +486,14 @@ export default function CheckoutPage() {
             </span>
             <p className="font-semibold text-slate-800 leading-relaxed text-[11px]">
               {formatPhilippineAddress({ street, barangay, city, province, postalCode }) || 'Please select your province, city, and barangay'}
+            </p>
+          </div>
+
+          {/* 3rd-Party Delivery Transparency Disclosure */}
+          <div className="p-3 bg-amber-50/70 rounded-2xl border border-amber-200/60 text-[11px] text-slate-600 flex items-start gap-2">
+            <Truck className="w-3.5 h-3.5 text-amber-700 shrink-0 mt-0.5" />
+            <p className="leading-snug">
+              <strong className="text-slate-800">Delivery Policy:</strong> We personally purchase and freight-forward your items from the US. Domestic doorstep delivery is handled by accredited 3rd-party couriers (J&T Express, LBC, Lalamove). You will receive an official courier tracking waybill upon handover.
             </p>
           </div>
 

@@ -441,8 +441,14 @@ export default function CustomerAccountPage() {
                   <span className="text-[10px] text-slate-400">{new Date(ord.createdAt).toLocaleDateString()}</span>
                 </div>
 
-                <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-brand-50 text-brand-900 border border-brand-200">
-                  {ord.status.replace(/_/g, ' ')}
+                <span className={`px-2.5 py-1 rounded-md text-[11px] font-bold border ${
+                  ord.status === 'OUT_FOR_LOCAL_DELIVERY'
+                    ? 'bg-amber-100 text-amber-900 border-amber-300'
+                    : 'bg-brand-50 text-brand-900 border-brand-200'
+                }`}>
+                  {ord.status === 'OUT_FOR_LOCAL_DELIVERY'
+                    ? `Handed to ${ord.localCourierName || 'Courier'}`
+                    : ord.status.replace(/_/g, ' ')}
                 </span>
               </div>
 

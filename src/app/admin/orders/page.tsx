@@ -15,14 +15,12 @@ import {
   AlertCircle
 } from 'lucide-react';
 
-const ORDER_STAGES: OrderStatus[] = [
-  'ORDER_PLACED',
-  'PURCHASED_IN_US',
-  'IN_TRANSIT_FORWARDER',
-  'ARRIVED_IN_PH',
-  'OUT_FOR_LOCAL_DELIVERY',
-  'COMPLETED',
-];
+import {
+  ORDER_PIPELINE_STAGES,
+  SUPPORTED_COURIERS,
+  getCourierTrackingUrl,
+} from '@/lib/couriers';
+
 
 export default function AdminOrdersManagerPage() {
   const [orders, setOrders] = useState<Order[]>(INITIAL_ORDERS);
@@ -54,6 +52,21 @@ export default function AdminOrdersManagerPage() {
     setSelectedOrder(updated);
     setOrders((prev) => prev.map((o) => (o.id === updated.id ? updated : o)));
     setStatusNotification(`Order pipeline stage advanced to: ${newStage}`);
+    setTimeout(() => setStatusNotification(null), 3500);
+  };
+
+  const handleSaveLogistics = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const updated = {
+      ...selectedOrder,
+      cargoTrackingNumber: awbInput.trim() || undefined,
+      localCourierName: localCourierInput.trim() || undefined,
+      localTrackingNumber: localTrackingInput.trim() || undefined,
+      updatedAt: new Date().toISOString(),
+    };
+    setSelectedOrder(updated);
+    setOrders((prev) => prev.map((o) => (o.id === updated.id ? updated : o)));
+    setStatusNotification('Logistics and 3rd-party courier tracking saved successfully!');
     setTimeout(() => setStatusNotification(null), 3500);
   };
 
@@ -90,7 +103,7 @@ export default function AdminOrdersManagerPage() {
       <div>
         <h1 className="text-2xl font-black text-white tracking-tight">Order Pipeline & Tracking Manager</h1>
         <p className="text-xs text-slate-400 mt-1">
-          Transition orders between US procurement, cargo forwarding, customs, and local last-mile courier.
+          Personal shopper procurement, Oregon cargo transit, and 3rd-party parcel courier handoff management.
         </p>
       </div>
 
@@ -123,7 +136,11 @@ export default function AdminOrdersManagerPage() {
               >
                 <div className="flex justify-between items-start">
                   <span className="font-mono text-xs font-bold text-white">{ord.orderNumber}</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-900/60 text-brand-300 border border-brand-800">
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${
+                    ord.status === 'OUT_FOR_LOCAL_DELIVERY'
+                      ? 'bg-amber-950/80 text-amber-300 border-amber-800'
+                      : 'bg-brand-900/60 text-brand-300 border-brand-800'
+                  }`}>
                     {ord.status.replace(/_/g, ' ')}
                   </span>
                 </div>
@@ -155,66 +172,144 @@ export default function AdminOrdersManagerPage() {
 
             {/* Advance Status Button Grid */}
             <div className="space-y-3">
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
-                Advance Pipeline Stage:
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
+                  Advance Pipeline Stage:
+                </label>
+                <span className="text-[11px] text-slate-500">
+                  Stages 1–4: Shopper Handled • Stages 5–6: Courier Handled
+                </span>
+              </div>
+
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {ORDER_STAGES.map((stage) => {
-                  const isActive = selectedOrder.status === stage;
+                {ORDER_PIPELINE_STAGES.map((stage) => {
+                  const isActive = selectedOrder.status === stage.key;
                   return (
                     <button
-                      key={stage}
+                      key={stage.key}
                       type="button"
-                      onClick={() => handleUpdateStatus(stage)}
+                      onClick={() => handleUpdateStatus(stage.key)}
                       className={`p-3 rounded-xl text-left border text-xs font-bold transition flex flex-col justify-between ${
                         isActive
                           ? 'border-gold-500 bg-gradient-to-r from-brand-700 to-brand-600 text-white ring-1 ring-gold-400/40 shadow-sm'
                           : 'border-slate-800 bg-slate-900 text-slate-300 hover:border-slate-700 hover:text-white'
                       }`}
                     >
-                      <span>{stage.replace(/_/g, ' ')}</span>
-                      {isActive && <span className="text-[10px] font-normal opacity-80 mt-1">● Current Stage</span>}
+                      <div className="flex items-center justify-between w-full">
+                        <span>{stage.adminLabel}</span>
+                        {!stage.isSellerResponsible && (
+                          <span className="text-[9px] font-bold px-1 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                            Courier
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[10px] font-normal text-slate-400 mt-1 line-clamp-1">{stage.desc}</span>
+                      {isActive && <span className="text-[10px] font-semibold text-gold-300 mt-1">● Current Stage</span>}
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Logistics & Tracking Form */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-800 text-xs">
-              <div>
-                <label className="block text-slate-400 font-semibold mb-1">Air Cargo AWB Tracking #</label>
-                <input
-                  type="text"
-                  placeholder="e.g. BNS-AIR-941829"
-                  value={awbInput}
-                  onChange={(e) => setAwbInput(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-mono focus:ring-2 focus:ring-brand-500 focus:outline-none"
-                />
+            {/* Logistics & 3rd-Party Courier Handover Form */}
+            <form onSubmit={handleSaveLogistics} className="pt-4 border-t border-slate-800 space-y-4 text-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h3 className="font-bold text-white text-xs flex items-center gap-2">
+                    <Truck className="w-4 h-4 text-gold-400" />
+                    <span>3rd-Party Courier Handover & Waybill Setup</span>
+                  </h3>
+                  <p className="text-[11px] text-slate-400 mt-0.5">
+                    Seller process limit: once handed to courier, the customer tracks via the courier portal.
+                  </p>
+                </div>
+
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-gradient-to-r from-brand-700 to-brand-600 hover:from-brand-800 hover:to-brand-700 text-white rounded-lg font-bold transition self-start sm:self-auto ring-1 ring-gold-400/30 shadow-xs"
+                >
+                  Save Waybill & Logistics
+                </button>
               </div>
 
+              {/* Quick Courier Preset Chips */}
               <div>
-                <label className="block text-slate-400 font-semibold mb-1">PH Local Courier</label>
-                <input
-                  type="text"
-                  placeholder="e.g. Lalamove or J&T Express"
-                  value={localCourierInput}
-                  onChange={(e) => setLocalCourierInput(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-brand-500 focus:outline-none"
-                />
+                <span className="text-[11px] text-slate-400 font-semibold block mb-1.5">
+                  Select Domestic Parcel Courier:
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {SUPPORTED_COURIERS.filter(c => c.isPopular).map((c) => (
+                    <button
+                      key={c.code}
+                      type="button"
+                      onClick={() => setLocalCourierInput(c.name)}
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold border transition ${
+                        localCourierInput === c.name
+                          ? 'bg-gold-500/20 text-gold-300 border-gold-400/50 ring-1 ring-gold-400/30'
+                          : 'bg-slate-900 text-slate-300 border-slate-700 hover:bg-slate-800 hover:text-white'
+                      }`}
+                    >
+                      {c.name}
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              <div>
-                <label className="block text-slate-400 font-semibold mb-1">Local Tracking #</label>
-                <input
-                  type="text"
-                  placeholder="e.g. JT-991823901"
-                  value={localTrackingInput}
-                  onChange={(e) => setLocalTrackingInput(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-mono focus:ring-2 focus:ring-brand-500 focus:outline-none"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-slate-400 font-semibold mb-1">Air Cargo AWB Tracking #</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. BNS-AIR-941829"
+                    value={awbInput}
+                    onChange={(e) => setAwbInput(e.target.value)}
+                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-mono focus:ring-2 focus:ring-brand-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-slate-400 font-semibold mb-1">Courier Name</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. J&T Express, LBC, Lalamove"
+                    value={localCourierInput}
+                    onChange={(e) => setLocalCourierInput(e.target.value)}
+                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-brand-500 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-slate-400 font-semibold mb-1">Courier Waybill #</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. JT-991823901"
+                    value={localTrackingInput}
+                    onChange={(e) => setLocalTrackingInput(e.target.value)}
+                    className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white font-mono focus:ring-2 focus:ring-brand-500 focus:outline-none"
+                  />
+                </div>
               </div>
-            </div>
+
+              {/* Live Courier Link Preview */}
+              {localTrackingInput && (
+                <div className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2 text-slate-300">
+                    <ExternalLink className="w-3.5 h-3.5 text-gold-400" />
+                    <span>Customer will track via: <strong className="text-white">{localCourierInput || 'Courier'}</strong></span>
+                  </div>
+                  {getCourierTrackingUrl(localCourierInput, localTrackingInput) && (
+                    <a
+                      href={getCourierTrackingUrl(localCourierInput, localTrackingInput)!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gold-400 hover:text-gold-300 font-bold underline text-[11px]"
+                    >
+                      Test Portal Link ↗
+                    </a>
+                  )}
+                </div>
+              )}
+            </form>
           </div>
 
           {/* Proof-of-Payment Verification Box */}
