@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { generateUsername } from '@/lib/username';
 import { sendEmail, getCustomerOtpEmailHtml } from '@/lib/email';
 import { getSupabaseServiceClient } from '@/lib/supabase/server';
@@ -156,7 +157,7 @@ export async function verifyCustomerSignupOtp({
   // Clean up pending OTP record
   globalStore.__customerOtps?.delete(cleanEmail);
 
-  const userId = `usr-cust-${Date.now().toString(36)}-${Math.floor(Math.random() * 1000)}`;
+  const userId = crypto.randomUUID();
   const userSession = {
     userId,
     email: record.email,
@@ -184,6 +185,7 @@ export async function verifyCustomerSignupOtp({
         {
           id: userId,
           email: userSession.email,
+          password_hash: 'otp_verified',
           full_name: userSession.fullName,
           phone_number: userSession.phoneNumber,
           role: 'CUSTOMER',

@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { signJwtSession } from '@/lib/auth/session';
 import { generateUsername } from '@/lib/username';
@@ -17,8 +18,9 @@ export async function POST(req: NextRequest) {
 
     const username = body.username || generateUsername(fullName);
 
+    const userId = crypto.randomUUID();
     const sessionPayload = {
-      userId: `usr-cust-${Date.now().toString(36)}`,
+      userId,
       email: email.toLowerCase().trim(),
       fullName: fullName.trim(),
       username,
@@ -41,6 +43,7 @@ export async function POST(req: NextRequest) {
           {
             id: sessionPayload.userId,
             email: sessionPayload.email,
+            password_hash: 'otp_verified',
             full_name: sessionPayload.fullName,
             phone_number: sessionPayload.phoneNumber,
             role: 'CUSTOMER',
