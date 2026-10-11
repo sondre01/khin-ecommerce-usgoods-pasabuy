@@ -108,10 +108,11 @@ export default function AdminLayout({
 
         <div className="pt-6 border-t border-[#0d3d30] space-y-3 text-xs">
           <div className="p-3 bg-[#051c16] rounded-lg border border-[#0d3d30]">
-            <span className="text-[11px] text-emerald-300/60 block">Logged In Role:</span>
-            <span className="font-bold text-gold-400 flex items-center gap-1.5 mt-0.5">
-              <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
-              HEAD_ADMIN
+            <span className="text-[11px] text-emerald-300/60 block">Logged In Admin:</span>
+            <div className="font-bold text-white text-xs mt-0.5">Khin Andrei Gamboa</div>
+            <span className="font-semibold text-gold-400 flex items-center gap-1.5 mt-0.5 text-[11px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+              @khinag • Head Admin
             </span>
           </div>
 

@@ -65,40 +65,21 @@ export default function AuthModal({
             <X className="w-5 h-5" />
           </button>
 
-          <div className="w-12 h-12 rounded-2xl bg-gold-500/20 text-gold-300 border border-gold-400/40 flex items-center justify-center mb-3 shadow-sm">
-            <ShoppingBag className="w-6 h-6 text-gold-400" />
+          <div className="w-10 h-10 rounded-xl bg-gold-500/20 text-gold-300 border border-gold-400/40 flex items-center justify-center mb-2 shadow-sm">
+            <Lock className="w-5 h-5 text-gold-400" />
           </div>
 
-          <span className="text-[10px] font-bold text-gold-300 uppercase tracking-wider block">
-            Member Access Required
-          </span>
-          <h3 className="text-xl font-black text-white mt-0.5 tracking-tight">
-            Sign Up to Unlock & Shop
+          <h3 className="text-lg font-extrabold text-white tracking-tight">
+            Sign In Required
           </h3>
           <p className="text-xs text-emerald-100/80 mt-1 leading-relaxed">
-            {reason || 'Create a free account or sign in to add items to your cart, reserve US outlet stock with a 50% deposit, and view full collections.'}
+            {reason || 'Please sign in or create an account to continue.'}
           </p>
         </div>
 
-        {/* Benefits bullets */}
-        <div className="p-6 space-y-5">
-          <div className="space-y-2 bg-brand-50/60 p-3.5 rounded-2xl border border-brand-100 text-xs text-slate-700">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Full catalog access for CK, Tommy Hilfiger, Ralph Lauren, and Lacoste</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>50% downpayment slot reservations via GCash & Maya</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Door-to-door delivery tracking straight to your home</span>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="space-y-2.5">
+        {/* Action Buttons */}
+        <div className="p-6 space-y-4">
+          <div className="space-y-2">
             <Link
               href="/signup"
               onClick={onClose}

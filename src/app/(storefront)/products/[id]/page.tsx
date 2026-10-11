@@ -94,7 +94,7 @@ export default function ProductDetailPage() {
 
   const handleAddToCart = () => {
     if (!isLoggedIn) {
-      openAuthModal(`Please sign in or create an account to add "${product.title}" to your cart.`, () => {
+      openAuthModal(`Sign in to add "${product.title}" to cart.`, () => {
         executeAddToCart();
       });
       return;
@@ -104,7 +104,7 @@ export default function ProductDetailPage() {
 
   const handleBuyNow = () => {
     if (!isLoggedIn) {
-      openAuthModal(`Please sign in or create an account to purchase "${product.title}".`, () => {
+      openAuthModal(`Sign in to order "${product.title}".`, () => {
         executeAddToCart();
         router.push('/checkout');
       });
@@ -373,7 +373,7 @@ export default function ProductDetailPage() {
                       onClick={() =>
                         requireAuth(
                           () => addToWishlist(product, { size: selectedSize }),
-                          `Please sign in or create an account to request a restock for "${product.title}".`
+                          `Sign in to request a restock for "${product.title}".`
                         )
                       }
                       className="w-full py-4 px-4 bg-gradient-to-r from-rose-600 via-rose-700 to-rose-600 hover:from-rose-700 hover:to-rose-800 text-white font-extrabold rounded-2xl text-sm flex items-center justify-center gap-2 transition shadow-lg shadow-rose-600/20 active:scale-95 ring-1 ring-rose-400/40"

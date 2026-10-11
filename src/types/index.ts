@@ -41,6 +41,7 @@ export interface User {
   id: string;
   email: string;
   fullName: string;
+  username?: string;
   phoneNumber: string;
   role: UserRole;
   shippingAddress?: {

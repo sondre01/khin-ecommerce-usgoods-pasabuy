@@ -8,6 +8,7 @@ import { useWishlist } from '@/context/wishlist-context';
 import { INITIAL_ORDERS } from '@/data/mock-data';
 import { UserAddress } from '@/types';
 import PhilippineAddressSelector, { formatPhilippineAddress } from '@/components/philippine-address-selector';
+import { generateUsername } from '@/lib/username';
 import {
   User,
   MapPin,
@@ -230,6 +231,9 @@ export default function CustomerAccountPage() {
           <div className="space-y-1">
             <div className="flex items-center gap-2 flex-wrap">
               <h1 className="text-2xl font-black text-slate-900">{user.fullName}</h1>
+              <span className="font-mono text-xs text-brand-800 bg-brand-50 px-2 py-0.5 rounded-lg font-semibold border border-brand-200">
+                @{user.username || generateUsername(user.fullName)}
+              </span>
               <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-gold-100 text-amber-900 border border-gold-300">
                 PasaBuy Customer
               </span>

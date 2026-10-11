@@ -9,6 +9,7 @@ export interface UserSession {
   userId: string;
   email: string;
   fullName: string;
+  username?: string;
   role: UserRole;
 }
 
@@ -33,6 +34,7 @@ export async function verifyJwtSession(token: string): Promise<UserSession | nul
       userId: payload.userId as string,
       email: payload.email as string,
       fullName: payload.fullName as string,
+      username: payload.username as string | undefined,
       role: payload.role as UserRole,
     };
   } catch (error) {

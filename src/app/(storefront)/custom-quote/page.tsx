@@ -132,7 +132,7 @@ function RestockInquiryContent() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!isLoggedIn) {
-      openAuthModal('Please sign in or create an account to send a restock inquiry to our seller.', () => {
+      openAuthModal('Sign in to submit your restock inquiry.', () => {
         executeSubmit();
       });
       return;
@@ -140,74 +140,30 @@ function RestockInquiryContent() {
     executeSubmit();
   };
 
-  // 1. Guest Gate: Sign In Required
+  // 1. Sign In Required (Minimal)
   if (!isLoggedIn) {
     return (
-      <div className="max-w-xl mx-auto px-4 sm:px-6 py-16 text-center space-y-6">
-        <div className="w-16 h-16 bg-brand-50 text-brand-800 rounded-3xl flex items-center justify-center mx-auto border border-brand-200 shadow-sm">
-          <Lock className="w-8 h-8 text-brand-700" />
+      <div className="max-w-md mx-auto px-4 py-20 text-center space-y-4">
+        <div className="w-14 h-14 bg-brand-50 text-brand-800 rounded-2xl flex items-center justify-center mx-auto border border-brand-200 shadow-sm">
+          <Lock className="w-6 h-6 text-brand-700" />
         </div>
-        <div className="space-y-2">
-          <span className="text-xs font-bold text-brand-800 uppercase tracking-wider block">
-            Account Required for Restocks
-          </span>
-          <h1 className="text-3xl font-black text-slate-900 tracking-tight">
-            Sign In to Request a Restock
-          </h1>
-          <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-            Missed out on a sold-out item or need a specific size? Let our seller know so we can check availability on our next US outlet shopping run.
-          </p>
-          <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-            Because we are a boutique small business, direct communication is needed. A registered account ensures our seller knows who is asking and can send live photos before securing your item.
-          </p>
+        <div className="space-y-1">
+          <h2 className="text-xl font-bold text-slate-900">Sign in to request a restock</h2>
+          <p className="text-xs text-slate-500">Sign in or register to submit restock requests to our seller.</p>
         </div>
-
-        {/* Small business & restock transparency banner */}
-        <div className="bg-amber-50/90 border border-gold-300 rounded-2xl p-4.5 text-left text-xs text-amber-950 space-y-2.5 shadow-sm">
-          <div className="flex items-center gap-2 font-bold text-amber-900 text-sm">
-            <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0" />
-            <span>How Restock Requests Work</span>
-          </div>
-          <p className="text-amber-800/95 leading-relaxed text-[11px] sm:text-xs">
-            We only restock items and brands displayed in our store (<strong>Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, Lacoste</strong>). We do not accept random product sourcing from the internet.
-          </p>
-          <ul className="space-y-1.5 text-[11px] sm:text-xs text-amber-900 font-medium pl-1">
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-3.5 h-3.5 text-emerald-700 mt-0.5 shrink-0" />
-              <span><strong>Direct Seller Communication:</strong> Our seller will message you directly via Viber / WhatsApp with actual photos from the outlet.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-3.5 h-3.5 text-emerald-700 mt-0.5 shrink-0" />
-              <span><strong>50% Deposit Only After Confirmation:</strong> No payment is required today. Settle 50% only when the seller locates your item.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="w-3.5 h-3.5 text-emerald-700 mt-0.5 shrink-0" />
-              <span><strong>Verified Customer Identity:</strong> Keeps inquiries organized and ensures fast direct updates.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="pt-2 flex flex-col sm:flex-row justify-center items-center gap-3">
+        <div className="pt-2 flex justify-center gap-3">
           <Link
             href="/signup?callbackUrl=/custom-quote"
-            className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-brand-800 to-brand-700 hover:from-brand-900 hover:to-brand-800 text-white rounded-xl text-xs font-bold transition shadow-sm ring-1 ring-gold-400/30 flex items-center justify-center gap-2"
+            className="px-5 py-2.5 bg-brand-800 hover:bg-brand-900 text-white rounded-xl text-xs font-bold transition shadow-sm ring-1 ring-gold-400/30"
           >
-            <UserCheck className="w-4 h-4 text-gold-300" />
-            <span>Create Free Account</span>
+            Create Account
           </Link>
           <Link
             href="/login?callbackUrl=/custom-quote"
-            className="w-full sm:w-auto px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition flex items-center justify-center"
+            className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition"
           >
             Sign In
           </Link>
-          <button
-            type="button"
-            onClick={() => openAuthModal('Sign in to submit your restock inquiry.')}
-            className="w-full sm:w-auto px-4 py-3 border border-brand-300 text-brand-800 hover:bg-brand-50 rounded-xl text-xs font-semibold transition"
-          >
-            Quick 1-Click Demo
-          </button>
         </div>
       </div>
     );

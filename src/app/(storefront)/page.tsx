@@ -39,8 +39,8 @@ export default function HomePage() {
   const { isInWishlist, addToWishlist } = useWishlist();
 
   const liveDropProducts = products.filter((p) => p.isLiveShoppingDrop);
-  const displayedLiveDrops = isLoggedIn ? liveDropProducts.slice(0, 4) : liveDropProducts.slice(0, 2);
-  const featuredProducts = isLoggedIn ? products.slice(0, 6) : products.slice(0, 3);
+  const displayedLiveDrops = liveDropProducts.slice(0, 4);
+  const featuredProducts = products.slice(0, 8);
 
   return (
     <div className="space-y-16 pb-16">
@@ -261,7 +261,7 @@ export default function HomePage() {
                           onClick={() =>
                             requireAuth(
                               () => addToWishlist(item),
-                              `Please sign in or create an account to request a restock for "${item.title}".`
+                              `Sign in to request a restock for "${item.title}".`
                             )
                           }
                           className="w-full py-2 bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 text-white font-bold rounded-lg text-xs text-center flex items-center justify-center gap-1.5 transition shadow-md active:scale-95"
@@ -274,7 +274,12 @@ export default function HomePage() {
                     ) : (
                       <button
                         type="button"
-                        onClick={() => requireAuth(() => router.push(`/products/${item.id}`), `Please sign in or create an account to view and order "${item.title}".`)}
+                        onClick={() =>
+                          requireAuth(
+                            () => router.push(`/products/${item.id}`),
+                            `Sign in to order "${item.title}".`
+                          )
+                        }
                         className="w-full py-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-slate-950 font-bold rounded-lg text-xs text-center block transition shadow-md"
                       >
                         View & Buy
@@ -290,10 +295,10 @@ export default function HomePage() {
             <div className="pt-2 text-center border-t border-[#0e4435]">
               <Link
                 href="/signup?callbackUrl=/products"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-gold-300 hover:text-gold-200 bg-brand-900/60 hover:bg-brand-900 px-4 py-2 rounded-xl border border-gold-400/30 transition shadow-sm"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-gold-300 hover:text-gold-200 bg-brand-900/60 hover:bg-brand-900 px-3.5 py-1.5 rounded-xl border border-gold-400/30 transition shadow-sm"
               >
-                <Sparkles className="w-3.5 h-3.5 text-gold-400" />
-                <span>Guest Preview: Sign up to load all {liveDropProducts.length} Live Drops →</span>
+                <Lock className="w-3.5 h-3.5 text-gold-400" />
+                <span>Sign up to view all {liveDropProducts.length} Live Drops →</span>
               </Link>
             </div>
           )}
@@ -552,7 +557,7 @@ export default function HomePage() {
                           onClick={() =>
                             requireAuth(
                               () => addToWishlist(prod),
-                              `Please sign in or create an account to request a restock for "${prod.title}".`
+                              `Sign in to request a restock for "${prod.title}".`
                             )
                           }
                           className="w-full py-2 text-center text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-sm ring-1 ring-rose-400/30 transition flex items-center justify-center gap-1 active:scale-95"
@@ -565,8 +570,13 @@ export default function HomePage() {
                     ) : (
                       <button
                         type="button"
-                        onClick={() => requireAuth(() => router.push(`/products/${prod.id}`), `Please sign in or create an account to pick and buy "${prod.title}".`)}
-                        className="w-full py-2 text-center text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-lg transition shadow-sm"
+                        onClick={() =>
+                          requireAuth(
+                            () => router.push(`/products/${prod.id}`),
+                            `Sign in to order "${prod.title}".`
+                          )
+                        }
+                        className="w-full py-2 text-center text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-lg transition shadow-sm block"
                       >
                         Pick & Buy
                       </button>
@@ -578,36 +588,25 @@ export default function HomePage() {
           })}
         </div>
 
-        {/* Sign Up to Load More Wall for Guests vs Full Link for Members */}
         {!isLoggedIn ? (
-          <div className="mt-10 bg-gradient-to-r from-[#051c16] via-[#093529] to-[#051c16] rounded-3xl p-8 sm:p-10 border border-gold-400/40 text-white shadow-xl text-center space-y-5 relative overflow-hidden">
-            <div className="w-14 h-14 rounded-2xl bg-gold-500/20 text-gold-300 border border-gold-400/40 flex items-center justify-center mx-auto shadow-sm">
-              <Lock className="w-7 h-7 text-gold-400" />
+          <div className="mt-8 bg-[#093529] rounded-2xl p-6 border border-gold-400/30 text-white text-center space-y-3">
+            <Lock className="w-5 h-5 text-gold-400 mx-auto" />
+            <div className="space-y-1">
+              <h3 className="text-lg font-bold text-white">Sign up to view all outlet deals</h3>
+              <p className="text-xs text-emerald-200/80">Create an account to browse full catalog and order with 50% deposit.</p>
             </div>
-            <div className="max-w-xl mx-auto space-y-2">
-              <span className="text-xs font-bold text-gold-300 uppercase tracking-wider block">
-                Guest Preview • 3 of {products.length} Deals Shown
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                Sign Up to Load More US Outlet Deals
-              </h3>
-              <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed">
-                Sign up or sign in to unlock our complete catalog for Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste, view real-time available stock, and order with a 50% deposit.
-              </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-3 pt-2">
+            <div className="flex justify-center gap-2.5 pt-1">
               <Link
                 href="/signup?callbackUrl=/products"
-                className="px-8 py-3.5 bg-gradient-to-r from-gold-500 via-gold-400 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-[#06241c] font-black rounded-xl shadow-lg shadow-gold-500/20 text-xs flex items-center gap-2 transition ring-1 ring-gold-300/40"
+                className="px-5 py-2 bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold rounded-xl text-xs transition"
               >
-                <span>Sign Up to Load More Deals</span>
-                <ArrowRight className="w-4 h-4" />
+                Sign Up
               </Link>
               <Link
                 href="/login?callbackUrl=/products"
-                className="px-6 py-3.5 bg-[#0b382c] hover:bg-[#0f4738] text-emerald-100 font-bold rounded-xl border border-gold-500/30 text-xs transition"
+                className="px-5 py-2 bg-[#051c16] hover:bg-[#07241d] text-white rounded-xl text-xs font-semibold border border-gold-500/30 transition"
               >
-                Sign In to Existing Account
+                Sign In
               </Link>
             </div>
           </div>
@@ -701,14 +700,13 @@ export default function HomePage() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto">
-              <button
-                type="button"
-                onClick={() => requireAuth(() => router.push('/custom-quote'), 'Please sign in or create an account to request an item restock.')}
+              <Link
+                href="/custom-quote"
                 className="px-6 py-3.5 bg-gradient-to-r from-gold-500 via-gold-400 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-slate-950 font-black rounded-xl text-xs transition shadow-md flex items-center justify-center gap-2"
               >
                 <span>Request Restock</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { signJwtSession } from '@/lib/auth/session';
+import { generateUsername } from '@/lib/username';
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,10 +14,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const username = body.username || generateUsername(fullName);
+
     const sessionPayload = {
       userId: `usr-cust-${Date.now().toString(36)}`,
       email: email.toLowerCase().trim(),
       fullName: fullName.trim(),
+      username,
       phoneNumber: phoneNumber || '+63 900 000 0000',
       role: 'CUSTOMER' as const,
       shippingAddress: shippingAddress || {
@@ -32,6 +36,7 @@ export async function POST(req: NextRequest) {
       userId: sessionPayload.userId,
       email: sessionPayload.email,
       fullName: sessionPayload.fullName,
+      username: sessionPayload.username,
       role: sessionPayload.role,
     });
 

@@ -180,7 +180,9 @@ export default function Navbar() {
                 <div className="w-5 h-5 rounded-full bg-brand-800 text-gold-300 text-[10px] flex items-center justify-center font-black">
                   {user.fullName.charAt(0)}
                 </div>
-                <span className="hidden sm:inline max-w-[100px] truncate">{user.fullName.split(' ')[0]}</span>
+                <span className="hidden sm:inline max-w-[120px] truncate font-mono text-[11px]">
+                  {user.username ? `@${user.username}` : user.fullName.split(' ')[0]}
+                </span>
               </Link>
               <button
                 type="button"

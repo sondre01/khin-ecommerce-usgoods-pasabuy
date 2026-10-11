@@ -30,15 +30,21 @@ export default function CheckoutPage() {
 
   // Delivery Address
   const [selectedLocationId, setSelectedLocationId] = useState<string | null>(defaultAddr?.id || null);
-  const [fullName, setFullName] = useState(defaultAddr?.recipientName || user?.fullName || 'Maria Santos');
-  const [phone, setPhone] = useState(defaultAddr?.phoneNumber || user?.phoneNumber || '0917 123 4567');
-  const [street, setStreet] = useState(defaultAddr?.street || user?.shippingAddress?.street || 'Unit 14B, Tower 2, One Serendra');
-  const [barangay, setBarangay] = useState(defaultAddr?.barangay || user?.shippingAddress?.barangay || 'Fort Bonifacio');
-  const [city, setCity] = useState(defaultAddr?.city || user?.shippingAddress?.city || 'Taguig City');
-  const [province, setProvince] = useState(defaultAddr?.province || user?.shippingAddress?.province || 'Metro Manila');
-  const [postalCode, setPostalCode] = useState(defaultAddr?.postalCode || user?.shippingAddress?.postalCode || '1634');
+  const [fullName, setFullName] = useState(defaultAddr?.recipientName || user?.fullName || '');
+  const [phone, setPhone] = useState(defaultAddr?.phoneNumber || user?.phoneNumber || '');
+  const [email, setEmail] = useState(user?.email || '');
+  const [street, setStreet] = useState(defaultAddr?.street || user?.shippingAddress?.street || '');
+  const [barangay, setBarangay] = useState(defaultAddr?.barangay || user?.shippingAddress?.barangay || '');
+  const [city, setCity] = useState(defaultAddr?.city || user?.shippingAddress?.city || '');
+  const [province, setProvince] = useState(defaultAddr?.province || user?.shippingAddress?.province || '');
+  const [postalCode, setPostalCode] = useState(defaultAddr?.postalCode || user?.shippingAddress?.postalCode || '');
 
   React.useEffect(() => {
+    if (user) {
+      if (!fullName && user.fullName) setFullName(user.fullName);
+      if (!phone && user.phoneNumber) setPhone(user.phoneNumber);
+      if (!email && user.email) setEmail(user.email);
+    }
     if (user?.addresses && user.addresses.length > 0 && !selectedLocationId) {
       const def = user.addresses.find((a) => a.isDefault) || user.addresses[0];
       setSelectedLocationId(def.id);
@@ -74,27 +80,24 @@ export default function CheckoutPage() {
 
   if (!isLoggedIn) {
     return (
-      <div className="max-w-md mx-auto px-4 py-20 text-center space-y-5">
-        <div className="w-16 h-16 bg-brand-50 text-brand-800 rounded-3xl flex items-center justify-center mx-auto border border-brand-200 shadow-sm">
-          <Lock className="w-8 h-8 text-brand-700" />
+      <div className="max-w-md mx-auto px-4 py-20 text-center space-y-4">
+        <div className="w-14 h-14 bg-brand-50 text-brand-800 rounded-2xl flex items-center justify-center mx-auto border border-brand-200 shadow-sm">
+          <Lock className="w-6 h-6 text-brand-700" />
         </div>
         <div className="space-y-1">
-          <span className="text-xs font-bold text-brand-800 uppercase tracking-wider block">Sign In Required</span>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight">Sign In to Checkout</h2>
-          <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
-            Please sign in or create an account to enter your delivery address and reserve your US outlet items with a 50% deposit.
-          </p>
+          <h2 className="text-xl font-bold text-slate-900">Sign in to checkout</h2>
+          <p className="text-xs text-slate-500">Sign in or register to complete your order.</p>
         </div>
         <div className="pt-2 flex justify-center gap-3">
           <Link
             href="/signup?callbackUrl=/checkout"
-            className="px-6 py-2.5 bg-brand-800 hover:bg-brand-900 text-white rounded-xl text-xs font-bold transition shadow-sm ring-1 ring-gold-400/30"
+            className="px-5 py-2.5 bg-brand-800 hover:bg-brand-900 text-white rounded-xl text-xs font-bold transition shadow-sm ring-1 ring-gold-400/30"
           >
-            Create an Account
+            Create Account
           </Link>
           <Link
             href="/login?callbackUrl=/checkout"
-            className="px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition"
+            className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition"
           >
             Sign In
           </Link>

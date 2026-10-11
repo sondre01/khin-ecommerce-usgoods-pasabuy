@@ -18,9 +18,10 @@ export async function middleware(req: NextRequest) {
     // If no active admin session, auto-provision local Admin session so developer is NEVER blocked by a 404
     if (!session || session.role !== 'ADMIN') {
       const adminToken = await signJwtSession({
-        userId: 'usr-admin-01',
-        email: 'admin@usgoodspasabuy.ph',
-        fullName: 'Head Logistics Admin',
+        userId: 'usr-admin-khinag',
+        email: 'khinag@usgoodspasabuy.ph',
+        fullName: 'Khin Andrei Gamboa',
+        username: 'khinag',
         role: 'ADMIN',
       });
 

@@ -11,7 +11,7 @@ function AdminLoginContent() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/admin';
 
-  const [email, setEmail] = useState('admin@usgoodspasabuy.ph');
+  const [usernameOrEmail, setUsernameOrEmail] = useState('khinag');
   const [password, setPassword] = useState('••••••••••••');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -22,10 +22,16 @@ function AdminLoginContent() {
     setError('');
 
     try {
+      const isEmail = usernameOrEmail.includes('@');
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ role: 'ADMIN' }),
+        body: JSON.stringify({
+          role: 'ADMIN',
+          fullName: 'Khin Andrei Gamboa',
+          username: isEmail ? undefined : usernameOrEmail.trim(),
+          email: isEmail ? usernameOrEmail.trim() : 'khinag@usgoodspasabuy.ph',
+        }),
       });
 
       const data = await res.json();
@@ -82,15 +88,16 @@ function AdminLoginContent() {
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block text-xs font-semibold text-emerald-200 uppercase tracking-wider mb-1.5">
-              Admin Email
+              Admin Username or Email
             </label>
             <div className="relative">
               <Mail className="w-4 h-4 text-emerald-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={usernameOrEmail}
+                onChange={(e) => setUsernameOrEmail(e.target.value)}
                 required
+                placeholder="khinag"
                 className="w-full pl-10 pr-4 py-2.5 text-xs bg-[#093529] border border-[#0e4d3a] rounded-xl text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-gold-400"
               />
             </div>
@@ -121,7 +128,7 @@ function AdminLoginContent() {
               <span>Authenticating...</span>
             ) : (
               <>
-                <span>Sign In as Head Admin (1-Click)</span>
+                <span>Sign In as Khin Andrei Gamboa (@khinag)</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </>
             )}

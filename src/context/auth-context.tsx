@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { UserRole, UserAddress } from '@/types';
+import { generateUsername } from '@/lib/username';
 
 import AuthModal from '@/components/auth-modal';
 
@@ -9,6 +10,7 @@ export interface UserSession {
   userId: string;
   email: string;
   fullName: string;
+  username?: string;
   role: UserRole;
   phoneNumber?: string;
   shippingAddress?: {
@@ -30,6 +32,7 @@ interface AuthContextType {
   signup: (userData: {
     fullName: string;
     email: string;
+    username?: string;
     password?: string;
     phoneNumber?: string;
     shippingAddress?: any;
@@ -52,6 +55,9 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 function hydrateUserData(rawUser: UserSession): UserSession {
   let userObj: UserSession = { ...rawUser };
+  if (!userObj.username && userObj.fullName) {
+    userObj.username = generateUsername(userObj.fullName);
+  }
   if (typeof window === 'undefined') return userObj;
 
   try {
@@ -60,6 +66,9 @@ function hydrateUserData(rawUser: UserSession): UserSession {
     if (storedProfile) {
       const parsed = JSON.parse(storedProfile);
       userObj = { ...userObj, ...parsed };
+      if (!userObj.username && userObj.fullName) {
+        userObj.username = generateUsername(userObj.fullName);
+      }
     }
 
     const addrKey = `pasabuy_addresses_${rawUser.userId}`;

@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
 import { useProducts } from '@/context/products-context';
 import { useWishlist } from '@/context/wishlist-context';
-import { Search, Tag, ExternalLink, ArrowRight, Radio, Sparkles, Flame, CheckCircle2, Lock, UserCheck, Heart } from 'lucide-react';
+import { Search, Tag, ExternalLink, ArrowRight, Radio, Sparkles, Flame, CheckCircle2, Lock, Heart } from 'lucide-react';
 
 const CATEGORIES = ['ALL', 'Clothes', 'Bags', 'Watches', 'Wallets', 'Caps'];
 const BRANDS = ['ALL', 'Calvin Klein', 'Tommy Hilfiger', 'Polo Ralph Lauren', 'Lacoste'];
@@ -158,27 +158,20 @@ function ProductsContent() {
         </div>
       </div>
 
-      {/* Guest Preview Notification Banner */}
+      {/* Minimal Guest Preview Banner */}
       {!isLoggedIn && (
-        <div className="bg-amber-50/90 border border-gold-300 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-amber-950 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-gold-500/20 text-amber-800 border border-gold-400/40 flex items-center justify-center shrink-0">
-              <Lock className="w-4 h-4 text-amber-700" />
-            </div>
-            <div>
-              <span className="font-bold text-amber-900 block text-xs sm:text-sm">
-                Guest Preview Mode (Showing 3 of {filtered.length} Finds)
-              </span>
-              <span className="text-[11px] text-amber-800/80">
-                Sign in or create a free account to unlock our entire collection, view real-time stock, and order with a 50% deposit.
-              </span>
-            </div>
+        <div className="bg-amber-50/90 border border-gold-300 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-amber-950 shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <Lock className="w-4 h-4 text-amber-700 shrink-0" />
+            <span>
+              <strong>Member Catalog:</strong> Sign in to see all items and order.
+            </span>
           </div>
           <Link
             href="/signup?callbackUrl=/products"
-            className="px-5 py-2 bg-gradient-to-r from-brand-800 to-brand-700 hover:from-brand-900 hover:to-brand-800 text-white font-bold rounded-xl text-xs transition shadow-sm ring-1 ring-gold-400/30 shrink-0"
+            className="px-4 py-1.5 bg-brand-800 hover:bg-brand-900 text-white font-bold rounded-xl text-xs transition shadow-sm ring-1 ring-gold-400/30 shrink-0"
           >
-            Sign Up to Unlock All →
+            Sign Up →
           </Link>
         </div>
       )}
@@ -368,7 +361,7 @@ function ProductsContent() {
                           onClick={() =>
                             requireAuth(
                               () => addToWishlist(prod),
-                              `Please sign in or create an account to request a restock for "${prod.title}".`
+                              `Sign in to request a restock for "${prod.title}".`
                             )
                           }
                           className="w-full py-2.5 text-center text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-lg shadow-sm ring-1 ring-rose-400/30 transition flex items-center justify-center gap-1 active:scale-95"
@@ -381,7 +374,12 @@ function ProductsContent() {
                     ) : (
                       <button
                         type="button"
-                        onClick={() => requireAuth(() => router.push(`/products/${prod.id}`), `Please sign in or create an account to pick and buy "${prod.title}".`)}
+                        onClick={() =>
+                          requireAuth(
+                            () => router.push(`/products/${prod.id}`),
+                            `Sign in to order "${prod.title}".`
+                          )
+                        }
                         className="w-full py-2.5 text-center text-xs font-bold text-white bg-brand-800 hover:bg-brand-900 rounded-lg shadow-sm ring-1 ring-gold-400/30 transition flex items-center justify-center gap-1"
                       >
                         <span>Pick & Buy</span>
@@ -396,40 +394,31 @@ function ProductsContent() {
         </div>
       )}
 
-      {/* Sign Up to Load More Wall for Guests */}
+      {/* Minimal Guest Prompt */}
       {!isLoggedIn && (
-        <div className="mt-10 bg-gradient-to-r from-[#051c16] via-[#093529] to-[#051c16] rounded-3xl p-8 sm:p-10 border border-gold-400/40 text-white shadow-xl text-center space-y-5 relative overflow-hidden">
-          <div className="w-14 h-14 rounded-2xl bg-gold-500/20 text-gold-300 border border-gold-400/40 flex items-center justify-center mx-auto shadow-sm">
-            <Lock className="w-7 h-7 text-gold-400" />
+        <div className="mt-8 bg-[#093529] rounded-2xl p-6 border border-gold-400/30 text-white text-center space-y-3">
+          <Lock className="w-5 h-5 text-gold-400 mx-auto" />
+          <div className="space-y-1">
+            <h3 className="text-lg font-bold text-white">Sign up to view all outlet deals</h3>
+            <p className="text-xs text-emerald-200/80">Create an account to browse full collection and place orders.</p>
           </div>
-          <div className="max-w-xl mx-auto space-y-2">
-            <span className="text-xs font-bold text-gold-300 uppercase tracking-wider block">
-              Unlock Full Member Catalog
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Sign Up to Load More US Outlet Deals
-            </h3>
-            <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed">
-              You are viewing a guest preview. Create a free account or sign in to unlock our complete catalog across Calvin Klein, Tommy Hilfiger, Polo Ralph Lauren, and Lacoste, view real-time available stock, and order with a 50% deposit.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3 pt-2">
+          <div className="flex justify-center gap-2.5 pt-1">
             <Link
               href="/signup?callbackUrl=/products"
-              className="px-8 py-3.5 bg-gradient-to-r from-gold-500 via-gold-400 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-[#06241c] font-black rounded-xl shadow-lg shadow-gold-500/20 text-xs flex items-center gap-2 transition ring-1 ring-gold-300/40"
+              className="px-5 py-2 bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold rounded-xl text-xs transition"
             >
-              <span>Sign Up to Load More Deals</span>
-              <ArrowRight className="w-4 h-4" />
+              Sign Up
             </Link>
             <Link
               href="/login?callbackUrl=/products"
-              className="px-6 py-3.5 bg-[#0b382c] hover:bg-[#0f4738] text-emerald-100 font-bold rounded-xl border border-gold-500/30 text-xs transition"
+              className="px-5 py-2 bg-[#051c16] hover:bg-[#07241d] text-white rounded-xl text-xs font-semibold border border-gold-500/30 transition"
             >
-              Sign In to Existing Account
+              Sign In
             </Link>
           </div>
         </div>
       )}
+
     </div>
   );
 }

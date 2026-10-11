@@ -4,8 +4,9 @@ import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
-import { User, Mail, Phone, Lock, MapPin, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { User, Mail, Phone, Lock, MapPin, ArrowRight, CheckCircle2, ShieldCheck, AtSign } from 'lucide-react';
 import PhilippineAddressSelector from '@/components/philippine-address-selector';
+import { generateUsername } from '@/lib/username';
 
 function SignupFormContent() {
   const router = useRouter();
@@ -49,6 +50,7 @@ function SignupFormContent() {
     try {
       const success = await signup({
         fullName,
+        username: generateUsername(fullName),
         email,
         password,
         phoneNumber,
@@ -102,11 +104,19 @@ function SignupFormContent() {
               <input
                 type="text"
                 required
-                placeholder="e.g. Maria Santos"
+                placeholder="e.g. Khin Andrei Gamboa"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 className="w-full px-4 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-700 focus:outline-none"
               />
+              {fullName.trim() && (
+                <div className="text-[11px] text-emerald-800 mt-1.5 flex items-center gap-1.5 font-medium bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+                  <AtSign className="w-3 h-3 text-emerald-600" />
+                  <span>Assigned username:</span>
+                  <strong className="text-emerald-950 font-bold font-mono">@{generateUsername(fullName)}</strong>
+                  <span className="text-slate-400 text-[10px] ml-auto">(First name + initials)</span>
+                </div>
+              )}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
