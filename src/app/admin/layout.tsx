@@ -11,10 +11,15 @@ import {
   ArrowLeft,
   LogOut,
   RefreshCw,
-  UserCheck
+  UserCheck,
+  Eye,
+  ShoppingBag,
+  ShoppingCart,
+  ExternalLink
 } from 'lucide-react';
 import { useRestock } from '@/context/restock-context';
 import { useAuth } from '@/context/auth-context';
+import { useCart } from '@/context/cart-context';
 
 export default function AdminLayout({
   children,
@@ -25,6 +30,7 @@ export default function AdminLayout({
   const router = useRouter();
   const { pendingCount } = useRestock();
   const { user } = useAuth();
+  const { totalItemsCount } = useCart();
 
   // If on login page or invitation onboarding page, don't show admin sidebar
   if (pathname === '/admin/login' || pathname === '/admin/join') {
@@ -117,6 +123,54 @@ export default function AdminLayout({
               <UserCheck className="w-4 h-4 text-emerald-400" />
               <span>Admin Team & Access</span>
             </Link>
+
+            {/* Customer Experience POV Links */}
+            <div className="pt-4 mt-3 border-t border-[#0d3d30]/60 space-y-1">
+              <span className="text-[10px] font-bold text-gold-400 uppercase tracking-wider px-3 mb-1.5 flex items-center gap-1.5">
+                <Eye className="w-3 h-3 text-gold-400" />
+                <span>Customer POV & Experience</span>
+              </span>
+
+              <Link
+                href="/products"
+                className="flex items-center justify-between px-3 py-2 rounded-lg text-slate-300 hover:bg-[#082a20] hover:text-white transition"
+                title="Observe outlet catalog from customer point of view"
+              >
+                <div className="flex items-center gap-2.5">
+                  <ShoppingBag className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Shop Deals (Catalog)</span>
+                </div>
+                <ExternalLink className="w-3 h-3 text-slate-500" />
+              </Link>
+
+              <Link
+                href="/cart"
+                className="flex items-center justify-between px-3 py-2 rounded-lg text-slate-300 hover:bg-[#082a20] hover:text-white transition"
+                title="Test shopping cart and 50% downpayment calculator"
+              >
+                <div className="flex items-center gap-2.5">
+                  <ShoppingCart className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Shopping Cart</span>
+                </div>
+                {totalItemsCount > 0 && (
+                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-gold-500 text-slate-950">
+                    {totalItemsCount}
+                  </span>
+                )}
+              </Link>
+
+              <Link
+                href="/orders"
+                className="flex items-center justify-between px-3 py-2 rounded-lg text-slate-300 hover:bg-[#082a20] hover:text-white transition"
+                title="Observe order timeline and tracking lookup from customer point of view"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Package className="w-3.5 h-3.5 text-brand-400" />
+                  <span>Customer Orders POV</span>
+                </div>
+                <ExternalLink className="w-3 h-3 text-slate-500" />
+              </Link>
+            </div>
           </nav>
         </div>
 

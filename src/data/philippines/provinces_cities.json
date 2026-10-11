@@ -1,0 +1,8830 @@
+[
+  {
+    "name": "Metro Manila (NCR)",
+    "region": "National Capital Region (NCR)",
+    "regionCode": "13",
+    "cities": [
+      {
+        "code": "137501",
+        "name": "Caloocan City",
+        "zipCode": "1400"
+      },
+      {
+        "code": "137601",
+        "name": "City of Las Piñas",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137602",
+        "name": "City of Makati",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137502",
+        "name": "City of Malabon",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137401",
+        "name": "City of Mandaluyong",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133900",
+        "name": "City of Manila",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137402",
+        "name": "City of Marikina",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137603",
+        "name": "City of Muntinlupa",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137503",
+        "name": "City of Navotas",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137604",
+        "name": "City of Parañaque",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137403",
+        "name": "City of Pasig",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137405",
+        "name": "City of San Juan",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137504",
+        "name": "City of Valenzuela",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133902",
+        "name": "Manila - Binondo",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133908",
+        "name": "Manila - Ermita",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133909",
+        "name": "Manila - Intramuros",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133910",
+        "name": "Manila - Malate",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133911",
+        "name": "Manila - Paco",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133912",
+        "name": "Manila - Pandacan",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133913",
+        "name": "Manila - Port Area",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133903",
+        "name": "Manila - Quiapo",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133906",
+        "name": "Manila - Sampaloc",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133907",
+        "name": "Manila - San Miguel",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133904",
+        "name": "Manila - San Nicolas",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133914",
+        "name": "Manila - Santa Ana",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133905",
+        "name": "Manila - Santa Cruz",
+        "zipCode": "1000"
+      },
+      {
+        "code": "133901",
+        "name": "Manila - Tondo I / Ii",
+        "zipCode": "1000"
+      },
+      {
+        "code": "137605",
+        "name": "Pasay City",
+        "zipCode": "1300"
+      },
+      {
+        "code": "137606",
+        "name": "Pateros",
+        "zipCode": "1620"
+      },
+      {
+        "code": "137404",
+        "name": "Quezon City",
+        "zipCode": "1100"
+      },
+      {
+        "code": "137607",
+        "name": "Taguig City",
+        "zipCode": "1634"
+      }
+    ]
+  },
+  {
+    "name": "Abra",
+    "region": "Cordillera Administrative Region (CAR)",
+    "regionCode": "14",
+    "cities": [
+      {
+        "code": "140101",
+        "name": "Bangued",
+        "zipCode": "2800"
+      },
+      {
+        "code": "140102",
+        "name": "Boliney",
+        "zipCode": ""
+      },
+      {
+        "code": "140103",
+        "name": "Bucay",
+        "zipCode": "2816"
+      },
+      {
+        "code": "140104",
+        "name": "Bucloc",
+        "zipCode": ""
+      },
+      {
+        "code": "140105",
+        "name": "Daguioman",
+        "zipCode": ""
+      },
+      {
+        "code": "140106",
+        "name": "Danglas",
+        "zipCode": ""
+      },
+      {
+        "code": "140107",
+        "name": "Dolores",
+        "zipCode": ""
+      },
+      {
+        "code": "140108",
+        "name": "la Paz",
+        "zipCode": "2804"
+      },
+      {
+        "code": "140109",
+        "name": "Lacub",
+        "zipCode": "2809"
+      },
+      {
+        "code": "140110",
+        "name": "Lagangilang",
+        "zipCode": "2804"
+      },
+      {
+        "code": "140111",
+        "name": "Lagayan",
+        "zipCode": "2806"
+      },
+      {
+        "code": "140112",
+        "name": "Langiden",
+        "zipCode": ""
+      },
+      {
+        "code": "140113",
+        "name": "Licuan-baay (licuan)",
+        "zipCode": ""
+      },
+      {
+        "code": "140114",
+        "name": "Luba",
+        "zipCode": "2801"
+      },
+      {
+        "code": "140115",
+        "name": "Malibcong",
+        "zipCode": ""
+      },
+      {
+        "code": "140116",
+        "name": "Manabo",
+        "zipCode": "2804"
+      },
+      {
+        "code": "140117",
+        "name": "Peñarrubia",
+        "zipCode": ""
+      },
+      {
+        "code": "140118",
+        "name": "Pidigan",
+        "zipCode": "2805"
+      },
+      {
+        "code": "140119",
+        "name": "Pilar",
+        "zipCode": "8411"
+      },
+      {
+        "code": "140120",
+        "name": "Sallapadan",
+        "zipCode": "2808"
+      },
+      {
+        "code": "140121",
+        "name": "San Isidro",
+        "zipCode": "8413"
+      },
+      {
+        "code": "140122",
+        "name": "San Juan",
+        "zipCode": "6223"
+      },
+      {
+        "code": "140123",
+        "name": "San Quintin",
+        "zipCode": ""
+      },
+      {
+        "code": "140124",
+        "name": "Tayum",
+        "zipCode": "2804"
+      },
+      {
+        "code": "140125",
+        "name": "Tineg",
+        "zipCode": "2806"
+      },
+      {
+        "code": "140126",
+        "name": "Tubo",
+        "zipCode": ""
+      },
+      {
+        "code": "140127",
+        "name": "Villaviciosa",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Agusan del Norte",
+    "region": "Region XIII (Caraga)",
+    "regionCode": "16",
+    "cities": [
+      {
+        "code": "160201",
+        "name": "Buenavista",
+        "zipCode": "8604"
+      },
+      {
+        "code": "160202",
+        "name": "Butuan City",
+        "zipCode": "8600"
+      },
+      {
+        "code": "160204",
+        "name": "Carmen",
+        "zipCode": "8109"
+      },
+      {
+        "code": "160203",
+        "name": "City of Cabadbaran",
+        "zipCode": "8610"
+      },
+      {
+        "code": "160205",
+        "name": "Jabonga",
+        "zipCode": ""
+      },
+      {
+        "code": "160206",
+        "name": "Kitcharao",
+        "zipCode": "8614"
+      },
+      {
+        "code": "160207",
+        "name": "Las Nieves",
+        "zipCode": ""
+      },
+      {
+        "code": "160208",
+        "name": "Magallanes",
+        "zipCode": ""
+      },
+      {
+        "code": "160209",
+        "name": "Nasipit",
+        "zipCode": "8609"
+      },
+      {
+        "code": "160212",
+        "name": "Remedios T. Romualdez",
+        "zipCode": ""
+      },
+      {
+        "code": "160210",
+        "name": "Santiago",
+        "zipCode": "8513"
+      },
+      {
+        "code": "160211",
+        "name": "Tubay",
+        "zipCode": "8614"
+      }
+    ]
+  },
+  {
+    "name": "Agusan del Sur",
+    "region": "Region XIII (Caraga)",
+    "regionCode": "16",
+    "cities": [
+      {
+        "code": "160302",
+        "name": "Bunawan",
+        "zipCode": "8506"
+      },
+      {
+        "code": "160301",
+        "name": "City of Bayugan",
+        "zipCode": "8609"
+      },
+      {
+        "code": "160303",
+        "name": "Esperanza",
+        "zipCode": "8609"
+      },
+      {
+        "code": "160304",
+        "name": "la Paz",
+        "zipCode": "2804"
+      },
+      {
+        "code": "160305",
+        "name": "Loreto",
+        "zipCode": ""
+      },
+      {
+        "code": "160306",
+        "name": "Prosperidad",
+        "zipCode": "8508"
+      },
+      {
+        "code": "160307",
+        "name": "Rosario",
+        "zipCode": "8607"
+      },
+      {
+        "code": "160308",
+        "name": "San Francisco",
+        "zipCode": "8419"
+      },
+      {
+        "code": "160309",
+        "name": "San Luis",
+        "zipCode": "8514"
+      },
+      {
+        "code": "160310",
+        "name": "Santa Josefa",
+        "zipCode": ""
+      },
+      {
+        "code": "160314",
+        "name": "Sibagat",
+        "zipCode": "8515"
+      },
+      {
+        "code": "160311",
+        "name": "Talacogon",
+        "zipCode": "8606"
+      },
+      {
+        "code": "160312",
+        "name": "Trento",
+        "zipCode": ""
+      },
+      {
+        "code": "160313",
+        "name": "Veruela",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Aklan",
+    "region": "Region VI (Western Visayas)",
+    "regionCode": "06",
+    "cities": [
+      {
+        "code": "060401",
+        "name": "Altavas",
+        "zipCode": "5611"
+      },
+      {
+        "code": "060402",
+        "name": "Balete",
+        "zipCode": "4217"
+      },
+      {
+        "code": "060403",
+        "name": "Banga",
+        "zipCode": "5606"
+      },
+      {
+        "code": "060404",
+        "name": "Batan",
+        "zipCode": "5604"
+      },
+      {
+        "code": "060405",
+        "name": "Buruanga",
+        "zipCode": "5603"
+      },
+      {
+        "code": "060406",
+        "name": "Ibajay",
+        "zipCode": "5605"
+      },
+      {
+        "code": "060407",
+        "name": "Kalibo",
+        "zipCode": "5600"
+      },
+      {
+        "code": "060408",
+        "name": "Lezo",
+        "zipCode": "5604"
+      },
+      {
+        "code": "060409",
+        "name": "Libacao",
+        "zipCode": "5606"
+      },
+      {
+        "code": "060410",
+        "name": "Madalag",
+        "zipCode": "5612"
+      },
+      {
+        "code": "060411",
+        "name": "Makato",
+        "zipCode": "5606"
+      },
+      {
+        "code": "060412",
+        "name": "Malay",
+        "zipCode": "5608"
+      },
+      {
+        "code": "060413",
+        "name": "Malinao",
+        "zipCode": "4514"
+      },
+      {
+        "code": "060414",
+        "name": "Nabas",
+        "zipCode": "5614"
+      },
+      {
+        "code": "060415",
+        "name": "New Washington",
+        "zipCode": "5604"
+      },
+      {
+        "code": "060416",
+        "name": "Numancia",
+        "zipCode": "5612"
+      },
+      {
+        "code": "060417",
+        "name": "Tangalan",
+        "zipCode": "5612"
+      }
+    ]
+  },
+  {
+    "name": "Albay",
+    "region": "Region V (Bicol Region)",
+    "regionCode": "05",
+    "cities": [
+      {
+        "code": "050501",
+        "name": "Bacacay",
+        "zipCode": "4511"
+      },
+      {
+        "code": "050502",
+        "name": "Camalig",
+        "zipCode": "4506"
+      },
+      {
+        "code": "050508",
+        "name": "City of Ligao",
+        "zipCode": "4520"
+      },
+      {
+        "code": "050517",
+        "name": "City of Tabaco",
+        "zipCode": "4511"
+      },
+      {
+        "code": "050503",
+        "name": "Daraga (locsin)",
+        "zipCode": ""
+      },
+      {
+        "code": "050504",
+        "name": "Guinobatan",
+        "zipCode": "4521"
+      },
+      {
+        "code": "050505",
+        "name": "Jovellar",
+        "zipCode": "4514"
+      },
+      {
+        "code": "050506",
+        "name": "Legazpi City",
+        "zipCode": "4500"
+      },
+      {
+        "code": "050507",
+        "name": "Libon",
+        "zipCode": ""
+      },
+      {
+        "code": "050509",
+        "name": "Malilipot",
+        "zipCode": "4508"
+      },
+      {
+        "code": "050510",
+        "name": "Malinao",
+        "zipCode": "4514"
+      },
+      {
+        "code": "050511",
+        "name": "Manito",
+        "zipCode": "4523"
+      },
+      {
+        "code": "050512",
+        "name": "Oas",
+        "zipCode": "4521"
+      },
+      {
+        "code": "050513",
+        "name": "Pio Duran",
+        "zipCode": ""
+      },
+      {
+        "code": "050514",
+        "name": "Polangui",
+        "zipCode": "4503"
+      },
+      {
+        "code": "050515",
+        "name": "Rapu-rapu",
+        "zipCode": "4529"
+      },
+      {
+        "code": "050516",
+        "name": "Santo Domingo (libog)",
+        "zipCode": ""
+      },
+      {
+        "code": "050518",
+        "name": "Tiwi",
+        "zipCode": "4521"
+      }
+    ]
+  },
+  {
+    "name": "Antique",
+    "region": "Region VI (Western Visayas)",
+    "regionCode": "06",
+    "cities": [
+      {
+        "code": "060601",
+        "name": "Anini-y",
+        "zipCode": ""
+      },
+      {
+        "code": "060602",
+        "name": "Barbaza",
+        "zipCode": ""
+      },
+      {
+        "code": "060603",
+        "name": "Belison",
+        "zipCode": "5713"
+      },
+      {
+        "code": "060604",
+        "name": "Bugasong",
+        "zipCode": ""
+      },
+      {
+        "code": "060605",
+        "name": "Caluya",
+        "zipCode": ""
+      },
+      {
+        "code": "060606",
+        "name": "Culasi",
+        "zipCode": "5713"
+      },
+      {
+        "code": "060608",
+        "name": "Hamtic",
+        "zipCode": ""
+      },
+      {
+        "code": "060609",
+        "name": "Laua-an",
+        "zipCode": ""
+      },
+      {
+        "code": "060610",
+        "name": "Libertad",
+        "zipCode": ""
+      },
+      {
+        "code": "060611",
+        "name": "Pandan",
+        "zipCode": "5712"
+      },
+      {
+        "code": "060612",
+        "name": "Patnongon",
+        "zipCode": "5713"
+      },
+      {
+        "code": "060613",
+        "name": "San Jose",
+        "zipCode": "8416"
+      },
+      {
+        "code": "060614",
+        "name": "San Remigio",
+        "zipCode": "6027"
+      },
+      {
+        "code": "060615",
+        "name": "Sebaste",
+        "zipCode": "5714"
+      },
+      {
+        "code": "060616",
+        "name": "Sibalom",
+        "zipCode": "5720"
+      },
+      {
+        "code": "060617",
+        "name": "Tibiao",
+        "zipCode": "5711"
+      },
+      {
+        "code": "060607",
+        "name": "Tobias Fornier (dao)",
+        "zipCode": ""
+      },
+      {
+        "code": "060618",
+        "name": "Valderrama",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Apayao",
+    "region": "Cordillera Administrative Region (CAR)",
+    "regionCode": "14",
+    "cities": [
+      {
+        "code": "148101",
+        "name": "Calanasan (bayag)",
+        "zipCode": ""
+      },
+      {
+        "code": "148102",
+        "name": "Conner",
+        "zipCode": ""
+      },
+      {
+        "code": "148103",
+        "name": "Flora",
+        "zipCode": ""
+      },
+      {
+        "code": "148104",
+        "name": "Kabugao",
+        "zipCode": ""
+      },
+      {
+        "code": "148105",
+        "name": "Luna",
+        "zipCode": "2513"
+      },
+      {
+        "code": "148106",
+        "name": "Pudtol",
+        "zipCode": ""
+      },
+      {
+        "code": "148107",
+        "name": "Santa Marcela",
+        "zipCode": "2608"
+      }
+    ]
+  },
+  {
+    "name": "Aurora",
+    "region": "Region III (Central Luzon)",
+    "regionCode": "03",
+    "cities": [
+      {
+        "code": "037701",
+        "name": "Baler",
+        "zipCode": "3200"
+      },
+      {
+        "code": "037702",
+        "name": "Casiguran",
+        "zipCode": "3209"
+      },
+      {
+        "code": "037703",
+        "name": "Dilasag",
+        "zipCode": "3208"
+      },
+      {
+        "code": "037704",
+        "name": "Dinalungan",
+        "zipCode": "3203"
+      },
+      {
+        "code": "037705",
+        "name": "Dingalan",
+        "zipCode": "3206"
+      },
+      {
+        "code": "037706",
+        "name": "Dipaculao",
+        "zipCode": "3204"
+      },
+      {
+        "code": "037707",
+        "name": "Maria Aurora",
+        "zipCode": ""
+      },
+      {
+        "code": "037708",
+        "name": "San Luis",
+        "zipCode": "8514"
+      }
+    ]
+  },
+  {
+    "name": "Basilan",
+    "region": "Autonomous Region in Muslim Mindanao (ARMM)",
+    "regionCode": "15",
+    "cities": [
+      {
+        "code": "150708",
+        "name": "Akbar",
+        "zipCode": ""
+      },
+      {
+        "code": "150709",
+        "name": "Al-barka",
+        "zipCode": "7305"
+      },
+      {
+        "code": "150702",
+        "name": "City of Lamitan",
+        "zipCode": "7302"
+      },
+      {
+        "code": "150710",
+        "name": "Hadji Mohammad Ajul",
+        "zipCode": "7305"
+      },
+      {
+        "code": "150712",
+        "name": "Hadji Muhtamad",
+        "zipCode": ""
+      },
+      {
+        "code": "150703",
+        "name": "Lantawan",
+        "zipCode": "7305"
+      },
+      {
+        "code": "150704",
+        "name": "Maluso",
+        "zipCode": "7304"
+      },
+      {
+        "code": "150705",
+        "name": "Sumisip",
+        "zipCode": "7304"
+      },
+      {
+        "code": "150713",
+        "name": "Tabuan-lasa",
+        "zipCode": ""
+      },
+      {
+        "code": "150706",
+        "name": "Tipo-tipo",
+        "zipCode": "7305"
+      },
+      {
+        "code": "150707",
+        "name": "Tuburan",
+        "zipCode": "6045"
+      },
+      {
+        "code": "150711",
+        "name": "Ungkaya Pukan",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Bataan",
+    "region": "Region III (Central Luzon)",
+    "regionCode": "03",
+    "cities": [
+      {
+        "code": "030801",
+        "name": "Abucay",
+        "zipCode": "2105"
+      },
+      {
+        "code": "030802",
+        "name": "Bagac",
+        "zipCode": "2107"
+      },
+      {
+        "code": "030803",
+        "name": "City of Balanga",
+        "zipCode": "2100"
+      },
+      {
+        "code": "030804",
+        "name": "Dinalupihan",
+        "zipCode": "2103"
+      },
+      {
+        "code": "030805",
+        "name": "Hermosa",
+        "zipCode": "2107"
+      },
+      {
+        "code": "030806",
+        "name": "Limay",
+        "zipCode": "2105"
+      },
+      {
+        "code": "030807",
+        "name": "Mariveles",
+        "zipCode": "2105"
+      },
+      {
+        "code": "030808",
+        "name": "Morong",
+        "zipCode": "1948"
+      },
+      {
+        "code": "030809",
+        "name": "Orani",
+        "zipCode": "2106"
+      },
+      {
+        "code": "030810",
+        "name": "Orion",
+        "zipCode": "2109"
+      },
+      {
+        "code": "030811",
+        "name": "Pilar",
+        "zipCode": "8411"
+      },
+      {
+        "code": "030812",
+        "name": "Samal",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Batanes",
+    "region": "Region II (Cagayan Valley)",
+    "regionCode": "02",
+    "cities": [
+      {
+        "code": "020901",
+        "name": "Basco",
+        "zipCode": "3900"
+      },
+      {
+        "code": "020902",
+        "name": "Itbayat",
+        "zipCode": "3905"
+      },
+      {
+        "code": "020903",
+        "name": "Ivana",
+        "zipCode": "3901"
+      },
+      {
+        "code": "020904",
+        "name": "Mahatao",
+        "zipCode": "3903"
+      },
+      {
+        "code": "020905",
+        "name": "Sabtang",
+        "zipCode": "3905"
+      },
+      {
+        "code": "020906",
+        "name": "Uyugan",
+        "zipCode": "3905"
+      }
+    ]
+  },
+  {
+    "name": "Batangas",
+    "region": "Region IV-A (CALABARZON)",
+    "regionCode": "04",
+    "cities": [
+      {
+        "code": "041001",
+        "name": "Agoncillo",
+        "zipCode": "4205"
+      },
+      {
+        "code": "041002",
+        "name": "Alitagtag",
+        "zipCode": ""
+      },
+      {
+        "code": "041003",
+        "name": "Balayan",
+        "zipCode": "4207"
+      },
+      {
+        "code": "041004",
+        "name": "Balete",
+        "zipCode": "4217"
+      },
+      {
+        "code": "041005",
+        "name": "Batangas City",
+        "zipCode": "4200"
+      },
+      {
+        "code": "041006",
+        "name": "Bauan",
+        "zipCode": "4205"
+      },
+      {
+        "code": "041007",
+        "name": "Calaca",
+        "zipCode": "4218"
+      },
+      {
+        "code": "041008",
+        "name": "Calatagan",
+        "zipCode": ""
+      },
+      {
+        "code": "041031",
+        "name": "City of Tanauan",
+        "zipCode": "6521"
+      },
+      {
+        "code": "041009",
+        "name": "Cuenca",
+        "zipCode": ""
+      },
+      {
+        "code": "041010",
+        "name": "Ibaan",
+        "zipCode": "4231"
+      },
+      {
+        "code": "041011",
+        "name": "Laurel",
+        "zipCode": ""
+      },
+      {
+        "code": "041012",
+        "name": "Lemery",
+        "zipCode": "4217"
+      },
+      {
+        "code": "041013",
+        "name": "Lian",
+        "zipCode": "4217"
+      },
+      {
+        "code": "041014",
+        "name": "Lipa City",
+        "zipCode": "4217"
+      },
+      {
+        "code": "041015",
+        "name": "Lobo",
+        "zipCode": "4228"
+      },
+      {
+        "code": "041016",
+        "name": "Mabini",
+        "zipCode": "6327"
+      },
+      {
+        "code": "041017",
+        "name": "Malvar",
+        "zipCode": "4233"
+      },
+      {
+        "code": "041018",
+        "name": "Mataasnakahoy",
+        "zipCode": "4211"
+      },
+      {
+        "code": "041019",
+        "name": "Nasugbu",
+        "zipCode": "4230"
+      },
+      {
+        "code": "041020",
+        "name": "Padre Garcia",
+        "zipCode": "4222"
+      },
+      {
+        "code": "041021",
+        "name": "Rosario",
+        "zipCode": "8607"
+      },
+      {
+        "code": "041022",
+        "name": "San Jose",
+        "zipCode": "8416"
+      },
+      {
+        "code": "041023",
+        "name": "San Juan",
+        "zipCode": "6223"
+      },
+      {
+        "code": "041024",
+        "name": "San Luis",
+        "zipCode": "8514"
+      },
+      {
+        "code": "041025",
+        "name": "San Nicolas",
+        "zipCode": "2414"
+      },
+      {
+        "code": "041026",
+        "name": "San Pascual",
+        "zipCode": ""
+      },
+      {
+        "code": "041027",
+        "name": "Santa Teresita",
+        "zipCode": ""
+      },
+      {
+        "code": "041028",
+        "name": "Santo Tomas",
+        "zipCode": "2426"
+      },
+      {
+        "code": "041029",
+        "name": "Taal",
+        "zipCode": "4208"
+      },
+      {
+        "code": "041030",
+        "name": "Talisay",
+        "zipCode": "6045"
+      },
+      {
+        "code": "041032",
+        "name": "Taysan",
+        "zipCode": "4231"
+      },
+      {
+        "code": "041033",
+        "name": "Tingloy",
+        "zipCode": "4208"
+      },
+      {
+        "code": "041034",
+        "name": "Tuy",
+        "zipCode": "4208"
+      }
+    ]
+  },
+  {
+    "name": "Benguet",
+    "region": "Cordillera Administrative Region (CAR)",
+    "regionCode": "14",
+    "cities": [
+      {
+        "code": "141101",
+        "name": "Atok",
+        "zipCode": "2604"
+      },
+      {
+        "code": "141102",
+        "name": "Baguio City",
+        "zipCode": "2600"
+      },
+      {
+        "code": "141103",
+        "name": "Bakun",
+        "zipCode": ""
+      },
+      {
+        "code": "141104",
+        "name": "Bokod",
+        "zipCode": ""
+      },
+      {
+        "code": "141105",
+        "name": "Buguias",
+        "zipCode": "2607"
+      },
+      {
+        "code": "141106",
+        "name": "Itogon",
+        "zipCode": "2603"
+      },
+      {
+        "code": "141107",
+        "name": "Kabayan",
+        "zipCode": ""
+      },
+      {
+        "code": "141108",
+        "name": "Kapangan",
+        "zipCode": "2606"
+      },
+      {
+        "code": "141109",
+        "name": "Kibungan",
+        "zipCode": ""
+      },
+      {
+        "code": "141110",
+        "name": "la Trinidad",
+        "zipCode": "2601"
+      },
+      {
+        "code": "141111",
+        "name": "Mankayan",
+        "zipCode": "2602"
+      },
+      {
+        "code": "141112",
+        "name": "Sablan",
+        "zipCode": "2603"
+      },
+      {
+        "code": "141113",
+        "name": "Tuba",
+        "zipCode": "2602"
+      },
+      {
+        "code": "141114",
+        "name": "Tublay",
+        "zipCode": "2608"
+      }
+    ]
+  },
+  {
+    "name": "Biliran",
+    "region": "Region VIII (Eastern Visayas)",
+    "regionCode": "08",
+    "cities": [
+      {
+        "code": "087801",
+        "name": "Almeria",
+        "zipCode": "6542"
+      },
+      {
+        "code": "087802",
+        "name": "Biliran",
+        "zipCode": ""
+      },
+      {
+        "code": "087803",
+        "name": "Cabucgayan",
+        "zipCode": ""
+      },
+      {
+        "code": "087804",
+        "name": "Caibiran",
+        "zipCode": "6542"
+      },
+      {
+        "code": "087805",
+        "name": "Culaba",
+        "zipCode": "6543"
+      },
+      {
+        "code": "087806",
+        "name": "Kawayan",
+        "zipCode": "6545"
+      },
+      {
+        "code": "087807",
+        "name": "Maripipi",
+        "zipCode": "6544"
+      },
+      {
+        "code": "087808",
+        "name": "Naval",
+        "zipCode": "6541"
+      }
+    ]
+  },
+  {
+    "name": "Bohol",
+    "region": "Region VII (Central Visayas)",
+    "regionCode": "07",
+    "cities": [
+      {
+        "code": "071201",
+        "name": "Alburquerque",
+        "zipCode": "6342"
+      },
+      {
+        "code": "071202",
+        "name": "Alicia",
+        "zipCode": "6318"
+      },
+      {
+        "code": "071203",
+        "name": "Anda",
+        "zipCode": "6319"
+      },
+      {
+        "code": "071204",
+        "name": "Antequera",
+        "zipCode": "6312"
+      },
+      {
+        "code": "071205",
+        "name": "Baclayon",
+        "zipCode": "6308"
+      },
+      {
+        "code": "071206",
+        "name": "Balilihan",
+        "zipCode": "6340"
+      },
+      {
+        "code": "071207",
+        "name": "Batuan",
+        "zipCode": ""
+      },
+      {
+        "code": "071248",
+        "name": "Bien Unido",
+        "zipCode": ""
+      },
+      {
+        "code": "071208",
+        "name": "Bilar",
+        "zipCode": ""
+      },
+      {
+        "code": "071209",
+        "name": "Buenavista",
+        "zipCode": "8604"
+      },
+      {
+        "code": "071210",
+        "name": "Calape",
+        "zipCode": "6340"
+      },
+      {
+        "code": "071211",
+        "name": "Candijay",
+        "zipCode": "6318"
+      },
+      {
+        "code": "071212",
+        "name": "Carmen",
+        "zipCode": "8109"
+      },
+      {
+        "code": "071213",
+        "name": "Catigbian",
+        "zipCode": "6318"
+      },
+      {
+        "code": "071214",
+        "name": "Clarin",
+        "zipCode": "7203"
+      },
+      {
+        "code": "071215",
+        "name": "Corella",
+        "zipCode": "6341"
+      },
+      {
+        "code": "071216",
+        "name": "Cortes",
+        "zipCode": ""
+      },
+      {
+        "code": "071217",
+        "name": "Dagohoy",
+        "zipCode": ""
+      },
+      {
+        "code": "071218",
+        "name": "Danao",
+        "zipCode": "6006"
+      },
+      {
+        "code": "071219",
+        "name": "Dauis",
+        "zipCode": "6331"
+      },
+      {
+        "code": "071220",
+        "name": "Dimiao",
+        "zipCode": "6308"
+      },
+      {
+        "code": "071221",
+        "name": "Duero",
+        "zipCode": "6315"
+      },
+      {
+        "code": "071222",
+        "name": "Garcia Hernandez",
+        "zipCode": "6313"
+      },
+      {
+        "code": "071223",
+        "name": "Guindulman",
+        "zipCode": "6314"
+      },
+      {
+        "code": "071224",
+        "name": "Inabanga",
+        "zipCode": "6321"
+      },
+      {
+        "code": "071225",
+        "name": "Jagna",
+        "zipCode": "6309"
+      },
+      {
+        "code": "071226",
+        "name": "Jetafe",
+        "zipCode": ""
+      },
+      {
+        "code": "071227",
+        "name": "Lila",
+        "zipCode": ""
+      },
+      {
+        "code": "071228",
+        "name": "Loay",
+        "zipCode": "6306"
+      },
+      {
+        "code": "071229",
+        "name": "Loboc",
+        "zipCode": "6308"
+      },
+      {
+        "code": "071230",
+        "name": "Loon",
+        "zipCode": ""
+      },
+      {
+        "code": "071231",
+        "name": "Mabini",
+        "zipCode": "6327"
+      },
+      {
+        "code": "071232",
+        "name": "Maribojoc",
+        "zipCode": ""
+      },
+      {
+        "code": "071233",
+        "name": "Panglao",
+        "zipCode": "6340"
+      },
+      {
+        "code": "071234",
+        "name": "Pilar",
+        "zipCode": "8411"
+      },
+      {
+        "code": "071235",
+        "name": "Pres. Carlos P. Garcia (pitogo)",
+        "zipCode": ""
+      },
+      {
+        "code": "071236",
+        "name": "Sagbayan (borja)",
+        "zipCode": ""
+      },
+      {
+        "code": "071237",
+        "name": "San Isidro",
+        "zipCode": "8413"
+      },
+      {
+        "code": "071238",
+        "name": "San Miguel",
+        "zipCode": "3011"
+      },
+      {
+        "code": "071239",
+        "name": "Sevilla",
+        "zipCode": "6331"
+      },
+      {
+        "code": "071240",
+        "name": "Sierra Bullones",
+        "zipCode": "6317"
+      },
+      {
+        "code": "071241",
+        "name": "Sikatuna",
+        "zipCode": "6314"
+      },
+      {
+        "code": "071242",
+        "name": "Tagbilaran City",
+        "zipCode": "6300"
+      },
+      {
+        "code": "071243",
+        "name": "Talibon",
+        "zipCode": "6320"
+      },
+      {
+        "code": "071244",
+        "name": "Trinidad",
+        "zipCode": "6344"
+      },
+      {
+        "code": "071245",
+        "name": "Tubigon",
+        "zipCode": "6311"
+      },
+      {
+        "code": "071246",
+        "name": "Ubay",
+        "zipCode": "6315"
+      },
+      {
+        "code": "071247",
+        "name": "Valencia",
+        "zipCode": "8709"
+      }
+    ]
+  },
+  {
+    "name": "Bukidnon",
+    "region": "Region X (Northern Mindanao)",
+    "regionCode": "10",
+    "cities": [
+      {
+        "code": "101301",
+        "name": "Baungon",
+        "zipCode": "8712"
+      },
+      {
+        "code": "101322",
+        "name": "Cabanglasan",
+        "zipCode": "8716"
+      },
+      {
+        "code": "101312",
+        "name": "City of Malaybalay",
+        "zipCode": "8700"
+      },
+      {
+        "code": "101321",
+        "name": "City of Valencia",
+        "zipCode": "8709"
+      },
+      {
+        "code": "101302",
+        "name": "Damulog",
+        "zipCode": ""
+      },
+      {
+        "code": "101303",
+        "name": "Dangcagan",
+        "zipCode": "8713"
+      },
+      {
+        "code": "101304",
+        "name": "Don Carlos",
+        "zipCode": "8714"
+      },
+      {
+        "code": "101305",
+        "name": "Impasug-ong",
+        "zipCode": "8710"
+      },
+      {
+        "code": "101306",
+        "name": "Kadingilan",
+        "zipCode": "8711"
+      },
+      {
+        "code": "101307",
+        "name": "Kalilangan",
+        "zipCode": ""
+      },
+      {
+        "code": "101308",
+        "name": "Kibawe",
+        "zipCode": "8712"
+      },
+      {
+        "code": "101309",
+        "name": "Kitaotao",
+        "zipCode": "8711"
+      },
+      {
+        "code": "101310",
+        "name": "Lantapan",
+        "zipCode": "8711"
+      },
+      {
+        "code": "101311",
+        "name": "Libona",
+        "zipCode": "8712"
+      },
+      {
+        "code": "101313",
+        "name": "Malitbog",
+        "zipCode": "8714"
+      },
+      {
+        "code": "101314",
+        "name": "Manolo Fortich",
+        "zipCode": "8705"
+      },
+      {
+        "code": "101315",
+        "name": "Maramag",
+        "zipCode": "8710"
+      },
+      {
+        "code": "101316",
+        "name": "Pangantucan",
+        "zipCode": "8711"
+      },
+      {
+        "code": "101317",
+        "name": "Quezon",
+        "zipCode": "8714"
+      },
+      {
+        "code": "101318",
+        "name": "San Fernando",
+        "zipCode": "8712"
+      },
+      {
+        "code": "101319",
+        "name": "Sumilao",
+        "zipCode": "8711"
+      },
+      {
+        "code": "101320",
+        "name": "Talakag",
+        "zipCode": "8712"
+      }
+    ]
+  },
+  {
+    "name": "Bulacan",
+    "region": "Region III (Central Luzon)",
+    "regionCode": "03",
+    "cities": [
+      {
+        "code": "031401",
+        "name": "Angat",
+        "zipCode": "3014"
+      },
+      {
+        "code": "031402",
+        "name": "Balagtas (bigaa)",
+        "zipCode": ""
+      },
+      {
+        "code": "031403",
+        "name": "Baliuag",
+        "zipCode": ""
+      },
+      {
+        "code": "031404",
+        "name": "Bocaue",
+        "zipCode": "3016"
+      },
+      {
+        "code": "031405",
+        "name": "Bulacan",
+        "zipCode": ""
+      },
+      {
+        "code": "031406",
+        "name": "Bustos",
+        "zipCode": "3014"
+      },
+      {
+        "code": "031407",
+        "name": "Calumpit",
+        "zipCode": "3014"
+      },
+      {
+        "code": "031410",
+        "name": "City of Malolos",
+        "zipCode": "3000"
+      },
+      {
+        "code": "031412",
+        "name": "City of Meycauayan",
+        "zipCode": "3020"
+      },
+      {
+        "code": "031420",
+        "name": "City of San Jose del Monte",
+        "zipCode": "3023"
+      },
+      {
+        "code": "031424",
+        "name": "Doña Remedios Trinidad",
+        "zipCode": ""
+      },
+      {
+        "code": "031408",
+        "name": "Guiguinto",
+        "zipCode": "3015"
+      },
+      {
+        "code": "031409",
+        "name": "Hagonoy",
+        "zipCode": "8004"
+      },
+      {
+        "code": "031411",
+        "name": "Marilao",
+        "zipCode": "3019"
+      },
+      {
+        "code": "031413",
+        "name": "Norzagaray",
+        "zipCode": "3013"
+      },
+      {
+        "code": "031414",
+        "name": "Obando",
+        "zipCode": "3016"
+      },
+      {
+        "code": "031415",
+        "name": "Pandi",
+        "zipCode": "3016"
+      },
+      {
+        "code": "031416",
+        "name": "Paombong",
+        "zipCode": "3012"
+      },
+      {
+        "code": "031417",
+        "name": "Plaridel",
+        "zipCode": "7209"
+      },
+      {
+        "code": "031418",
+        "name": "Pulilan",
+        "zipCode": "3016"
+      },
+      {
+        "code": "031419",
+        "name": "San Ildefonso",
+        "zipCode": ""
+      },
+      {
+        "code": "031421",
+        "name": "San Miguel",
+        "zipCode": "3011"
+      },
+      {
+        "code": "031422",
+        "name": "San Rafael",
+        "zipCode": "3011"
+      },
+      {
+        "code": "031423",
+        "name": "Santa Maria",
+        "zipCode": "8014"
+      }
+    ]
+  },
+  {
+    "name": "Cagayan",
+    "region": "Region II (Cagayan Valley)",
+    "regionCode": "02",
+    "cities": [
+      {
+        "code": "021501",
+        "name": "Abulug",
+        "zipCode": "3521"
+      },
+      {
+        "code": "021502",
+        "name": "Alcala",
+        "zipCode": "3514"
+      },
+      {
+        "code": "021503",
+        "name": "Allacapan",
+        "zipCode": "3504"
+      },
+      {
+        "code": "021504",
+        "name": "Amulung",
+        "zipCode": "3504"
+      },
+      {
+        "code": "021505",
+        "name": "Aparri",
+        "zipCode": "3504"
+      },
+      {
+        "code": "021506",
+        "name": "Baggao",
+        "zipCode": "3513"
+      },
+      {
+        "code": "021507",
+        "name": "Ballesteros",
+        "zipCode": "3526"
+      },
+      {
+        "code": "021508",
+        "name": "Buguey",
+        "zipCode": "3521"
+      },
+      {
+        "code": "021509",
+        "name": "Calayan",
+        "zipCode": "3508"
+      },
+      {
+        "code": "021510",
+        "name": "Camalaniugan",
+        "zipCode": ""
+      },
+      {
+        "code": "021511",
+        "name": "Claveria",
+        "zipCode": "9004"
+      },
+      {
+        "code": "021512",
+        "name": "Enrile",
+        "zipCode": ""
+      },
+      {
+        "code": "021513",
+        "name": "Gattaran",
+        "zipCode": ""
+      },
+      {
+        "code": "021514",
+        "name": "Gonzaga",
+        "zipCode": "3523"
+      },
+      {
+        "code": "021515",
+        "name": "Iguig",
+        "zipCode": "3511"
+      },
+      {
+        "code": "021516",
+        "name": "Lal-lo",
+        "zipCode": "3504"
+      },
+      {
+        "code": "021517",
+        "name": "Lasam",
+        "zipCode": ""
+      },
+      {
+        "code": "021518",
+        "name": "Pamplona",
+        "zipCode": "6216"
+      },
+      {
+        "code": "021519",
+        "name": "Peñablanca",
+        "zipCode": ""
+      },
+      {
+        "code": "021520",
+        "name": "Piat",
+        "zipCode": "3506"
+      },
+      {
+        "code": "021521",
+        "name": "Rizal",
+        "zipCode": "3805"
+      },
+      {
+        "code": "021522",
+        "name": "Sanchez-mira",
+        "zipCode": "3521"
+      },
+      {
+        "code": "021523",
+        "name": "Santa Ana",
+        "zipCode": "2016"
+      },
+      {
+        "code": "021524",
+        "name": "Santa Praxedes",
+        "zipCode": ""
+      },
+      {
+        "code": "021525",
+        "name": "Santa Teresita",
+        "zipCode": ""
+      },
+      {
+        "code": "021526",
+        "name": "Santo Niño (faire)",
+        "zipCode": ""
+      },
+      {
+        "code": "021527",
+        "name": "Solana",
+        "zipCode": ""
+      },
+      {
+        "code": "021528",
+        "name": "Tuao",
+        "zipCode": "3504"
+      },
+      {
+        "code": "021529",
+        "name": "Tuguegarao City",
+        "zipCode": "3500"
+      }
+    ]
+  },
+  {
+    "name": "Camarines Norte",
+    "region": "Region V (Bicol Region)",
+    "regionCode": "05",
+    "cities": [
+      {
+        "code": "051601",
+        "name": "Basud",
+        "zipCode": "2911"
+      },
+      {
+        "code": "051602",
+        "name": "Capalonga",
+        "zipCode": ""
+      },
+      {
+        "code": "051603",
+        "name": "Daet",
+        "zipCode": "4600"
+      },
+      {
+        "code": "051605",
+        "name": "Jose Panganiban",
+        "zipCode": "4620"
+      },
+      {
+        "code": "051606",
+        "name": "Labo",
+        "zipCode": "4618"
+      },
+      {
+        "code": "051607",
+        "name": "Mercedes",
+        "zipCode": ""
+      },
+      {
+        "code": "051608",
+        "name": "Paracale",
+        "zipCode": ""
+      },
+      {
+        "code": "051604",
+        "name": "San Lorenzo Ruiz (imelda)",
+        "zipCode": ""
+      },
+      {
+        "code": "051609",
+        "name": "San Vicente",
+        "zipCode": "6409"
+      },
+      {
+        "code": "051610",
+        "name": "Santa Elena",
+        "zipCode": "4619"
+      },
+      {
+        "code": "051611",
+        "name": "Talisay",
+        "zipCode": "6045"
+      },
+      {
+        "code": "051612",
+        "name": "Vinzons",
+        "zipCode": "4705"
+      }
+    ]
+  },
+  {
+    "name": "Camarines Sur",
+    "region": "Region V (Bicol Region)",
+    "regionCode": "05",
+    "cities": [
+      {
+        "code": "051701",
+        "name": "Baao",
+        "zipCode": "4419"
+      },
+      {
+        "code": "051702",
+        "name": "Balatan",
+        "zipCode": "4417"
+      },
+      {
+        "code": "051703",
+        "name": "Bato",
+        "zipCode": "4415"
+      },
+      {
+        "code": "051704",
+        "name": "Bombon",
+        "zipCode": ""
+      },
+      {
+        "code": "051705",
+        "name": "Buhi",
+        "zipCode": "4421"
+      },
+      {
+        "code": "051706",
+        "name": "Bula",
+        "zipCode": ""
+      },
+      {
+        "code": "051707",
+        "name": "Cabusao",
+        "zipCode": "4418"
+      },
+      {
+        "code": "051708",
+        "name": "Calabanga",
+        "zipCode": "4414"
+      },
+      {
+        "code": "051709",
+        "name": "Camaligan",
+        "zipCode": "4419"
+      },
+      {
+        "code": "051710",
+        "name": "Canaman",
+        "zipCode": "4411"
+      },
+      {
+        "code": "051711",
+        "name": "Caramoan",
+        "zipCode": "4436"
+      },
+      {
+        "code": "051712",
+        "name": "del Gallego",
+        "zipCode": ""
+      },
+      {
+        "code": "051713",
+        "name": "Gainza",
+        "zipCode": "4405"
+      },
+      {
+        "code": "051714",
+        "name": "Garchitorena",
+        "zipCode": "4427"
+      },
+      {
+        "code": "051715",
+        "name": "Goa",
+        "zipCode": ""
+      },
+      {
+        "code": "051716",
+        "name": "Iriga City",
+        "zipCode": "4427"
+      },
+      {
+        "code": "051717",
+        "name": "Lagonoy",
+        "zipCode": ""
+      },
+      {
+        "code": "051718",
+        "name": "Libmanan",
+        "zipCode": "4418"
+      },
+      {
+        "code": "051719",
+        "name": "Lupi",
+        "zipCode": "4427"
+      },
+      {
+        "code": "051720",
+        "name": "Magarao",
+        "zipCode": ""
+      },
+      {
+        "code": "051721",
+        "name": "Milaor",
+        "zipCode": "4417"
+      },
+      {
+        "code": "051722",
+        "name": "Minalabac",
+        "zipCode": ""
+      },
+      {
+        "code": "051723",
+        "name": "Nabua",
+        "zipCode": "4418"
+      },
+      {
+        "code": "051724",
+        "name": "Naga City",
+        "zipCode": "6037"
+      },
+      {
+        "code": "051725",
+        "name": "Ocampo",
+        "zipCode": "4417"
+      },
+      {
+        "code": "051726",
+        "name": "Pamplona",
+        "zipCode": "6216"
+      },
+      {
+        "code": "051727",
+        "name": "Pasacao",
+        "zipCode": "4417"
+      },
+      {
+        "code": "051728",
+        "name": "Pili",
+        "zipCode": "4418"
+      },
+      {
+        "code": "051729",
+        "name": "Presentacion (parubcan)",
+        "zipCode": ""
+      },
+      {
+        "code": "051730",
+        "name": "Ragay",
+        "zipCode": ""
+      },
+      {
+        "code": "051731",
+        "name": "Sagñay",
+        "zipCode": ""
+      },
+      {
+        "code": "051732",
+        "name": "San Fernando",
+        "zipCode": "8712"
+      },
+      {
+        "code": "051733",
+        "name": "San Jose",
+        "zipCode": "8416"
+      },
+      {
+        "code": "051734",
+        "name": "Sipocot",
+        "zipCode": "4419"
+      },
+      {
+        "code": "051735",
+        "name": "Siruma",
+        "zipCode": ""
+      },
+      {
+        "code": "051736",
+        "name": "Tigaon",
+        "zipCode": ""
+      },
+      {
+        "code": "051737",
+        "name": "Tinambac",
+        "zipCode": "4418"
+      }
+    ]
+  },
+  {
+    "name": "Camiguin",
+    "region": "Region X (Northern Mindanao)",
+    "regionCode": "10",
+    "cities": [
+      {
+        "code": "101801",
+        "name": "Catarman",
+        "zipCode": "9103"
+      },
+      {
+        "code": "101802",
+        "name": "Guinsiliban",
+        "zipCode": "9106"
+      },
+      {
+        "code": "101803",
+        "name": "Mahinog",
+        "zipCode": "9104"
+      },
+      {
+        "code": "101804",
+        "name": "Mambajao",
+        "zipCode": "9102"
+      },
+      {
+        "code": "101805",
+        "name": "Sagay",
+        "zipCode": "9109"
+      }
+    ]
+  },
+  {
+    "name": "Capiz",
+    "region": "Region VI (Western Visayas)",
+    "regionCode": "06",
+    "cities": [
+      {
+        "code": "061901",
+        "name": "Cuartero",
+        "zipCode": "5805"
+      },
+      {
+        "code": "061902",
+        "name": "Dao",
+        "zipCode": ""
+      },
+      {
+        "code": "061903",
+        "name": "Dumalag",
+        "zipCode": ""
+      },
+      {
+        "code": "061904",
+        "name": "Dumarao",
+        "zipCode": "5806"
+      },
+      {
+        "code": "061905",
+        "name": "Ivisan",
+        "zipCode": "5813"
+      },
+      {
+        "code": "061906",
+        "name": "Jamindan",
+        "zipCode": "5805"
+      },
+      {
+        "code": "061907",
+        "name": "Ma-ayon",
+        "zipCode": ""
+      },
+      {
+        "code": "061908",
+        "name": "Mambusao",
+        "zipCode": "5812"
+      },
+      {
+        "code": "061909",
+        "name": "Panay",
+        "zipCode": ""
+      },
+      {
+        "code": "061910",
+        "name": "Panitan",
+        "zipCode": "5808"
+      },
+      {
+        "code": "061911",
+        "name": "Pilar",
+        "zipCode": "8411"
+      },
+      {
+        "code": "061912",
+        "name": "Pontevedra",
+        "zipCode": "6119"
+      },
+      {
+        "code": "061913",
+        "name": "President Roxas",
+        "zipCode": ""
+      },
+      {
+        "code": "061914",
+        "name": "Roxas City",
+        "zipCode": "5800"
+      },
+      {
+        "code": "061915",
+        "name": "Sapi-an",
+        "zipCode": "5800"
+      },
+      {
+        "code": "061916",
+        "name": "Sigma",
+        "zipCode": ""
+      },
+      {
+        "code": "061917",
+        "name": "Tapaz",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Catanduanes",
+    "region": "Region V (Bicol Region)",
+    "regionCode": "05",
+    "cities": [
+      {
+        "code": "052001",
+        "name": "Bagamanoc",
+        "zipCode": ""
+      },
+      {
+        "code": "052002",
+        "name": "Baras",
+        "zipCode": "1870"
+      },
+      {
+        "code": "052003",
+        "name": "Bato",
+        "zipCode": "4415"
+      },
+      {
+        "code": "052004",
+        "name": "Caramoran",
+        "zipCode": ""
+      },
+      {
+        "code": "052005",
+        "name": "Gigmoto",
+        "zipCode": ""
+      },
+      {
+        "code": "052006",
+        "name": "Pandan",
+        "zipCode": "5712"
+      },
+      {
+        "code": "052007",
+        "name": "Panganiban",
+        "zipCode": ""
+      },
+      {
+        "code": "052008",
+        "name": "San Andres",
+        "zipCode": ""
+      },
+      {
+        "code": "052009",
+        "name": "San Miguel",
+        "zipCode": "3011"
+      },
+      {
+        "code": "052010",
+        "name": "Viga",
+        "zipCode": ""
+      },
+      {
+        "code": "052011",
+        "name": "Virac",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Cavite",
+    "region": "Region IV-A (CALABARZON)",
+    "regionCode": "04",
+    "cities": [
+      {
+        "code": "042101",
+        "name": "Alfonso",
+        "zipCode": "4122"
+      },
+      {
+        "code": "042102",
+        "name": "Amadeo",
+        "zipCode": "4122"
+      },
+      {
+        "code": "042103",
+        "name": "Bacoor City",
+        "zipCode": "4102"
+      },
+      {
+        "code": "042104",
+        "name": "Carmona",
+        "zipCode": "4107"
+      },
+      {
+        "code": "042105",
+        "name": "Cavite City",
+        "zipCode": "4100"
+      },
+      {
+        "code": "042106",
+        "name": "City of Dasmariñas",
+        "zipCode": ""
+      },
+      {
+        "code": "042123",
+        "name": "Gen. Mariano Alvarez",
+        "zipCode": "4117"
+      },
+      {
+        "code": "042107",
+        "name": "General Emilio Aguinaldo",
+        "zipCode": "4111"
+      },
+      {
+        "code": "042108",
+        "name": "General Trias",
+        "zipCode": "4107"
+      },
+      {
+        "code": "042109",
+        "name": "Imus City",
+        "zipCode": "4103"
+      },
+      {
+        "code": "042110",
+        "name": "Indang",
+        "zipCode": "4122"
+      },
+      {
+        "code": "042111",
+        "name": "Kawit",
+        "zipCode": "4104"
+      },
+      {
+        "code": "042112",
+        "name": "Magallanes",
+        "zipCode": ""
+      },
+      {
+        "code": "042113",
+        "name": "Maragondon",
+        "zipCode": "4112"
+      },
+      {
+        "code": "042114",
+        "name": "Mendez (mendez-nuñez)",
+        "zipCode": ""
+      },
+      {
+        "code": "042115",
+        "name": "Naic",
+        "zipCode": "4105"
+      },
+      {
+        "code": "042116",
+        "name": "Noveleta",
+        "zipCode": "4106"
+      },
+      {
+        "code": "042117",
+        "name": "Rosario",
+        "zipCode": "8607"
+      },
+      {
+        "code": "042118",
+        "name": "Silang",
+        "zipCode": "4118"
+      },
+      {
+        "code": "042119",
+        "name": "Tagaytay City",
+        "zipCode": "4120"
+      },
+      {
+        "code": "042120",
+        "name": "Tanza",
+        "zipCode": "4108"
+      },
+      {
+        "code": "042121",
+        "name": "Ternate",
+        "zipCode": "4117"
+      },
+      {
+        "code": "042122",
+        "name": "Trece Martires City",
+        "zipCode": "4107"
+      }
+    ]
+  },
+  {
+    "name": "Cebu",
+    "region": "Region VII (Central Visayas)",
+    "regionCode": "07",
+    "cities": [
+      {
+        "code": "072201",
+        "name": "Alcantara",
+        "zipCode": "5508"
+      },
+      {
+        "code": "072202",
+        "name": "Alcoy",
+        "zipCode": "6044"
+      },
+      {
+        "code": "072203",
+        "name": "Alegria",
+        "zipCode": "8427"
+      },
+      {
+        "code": "072204",
+        "name": "Aloguinsan",
+        "zipCode": "6031"
+      },
+      {
+        "code": "072205",
+        "name": "Argao",
+        "zipCode": "6025"
+      },
+      {
+        "code": "072206",
+        "name": "Asturias",
+        "zipCode": "6026"
+      },
+      {
+        "code": "072207",
+        "name": "Badian",
+        "zipCode": "6031"
+      },
+      {
+        "code": "072208",
+        "name": "Balamban",
+        "zipCode": "6041"
+      },
+      {
+        "code": "072209",
+        "name": "Bantayan",
+        "zipCode": "6040"
+      },
+      {
+        "code": "072210",
+        "name": "Barili",
+        "zipCode": "6042"
+      },
+      {
+        "code": "072212",
+        "name": "Boljoon",
+        "zipCode": "6030"
+      },
+      {
+        "code": "072213",
+        "name": "Borbon",
+        "zipCode": "6008"
+      },
+      {
+        "code": "072215",
+        "name": "Carmen",
+        "zipCode": "8109"
+      },
+      {
+        "code": "072216",
+        "name": "Catmon",
+        "zipCode": "6009"
+      },
+      {
+        "code": "072217",
+        "name": "Cebu City",
+        "zipCode": "6000"
+      },
+      {
+        "code": "072211",
+        "name": "City of Bogo",
+        "zipCode": "6011"
+      },
+      {
+        "code": "072214",
+        "name": "City of Carcar",
+        "zipCode": "6042"
+      },
+      {
+        "code": "072234",
+        "name": "City of Naga",
+        "zipCode": "6037"
+      },
+      {
+        "code": "072250",
+        "name": "City of Talisay",
+        "zipCode": "6045"
+      },
+      {
+        "code": "072218",
+        "name": "Compostela",
+        "zipCode": "8308"
+      },
+      {
+        "code": "072219",
+        "name": "Consolacion",
+        "zipCode": "6013"
+      },
+      {
+        "code": "072220",
+        "name": "Cordova",
+        "zipCode": "6017"
+      },
+      {
+        "code": "072221",
+        "name": "Daanbantayan",
+        "zipCode": "6013"
+      },
+      {
+        "code": "072222",
+        "name": "Dalaguete",
+        "zipCode": "6032"
+      },
+      {
+        "code": "072223",
+        "name": "Danao City",
+        "zipCode": "6006"
+      },
+      {
+        "code": "072224",
+        "name": "Dumanjug",
+        "zipCode": "6026"
+      },
+      {
+        "code": "072225",
+        "name": "Ginatilan",
+        "zipCode": "6026"
+      },
+      {
+        "code": "072226",
+        "name": "Lapu-lapu City (opon)",
+        "zipCode": ""
+      },
+      {
+        "code": "072227",
+        "name": "Liloan",
+        "zipCode": "6015"
+      },
+      {
+        "code": "072228",
+        "name": "Madridejos",
+        "zipCode": "6041"
+      },
+      {
+        "code": "072229",
+        "name": "Malabuyoc",
+        "zipCode": "6032"
+      },
+      {
+        "code": "072230",
+        "name": "Mandaue City",
+        "zipCode": "6014"
+      },
+      {
+        "code": "072231",
+        "name": "Medellin",
+        "zipCode": "6012"
+      },
+      {
+        "code": "072232",
+        "name": "Minglanilla",
+        "zipCode": "6045"
+      },
+      {
+        "code": "072233",
+        "name": "Moalboal",
+        "zipCode": "6032"
+      },
+      {
+        "code": "072235",
+        "name": "Oslob",
+        "zipCode": "6029"
+      },
+      {
+        "code": "072236",
+        "name": "Pilar",
+        "zipCode": "8411"
+      },
+      {
+        "code": "072237",
+        "name": "Pinamungahan",
+        "zipCode": ""
+      },
+      {
+        "code": "072238",
+        "name": "Poro",
+        "zipCode": "6015"
+      },
+      {
+        "code": "072239",
+        "name": "Ronda",
+        "zipCode": "6033"
+      },
+      {
+        "code": "072240",
+        "name": "Samboan",
+        "zipCode": "6027"
+      },
+      {
+        "code": "072241",
+        "name": "San Fernando",
+        "zipCode": "8712"
+      },
+      {
+        "code": "072242",
+        "name": "San Francisco",
+        "zipCode": "8419"
+      },
+      {
+        "code": "072243",
+        "name": "San Remigio",
+        "zipCode": "6027"
+      },
+      {
+        "code": "072244",
+        "name": "Santa Fe",
+        "zipCode": "6523"
+      },
+      {
+        "code": "072245",
+        "name": "Santander",
+        "zipCode": ""
+      },
+      {
+        "code": "072246",
+        "name": "Sibonga",
+        "zipCode": "6044"
+      },
+      {
+        "code": "072247",
+        "name": "Sogod",
+        "zipCode": "6610"
+      },
+      {
+        "code": "072248",
+        "name": "Tabogon",
+        "zipCode": ""
+      },
+      {
+        "code": "072249",
+        "name": "Tabuelan",
+        "zipCode": ""
+      },
+      {
+        "code": "072251",
+        "name": "Toledo City",
+        "zipCode": "6030"
+      },
+      {
+        "code": "072252",
+        "name": "Tuburan",
+        "zipCode": "6045"
+      },
+      {
+        "code": "072253",
+        "name": "Tudela",
+        "zipCode": "7203"
+      }
+    ]
+  },
+  {
+    "name": "Cotabato (north Cotabato)",
+    "region": "Region XII (SOCCSKSARGEN)",
+    "regionCode": "12",
+    "cities": [
+      {
+        "code": "124701",
+        "name": "Alamada",
+        "zipCode": ""
+      },
+      {
+        "code": "124717",
+        "name": "Aleosan",
+        "zipCode": ""
+      },
+      {
+        "code": "124715",
+        "name": "Antipas",
+        "zipCode": ""
+      },
+      {
+        "code": "124718",
+        "name": "Arakan",
+        "zipCode": ""
+      },
+      {
+        "code": "124716",
+        "name": "Banisilan",
+        "zipCode": ""
+      },
+      {
+        "code": "124702",
+        "name": "Carmen",
+        "zipCode": "8109"
+      },
+      {
+        "code": "124704",
+        "name": "City of Kidapawan",
+        "zipCode": ""
+      },
+      {
+        "code": "124703",
+        "name": "Kabacan",
+        "zipCode": ""
+      },
+      {
+        "code": "124705",
+        "name": "Libungan",
+        "zipCode": ""
+      },
+      {
+        "code": "124710",
+        "name": "M'lang",
+        "zipCode": ""
+      },
+      {
+        "code": "124706",
+        "name": "Magpet",
+        "zipCode": ""
+      },
+      {
+        "code": "124707",
+        "name": "Makilala",
+        "zipCode": ""
+      },
+      {
+        "code": "124708",
+        "name": "Matalam",
+        "zipCode": ""
+      },
+      {
+        "code": "124709",
+        "name": "Midsayap",
+        "zipCode": ""
+      },
+      {
+        "code": "124711",
+        "name": "Pigkawayan",
+        "zipCode": ""
+      },
+      {
+        "code": "124712",
+        "name": "Pikit",
+        "zipCode": ""
+      },
+      {
+        "code": "124713",
+        "name": "President Roxas",
+        "zipCode": ""
+      },
+      {
+        "code": "124714",
+        "name": "Tulunan",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Cotabato City (Maguindanao)",
+    "region": "Region XII (SOCCSKSARGEN)",
+    "regionCode": "12",
+    "cities": [
+      {
+        "code": "129804",
+        "name": "Cotabato City",
+        "zipCode": "9600"
+      }
+    ]
+  },
+  {
+    "name": "Davao de Oro (Compostela Valley)",
+    "region": "Region XI (Davao Region)",
+    "regionCode": "11",
+    "cities": [
+      {
+        "code": "118201",
+        "name": "Compostela",
+        "zipCode": "8308"
+      },
+      {
+        "code": "118202",
+        "name": "Laak (san Vicente)",
+        "zipCode": ""
+      },
+      {
+        "code": "118203",
+        "name": "Mabini (doña Alicia)",
+        "zipCode": ""
+      },
+      {
+        "code": "118204",
+        "name": "Maco",
+        "zipCode": ""
+      },
+      {
+        "code": "118205",
+        "name": "Maragusan (san Mariano)",
+        "zipCode": ""
+      },
+      {
+        "code": "118206",
+        "name": "Mawab",
+        "zipCode": ""
+      },
+      {
+        "code": "118207",
+        "name": "Monkayo",
+        "zipCode": "8711"
+      },
+      {
+        "code": "118208",
+        "name": "Montevista",
+        "zipCode": ""
+      },
+      {
+        "code": "118209",
+        "name": "Nabunturan",
+        "zipCode": "8300"
+      },
+      {
+        "code": "118210",
+        "name": "New Bataan",
+        "zipCode": ""
+      },
+      {
+        "code": "118211",
+        "name": "Pantukan",
+        "zipCode": "8308"
+      }
+    ]
+  },
+  {
+    "name": "Davao del Norte",
+    "region": "Region XI (Davao Region)",
+    "regionCode": "11",
+    "cities": [
+      {
+        "code": "112301",
+        "name": "Asuncion (saug)",
+        "zipCode": ""
+      },
+      {
+        "code": "112323",
+        "name": "Braulio E. Dujali",
+        "zipCode": "8109"
+      },
+      {
+        "code": "112303",
+        "name": "Carmen",
+        "zipCode": "8109"
+      },
+      {
+        "code": "112315",
+        "name": "City of Panabo",
+        "zipCode": "8105"
+      },
+      {
+        "code": "112319",
+        "name": "City of Tagum",
+        "zipCode": "8100"
+      },
+      {
+        "code": "112317",
+        "name": "Island Garden City of Samal",
+        "zipCode": "8103"
+      },
+      {
+        "code": "112305",
+        "name": "Kapalong",
+        "zipCode": "8511"
+      },
+      {
+        "code": "112314",
+        "name": "New Corella",
+        "zipCode": ""
+      },
+      {
+        "code": "112324",
+        "name": "San Isidro",
+        "zipCode": "8413"
+      },
+      {
+        "code": "112318",
+        "name": "Santo Tomas",
+        "zipCode": "2426"
+      },
+      {
+        "code": "112322",
+        "name": "Talaingod",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Davao del Sur",
+    "region": "Region XI (Davao Region)",
+    "regionCode": "11",
+    "cities": [
+      {
+        "code": "112401",
+        "name": "Bansalan",
+        "zipCode": "8012"
+      },
+      {
+        "code": "112403",
+        "name": "City of Digos",
+        "zipCode": "8002"
+      },
+      {
+        "code": "112402",
+        "name": "Davao City",
+        "zipCode": "8000"
+      },
+      {
+        "code": "112404",
+        "name": "Hagonoy",
+        "zipCode": "8004"
+      },
+      {
+        "code": "112406",
+        "name": "Kiblawan",
+        "zipCode": "8013"
+      },
+      {
+        "code": "112407",
+        "name": "Magsaysay",
+        "zipCode": "8011"
+      },
+      {
+        "code": "112408",
+        "name": "Malalag",
+        "zipCode": "8014"
+      },
+      {
+        "code": "112410",
+        "name": "Matanao",
+        "zipCode": "8011"
+      },
+      {
+        "code": "112411",
+        "name": "Padada",
+        "zipCode": "8013"
+      },
+      {
+        "code": "112412",
+        "name": "Santa Cruz",
+        "zipCode": "8012"
+      },
+      {
+        "code": "112414",
+        "name": "Sulop",
+        "zipCode": "8013"
+      }
+    ]
+  },
+  {
+    "name": "Davao Occidental",
+    "region": "Region XI (Davao Region)",
+    "regionCode": "11",
+    "cities": [
+      {
+        "code": "118601",
+        "name": "Don Marcelino",
+        "zipCode": "8023"
+      },
+      {
+        "code": "118602",
+        "name": "Jose Abad Santos (trinidad)",
+        "zipCode": ""
+      },
+      {
+        "code": "118603",
+        "name": "Malita",
+        "zipCode": "8014"
+      },
+      {
+        "code": "118604",
+        "name": "Santa Maria",
+        "zipCode": "8014"
+      },
+      {
+        "code": "118605",
+        "name": "Sarangani",
+        "zipCode": "8013"
+      }
+    ]
+  },
+  {
+    "name": "Davao Oriental",
+    "region": "Region XI (Davao Region)",
+    "regionCode": "11",
+    "cities": [
+      {
+        "code": "112501",
+        "name": "Baganga",
+        "zipCode": "8205"
+      },
+      {
+        "code": "112502",
+        "name": "Banaybanay",
+        "zipCode": "8204"
+      },
+      {
+        "code": "112503",
+        "name": "Boston",
+        "zipCode": ""
+      },
+      {
+        "code": "112504",
+        "name": "Caraga",
+        "zipCode": ""
+      },
+      {
+        "code": "112505",
+        "name": "Cateel",
+        "zipCode": "8306"
+      },
+      {
+        "code": "112509",
+        "name": "City of Mati",
+        "zipCode": "8200"
+      },
+      {
+        "code": "112506",
+        "name": "Governor Generoso",
+        "zipCode": "8213"
+      },
+      {
+        "code": "112507",
+        "name": "Lupon",
+        "zipCode": "8205"
+      },
+      {
+        "code": "112508",
+        "name": "Manay",
+        "zipCode": ""
+      },
+      {
+        "code": "112510",
+        "name": "San Isidro",
+        "zipCode": "8413"
+      },
+      {
+        "code": "112511",
+        "name": "Tarragona",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Dinagat Islands",
+    "region": "Region XIII (Caraga)",
+    "regionCode": "16",
+    "cities": [
+      {
+        "code": "168501",
+        "name": "Basilisa (rizal)",
+        "zipCode": ""
+      },
+      {
+        "code": "168502",
+        "name": "Cagdianao",
+        "zipCode": ""
+      },
+      {
+        "code": "168503",
+        "name": "Dinagat",
+        "zipCode": ""
+      },
+      {
+        "code": "168504",
+        "name": "Libjo (albor)",
+        "zipCode": ""
+      },
+      {
+        "code": "168505",
+        "name": "Loreto",
+        "zipCode": ""
+      },
+      {
+        "code": "168506",
+        "name": "San Jose",
+        "zipCode": "8416"
+      },
+      {
+        "code": "168507",
+        "name": "Tubajon",
+        "zipCode": "8416"
+      }
+    ]
+  },
+  {
+    "name": "Eastern Samar",
+    "region": "Region VIII (Eastern Visayas)",
+    "regionCode": "08",
+    "cities": [
+      {
+        "code": "082601",
+        "name": "Arteche",
+        "zipCode": ""
+      },
+      {
+        "code": "082602",
+        "name": "Balangiga",
+        "zipCode": "6712"
+      },
+      {
+        "code": "082603",
+        "name": "Balangkayan",
+        "zipCode": ""
+      },
+      {
+        "code": "082605",
+        "name": "Can-avid",
+        "zipCode": ""
+      },
+      {
+        "code": "082604",
+        "name": "City of Borongan",
+        "zipCode": "6800"
+      },
+      {
+        "code": "082606",
+        "name": "Dolores",
+        "zipCode": ""
+      },
+      {
+        "code": "082607",
+        "name": "General Macarthur",
+        "zipCode": ""
+      },
+      {
+        "code": "082608",
+        "name": "Giporlos",
+        "zipCode": "6713"
+      },
+      {
+        "code": "082609",
+        "name": "Guiuan",
+        "zipCode": "6812"
+      },
+      {
+        "code": "082610",
+        "name": "Hernani",
+        "zipCode": ""
+      },
+      {
+        "code": "082611",
+        "name": "Jipapad",
+        "zipCode": ""
+      },
+      {
+        "code": "082612",
+        "name": "Lawaan",
+        "zipCode": ""
+      },
+      {
+        "code": "082613",
+        "name": "Llorente",
+        "zipCode": "6805"
+      },
+      {
+        "code": "082614",
+        "name": "Maslog",
+        "zipCode": "6812"
+      },
+      {
+        "code": "082615",
+        "name": "Maydolong",
+        "zipCode": "6814"
+      },
+      {
+        "code": "082616",
+        "name": "Mercedes",
+        "zipCode": ""
+      },
+      {
+        "code": "082617",
+        "name": "Oras",
+        "zipCode": "6812"
+      },
+      {
+        "code": "082618",
+        "name": "Quinapondan",
+        "zipCode": ""
+      },
+      {
+        "code": "082619",
+        "name": "Salcedo",
+        "zipCode": "6813"
+      },
+      {
+        "code": "082620",
+        "name": "San Julian",
+        "zipCode": "6806"
+      },
+      {
+        "code": "082621",
+        "name": "San Policarpo",
+        "zipCode": "6718"
+      },
+      {
+        "code": "082622",
+        "name": "Sulat",
+        "zipCode": ""
+      },
+      {
+        "code": "082623",
+        "name": "Taft",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Guimaras",
+    "region": "Region VI (Western Visayas)",
+    "regionCode": "06",
+    "cities": [
+      {
+        "code": "067901",
+        "name": "Buenavista",
+        "zipCode": "8604"
+      },
+      {
+        "code": "067902",
+        "name": "Jordan",
+        "zipCode": "5040"
+      },
+      {
+        "code": "067903",
+        "name": "Nueva Valencia",
+        "zipCode": "5042"
+      },
+      {
+        "code": "067904",
+        "name": "San Lorenzo",
+        "zipCode": "5044"
+      },
+      {
+        "code": "067905",
+        "name": "Sibunag",
+        "zipCode": "5044"
+      }
+    ]
+  },
+  {
+    "name": "Ifugao",
+    "region": "Cordillera Administrative Region (CAR)",
+    "regionCode": "14",
+    "cities": [
+      {
+        "code": "142708",
+        "name": "Aguinaldo",
+        "zipCode": ""
+      },
+      {
+        "code": "142707",
+        "name": "Alfonso Lista (potia)",
+        "zipCode": ""
+      },
+      {
+        "code": "142711",
+        "name": "Asipulo",
+        "zipCode": "3603"
+      },
+      {
+        "code": "142701",
+        "name": "Banaue",
+        "zipCode": "3604"
+      },
+      {
+        "code": "142709",
+        "name": "Hingyon",
+        "zipCode": ""
+      },
+      {
+        "code": "142702",
+        "name": "Hungduan",
+        "zipCode": "3614"
+      },
+      {
+        "code": "142703",
+        "name": "Kiangan",
+        "zipCode": "3604"
+      },
+      {
+        "code": "142704",
+        "name": "Lagawe",
+        "zipCode": "3604"
+      },
+      {
+        "code": "142705",
+        "name": "Lamut",
+        "zipCode": "3614"
+      },
+      {
+        "code": "142706",
+        "name": "Mayoyao",
+        "zipCode": ""
+      },
+      {
+        "code": "142710",
+        "name": "Tinoc",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Ilocos Norte",
+    "region": "Region I (Ilocos Region)",
+    "regionCode": "01",
+    "cities": [
+      {
+        "code": "012801",
+        "name": "Adams",
+        "zipCode": ""
+      },
+      {
+        "code": "012802",
+        "name": "Bacarra",
+        "zipCode": "2902"
+      },
+      {
+        "code": "012803",
+        "name": "Badoc",
+        "zipCode": "2905"
+      },
+      {
+        "code": "012804",
+        "name": "Bangui",
+        "zipCode": "2903"
+      },
+      {
+        "code": "012811",
+        "name": "Banna (espiritu)",
+        "zipCode": ""
+      },
+      {
+        "code": "012806",
+        "name": "Burgos",
+        "zipCode": "8412"
+      },
+      {
+        "code": "012807",
+        "name": "Carasi",
+        "zipCode": "2909"
+      },
+      {
+        "code": "012805",
+        "name": "City of Batac",
+        "zipCode": "2906"
+      },
+      {
+        "code": "012808",
+        "name": "Currimao",
+        "zipCode": "2916"
+      },
+      {
+        "code": "012809",
+        "name": "Dingras",
+        "zipCode": ""
+      },
+      {
+        "code": "012810",
+        "name": "Dumalneg",
+        "zipCode": "2908"
+      },
+      {
+        "code": "012812",
+        "name": "Laoag City",
+        "zipCode": "2900"
+      },
+      {
+        "code": "012813",
+        "name": "Marcos",
+        "zipCode": ""
+      },
+      {
+        "code": "012814",
+        "name": "Nueva Era",
+        "zipCode": ""
+      },
+      {
+        "code": "012815",
+        "name": "Pagudpud",
+        "zipCode": "2905"
+      },
+      {
+        "code": "012816",
+        "name": "Paoay",
+        "zipCode": "2903"
+      },
+      {
+        "code": "012817",
+        "name": "Pasuquin",
+        "zipCode": "2903"
+      },
+      {
+        "code": "012818",
+        "name": "Piddig",
+        "zipCode": "2903"
+      },
+      {
+        "code": "012819",
+        "name": "Pinili",
+        "zipCode": "2905"
+      },
+      {
+        "code": "012820",
+        "name": "San Nicolas",
+        "zipCode": "2414"
+      },
+      {
+        "code": "012821",
+        "name": "Sarrat",
+        "zipCode": "2906"
+      },
+      {
+        "code": "012822",
+        "name": "Solsona",
+        "zipCode": "2913"
+      },
+      {
+        "code": "012823",
+        "name": "Vintar",
+        "zipCode": "2908"
+      }
+    ]
+  },
+  {
+    "name": "Ilocos Sur",
+    "region": "Region I (Ilocos Region)",
+    "regionCode": "01",
+    "cities": [
+      {
+        "code": "012901",
+        "name": "Alilem",
+        "zipCode": "2727"
+      },
+      {
+        "code": "012902",
+        "name": "Banayoyo",
+        "zipCode": ""
+      },
+      {
+        "code": "012903",
+        "name": "Bantay",
+        "zipCode": "2701"
+      },
+      {
+        "code": "012904",
+        "name": "Burgos",
+        "zipCode": "8412"
+      },
+      {
+        "code": "012905",
+        "name": "Cabugao",
+        "zipCode": "2727"
+      },
+      {
+        "code": "012907",
+        "name": "Caoayan",
+        "zipCode": ""
+      },
+      {
+        "code": "012908",
+        "name": "Cervantes",
+        "zipCode": "2728"
+      },
+      {
+        "code": "012906",
+        "name": "City of Candon",
+        "zipCode": "2706"
+      },
+      {
+        "code": "012934",
+        "name": "City of Vigan",
+        "zipCode": "2700"
+      },
+      {
+        "code": "012909",
+        "name": "Galimuyod",
+        "zipCode": ""
+      },
+      {
+        "code": "012910",
+        "name": "Gregorio del Pilar (concepcion)",
+        "zipCode": ""
+      },
+      {
+        "code": "012911",
+        "name": "Lidlidda",
+        "zipCode": "2727"
+      },
+      {
+        "code": "012912",
+        "name": "Magsingal",
+        "zipCode": "2716"
+      },
+      {
+        "code": "012913",
+        "name": "Nagbukel",
+        "zipCode": "2713"
+      },
+      {
+        "code": "012914",
+        "name": "Narvacan",
+        "zipCode": "2715"
+      },
+      {
+        "code": "012915",
+        "name": "Quirino (angkaki)",
+        "zipCode": ""
+      },
+      {
+        "code": "012916",
+        "name": "Salcedo (baugen)",
+        "zipCode": ""
+      },
+      {
+        "code": "012917",
+        "name": "San Emilio",
+        "zipCode": "2721"
+      },
+      {
+        "code": "012918",
+        "name": "San Esteban",
+        "zipCode": ""
+      },
+      {
+        "code": "012919",
+        "name": "San Ildefonso",
+        "zipCode": ""
+      },
+      {
+        "code": "012920",
+        "name": "San Juan (lapog)",
+        "zipCode": ""
+      },
+      {
+        "code": "012921",
+        "name": "San Vicente",
+        "zipCode": "6409"
+      },
+      {
+        "code": "012922",
+        "name": "Santa",
+        "zipCode": "2719"
+      },
+      {
+        "code": "012923",
+        "name": "Santa Catalina",
+        "zipCode": "6212"
+      },
+      {
+        "code": "012924",
+        "name": "Santa Cruz",
+        "zipCode": "8012"
+      },
+      {
+        "code": "012925",
+        "name": "Santa Lucia",
+        "zipCode": ""
+      },
+      {
+        "code": "012926",
+        "name": "Santa Maria",
+        "zipCode": "8014"
+      },
+      {
+        "code": "012927",
+        "name": "Santiago",
+        "zipCode": "8513"
+      },
+      {
+        "code": "012928",
+        "name": "Santo Domingo",
+        "zipCode": "4511"
+      },
+      {
+        "code": "012929",
+        "name": "Sigay",
+        "zipCode": "2719"
+      },
+      {
+        "code": "012930",
+        "name": "Sinait",
+        "zipCode": "2716"
+      },
+      {
+        "code": "012931",
+        "name": "Sugpon",
+        "zipCode": "2716"
+      },
+      {
+        "code": "012932",
+        "name": "Suyo",
+        "zipCode": ""
+      },
+      {
+        "code": "012933",
+        "name": "Tagudin",
+        "zipCode": "2721"
+      }
+    ]
+  },
+  {
+    "name": "Iloilo",
+    "region": "Region VI (Western Visayas)",
+    "regionCode": "06",
+    "cities": [
+      {
+        "code": "063001",
+        "name": "Ajuy",
+        "zipCode": ""
+      },
+      {
+        "code": "063002",
+        "name": "Alimodian",
+        "zipCode": "5051"
+      },
+      {
+        "code": "063003",
+        "name": "Anilao",
+        "zipCode": ""
+      },
+      {
+        "code": "063004",
+        "name": "Badiangan",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063005",
+        "name": "Balasan",
+        "zipCode": "5027"
+      },
+      {
+        "code": "063006",
+        "name": "Banate",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063007",
+        "name": "Barotac Nuevo",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063008",
+        "name": "Barotac Viejo",
+        "zipCode": "5034"
+      },
+      {
+        "code": "063009",
+        "name": "Batad",
+        "zipCode": ""
+      },
+      {
+        "code": "063010",
+        "name": "Bingawan",
+        "zipCode": "5032"
+      },
+      {
+        "code": "063012",
+        "name": "Cabatuan",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063013",
+        "name": "Calinog",
+        "zipCode": "5033"
+      },
+      {
+        "code": "063014",
+        "name": "Carles",
+        "zipCode": "5029"
+      },
+      {
+        "code": "063035",
+        "name": "City of Passi",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063015",
+        "name": "Concepcion",
+        "zipCode": "7205"
+      },
+      {
+        "code": "063016",
+        "name": "Dingle",
+        "zipCode": "5030"
+      },
+      {
+        "code": "063017",
+        "name": "Dueñas",
+        "zipCode": ""
+      },
+      {
+        "code": "063018",
+        "name": "Dumangas",
+        "zipCode": ""
+      },
+      {
+        "code": "063019",
+        "name": "Estancia",
+        "zipCode": ""
+      },
+      {
+        "code": "063020",
+        "name": "Guimbal",
+        "zipCode": "5033"
+      },
+      {
+        "code": "063021",
+        "name": "Igbaras",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063022",
+        "name": "Iloilo City",
+        "zipCode": "5000"
+      },
+      {
+        "code": "063023",
+        "name": "Janiuay",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063025",
+        "name": "Lambunao",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063026",
+        "name": "Leganes",
+        "zipCode": "5034"
+      },
+      {
+        "code": "063027",
+        "name": "Lemery",
+        "zipCode": "4217"
+      },
+      {
+        "code": "063028",
+        "name": "Leon",
+        "zipCode": ""
+      },
+      {
+        "code": "063029",
+        "name": "Maasin",
+        "zipCode": "6600"
+      },
+      {
+        "code": "063030",
+        "name": "Miagao",
+        "zipCode": "5023"
+      },
+      {
+        "code": "063031",
+        "name": "Mina",
+        "zipCode": "5037"
+      },
+      {
+        "code": "063032",
+        "name": "New Lucena",
+        "zipCode": "5034"
+      },
+      {
+        "code": "063034",
+        "name": "Oton",
+        "zipCode": "5008"
+      },
+      {
+        "code": "063036",
+        "name": "Pavia",
+        "zipCode": "5005"
+      },
+      {
+        "code": "063037",
+        "name": "Pototan",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063038",
+        "name": "San Dionisio",
+        "zipCode": "5056"
+      },
+      {
+        "code": "063039",
+        "name": "San Enrique",
+        "zipCode": "6117"
+      },
+      {
+        "code": "063040",
+        "name": "San Joaquin",
+        "zipCode": "5032"
+      },
+      {
+        "code": "063041",
+        "name": "San Miguel",
+        "zipCode": "3011"
+      },
+      {
+        "code": "063042",
+        "name": "San Rafael",
+        "zipCode": "3011"
+      },
+      {
+        "code": "063043",
+        "name": "Santa Barbara",
+        "zipCode": "5023"
+      },
+      {
+        "code": "063044",
+        "name": "Sara",
+        "zipCode": "5031"
+      },
+      {
+        "code": "063045",
+        "name": "Tigbauan",
+        "zipCode": "5021"
+      },
+      {
+        "code": "063046",
+        "name": "Tubungan",
+        "zipCode": "5037"
+      },
+      {
+        "code": "063047",
+        "name": "Zarraga",
+        "zipCode": "5032"
+      }
+    ]
+  },
+  {
+    "name": "Isabela",
+    "region": "Region II (Cagayan Valley)",
+    "regionCode": "02",
+    "cities": [
+      {
+        "code": "023101",
+        "name": "Alicia",
+        "zipCode": "6318"
+      },
+      {
+        "code": "023102",
+        "name": "Angadanan",
+        "zipCode": "3313"
+      },
+      {
+        "code": "023103",
+        "name": "Aurora",
+        "zipCode": "7015"
+      },
+      {
+        "code": "023104",
+        "name": "Benito Soliven",
+        "zipCode": "3322"
+      },
+      {
+        "code": "023105",
+        "name": "Burgos",
+        "zipCode": "8412"
+      },
+      {
+        "code": "023106",
+        "name": "Cabagan",
+        "zipCode": "3321"
+      },
+      {
+        "code": "023107",
+        "name": "Cabatuan",
+        "zipCode": "5031"
+      },
+      {
+        "code": "023108",
+        "name": "City of Cauayan",
+        "zipCode": "6126"
+      },
+      {
+        "code": "023135",
+        "name": "City of Santiago",
+        "zipCode": "8513"
+      },
+      {
+        "code": "023109",
+        "name": "Cordon",
+        "zipCode": ""
+      },
+      {
+        "code": "023118",
+        "name": "Delfin Albano (magsaysay)",
+        "zipCode": ""
+      },
+      {
+        "code": "023110",
+        "name": "Dinapigue",
+        "zipCode": ""
+      },
+      {
+        "code": "023111",
+        "name": "Divilacan",
+        "zipCode": ""
+      },
+      {
+        "code": "023112",
+        "name": "Echague",
+        "zipCode": "3306"
+      },
+      {
+        "code": "023113",
+        "name": "Gamu",
+        "zipCode": ""
+      },
+      {
+        "code": "023114",
+        "name": "Ilagan City",
+        "zipCode": "3300"
+      },
+      {
+        "code": "023115",
+        "name": "Jones",
+        "zipCode": ""
+      },
+      {
+        "code": "023116",
+        "name": "Luna",
+        "zipCode": "2513"
+      },
+      {
+        "code": "023117",
+        "name": "Maconacon",
+        "zipCode": ""
+      },
+      {
+        "code": "023119",
+        "name": "Mallig",
+        "zipCode": "3327"
+      },
+      {
+        "code": "023120",
+        "name": "Naguilian",
+        "zipCode": "2512"
+      },
+      {
+        "code": "023121",
+        "name": "Palanan",
+        "zipCode": ""
+      },
+      {
+        "code": "023122",
+        "name": "Quezon",
+        "zipCode": "8714"
+      },
+      {
+        "code": "023123",
+        "name": "Quirino",
+        "zipCode": ""
+      },
+      {
+        "code": "023124",
+        "name": "Ramon",
+        "zipCode": ""
+      },
+      {
+        "code": "023125",
+        "name": "Reina Mercedes",
+        "zipCode": ""
+      },
+      {
+        "code": "023126",
+        "name": "Roxas",
+        "zipCode": "5800"
+      },
+      {
+        "code": "023127",
+        "name": "San Agustin",
+        "zipCode": ""
+      },
+      {
+        "code": "023128",
+        "name": "San Guillermo",
+        "zipCode": "3323"
+      },
+      {
+        "code": "023129",
+        "name": "San Isidro",
+        "zipCode": "8413"
+      },
+      {
+        "code": "023130",
+        "name": "San Manuel",
+        "zipCode": "3317"
+      },
+      {
+        "code": "023131",
+        "name": "San Mariano",
+        "zipCode": ""
+      },
+      {
+        "code": "023132",
+        "name": "San Mateo",
+        "zipCode": "1850"
+      },
+      {
+        "code": "023133",
+        "name": "San Pablo",
+        "zipCode": "7011"
+      },
+      {
+        "code": "023134",
+        "name": "Santa Maria",
+        "zipCode": "8014"
+      },
+      {
+        "code": "023136",
+        "name": "Santo Tomas",
+        "zipCode": "2426"
+      },
+      {
+        "code": "023137",
+        "name": "Tumauini",
+        "zipCode": "3319"
+      }
+    ]
+  },
+  {
+    "name": "Isabela City (Basilan)",
+    "region": "Region IX (Zamboanga Peninzula)",
+    "regionCode": "09",
+    "cities": [
+      {
+        "code": "099701",
+        "name": "City of Isabela",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Kalinga",
+    "region": "Cordillera Administrative Region (CAR)",
+    "regionCode": "14",
+    "cities": [
+      {
+        "code": "143201",
+        "name": "Balbalan",
+        "zipCode": "3803"
+      },
+      {
+        "code": "143213",
+        "name": "City of Tabuk",
+        "zipCode": "3800"
+      },
+      {
+        "code": "143206",
+        "name": "Lubuagan",
+        "zipCode": "3802"
+      },
+      {
+        "code": "143208",
+        "name": "Pasil",
+        "zipCode": "3806"
+      },
+      {
+        "code": "143209",
+        "name": "Pinukpuk",
+        "zipCode": ""
+      },
+      {
+        "code": "143211",
+        "name": "Rizal (liwan)",
+        "zipCode": ""
+      },
+      {
+        "code": "143214",
+        "name": "Tanudan",
+        "zipCode": "3804"
+      },
+      {
+        "code": "143215",
+        "name": "Tinglayan",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "la Union",
+    "region": "Region I (Ilocos Region)",
+    "regionCode": "01",
+    "cities": [
+      {
+        "code": "013301",
+        "name": "Agoo",
+        "zipCode": "2504"
+      },
+      {
+        "code": "013302",
+        "name": "Aringay",
+        "zipCode": "2516"
+      },
+      {
+        "code": "013303",
+        "name": "Bacnotan",
+        "zipCode": "2511"
+      },
+      {
+        "code": "013304",
+        "name": "Bagulin",
+        "zipCode": ""
+      },
+      {
+        "code": "013305",
+        "name": "Balaoan",
+        "zipCode": "2512"
+      },
+      {
+        "code": "013306",
+        "name": "Bangar",
+        "zipCode": ""
+      },
+      {
+        "code": "013307",
+        "name": "Bauang",
+        "zipCode": "2516"
+      },
+      {
+        "code": "013308",
+        "name": "Burgos",
+        "zipCode": "8412"
+      },
+      {
+        "code": "013309",
+        "name": "Caba",
+        "zipCode": "2514"
+      },
+      {
+        "code": "013314",
+        "name": "City of San Fernando",
+        "zipCode": "8712"
+      },
+      {
+        "code": "013310",
+        "name": "Luna",
+        "zipCode": "2513"
+      },
+      {
+        "code": "013311",
+        "name": "Naguilian",
+        "zipCode": "2512"
+      },
+      {
+        "code": "013312",
+        "name": "Pugo",
+        "zipCode": "2515"
+      },
+      {
+        "code": "013313",
+        "name": "Rosario",
+        "zipCode": "8607"
+      },
+      {
+        "code": "013315",
+        "name": "San Gabriel",
+        "zipCode": ""
+      },
+      {
+        "code": "013316",
+        "name": "San Juan",
+        "zipCode": "6223"
+      },
+      {
+        "code": "013317",
+        "name": "Santo Tomas",
+        "zipCode": "2426"
+      },
+      {
+        "code": "013318",
+        "name": "Santol",
+        "zipCode": ""
+      },
+      {
+        "code": "013319",
+        "name": "Sudipen",
+        "zipCode": "2516"
+      },
+      {
+        "code": "013320",
+        "name": "Tubao",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Laguna",
+    "region": "Region IV-A (CALABARZON)",
+    "regionCode": "04",
+    "cities": [
+      {
+        "code": "043401",
+        "name": "Alaminos",
+        "zipCode": "4004"
+      },
+      {
+        "code": "043402",
+        "name": "Bay",
+        "zipCode": "4004"
+      },
+      {
+        "code": "043404",
+        "name": "Cabuyao City",
+        "zipCode": "4025"
+      },
+      {
+        "code": "043406",
+        "name": "Calauan",
+        "zipCode": "4004"
+      },
+      {
+        "code": "043407",
+        "name": "Cavinti",
+        "zipCode": "4018"
+      },
+      {
+        "code": "043403",
+        "name": "City of Biñan",
+        "zipCode": ""
+      },
+      {
+        "code": "043405",
+        "name": "City of Calamba",
+        "zipCode": "7204"
+      },
+      {
+        "code": "043425",
+        "name": "City of San Pedro",
+        "zipCode": "4023"
+      },
+      {
+        "code": "043428",
+        "name": "City of Santa Rosa",
+        "zipCode": "4026"
+      },
+      {
+        "code": "043408",
+        "name": "Famy",
+        "zipCode": "4010"
+      },
+      {
+        "code": "043409",
+        "name": "Kalayaan",
+        "zipCode": "5319"
+      },
+      {
+        "code": "043410",
+        "name": "Liliw",
+        "zipCode": "4017"
+      },
+      {
+        "code": "043411",
+        "name": "los Baños",
+        "zipCode": ""
+      },
+      {
+        "code": "043412",
+        "name": "Luisiana",
+        "zipCode": "4018"
+      },
+      {
+        "code": "043413",
+        "name": "Lumban",
+        "zipCode": "4015"
+      },
+      {
+        "code": "043414",
+        "name": "Mabitac",
+        "zipCode": "4004"
+      },
+      {
+        "code": "043415",
+        "name": "Magdalena",
+        "zipCode": ""
+      },
+      {
+        "code": "043416",
+        "name": "Majayjay",
+        "zipCode": "4018"
+      },
+      {
+        "code": "043417",
+        "name": "Nagcarlan",
+        "zipCode": "4001"
+      },
+      {
+        "code": "043418",
+        "name": "Paete",
+        "zipCode": "4018"
+      },
+      {
+        "code": "043419",
+        "name": "Pagsanjan",
+        "zipCode": "4418"
+      },
+      {
+        "code": "043420",
+        "name": "Pakil",
+        "zipCode": "4006"
+      },
+      {
+        "code": "043421",
+        "name": "Pangil",
+        "zipCode": ""
+      },
+      {
+        "code": "043422",
+        "name": "Pila",
+        "zipCode": "4005"
+      },
+      {
+        "code": "043423",
+        "name": "Rizal",
+        "zipCode": "3805"
+      },
+      {
+        "code": "043424",
+        "name": "San Pablo City",
+        "zipCode": "7011"
+      },
+      {
+        "code": "043426",
+        "name": "Santa Cruz",
+        "zipCode": "8012"
+      },
+      {
+        "code": "043427",
+        "name": "Santa Maria",
+        "zipCode": "8014"
+      },
+      {
+        "code": "043429",
+        "name": "Siniloan",
+        "zipCode": ""
+      },
+      {
+        "code": "043430",
+        "name": "Victoria",
+        "zipCode": "6409"
+      }
+    ]
+  },
+  {
+    "name": "Lanao del Norte",
+    "region": "Region X (Northern Mindanao)",
+    "regionCode": "10",
+    "cities": [
+      {
+        "code": "103501",
+        "name": "Bacolod",
+        "zipCode": "9211"
+      },
+      {
+        "code": "103502",
+        "name": "Baloi",
+        "zipCode": ""
+      },
+      {
+        "code": "103503",
+        "name": "Baroy",
+        "zipCode": ""
+      },
+      {
+        "code": "103504",
+        "name": "Iligan City",
+        "zipCode": "9200"
+      },
+      {
+        "code": "103505",
+        "name": "Kapatagan",
+        "zipCode": "9704"
+      },
+      {
+        "code": "103507",
+        "name": "Kauswagan",
+        "zipCode": ""
+      },
+      {
+        "code": "103508",
+        "name": "Kolambugan",
+        "zipCode": "9210"
+      },
+      {
+        "code": "103509",
+        "name": "Lala",
+        "zipCode": "9214"
+      },
+      {
+        "code": "103510",
+        "name": "Linamon",
+        "zipCode": "9205"
+      },
+      {
+        "code": "103511",
+        "name": "Magsaysay",
+        "zipCode": "8011"
+      },
+      {
+        "code": "103512",
+        "name": "Maigo",
+        "zipCode": "9216"
+      },
+      {
+        "code": "103513",
+        "name": "Matungao",
+        "zipCode": "9212"
+      },
+      {
+        "code": "103514",
+        "name": "Munai",
+        "zipCode": ""
+      },
+      {
+        "code": "103515",
+        "name": "Nunungan",
+        "zipCode": "9212"
+      },
+      {
+        "code": "103516",
+        "name": "Pantao Ragat",
+        "zipCode": "9205"
+      },
+      {
+        "code": "103523",
+        "name": "Pantar",
+        "zipCode": ""
+      },
+      {
+        "code": "103517",
+        "name": "Poona Piagapo",
+        "zipCode": ""
+      },
+      {
+        "code": "103518",
+        "name": "Salvador",
+        "zipCode": ""
+      },
+      {
+        "code": "103519",
+        "name": "Sapad",
+        "zipCode": ""
+      },
+      {
+        "code": "103506",
+        "name": "Sultan Naga Dimaporo (karomatan)",
+        "zipCode": ""
+      },
+      {
+        "code": "103520",
+        "name": "Tagoloan",
+        "zipCode": "9004"
+      },
+      {
+        "code": "103521",
+        "name": "Tangcal",
+        "zipCode": ""
+      },
+      {
+        "code": "103522",
+        "name": "Tubod",
+        "zipCode": "8419"
+      }
+    ]
+  },
+  {
+    "name": "Lanao del Sur",
+    "region": "Autonomous Region in Muslim Mindanao (ARMM)",
+    "regionCode": "15",
+    "cities": [
+      {
+        "code": "153601",
+        "name": "Bacolod-kalawi (bacolod Grande)",
+        "zipCode": ""
+      },
+      {
+        "code": "153602",
+        "name": "Balabagan",
+        "zipCode": ""
+      },
+      {
+        "code": "153603",
+        "name": "Balindong (watu)",
+        "zipCode": ""
+      },
+      {
+        "code": "153604",
+        "name": "Bayang",
+        "zipCode": ""
+      },
+      {
+        "code": "153605",
+        "name": "Binidayan",
+        "zipCode": "9713"
+      },
+      {
+        "code": "153633",
+        "name": "Buadiposo-buntong",
+        "zipCode": ""
+      },
+      {
+        "code": "153606",
+        "name": "Bubong",
+        "zipCode": ""
+      },
+      {
+        "code": "153637",
+        "name": "Bumbaran",
+        "zipCode": ""
+      },
+      {
+        "code": "153607",
+        "name": "Butig",
+        "zipCode": "9704"
+      },
+      {
+        "code": "153632",
+        "name": "Calanogas",
+        "zipCode": ""
+      },
+      {
+        "code": "153624",
+        "name": "Ditsaan-ramain",
+        "zipCode": "9704"
+      },
+      {
+        "code": "153609",
+        "name": "Ganassi",
+        "zipCode": ""
+      },
+      {
+        "code": "153610",
+        "name": "Kapai",
+        "zipCode": ""
+      },
+      {
+        "code": "153639",
+        "name": "Kapatagan",
+        "zipCode": "9704"
+      },
+      {
+        "code": "153611",
+        "name": "Lumba-bayabao (maguing)",
+        "zipCode": ""
+      },
+      {
+        "code": "153641",
+        "name": "Lumbaca-unayan",
+        "zipCode": ""
+      },
+      {
+        "code": "153612",
+        "name": "Lumbatan",
+        "zipCode": ""
+      },
+      {
+        "code": "153636",
+        "name": "Lumbayanague",
+        "zipCode": ""
+      },
+      {
+        "code": "153613",
+        "name": "Madalum",
+        "zipCode": ""
+      },
+      {
+        "code": "153614",
+        "name": "Madamba",
+        "zipCode": ""
+      },
+      {
+        "code": "153634",
+        "name": "Maguing",
+        "zipCode": "9704"
+      },
+      {
+        "code": "153615",
+        "name": "Malabang",
+        "zipCode": "9704"
+      },
+      {
+        "code": "153616",
+        "name": "Marantao",
+        "zipCode": "9709"
+      },
+      {
+        "code": "153617",
+        "name": "Marawi City",
+        "zipCode": "9700"
+      },
+      {
+        "code": "153631",
+        "name": "Marogong",
+        "zipCode": ""
+      },
+      {
+        "code": "153618",
+        "name": "Masiu",
+        "zipCode": ""
+      },
+      {
+        "code": "153619",
+        "name": "Mulondo",
+        "zipCode": ""
+      },
+      {
+        "code": "153620",
+        "name": "Pagayawan (tatarikan)",
+        "zipCode": ""
+      },
+      {
+        "code": "153621",
+        "name": "Piagapo",
+        "zipCode": ""
+      },
+      {
+        "code": "153635",
+        "name": "Picong (sultan Gumander)",
+        "zipCode": ""
+      },
+      {
+        "code": "153622",
+        "name": "Poona Bayabao (gata)",
+        "zipCode": ""
+      },
+      {
+        "code": "153623",
+        "name": "Pualas",
+        "zipCode": "9708"
+      },
+      {
+        "code": "153625",
+        "name": "Saguiaran",
+        "zipCode": "9704"
+      },
+      {
+        "code": "153640",
+        "name": "Sultan Dumalondong",
+        "zipCode": ""
+      },
+      {
+        "code": "153638",
+        "name": "Tagoloan Ii",
+        "zipCode": ""
+      },
+      {
+        "code": "153626",
+        "name": "Tamparan",
+        "zipCode": "9704"
+      },
+      {
+        "code": "153627",
+        "name": "Taraka",
+        "zipCode": "9704"
+      },
+      {
+        "code": "153628",
+        "name": "Tubaran",
+        "zipCode": ""
+      },
+      {
+        "code": "153629",
+        "name": "Tugaya",
+        "zipCode": "9709"
+      },
+      {
+        "code": "153630",
+        "name": "Wao",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Leyte",
+    "region": "Region VIII (Eastern Visayas)",
+    "regionCode": "08",
+    "cities": [
+      {
+        "code": "083701",
+        "name": "Abuyog",
+        "zipCode": "6605"
+      },
+      {
+        "code": "083702",
+        "name": "Alangalang",
+        "zipCode": ""
+      },
+      {
+        "code": "083703",
+        "name": "Albuera",
+        "zipCode": "6524"
+      },
+      {
+        "code": "083705",
+        "name": "Babatngon",
+        "zipCode": ""
+      },
+      {
+        "code": "083706",
+        "name": "Barugo",
+        "zipCode": "6525"
+      },
+      {
+        "code": "083707",
+        "name": "Bato",
+        "zipCode": "4415"
+      },
+      {
+        "code": "083710",
+        "name": "Burauen",
+        "zipCode": "6527"
+      },
+      {
+        "code": "083713",
+        "name": "Calubian",
+        "zipCode": "6545"
+      },
+      {
+        "code": "083714",
+        "name": "Capoocan",
+        "zipCode": ""
+      },
+      {
+        "code": "083715",
+        "name": "Carigara",
+        "zipCode": "6528"
+      },
+      {
+        "code": "083708",
+        "name": "City of Baybay",
+        "zipCode": "6521"
+      },
+      {
+        "code": "083717",
+        "name": "Dagami",
+        "zipCode": "6527"
+      },
+      {
+        "code": "083718",
+        "name": "Dulag",
+        "zipCode": "6521"
+      },
+      {
+        "code": "083719",
+        "name": "Hilongos",
+        "zipCode": "6530"
+      },
+      {
+        "code": "083720",
+        "name": "Hindang",
+        "zipCode": "6521"
+      },
+      {
+        "code": "083721",
+        "name": "Inopacan",
+        "zipCode": ""
+      },
+      {
+        "code": "083722",
+        "name": "Isabel",
+        "zipCode": "6521"
+      },
+      {
+        "code": "083723",
+        "name": "Jaro",
+        "zipCode": ""
+      },
+      {
+        "code": "083724",
+        "name": "Javier (bugho)",
+        "zipCode": ""
+      },
+      {
+        "code": "083725",
+        "name": "Julita",
+        "zipCode": ""
+      },
+      {
+        "code": "083726",
+        "name": "Kananga",
+        "zipCode": "6525"
+      },
+      {
+        "code": "083728",
+        "name": "la Paz",
+        "zipCode": "2804"
+      },
+      {
+        "code": "083729",
+        "name": "Leyte",
+        "zipCode": "6521"
+      },
+      {
+        "code": "083730",
+        "name": "Macarthur",
+        "zipCode": ""
+      },
+      {
+        "code": "083731",
+        "name": "Mahaplag",
+        "zipCode": "6526"
+      },
+      {
+        "code": "083733",
+        "name": "Matag-ob",
+        "zipCode": ""
+      },
+      {
+        "code": "083734",
+        "name": "Matalom",
+        "zipCode": "6512"
+      },
+      {
+        "code": "083735",
+        "name": "Mayorga",
+        "zipCode": ""
+      },
+      {
+        "code": "083736",
+        "name": "Merida",
+        "zipCode": "6522"
+      },
+      {
+        "code": "083738",
+        "name": "Ormoc City",
+        "zipCode": "6540"
+      },
+      {
+        "code": "083739",
+        "name": "Palo",
+        "zipCode": "6521"
+      },
+      {
+        "code": "083740",
+        "name": "Palompon",
+        "zipCode": "6530"
+      },
+      {
+        "code": "083741",
+        "name": "Pastrana",
+        "zipCode": "6527"
+      },
+      {
+        "code": "083742",
+        "name": "San Isidro",
+        "zipCode": "8413"
+      },
+      {
+        "code": "083743",
+        "name": "San Miguel",
+        "zipCode": "3011"
+      },
+      {
+        "code": "083744",
+        "name": "Santa Fe",
+        "zipCode": "6523"
+      },
+      {
+        "code": "083745",
+        "name": "Tabango",
+        "zipCode": "6523"
+      },
+      {
+        "code": "083746",
+        "name": "Tabontabon",
+        "zipCode": ""
+      },
+      {
+        "code": "083747",
+        "name": "Tacloban City",
+        "zipCode": "6500"
+      },
+      {
+        "code": "083748",
+        "name": "Tanauan",
+        "zipCode": "6521"
+      },
+      {
+        "code": "083749",
+        "name": "Tolosa",
+        "zipCode": "6525"
+      },
+      {
+        "code": "083750",
+        "name": "Tunga",
+        "zipCode": "6526"
+      },
+      {
+        "code": "083751",
+        "name": "Villaba",
+        "zipCode": "6526"
+      }
+    ]
+  },
+  {
+    "name": "Maguindanao",
+    "region": "Autonomous Region in Muslim Mindanao (ARMM)",
+    "regionCode": "15",
+    "cities": [
+      {
+        "code": "153801",
+        "name": "Ampatuan",
+        "zipCode": ""
+      },
+      {
+        "code": "153818",
+        "name": "Barira",
+        "zipCode": ""
+      },
+      {
+        "code": "153802",
+        "name": "Buldon",
+        "zipCode": "9605"
+      },
+      {
+        "code": "153803",
+        "name": "Buluan",
+        "zipCode": "9805"
+      },
+      {
+        "code": "153828",
+        "name": "Datu Abdullah Sangki",
+        "zipCode": ""
+      },
+      {
+        "code": "153831",
+        "name": "Datu Anggal Midtimbang",
+        "zipCode": ""
+      },
+      {
+        "code": "153830",
+        "name": "Datu Blah T. Sinsuat",
+        "zipCode": ""
+      },
+      {
+        "code": "153835",
+        "name": "Datu Hoffer Ampatuan",
+        "zipCode": ""
+      },
+      {
+        "code": "153807",
+        "name": "Datu Odin Sinsuat (dinaig)",
+        "zipCode": ""
+      },
+      {
+        "code": "153805",
+        "name": "Datu Paglas",
+        "zipCode": "9807"
+      },
+      {
+        "code": "153806",
+        "name": "Datu Piang",
+        "zipCode": "9604"
+      },
+      {
+        "code": "153836",
+        "name": "Datu Salibo",
+        "zipCode": ""
+      },
+      {
+        "code": "153826",
+        "name": "Datu Saudi-ampatuan",
+        "zipCode": ""
+      },
+      {
+        "code": "153827",
+        "name": "Datu Unsay",
+        "zipCode": ""
+      },
+      {
+        "code": "153819",
+        "name": "Gen. S. K. Pendatun",
+        "zipCode": ""
+      },
+      {
+        "code": "153825",
+        "name": "Guindulungan",
+        "zipCode": ""
+      },
+      {
+        "code": "153814",
+        "name": "Kabuntalan (tumbao)",
+        "zipCode": ""
+      },
+      {
+        "code": "153820",
+        "name": "Mamasapano",
+        "zipCode": ""
+      },
+      {
+        "code": "153832",
+        "name": "Mangudadatu",
+        "zipCode": ""
+      },
+      {
+        "code": "153809",
+        "name": "Matanog",
+        "zipCode": ""
+      },
+      {
+        "code": "153834",
+        "name": "Northern Kabuntalan",
+        "zipCode": ""
+      },
+      {
+        "code": "153822",
+        "name": "Pagagawan",
+        "zipCode": ""
+      },
+      {
+        "code": "153810",
+        "name": "Pagalungan",
+        "zipCode": ""
+      },
+      {
+        "code": "153823",
+        "name": "Paglat",
+        "zipCode": ""
+      },
+      {
+        "code": "153833",
+        "name": "Pandag",
+        "zipCode": ""
+      },
+      {
+        "code": "153811",
+        "name": "Parang",
+        "zipCode": ""
+      },
+      {
+        "code": "153829",
+        "name": "Rajah Buayan",
+        "zipCode": ""
+      },
+      {
+        "code": "153808",
+        "name": "Shariff Aguak (maganoy)",
+        "zipCode": ""
+      },
+      {
+        "code": "153837",
+        "name": "Shariff Saydona Mustapha",
+        "zipCode": ""
+      },
+      {
+        "code": "153817",
+        "name": "South Upi",
+        "zipCode": ""
+      },
+      {
+        "code": "153812",
+        "name": "Sultan Kudarat (nuling)",
+        "zipCode": ""
+      },
+      {
+        "code": "153824",
+        "name": "Sultan Mastura",
+        "zipCode": ""
+      },
+      {
+        "code": "153813",
+        "name": "Sultan sa Barongis (lambayong)",
+        "zipCode": ""
+      },
+      {
+        "code": "153816",
+        "name": "Talayan",
+        "zipCode": ""
+      },
+      {
+        "code": "153821",
+        "name": "Talitay",
+        "zipCode": ""
+      },
+      {
+        "code": "153815",
+        "name": "Upi",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Marinduque",
+    "region": "Region IV-B (MIMAROPA)",
+    "regionCode": "17",
+    "cities": [
+      {
+        "code": "174001",
+        "name": "Boac",
+        "zipCode": "4900"
+      },
+      {
+        "code": "174002",
+        "name": "Buenavista",
+        "zipCode": "8604"
+      },
+      {
+        "code": "174003",
+        "name": "Gasan",
+        "zipCode": "4903"
+      },
+      {
+        "code": "174004",
+        "name": "Mogpog",
+        "zipCode": "4906"
+      },
+      {
+        "code": "174005",
+        "name": "Santa Cruz",
+        "zipCode": "8012"
+      },
+      {
+        "code": "174006",
+        "name": "Torrijos",
+        "zipCode": "4904"
+      }
+    ]
+  },
+  {
+    "name": "Masbate",
+    "region": "Region V (Bicol Region)",
+    "regionCode": "05",
+    "cities": [
+      {
+        "code": "054101",
+        "name": "Aroroy",
+        "zipCode": ""
+      },
+      {
+        "code": "054102",
+        "name": "Baleno",
+        "zipCode": ""
+      },
+      {
+        "code": "054103",
+        "name": "Balud",
+        "zipCode": ""
+      },
+      {
+        "code": "054104",
+        "name": "Batuan",
+        "zipCode": ""
+      },
+      {
+        "code": "054105",
+        "name": "Cataingan",
+        "zipCode": ""
+      },
+      {
+        "code": "054106",
+        "name": "Cawayan",
+        "zipCode": ""
+      },
+      {
+        "code": "054111",
+        "name": "City of Masbate",
+        "zipCode": ""
+      },
+      {
+        "code": "054107",
+        "name": "Claveria",
+        "zipCode": "9004"
+      },
+      {
+        "code": "054108",
+        "name": "Dimasalang",
+        "zipCode": ""
+      },
+      {
+        "code": "054109",
+        "name": "Esperanza",
+        "zipCode": "8609"
+      },
+      {
+        "code": "054110",
+        "name": "Mandaon",
+        "zipCode": ""
+      },
+      {
+        "code": "054112",
+        "name": "Milagros",
+        "zipCode": ""
+      },
+      {
+        "code": "054113",
+        "name": "Mobo",
+        "zipCode": ""
+      },
+      {
+        "code": "054114",
+        "name": "Monreal",
+        "zipCode": ""
+      },
+      {
+        "code": "054115",
+        "name": "Palanas",
+        "zipCode": ""
+      },
+      {
+        "code": "054116",
+        "name": "Pio V. Corpuz (limbuhan)",
+        "zipCode": ""
+      },
+      {
+        "code": "054117",
+        "name": "Placer",
+        "zipCode": "8414"
+      },
+      {
+        "code": "054118",
+        "name": "San Fernando",
+        "zipCode": "8712"
+      },
+      {
+        "code": "054119",
+        "name": "San Jacinto",
+        "zipCode": ""
+      },
+      {
+        "code": "054120",
+        "name": "San Pascual",
+        "zipCode": ""
+      },
+      {
+        "code": "054121",
+        "name": "Uson",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Misamis Occidental",
+    "region": "Region X (Northern Mindanao)",
+    "regionCode": "10",
+    "cities": [
+      {
+        "code": "104201",
+        "name": "Aloran",
+        "zipCode": "7204"
+      },
+      {
+        "code": "104202",
+        "name": "Baliangao",
+        "zipCode": "7203"
+      },
+      {
+        "code": "104203",
+        "name": "Bonifacio",
+        "zipCode": "7209"
+      },
+      {
+        "code": "104204",
+        "name": "Calamba",
+        "zipCode": "7204"
+      },
+      {
+        "code": "104205",
+        "name": "Clarin",
+        "zipCode": "7203"
+      },
+      {
+        "code": "104206",
+        "name": "Concepcion",
+        "zipCode": "7205"
+      },
+      {
+        "code": "104217",
+        "name": "Don Victoriano Chiongbian  (don Mariano Marcos)",
+        "zipCode": ""
+      },
+      {
+        "code": "104207",
+        "name": "Jimenez",
+        "zipCode": ""
+      },
+      {
+        "code": "104208",
+        "name": "Lopez Jaena",
+        "zipCode": "7206"
+      },
+      {
+        "code": "104209",
+        "name": "Oroquieta City",
+        "zipCode": "7207"
+      },
+      {
+        "code": "104210",
+        "name": "Ozamis City",
+        "zipCode": ""
+      },
+      {
+        "code": "104211",
+        "name": "Panaon",
+        "zipCode": ""
+      },
+      {
+        "code": "104212",
+        "name": "Plaridel",
+        "zipCode": "7209"
+      },
+      {
+        "code": "104213",
+        "name": "Sapang Dalaga",
+        "zipCode": ""
+      },
+      {
+        "code": "104214",
+        "name": "Sinacaban",
+        "zipCode": "7208"
+      },
+      {
+        "code": "104215",
+        "name": "Tangub City",
+        "zipCode": "7208"
+      },
+      {
+        "code": "104216",
+        "name": "Tudela",
+        "zipCode": "7203"
+      }
+    ]
+  },
+  {
+    "name": "Misamis Oriental",
+    "region": "Region X (Northern Mindanao)",
+    "regionCode": "10",
+    "cities": [
+      {
+        "code": "104301",
+        "name": "Alubijid",
+        "zipCode": "9004"
+      },
+      {
+        "code": "104302",
+        "name": "Balingasag",
+        "zipCode": "9002"
+      },
+      {
+        "code": "104303",
+        "name": "Balingoan",
+        "zipCode": ""
+      },
+      {
+        "code": "104304",
+        "name": "Binuangan",
+        "zipCode": ""
+      },
+      {
+        "code": "104305",
+        "name": "Cagayan de Oro City",
+        "zipCode": "9000"
+      },
+      {
+        "code": "104307",
+        "name": "City of El Salvador",
+        "zipCode": "9007"
+      },
+      {
+        "code": "104306",
+        "name": "Claveria",
+        "zipCode": "9004"
+      },
+      {
+        "code": "104308",
+        "name": "Gingoog City",
+        "zipCode": "9002"
+      },
+      {
+        "code": "104309",
+        "name": "Gitagum",
+        "zipCode": "9001"
+      },
+      {
+        "code": "104310",
+        "name": "Initao",
+        "zipCode": ""
+      },
+      {
+        "code": "104311",
+        "name": "Jasaan",
+        "zipCode": "9002"
+      },
+      {
+        "code": "104312",
+        "name": "Kinoguitan",
+        "zipCode": "9008"
+      },
+      {
+        "code": "104313",
+        "name": "Lagonglong",
+        "zipCode": ""
+      },
+      {
+        "code": "104314",
+        "name": "Laguindingan",
+        "zipCode": "9006"
+      },
+      {
+        "code": "104315",
+        "name": "Libertad",
+        "zipCode": ""
+      },
+      {
+        "code": "104316",
+        "name": "Lugait",
+        "zipCode": "9017"
+      },
+      {
+        "code": "104317",
+        "name": "Magsaysay (linugos)",
+        "zipCode": ""
+      },
+      {
+        "code": "104318",
+        "name": "Manticao",
+        "zipCode": "9009"
+      },
+      {
+        "code": "104319",
+        "name": "Medina",
+        "zipCode": "9003"
+      },
+      {
+        "code": "104320",
+        "name": "Naawan",
+        "zipCode": ""
+      },
+      {
+        "code": "104321",
+        "name": "Opol",
+        "zipCode": "9009"
+      },
+      {
+        "code": "104322",
+        "name": "Salay",
+        "zipCode": ""
+      },
+      {
+        "code": "104323",
+        "name": "Sugbongcogon",
+        "zipCode": ""
+      },
+      {
+        "code": "104324",
+        "name": "Tagoloan",
+        "zipCode": "9004"
+      },
+      {
+        "code": "104325",
+        "name": "Talisayan",
+        "zipCode": "9008"
+      },
+      {
+        "code": "104326",
+        "name": "Villanueva",
+        "zipCode": "9009"
+      }
+    ]
+  },
+  {
+    "name": "Mountain Province",
+    "region": "Cordillera Administrative Region (CAR)",
+    "regionCode": "14",
+    "cities": [
+      {
+        "code": "144401",
+        "name": "Barlig",
+        "zipCode": "2611"
+      },
+      {
+        "code": "144402",
+        "name": "Bauko",
+        "zipCode": "2621"
+      },
+      {
+        "code": "144403",
+        "name": "Besao",
+        "zipCode": ""
+      },
+      {
+        "code": "144404",
+        "name": "Bontoc",
+        "zipCode": "2608"
+      },
+      {
+        "code": "144405",
+        "name": "Natonin",
+        "zipCode": "2628"
+      },
+      {
+        "code": "144406",
+        "name": "Paracelis",
+        "zipCode": ""
+      },
+      {
+        "code": "144407",
+        "name": "Sabangan",
+        "zipCode": "2611"
+      },
+      {
+        "code": "144408",
+        "name": "Sadanga",
+        "zipCode": "2612"
+      },
+      {
+        "code": "144409",
+        "name": "Sagada",
+        "zipCode": "2619"
+      },
+      {
+        "code": "144410",
+        "name": "Tadian",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Negros Occidental",
+    "region": "Region VI (Western Visayas)",
+    "regionCode": "06",
+    "cities": [
+      {
+        "code": "064501",
+        "name": "Bacolod City",
+        "zipCode": "9211"
+      },
+      {
+        "code": "064502",
+        "name": "Bago City",
+        "zipCode": "6104"
+      },
+      {
+        "code": "064503",
+        "name": "Binalbagan",
+        "zipCode": ""
+      },
+      {
+        "code": "064504",
+        "name": "Cadiz City",
+        "zipCode": "6122"
+      },
+      {
+        "code": "064505",
+        "name": "Calatrava",
+        "zipCode": "6126"
+      },
+      {
+        "code": "064506",
+        "name": "Candoni",
+        "zipCode": "6115"
+      },
+      {
+        "code": "064507",
+        "name": "Cauayan",
+        "zipCode": "6126"
+      },
+      {
+        "code": "064509",
+        "name": "City of Escalante",
+        "zipCode": "6127"
+      },
+      {
+        "code": "064510",
+        "name": "City of Himamaylan",
+        "zipCode": "6130"
+      },
+      {
+        "code": "064515",
+        "name": "City of Kabankalan",
+        "zipCode": "6110"
+      },
+      {
+        "code": "064527",
+        "name": "City of Sipalay",
+        "zipCode": "6128"
+      },
+      {
+        "code": "064528",
+        "name": "City of Talisay",
+        "zipCode": "6045"
+      },
+      {
+        "code": "064531",
+        "name": "City of Victorias",
+        "zipCode": "6129"
+      },
+      {
+        "code": "064508",
+        "name": "Enrique B. Magalona (saravia)",
+        "zipCode": ""
+      },
+      {
+        "code": "064511",
+        "name": "Hinigaran",
+        "zipCode": "6117"
+      },
+      {
+        "code": "064512",
+        "name": "Hinoba-an (asia)",
+        "zipCode": ""
+      },
+      {
+        "code": "064513",
+        "name": "Ilog",
+        "zipCode": "6117"
+      },
+      {
+        "code": "064514",
+        "name": "Isabela",
+        "zipCode": ""
+      },
+      {
+        "code": "064516",
+        "name": "la Carlota City",
+        "zipCode": "6127"
+      },
+      {
+        "code": "064517",
+        "name": "la Castellana",
+        "zipCode": "6128"
+      },
+      {
+        "code": "064518",
+        "name": "Manapla",
+        "zipCode": ""
+      },
+      {
+        "code": "064519",
+        "name": "Moises Padilla (magallon)",
+        "zipCode": ""
+      },
+      {
+        "code": "064520",
+        "name": "Murcia",
+        "zipCode": "6129"
+      },
+      {
+        "code": "064521",
+        "name": "Pontevedra",
+        "zipCode": "6119"
+      },
+      {
+        "code": "064522",
+        "name": "Pulupandan",
+        "zipCode": "6118"
+      },
+      {
+        "code": "064523",
+        "name": "Sagay City",
+        "zipCode": "9109"
+      },
+      {
+        "code": "064532",
+        "name": "Salvador Benedicto",
+        "zipCode": "6127"
+      },
+      {
+        "code": "064524",
+        "name": "San Carlos City",
+        "zipCode": "6127"
+      },
+      {
+        "code": "064525",
+        "name": "San Enrique",
+        "zipCode": "6117"
+      },
+      {
+        "code": "064526",
+        "name": "Silay City",
+        "zipCode": "6116"
+      },
+      {
+        "code": "064529",
+        "name": "Toboso",
+        "zipCode": ""
+      },
+      {
+        "code": "064530",
+        "name": "Valladolid",
+        "zipCode": "6130"
+      }
+    ]
+  },
+  {
+    "name": "Negros Oriental",
+    "region": "Region VII (Central Visayas)",
+    "regionCode": "07",
+    "cities": [
+      {
+        "code": "074601",
+        "name": "Amlan (ayuquitan)",
+        "zipCode": ""
+      },
+      {
+        "code": "074602",
+        "name": "Ayungon",
+        "zipCode": "6212"
+      },
+      {
+        "code": "074603",
+        "name": "Bacong",
+        "zipCode": "6208"
+      },
+      {
+        "code": "074604",
+        "name": "Bais City",
+        "zipCode": "6202"
+      },
+      {
+        "code": "074605",
+        "name": "Basay",
+        "zipCode": "6218"
+      },
+      {
+        "code": "074607",
+        "name": "Bindoy (payabon)",
+        "zipCode": ""
+      },
+      {
+        "code": "074608",
+        "name": "Canlaon City",
+        "zipCode": "6217"
+      },
+      {
+        "code": "074606",
+        "name": "City of Bayawan (tulong)",
+        "zipCode": ""
+      },
+      {
+        "code": "074611",
+        "name": "City of Guihulngan",
+        "zipCode": "6212"
+      },
+      {
+        "code": "074621",
+        "name": "City of Tanjay",
+        "zipCode": "6204"
+      },
+      {
+        "code": "074609",
+        "name": "Dauin",
+        "zipCode": "6211"
+      },
+      {
+        "code": "074610",
+        "name": "Dumaguete City",
+        "zipCode": "6200"
+      },
+      {
+        "code": "074612",
+        "name": "Jimalalud",
+        "zipCode": "6211"
+      },
+      {
+        "code": "074613",
+        "name": "la Libertad",
+        "zipCode": ""
+      },
+      {
+        "code": "074614",
+        "name": "Mabinay",
+        "zipCode": "6217"
+      },
+      {
+        "code": "074615",
+        "name": "Manjuyod",
+        "zipCode": "6215"
+      },
+      {
+        "code": "074616",
+        "name": "Pamplona",
+        "zipCode": "6216"
+      },
+      {
+        "code": "074617",
+        "name": "San Jose",
+        "zipCode": "8416"
+      },
+      {
+        "code": "074618",
+        "name": "Santa Catalina",
+        "zipCode": "6212"
+      },
+      {
+        "code": "074619",
+        "name": "Siaton",
+        "zipCode": "6217"
+      },
+      {
+        "code": "074620",
+        "name": "Sibulan",
+        "zipCode": "6200"
+      },
+      {
+        "code": "074622",
+        "name": "Tayasan",
+        "zipCode": ""
+      },
+      {
+        "code": "074623",
+        "name": "Valencia (luzurriaga)",
+        "zipCode": ""
+      },
+      {
+        "code": "074624",
+        "name": "Vallehermoso",
+        "zipCode": ""
+      },
+      {
+        "code": "074625",
+        "name": "Zamboanguita",
+        "zipCode": "6211"
+      }
+    ]
+  },
+  {
+    "name": "Northern Samar",
+    "region": "Region VIII (Eastern Visayas)",
+    "regionCode": "08",
+    "cities": [
+      {
+        "code": "084801",
+        "name": "Allen",
+        "zipCode": "6406"
+      },
+      {
+        "code": "084802",
+        "name": "Biri",
+        "zipCode": "6403"
+      },
+      {
+        "code": "084803",
+        "name": "Bobon",
+        "zipCode": "6408"
+      },
+      {
+        "code": "084804",
+        "name": "Capul",
+        "zipCode": "6406"
+      },
+      {
+        "code": "084805",
+        "name": "Catarman",
+        "zipCode": "9103"
+      },
+      {
+        "code": "084806",
+        "name": "Catubig",
+        "zipCode": "6406"
+      },
+      {
+        "code": "084807",
+        "name": "Gamay",
+        "zipCode": ""
+      },
+      {
+        "code": "084808",
+        "name": "Laoang",
+        "zipCode": "6403"
+      },
+      {
+        "code": "084809",
+        "name": "Lapinig",
+        "zipCode": ""
+      },
+      {
+        "code": "084810",
+        "name": "Las Navas",
+        "zipCode": ""
+      },
+      {
+        "code": "084811",
+        "name": "Lavezares",
+        "zipCode": "6408"
+      },
+      {
+        "code": "084824",
+        "name": "Lope de Vega",
+        "zipCode": ""
+      },
+      {
+        "code": "084812",
+        "name": "Mapanas",
+        "zipCode": "6408"
+      },
+      {
+        "code": "084813",
+        "name": "Mondragon",
+        "zipCode": ""
+      },
+      {
+        "code": "084814",
+        "name": "Palapag",
+        "zipCode": "6408"
+      },
+      {
+        "code": "084815",
+        "name": "Pambujan",
+        "zipCode": "6409"
+      },
+      {
+        "code": "084816",
+        "name": "Rosario",
+        "zipCode": "8607"
+      },
+      {
+        "code": "084817",
+        "name": "San Antonio",
+        "zipCode": "6409"
+      },
+      {
+        "code": "084818",
+        "name": "San Isidro",
+        "zipCode": "8413"
+      },
+      {
+        "code": "084819",
+        "name": "San Jose",
+        "zipCode": "8416"
+      },
+      {
+        "code": "084820",
+        "name": "San Roque",
+        "zipCode": ""
+      },
+      {
+        "code": "084821",
+        "name": "San Vicente",
+        "zipCode": "6409"
+      },
+      {
+        "code": "084822",
+        "name": "Silvino Lobos",
+        "zipCode": "6409"
+      },
+      {
+        "code": "084823",
+        "name": "Victoria",
+        "zipCode": "6409"
+      }
+    ]
+  },
+  {
+    "name": "Nueva Ecija",
+    "region": "Region III (Central Luzon)",
+    "regionCode": "03",
+    "cities": [
+      {
+        "code": "034901",
+        "name": "Aliaga",
+        "zipCode": "3116"
+      },
+      {
+        "code": "034902",
+        "name": "Bongabon",
+        "zipCode": "3126"
+      },
+      {
+        "code": "034903",
+        "name": "Cabanatuan City",
+        "zipCode": "3100"
+      },
+      {
+        "code": "034904",
+        "name": "Cabiao",
+        "zipCode": "3114"
+      },
+      {
+        "code": "034905",
+        "name": "Carranglan",
+        "zipCode": ""
+      },
+      {
+        "code": "034908",
+        "name": "City of Gapan",
+        "zipCode": "3103"
+      },
+      {
+        "code": "034906",
+        "name": "Cuyapo",
+        "zipCode": "3126"
+      },
+      {
+        "code": "034907",
+        "name": "Gabaldon (bitulok & Sabani)",
+        "zipCode": ""
+      },
+      {
+        "code": "034909",
+        "name": "General Mamerto Natividad",
+        "zipCode": ""
+      },
+      {
+        "code": "034910",
+        "name": "General Tinio (papaya)",
+        "zipCode": ""
+      },
+      {
+        "code": "034911",
+        "name": "Guimba",
+        "zipCode": ""
+      },
+      {
+        "code": "034912",
+        "name": "Jaen",
+        "zipCode": ""
+      },
+      {
+        "code": "034913",
+        "name": "Laur",
+        "zipCode": "3121"
+      },
+      {
+        "code": "034914",
+        "name": "Licab",
+        "zipCode": "3117"
+      },
+      {
+        "code": "034915",
+        "name": "Llanera",
+        "zipCode": "3122"
+      },
+      {
+        "code": "034916",
+        "name": "Lupao",
+        "zipCode": "3126"
+      },
+      {
+        "code": "034918",
+        "name": "Nampicuan",
+        "zipCode": ""
+      },
+      {
+        "code": "034919",
+        "name": "Palayan City",
+        "zipCode": "3120"
+      },
+      {
+        "code": "034920",
+        "name": "Pantabangan",
+        "zipCode": ""
+      },
+      {
+        "code": "034921",
+        "name": "Peñaranda",
+        "zipCode": ""
+      },
+      {
+        "code": "034922",
+        "name": "Quezon",
+        "zipCode": "8714"
+      },
+      {
+        "code": "034923",
+        "name": "Rizal",
+        "zipCode": "3805"
+      },
+      {
+        "code": "034924",
+        "name": "San Antonio",
+        "zipCode": "6409"
+      },
+      {
+        "code": "034925",
+        "name": "San Isidro",
+        "zipCode": "8413"
+      },
+      {
+        "code": "034926",
+        "name": "San Jose City",
+        "zipCode": "8416"
+      },
+      {
+        "code": "034927",
+        "name": "San Leonardo",
+        "zipCode": "3121"
+      },
+      {
+        "code": "034928",
+        "name": "Santa Rosa",
+        "zipCode": "4026"
+      },
+      {
+        "code": "034929",
+        "name": "Santo Domingo",
+        "zipCode": "4511"
+      },
+      {
+        "code": "034917",
+        "name": "Science City of Muñoz",
+        "zipCode": ""
+      },
+      {
+        "code": "034930",
+        "name": "Talavera",
+        "zipCode": "3111"
+      },
+      {
+        "code": "034931",
+        "name": "Talugtug",
+        "zipCode": ""
+      },
+      {
+        "code": "034932",
+        "name": "Zaragoza",
+        "zipCode": "3131"
+      }
+    ]
+  },
+  {
+    "name": "Nueva Vizcaya",
+    "region": "Region II (Cagayan Valley)",
+    "regionCode": "02",
+    "cities": [
+      {
+        "code": "025015",
+        "name": "Alfonso Castaneda",
+        "zipCode": ""
+      },
+      {
+        "code": "025001",
+        "name": "Ambaguio",
+        "zipCode": "3708"
+      },
+      {
+        "code": "025002",
+        "name": "Aritao",
+        "zipCode": "3705"
+      },
+      {
+        "code": "025003",
+        "name": "Bagabag",
+        "zipCode": "3711"
+      },
+      {
+        "code": "025004",
+        "name": "Bambang",
+        "zipCode": "3706"
+      },
+      {
+        "code": "025005",
+        "name": "Bayombong",
+        "zipCode": "3700"
+      },
+      {
+        "code": "025006",
+        "name": "Diadi",
+        "zipCode": "3704"
+      },
+      {
+        "code": "025007",
+        "name": "Dupax del Norte",
+        "zipCode": ""
+      },
+      {
+        "code": "025008",
+        "name": "Dupax del Sur",
+        "zipCode": ""
+      },
+      {
+        "code": "025009",
+        "name": "Kasibu",
+        "zipCode": ""
+      },
+      {
+        "code": "025010",
+        "name": "Kayapa",
+        "zipCode": "3721"
+      },
+      {
+        "code": "025011",
+        "name": "Quezon",
+        "zipCode": "8714"
+      },
+      {
+        "code": "025012",
+        "name": "Santa Fe",
+        "zipCode": "6523"
+      },
+      {
+        "code": "025013",
+        "name": "Solano",
+        "zipCode": "3710"
+      },
+      {
+        "code": "025014",
+        "name": "Villaverde",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Occidental Mindoro",
+    "region": "Region IV-B (MIMAROPA)",
+    "regionCode": "17",
+    "cities": [
+      {
+        "code": "175101",
+        "name": "Abra de Ilog",
+        "zipCode": "5104"
+      },
+      {
+        "code": "175102",
+        "name": "Calintaan",
+        "zipCode": "5106"
+      },
+      {
+        "code": "175103",
+        "name": "Looc",
+        "zipCode": "5505"
+      },
+      {
+        "code": "175104",
+        "name": "Lubang",
+        "zipCode": "5104"
+      },
+      {
+        "code": "175105",
+        "name": "Magsaysay",
+        "zipCode": "8011"
+      },
+      {
+        "code": "175106",
+        "name": "Mamburao",
+        "zipCode": "5100"
+      },
+      {
+        "code": "175107",
+        "name": "Paluan",
+        "zipCode": ""
+      },
+      {
+        "code": "175108",
+        "name": "Rizal",
+        "zipCode": "3805"
+      },
+      {
+        "code": "175109",
+        "name": "Sablayan",
+        "zipCode": "5108"
+      },
+      {
+        "code": "175110",
+        "name": "San Jose",
+        "zipCode": "8416"
+      },
+      {
+        "code": "175111",
+        "name": "Santa Cruz",
+        "zipCode": "8012"
+      }
+    ]
+  },
+  {
+    "name": "Oriental Mindoro",
+    "region": "Region IV-B (MIMAROPA)",
+    "regionCode": "17",
+    "cities": [
+      {
+        "code": "175201",
+        "name": "Baco",
+        "zipCode": "5201"
+      },
+      {
+        "code": "175202",
+        "name": "Bansud",
+        "zipCode": "5218"
+      },
+      {
+        "code": "175203",
+        "name": "Bongabong",
+        "zipCode": "5211"
+      },
+      {
+        "code": "175204",
+        "name": "Bulalacao (san Pedro)",
+        "zipCode": ""
+      },
+      {
+        "code": "175205",
+        "name": "City of Calapan",
+        "zipCode": "5200"
+      },
+      {
+        "code": "175206",
+        "name": "Gloria",
+        "zipCode": ""
+      },
+      {
+        "code": "175207",
+        "name": "Mansalay",
+        "zipCode": "5209"
+      },
+      {
+        "code": "175208",
+        "name": "Naujan",
+        "zipCode": "5106"
+      },
+      {
+        "code": "175209",
+        "name": "Pinamalayan",
+        "zipCode": "5215"
+      },
+      {
+        "code": "175210",
+        "name": "Pola",
+        "zipCode": ""
+      },
+      {
+        "code": "175211",
+        "name": "Puerto Galera",
+        "zipCode": "5203"
+      },
+      {
+        "code": "175212",
+        "name": "Roxas",
+        "zipCode": "5800"
+      },
+      {
+        "code": "175213",
+        "name": "San Teodoro",
+        "zipCode": ""
+      },
+      {
+        "code": "175214",
+        "name": "Socorro",
+        "zipCode": "8419"
+      },
+      {
+        "code": "175215",
+        "name": "Victoria",
+        "zipCode": "6409"
+      }
+    ]
+  },
+  {
+    "name": "Palawan",
+    "region": "Region IV-B (MIMAROPA)",
+    "regionCode": "17",
+    "cities": [
+      {
+        "code": "175301",
+        "name": "Aborlan",
+        "zipCode": "5313"
+      },
+      {
+        "code": "175302",
+        "name": "Agutaya",
+        "zipCode": ""
+      },
+      {
+        "code": "175303",
+        "name": "Araceli",
+        "zipCode": ""
+      },
+      {
+        "code": "175304",
+        "name": "Balabac",
+        "zipCode": "5308"
+      },
+      {
+        "code": "175305",
+        "name": "Bataraza",
+        "zipCode": "5307"
+      },
+      {
+        "code": "175306",
+        "name": "Brooke's Point",
+        "zipCode": "5309"
+      },
+      {
+        "code": "175307",
+        "name": "Busuanga",
+        "zipCode": "5315"
+      },
+      {
+        "code": "175308",
+        "name": "Cagayancillo",
+        "zipCode": ""
+      },
+      {
+        "code": "175309",
+        "name": "Coron",
+        "zipCode": "5316"
+      },
+      {
+        "code": "175322",
+        "name": "Culion",
+        "zipCode": "5315"
+      },
+      {
+        "code": "175310",
+        "name": "Cuyo",
+        "zipCode": ""
+      },
+      {
+        "code": "175311",
+        "name": "Dumaran",
+        "zipCode": "5313"
+      },
+      {
+        "code": "175312",
+        "name": "El Nido (bacuit)",
+        "zipCode": ""
+      },
+      {
+        "code": "175321",
+        "name": "Kalayaan",
+        "zipCode": "5319"
+      },
+      {
+        "code": "175313",
+        "name": "Linapacan",
+        "zipCode": "5313"
+      },
+      {
+        "code": "175314",
+        "name": "Magsaysay",
+        "zipCode": "8011"
+      },
+      {
+        "code": "175315",
+        "name": "Narra",
+        "zipCode": "5313"
+      },
+      {
+        "code": "175316",
+        "name": "Puerto Princesa City",
+        "zipCode": "5300"
+      },
+      {
+        "code": "175317",
+        "name": "Quezon",
+        "zipCode": "8714"
+      },
+      {
+        "code": "175323",
+        "name": "Rizal (marcos)",
+        "zipCode": ""
+      },
+      {
+        "code": "175318",
+        "name": "Roxas",
+        "zipCode": "5800"
+      },
+      {
+        "code": "175319",
+        "name": "San Vicente",
+        "zipCode": "6409"
+      },
+      {
+        "code": "175324",
+        "name": "Sofronio Española",
+        "zipCode": ""
+      },
+      {
+        "code": "175320",
+        "name": "Taytay",
+        "zipCode": "5311"
+      }
+    ]
+  },
+  {
+    "name": "Pampanga",
+    "region": "Region III (Central Luzon)",
+    "regionCode": "03",
+    "cities": [
+      {
+        "code": "035401",
+        "name": "Angeles City",
+        "zipCode": "2009"
+      },
+      {
+        "code": "035402",
+        "name": "Apalit",
+        "zipCode": "2014"
+      },
+      {
+        "code": "035403",
+        "name": "Arayat",
+        "zipCode": "2011"
+      },
+      {
+        "code": "035404",
+        "name": "Bacolor",
+        "zipCode": "2001"
+      },
+      {
+        "code": "035405",
+        "name": "Candaba",
+        "zipCode": "2011"
+      },
+      {
+        "code": "035416",
+        "name": "City of San Fernando",
+        "zipCode": "8712"
+      },
+      {
+        "code": "035406",
+        "name": "Floridablanca",
+        "zipCode": "2013"
+      },
+      {
+        "code": "035407",
+        "name": "Guagua",
+        "zipCode": "2003"
+      },
+      {
+        "code": "035408",
+        "name": "Lubao",
+        "zipCode": "2018"
+      },
+      {
+        "code": "035409",
+        "name": "Mabalacat City",
+        "zipCode": "2010"
+      },
+      {
+        "code": "035410",
+        "name": "Macabebe",
+        "zipCode": "2011"
+      },
+      {
+        "code": "035411",
+        "name": "Magalang",
+        "zipCode": "2011"
+      },
+      {
+        "code": "035412",
+        "name": "Masantol",
+        "zipCode": "2011"
+      },
+      {
+        "code": "035413",
+        "name": "Mexico",
+        "zipCode": "2006"
+      },
+      {
+        "code": "035414",
+        "name": "Minalin",
+        "zipCode": ""
+      },
+      {
+        "code": "035415",
+        "name": "Porac",
+        "zipCode": "2011"
+      },
+      {
+        "code": "035417",
+        "name": "San Luis",
+        "zipCode": "8514"
+      },
+      {
+        "code": "035418",
+        "name": "San Simon",
+        "zipCode": "2015"
+      },
+      {
+        "code": "035419",
+        "name": "Santa Ana",
+        "zipCode": "2016"
+      },
+      {
+        "code": "035420",
+        "name": "Santa Rita",
+        "zipCode": ""
+      },
+      {
+        "code": "035421",
+        "name": "Santo Tomas",
+        "zipCode": "2426"
+      },
+      {
+        "code": "035422",
+        "name": "Sasmuan (sexmoan)",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Pangasinan",
+    "region": "Region I (Ilocos Region)",
+    "regionCode": "01",
+    "cities": [
+      {
+        "code": "015501",
+        "name": "Agno",
+        "zipCode": ""
+      },
+      {
+        "code": "015502",
+        "name": "Aguilar",
+        "zipCode": ""
+      },
+      {
+        "code": "015504",
+        "name": "Alcala",
+        "zipCode": "3514"
+      },
+      {
+        "code": "015505",
+        "name": "Anda",
+        "zipCode": "6319"
+      },
+      {
+        "code": "015506",
+        "name": "Asingan",
+        "zipCode": "2428"
+      },
+      {
+        "code": "015507",
+        "name": "Balungao",
+        "zipCode": ""
+      },
+      {
+        "code": "015508",
+        "name": "Bani",
+        "zipCode": "2413"
+      },
+      {
+        "code": "015509",
+        "name": "Basista",
+        "zipCode": ""
+      },
+      {
+        "code": "015510",
+        "name": "Bautista",
+        "zipCode": ""
+      },
+      {
+        "code": "015511",
+        "name": "Bayambang",
+        "zipCode": "2427"
+      },
+      {
+        "code": "015512",
+        "name": "Binalonan",
+        "zipCode": "2424"
+      },
+      {
+        "code": "015513",
+        "name": "Binmaley",
+        "zipCode": "2411"
+      },
+      {
+        "code": "015514",
+        "name": "Bolinao",
+        "zipCode": "2406"
+      },
+      {
+        "code": "015515",
+        "name": "Bugallon",
+        "zipCode": "2428"
+      },
+      {
+        "code": "015516",
+        "name": "Burgos",
+        "zipCode": "8412"
+      },
+      {
+        "code": "015517",
+        "name": "Calasiao",
+        "zipCode": "2412"
+      },
+      {
+        "code": "015503",
+        "name": "City of Alaminos",
+        "zipCode": "4004"
+      },
+      {
+        "code": "015546",
+        "name": "City of Urdaneta",
+        "zipCode": "2428"
+      },
+      {
+        "code": "015518",
+        "name": "Dagupan City",
+        "zipCode": "2400"
+      },
+      {
+        "code": "015519",
+        "name": "Dasol",
+        "zipCode": "2428"
+      },
+      {
+        "code": "015520",
+        "name": "Infanta",
+        "zipCode": "4318"
+      },
+      {
+        "code": "015521",
+        "name": "Labrador",
+        "zipCode": ""
+      },
+      {
+        "code": "015548",
+        "name": "Laoac",
+        "zipCode": ""
+      },
+      {
+        "code": "015522",
+        "name": "Lingayen",
+        "zipCode": "2401"
+      },
+      {
+        "code": "015523",
+        "name": "Mabini",
+        "zipCode": "6327"
+      },
+      {
+        "code": "015524",
+        "name": "Malasiqui",
+        "zipCode": "2426"
+      },
+      {
+        "code": "015525",
+        "name": "Manaoag",
+        "zipCode": "2436"
+      },
+      {
+        "code": "015526",
+        "name": "Mangaldan",
+        "zipCode": "2417"
+      },
+      {
+        "code": "015527",
+        "name": "Mangatarem",
+        "zipCode": "2426"
+      },
+      {
+        "code": "015528",
+        "name": "Mapandan",
+        "zipCode": "2426"
+      },
+      {
+        "code": "015529",
+        "name": "Natividad",
+        "zipCode": ""
+      },
+      {
+        "code": "015530",
+        "name": "Pozorrubio",
+        "zipCode": "2415"
+      },
+      {
+        "code": "015531",
+        "name": "Rosales",
+        "zipCode": "2426"
+      },
+      {
+        "code": "015532",
+        "name": "San Carlos City",
+        "zipCode": "6127"
+      },
+      {
+        "code": "015533",
+        "name": "San Fabian",
+        "zipCode": "2427"
+      },
+      {
+        "code": "015534",
+        "name": "San Jacinto",
+        "zipCode": ""
+      },
+      {
+        "code": "015535",
+        "name": "San Manuel",
+        "zipCode": "3317"
+      },
+      {
+        "code": "015536",
+        "name": "San Nicolas",
+        "zipCode": "2414"
+      },
+      {
+        "code": "015537",
+        "name": "San Quintin",
+        "zipCode": ""
+      },
+      {
+        "code": "015538",
+        "name": "Santa Barbara",
+        "zipCode": "5023"
+      },
+      {
+        "code": "015539",
+        "name": "Santa Maria",
+        "zipCode": "8014"
+      },
+      {
+        "code": "015540",
+        "name": "Santo Tomas",
+        "zipCode": "2426"
+      },
+      {
+        "code": "015541",
+        "name": "Sison",
+        "zipCode": "8417"
+      },
+      {
+        "code": "015542",
+        "name": "Sual",
+        "zipCode": ""
+      },
+      {
+        "code": "015543",
+        "name": "Tayug",
+        "zipCode": "2432"
+      },
+      {
+        "code": "015544",
+        "name": "Umingan",
+        "zipCode": "2427"
+      },
+      {
+        "code": "015545",
+        "name": "Urbiztondo",
+        "zipCode": "2429"
+      },
+      {
+        "code": "015547",
+        "name": "Villasis",
+        "zipCode": "2427"
+      }
+    ]
+  },
+  {
+    "name": "Quezon",
+    "region": "Region IV-A (CALABARZON)",
+    "regionCode": "04",
+    "cities": [
+      {
+        "code": "045601",
+        "name": "Agdangan",
+        "zipCode": "4326"
+      },
+      {
+        "code": "045602",
+        "name": "Alabat",
+        "zipCode": "4321"
+      },
+      {
+        "code": "045603",
+        "name": "Atimonan",
+        "zipCode": "4328"
+      },
+      {
+        "code": "045605",
+        "name": "Buenavista",
+        "zipCode": "8604"
+      },
+      {
+        "code": "045606",
+        "name": "Burdeos",
+        "zipCode": "4329"
+      },
+      {
+        "code": "045607",
+        "name": "Calauag",
+        "zipCode": "4316"
+      },
+      {
+        "code": "045608",
+        "name": "Candelaria",
+        "zipCode": "4323"
+      },
+      {
+        "code": "045610",
+        "name": "Catanauan",
+        "zipCode": "4326"
+      },
+      {
+        "code": "045647",
+        "name": "City of Tayabas",
+        "zipCode": "4320"
+      },
+      {
+        "code": "045615",
+        "name": "Dolores",
+        "zipCode": ""
+      },
+      {
+        "code": "045616",
+        "name": "General Luna",
+        "zipCode": "8419"
+      },
+      {
+        "code": "045617",
+        "name": "General Nakar",
+        "zipCode": "4326"
+      },
+      {
+        "code": "045618",
+        "name": "Guinayangan",
+        "zipCode": "4328"
+      },
+      {
+        "code": "045619",
+        "name": "Gumaca",
+        "zipCode": "4326"
+      },
+      {
+        "code": "045620",
+        "name": "Infanta",
+        "zipCode": "4318"
+      },
+      {
+        "code": "045621",
+        "name": "Jomalig",
+        "zipCode": "4328"
+      },
+      {
+        "code": "045622",
+        "name": "Lopez",
+        "zipCode": ""
+      },
+      {
+        "code": "045623",
+        "name": "Lucban",
+        "zipCode": "4306"
+      },
+      {
+        "code": "045624",
+        "name": "Lucena City",
+        "zipCode": "4301"
+      },
+      {
+        "code": "045625",
+        "name": "Macalelon",
+        "zipCode": "4324"
+      },
+      {
+        "code": "045627",
+        "name": "Mauban",
+        "zipCode": "4326"
+      },
+      {
+        "code": "045628",
+        "name": "Mulanay",
+        "zipCode": "4327"
+      },
+      {
+        "code": "045629",
+        "name": "Padre Burgos",
+        "zipCode": "4322"
+      },
+      {
+        "code": "045630",
+        "name": "Pagbilao",
+        "zipCode": "4318"
+      },
+      {
+        "code": "045631",
+        "name": "Panukulan",
+        "zipCode": "4326"
+      },
+      {
+        "code": "045632",
+        "name": "Patnanungan",
+        "zipCode": "4329"
+      },
+      {
+        "code": "045633",
+        "name": "Perez",
+        "zipCode": ""
+      },
+      {
+        "code": "045634",
+        "name": "Pitogo",
+        "zipCode": "7015"
+      },
+      {
+        "code": "045635",
+        "name": "Plaridel",
+        "zipCode": "7209"
+      },
+      {
+        "code": "045636",
+        "name": "Polillo",
+        "zipCode": "4328"
+      },
+      {
+        "code": "045637",
+        "name": "Quezon",
+        "zipCode": "8714"
+      },
+      {
+        "code": "045638",
+        "name": "Real",
+        "zipCode": "4326"
+      },
+      {
+        "code": "045639",
+        "name": "Sampaloc",
+        "zipCode": ""
+      },
+      {
+        "code": "045640",
+        "name": "San Andres",
+        "zipCode": ""
+      },
+      {
+        "code": "045641",
+        "name": "San Antonio",
+        "zipCode": "6409"
+      },
+      {
+        "code": "045642",
+        "name": "San Francisco (aurora)",
+        "zipCode": ""
+      },
+      {
+        "code": "045644",
+        "name": "San Narciso",
+        "zipCode": "4322"
+      },
+      {
+        "code": "045645",
+        "name": "Sariaya",
+        "zipCode": "4326"
+      },
+      {
+        "code": "045646",
+        "name": "Tagkawayan",
+        "zipCode": ""
+      },
+      {
+        "code": "045648",
+        "name": "Tiaong",
+        "zipCode": "4320"
+      },
+      {
+        "code": "045649",
+        "name": "Unisan",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Quirino",
+    "region": "Region II (Cagayan Valley)",
+    "regionCode": "02",
+    "cities": [
+      {
+        "code": "025701",
+        "name": "Aglipay",
+        "zipCode": "3405"
+      },
+      {
+        "code": "025702",
+        "name": "Cabarroguis",
+        "zipCode": "3401"
+      },
+      {
+        "code": "025703",
+        "name": "Diffun",
+        "zipCode": "3404"
+      },
+      {
+        "code": "025704",
+        "name": "Maddela",
+        "zipCode": "3403"
+      },
+      {
+        "code": "025706",
+        "name": "Nagtipunan",
+        "zipCode": "3409"
+      },
+      {
+        "code": "025705",
+        "name": "Saguday",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Rizal",
+    "region": "Region IV-A (CALABARZON)",
+    "regionCode": "04",
+    "cities": [
+      {
+        "code": "045801",
+        "name": "Angono",
+        "zipCode": "1930"
+      },
+      {
+        "code": "045803",
+        "name": "Baras",
+        "zipCode": "1870"
+      },
+      {
+        "code": "045804",
+        "name": "Binangonan",
+        "zipCode": "1940"
+      },
+      {
+        "code": "045805",
+        "name": "Cainta",
+        "zipCode": "1900"
+      },
+      {
+        "code": "045806",
+        "name": "Cardona",
+        "zipCode": "1923"
+      },
+      {
+        "code": "045802",
+        "name": "City of Antipolo",
+        "zipCode": "1870"
+      },
+      {
+        "code": "045807",
+        "name": "Jala-jala",
+        "zipCode": "1924"
+      },
+      {
+        "code": "045809",
+        "name": "Morong",
+        "zipCode": "1948"
+      },
+      {
+        "code": "045810",
+        "name": "Pililla",
+        "zipCode": ""
+      },
+      {
+        "code": "045808",
+        "name": "Rodriguez (montalban)",
+        "zipCode": ""
+      },
+      {
+        "code": "045811",
+        "name": "San Mateo",
+        "zipCode": "1850"
+      },
+      {
+        "code": "045812",
+        "name": "Tanay",
+        "zipCode": ""
+      },
+      {
+        "code": "045813",
+        "name": "Taytay",
+        "zipCode": "5311"
+      },
+      {
+        "code": "045814",
+        "name": "Teresa",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Romblon",
+    "region": "Region IV-B (MIMAROPA)",
+    "regionCode": "17",
+    "cities": [
+      {
+        "code": "175901",
+        "name": "Alcantara",
+        "zipCode": "5508"
+      },
+      {
+        "code": "175902",
+        "name": "Banton",
+        "zipCode": ""
+      },
+      {
+        "code": "175903",
+        "name": "Cajidiocan",
+        "zipCode": "5506"
+      },
+      {
+        "code": "175904",
+        "name": "Calatrava",
+        "zipCode": "6126"
+      },
+      {
+        "code": "175905",
+        "name": "Concepcion",
+        "zipCode": "7205"
+      },
+      {
+        "code": "175906",
+        "name": "Corcuera",
+        "zipCode": "5408"
+      },
+      {
+        "code": "175916",
+        "name": "Ferrol",
+        "zipCode": "5517"
+      },
+      {
+        "code": "175907",
+        "name": "Looc",
+        "zipCode": "5505"
+      },
+      {
+        "code": "175908",
+        "name": "Magdiwang",
+        "zipCode": "5511"
+      },
+      {
+        "code": "175909",
+        "name": "Odiongan",
+        "zipCode": "5508"
+      },
+      {
+        "code": "175910",
+        "name": "Romblon",
+        "zipCode": "5500"
+      },
+      {
+        "code": "175911",
+        "name": "San Agustin",
+        "zipCode": ""
+      },
+      {
+        "code": "175912",
+        "name": "San Andres",
+        "zipCode": ""
+      },
+      {
+        "code": "175913",
+        "name": "San Fernando",
+        "zipCode": "8712"
+      },
+      {
+        "code": "175914",
+        "name": "San Jose",
+        "zipCode": "8416"
+      },
+      {
+        "code": "175915",
+        "name": "Santa Fe",
+        "zipCode": "6523"
+      },
+      {
+        "code": "175917",
+        "name": "Santa Maria (imelda)",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Samar (Western Samar)",
+    "region": "Region VIII (Eastern Visayas)",
+    "regionCode": "08",
+    "cities": [
+      {
+        "code": "086001",
+        "name": "Almagro",
+        "zipCode": ""
+      },
+      {
+        "code": "086002",
+        "name": "Basey",
+        "zipCode": ""
+      },
+      {
+        "code": "086003",
+        "name": "Calbayog City",
+        "zipCode": "6710"
+      },
+      {
+        "code": "086004",
+        "name": "Calbiga",
+        "zipCode": "6706"
+      },
+      {
+        "code": "086005",
+        "name": "City of Catbalogan",
+        "zipCode": "6700"
+      },
+      {
+        "code": "086006",
+        "name": "Daram",
+        "zipCode": ""
+      },
+      {
+        "code": "086007",
+        "name": "Gandara",
+        "zipCode": "6713"
+      },
+      {
+        "code": "086008",
+        "name": "Hinabangan",
+        "zipCode": ""
+      },
+      {
+        "code": "086009",
+        "name": "Jiabong",
+        "zipCode": ""
+      },
+      {
+        "code": "086010",
+        "name": "Marabut",
+        "zipCode": ""
+      },
+      {
+        "code": "086011",
+        "name": "Matuguinao",
+        "zipCode": ""
+      },
+      {
+        "code": "086012",
+        "name": "Motiong",
+        "zipCode": ""
+      },
+      {
+        "code": "086026",
+        "name": "Pagsanghan",
+        "zipCode": ""
+      },
+      {
+        "code": "086022",
+        "name": "Paranas (wright)",
+        "zipCode": ""
+      },
+      {
+        "code": "086013",
+        "name": "Pinabacdao",
+        "zipCode": "6707"
+      },
+      {
+        "code": "086025",
+        "name": "San Jorge",
+        "zipCode": ""
+      },
+      {
+        "code": "086014",
+        "name": "San Jose de Buan",
+        "zipCode": ""
+      },
+      {
+        "code": "086015",
+        "name": "San Sebastian",
+        "zipCode": ""
+      },
+      {
+        "code": "086016",
+        "name": "Santa Margarita",
+        "zipCode": ""
+      },
+      {
+        "code": "086017",
+        "name": "Santa Rita",
+        "zipCode": ""
+      },
+      {
+        "code": "086018",
+        "name": "Santo Niño",
+        "zipCode": ""
+      },
+      {
+        "code": "086024",
+        "name": "Tagapul-an",
+        "zipCode": ""
+      },
+      {
+        "code": "086019",
+        "name": "Talalora",
+        "zipCode": "6716"
+      },
+      {
+        "code": "086020",
+        "name": "Tarangnan",
+        "zipCode": ""
+      },
+      {
+        "code": "086021",
+        "name": "Villareal",
+        "zipCode": ""
+      },
+      {
+        "code": "086023",
+        "name": "Zumarraga",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Sarangani",
+    "region": "Region XII (SOCCSKSARGEN)",
+    "regionCode": "12",
+    "cities": [
+      {
+        "code": "128001",
+        "name": "Alabel",
+        "zipCode": "9506"
+      },
+      {
+        "code": "128002",
+        "name": "Glan",
+        "zipCode": "9502"
+      },
+      {
+        "code": "128003",
+        "name": "Kiamba",
+        "zipCode": "9504"
+      },
+      {
+        "code": "128004",
+        "name": "Maasim",
+        "zipCode": ""
+      },
+      {
+        "code": "128005",
+        "name": "Maitum",
+        "zipCode": "9503"
+      },
+      {
+        "code": "128006",
+        "name": "Malapatan",
+        "zipCode": ""
+      },
+      {
+        "code": "128007",
+        "name": "Malungon",
+        "zipCode": "9504"
+      }
+    ]
+  },
+  {
+    "name": "Siquijor",
+    "region": "Region VII (Central Visayas)",
+    "regionCode": "07",
+    "cities": [
+      {
+        "code": "076101",
+        "name": "Enrique Villanueva",
+        "zipCode": "6228"
+      },
+      {
+        "code": "076102",
+        "name": "Larena",
+        "zipCode": "6228"
+      },
+      {
+        "code": "076103",
+        "name": "Lazi",
+        "zipCode": "6225"
+      },
+      {
+        "code": "076104",
+        "name": "Maria",
+        "zipCode": "6227"
+      },
+      {
+        "code": "076105",
+        "name": "San Juan",
+        "zipCode": "6223"
+      },
+      {
+        "code": "076106",
+        "name": "Siquijor",
+        "zipCode": "6225"
+      }
+    ]
+  },
+  {
+    "name": "Sorsogon",
+    "region": "Region V (Bicol Region)",
+    "regionCode": "05",
+    "cities": [
+      {
+        "code": "056202",
+        "name": "Barcelona",
+        "zipCode": ""
+      },
+      {
+        "code": "056203",
+        "name": "Bulan",
+        "zipCode": ""
+      },
+      {
+        "code": "056204",
+        "name": "Bulusan",
+        "zipCode": ""
+      },
+      {
+        "code": "056205",
+        "name": "Casiguran",
+        "zipCode": "3209"
+      },
+      {
+        "code": "056206",
+        "name": "Castilla",
+        "zipCode": "4706"
+      },
+      {
+        "code": "056216",
+        "name": "City of Sorsogon",
+        "zipCode": "4700"
+      },
+      {
+        "code": "056207",
+        "name": "Donsol",
+        "zipCode": "4708"
+      },
+      {
+        "code": "056208",
+        "name": "Gubat",
+        "zipCode": "4706"
+      },
+      {
+        "code": "056209",
+        "name": "Irosin",
+        "zipCode": "4716"
+      },
+      {
+        "code": "056210",
+        "name": "Juban",
+        "zipCode": "4705"
+      },
+      {
+        "code": "056211",
+        "name": "Magallanes",
+        "zipCode": ""
+      },
+      {
+        "code": "056212",
+        "name": "Matnog",
+        "zipCode": "4705"
+      },
+      {
+        "code": "056213",
+        "name": "Pilar",
+        "zipCode": "8411"
+      },
+      {
+        "code": "056214",
+        "name": "Prieto Diaz",
+        "zipCode": ""
+      },
+      {
+        "code": "056215",
+        "name": "Santa Magdalena",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "South Cotabato",
+    "region": "Region XII (SOCCSKSARGEN)",
+    "regionCode": "12",
+    "cities": [
+      {
+        "code": "126302",
+        "name": "Banga",
+        "zipCode": "5606"
+      },
+      {
+        "code": "126306",
+        "name": "City of Koronadal",
+        "zipCode": "9506"
+      },
+      {
+        "code": "126303",
+        "name": "General Santos City (dadiangas)",
+        "zipCode": ""
+      },
+      {
+        "code": "126319",
+        "name": "Lake Sebu",
+        "zipCode": "9504"
+      },
+      {
+        "code": "126311",
+        "name": "Norala",
+        "zipCode": "9412"
+      },
+      {
+        "code": "126312",
+        "name": "Polomolok",
+        "zipCode": "9508"
+      },
+      {
+        "code": "126318",
+        "name": "Santo Niño",
+        "zipCode": ""
+      },
+      {
+        "code": "126313",
+        "name": "Surallah",
+        "zipCode": "9504"
+      },
+      {
+        "code": "126316",
+        "name": "T'boli",
+        "zipCode": "9508"
+      },
+      {
+        "code": "126314",
+        "name": "Tampakan",
+        "zipCode": "9515"
+      },
+      {
+        "code": "126315",
+        "name": "Tantangan",
+        "zipCode": ""
+      },
+      {
+        "code": "126317",
+        "name": "Tupi",
+        "zipCode": "9504"
+      }
+    ]
+  },
+  {
+    "name": "Southern Leyte",
+    "region": "Region VIII (Eastern Visayas)",
+    "regionCode": "08",
+    "cities": [
+      {
+        "code": "086401",
+        "name": "Anahawan",
+        "zipCode": "6622"
+      },
+      {
+        "code": "086402",
+        "name": "Bontoc",
+        "zipCode": "2608"
+      },
+      {
+        "code": "086407",
+        "name": "City of Maasin",
+        "zipCode": "6600"
+      },
+      {
+        "code": "086403",
+        "name": "Hinunangan",
+        "zipCode": "6606"
+      },
+      {
+        "code": "086404",
+        "name": "Hinundayan",
+        "zipCode": ""
+      },
+      {
+        "code": "086405",
+        "name": "Libagon",
+        "zipCode": "6613"
+      },
+      {
+        "code": "086406",
+        "name": "Liloan",
+        "zipCode": "6015"
+      },
+      {
+        "code": "086419",
+        "name": "Limasawa",
+        "zipCode": "6609"
+      },
+      {
+        "code": "086408",
+        "name": "Macrohon",
+        "zipCode": "6616"
+      },
+      {
+        "code": "086409",
+        "name": "Malitbog",
+        "zipCode": "8714"
+      },
+      {
+        "code": "086410",
+        "name": "Padre Burgos",
+        "zipCode": "4322"
+      },
+      {
+        "code": "086411",
+        "name": "Pintuyan",
+        "zipCode": "6628"
+      },
+      {
+        "code": "086412",
+        "name": "Saint Bernard",
+        "zipCode": "6616"
+      },
+      {
+        "code": "086413",
+        "name": "San Francisco",
+        "zipCode": "8419"
+      },
+      {
+        "code": "086414",
+        "name": "San Juan (cabalian)",
+        "zipCode": ""
+      },
+      {
+        "code": "086415",
+        "name": "San Ricardo",
+        "zipCode": ""
+      },
+      {
+        "code": "086416",
+        "name": "Silago",
+        "zipCode": ""
+      },
+      {
+        "code": "086417",
+        "name": "Sogod",
+        "zipCode": "6610"
+      },
+      {
+        "code": "086418",
+        "name": "Tomas Oppus",
+        "zipCode": "6622"
+      }
+    ]
+  },
+  {
+    "name": "Sultan Kudarat",
+    "region": "Region XII (SOCCSKSARGEN)",
+    "regionCode": "12",
+    "cities": [
+      {
+        "code": "126501",
+        "name": "Bagumbayan",
+        "zipCode": ""
+      },
+      {
+        "code": "126511",
+        "name": "City of Tacurong",
+        "zipCode": "9804"
+      },
+      {
+        "code": "126502",
+        "name": "Columbio",
+        "zipCode": "9806"
+      },
+      {
+        "code": "126503",
+        "name": "Esperanza",
+        "zipCode": "8609"
+      },
+      {
+        "code": "126504",
+        "name": "Isulan",
+        "zipCode": "9800"
+      },
+      {
+        "code": "126505",
+        "name": "Kalamansig",
+        "zipCode": "9806"
+      },
+      {
+        "code": "126508",
+        "name": "Lambayong (mariano Marcos)",
+        "zipCode": ""
+      },
+      {
+        "code": "126506",
+        "name": "Lebak",
+        "zipCode": ""
+      },
+      {
+        "code": "126507",
+        "name": "Lutayan",
+        "zipCode": "9805"
+      },
+      {
+        "code": "126509",
+        "name": "Palimbang",
+        "zipCode": ""
+      },
+      {
+        "code": "126510",
+        "name": "President Quirino",
+        "zipCode": ""
+      },
+      {
+        "code": "126512",
+        "name": "Sen. Ninoy Aquino",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Sulu",
+    "region": "Autonomous Region in Muslim Mindanao (ARMM)",
+    "regionCode": "15",
+    "cities": [
+      {
+        "code": "156606",
+        "name": "Hadji Panglima Tahil (marunggas)",
+        "zipCode": ""
+      },
+      {
+        "code": "156601",
+        "name": "Indanan",
+        "zipCode": ""
+      },
+      {
+        "code": "156602",
+        "name": "Jolo",
+        "zipCode": "7400"
+      },
+      {
+        "code": "156603",
+        "name": "Kalingalan Caluang",
+        "zipCode": ""
+      },
+      {
+        "code": "156617",
+        "name": "Lugus",
+        "zipCode": "7429"
+      },
+      {
+        "code": "156604",
+        "name": "Luuk",
+        "zipCode": ""
+      },
+      {
+        "code": "156605",
+        "name": "Maimbung",
+        "zipCode": "7425"
+      },
+      {
+        "code": "156607",
+        "name": "Old Panamao",
+        "zipCode": ""
+      },
+      {
+        "code": "156619",
+        "name": "Omar",
+        "zipCode": ""
+      },
+      {
+        "code": "156618",
+        "name": "Pandami",
+        "zipCode": "7427"
+      },
+      {
+        "code": "156616",
+        "name": "Panglima Estino (new Panamao)",
+        "zipCode": ""
+      },
+      {
+        "code": "156608",
+        "name": "Pangutaran",
+        "zipCode": ""
+      },
+      {
+        "code": "156609",
+        "name": "Parang",
+        "zipCode": ""
+      },
+      {
+        "code": "156610",
+        "name": "Pata",
+        "zipCode": ""
+      },
+      {
+        "code": "156611",
+        "name": "Patikul",
+        "zipCode": ""
+      },
+      {
+        "code": "156612",
+        "name": "Siasi",
+        "zipCode": ""
+      },
+      {
+        "code": "156613",
+        "name": "Talipao",
+        "zipCode": "7505"
+      },
+      {
+        "code": "156614",
+        "name": "Tapul",
+        "zipCode": ""
+      },
+      {
+        "code": "156615",
+        "name": "Tongkil",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Surigao del Norte",
+    "region": "Region XIII (Caraga)",
+    "regionCode": "16",
+    "cities": [
+      {
+        "code": "166701",
+        "name": "Alegria",
+        "zipCode": "8427"
+      },
+      {
+        "code": "166702",
+        "name": "Bacuag",
+        "zipCode": "8415"
+      },
+      {
+        "code": "166704",
+        "name": "Burgos",
+        "zipCode": "8412"
+      },
+      {
+        "code": "166706",
+        "name": "Claver",
+        "zipCode": "8422"
+      },
+      {
+        "code": "166707",
+        "name": "Dapa",
+        "zipCode": "8411"
+      },
+      {
+        "code": "166708",
+        "name": "del Carmen",
+        "zipCode": ""
+      },
+      {
+        "code": "166710",
+        "name": "General Luna",
+        "zipCode": "8419"
+      },
+      {
+        "code": "166711",
+        "name": "Gigaquit",
+        "zipCode": "8411"
+      },
+      {
+        "code": "166714",
+        "name": "Mainit",
+        "zipCode": "8416"
+      },
+      {
+        "code": "166715",
+        "name": "Malimono",
+        "zipCode": "8413"
+      },
+      {
+        "code": "166716",
+        "name": "Pilar",
+        "zipCode": "8411"
+      },
+      {
+        "code": "166717",
+        "name": "Placer",
+        "zipCode": "8414"
+      },
+      {
+        "code": "166718",
+        "name": "San Benito",
+        "zipCode": ""
+      },
+      {
+        "code": "166719",
+        "name": "San Francisco (anao-aon)",
+        "zipCode": ""
+      },
+      {
+        "code": "166720",
+        "name": "San Isidro",
+        "zipCode": "8413"
+      },
+      {
+        "code": "166721",
+        "name": "Santa Monica (sapao)",
+        "zipCode": ""
+      },
+      {
+        "code": "166722",
+        "name": "Sison",
+        "zipCode": "8417"
+      },
+      {
+        "code": "166723",
+        "name": "Socorro",
+        "zipCode": "8419"
+      },
+      {
+        "code": "166724",
+        "name": "Surigao City",
+        "zipCode": "8400"
+      },
+      {
+        "code": "166725",
+        "name": "Tagana-an",
+        "zipCode": "8417"
+      },
+      {
+        "code": "166727",
+        "name": "Tubod",
+        "zipCode": "8419"
+      }
+    ]
+  },
+  {
+    "name": "Surigao del Sur",
+    "region": "Region XIII (Caraga)",
+    "regionCode": "16",
+    "cities": [
+      {
+        "code": "166801",
+        "name": "Barobo",
+        "zipCode": "8312"
+      },
+      {
+        "code": "166802",
+        "name": "Bayabas",
+        "zipCode": ""
+      },
+      {
+        "code": "166804",
+        "name": "Cagwait",
+        "zipCode": "8314"
+      },
+      {
+        "code": "166805",
+        "name": "Cantilan",
+        "zipCode": "8311"
+      },
+      {
+        "code": "166806",
+        "name": "Carmen",
+        "zipCode": "8109"
+      },
+      {
+        "code": "166807",
+        "name": "Carrascal",
+        "zipCode": "8312"
+      },
+      {
+        "code": "166803",
+        "name": "City of Bislig",
+        "zipCode": "8306"
+      },
+      {
+        "code": "166819",
+        "name": "City of Tandag",
+        "zipCode": "8300"
+      },
+      {
+        "code": "166808",
+        "name": "Cortes",
+        "zipCode": ""
+      },
+      {
+        "code": "166809",
+        "name": "Hinatuan",
+        "zipCode": "8314"
+      },
+      {
+        "code": "166810",
+        "name": "Lanuza",
+        "zipCode": "8312"
+      },
+      {
+        "code": "166811",
+        "name": "Lianga",
+        "zipCode": ""
+      },
+      {
+        "code": "166812",
+        "name": "Lingig",
+        "zipCode": ""
+      },
+      {
+        "code": "166813",
+        "name": "Madrid",
+        "zipCode": ""
+      },
+      {
+        "code": "166814",
+        "name": "Marihatag",
+        "zipCode": ""
+      },
+      {
+        "code": "166815",
+        "name": "San Agustin",
+        "zipCode": ""
+      },
+      {
+        "code": "166816",
+        "name": "San Miguel",
+        "zipCode": "3011"
+      },
+      {
+        "code": "166817",
+        "name": "Tagbina",
+        "zipCode": "8316"
+      },
+      {
+        "code": "166818",
+        "name": "Tago",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Tarlac",
+    "region": "Region III (Central Luzon)",
+    "regionCode": "03",
+    "cities": [
+      {
+        "code": "036901",
+        "name": "Anao",
+        "zipCode": "2311"
+      },
+      {
+        "code": "036902",
+        "name": "Bamban",
+        "zipCode": "2314"
+      },
+      {
+        "code": "036903",
+        "name": "Camiling",
+        "zipCode": "2317"
+      },
+      {
+        "code": "036904",
+        "name": "Capas",
+        "zipCode": "2317"
+      },
+      {
+        "code": "036916",
+        "name": "City of Tarlac",
+        "zipCode": "2300"
+      },
+      {
+        "code": "036905",
+        "name": "Concepcion",
+        "zipCode": "7205"
+      },
+      {
+        "code": "036906",
+        "name": "Gerona",
+        "zipCode": ""
+      },
+      {
+        "code": "036907",
+        "name": "la Paz",
+        "zipCode": "2804"
+      },
+      {
+        "code": "036908",
+        "name": "Mayantoc",
+        "zipCode": "2315"
+      },
+      {
+        "code": "036909",
+        "name": "Moncada",
+        "zipCode": "2316"
+      },
+      {
+        "code": "036910",
+        "name": "Paniqui",
+        "zipCode": "2315"
+      },
+      {
+        "code": "036911",
+        "name": "Pura",
+        "zipCode": ""
+      },
+      {
+        "code": "036912",
+        "name": "Ramos",
+        "zipCode": "2316"
+      },
+      {
+        "code": "036913",
+        "name": "San Clemente",
+        "zipCode": "2316"
+      },
+      {
+        "code": "036918",
+        "name": "San Jose",
+        "zipCode": "8416"
+      },
+      {
+        "code": "036914",
+        "name": "San Manuel",
+        "zipCode": "3317"
+      },
+      {
+        "code": "036915",
+        "name": "Santa Ignacia",
+        "zipCode": "2317"
+      },
+      {
+        "code": "036917",
+        "name": "Victoria",
+        "zipCode": "6409"
+      }
+    ]
+  },
+  {
+    "name": "Tawi-Tawi",
+    "region": "Autonomous Region in Muslim Mindanao (ARMM)",
+    "regionCode": "15",
+    "cities": [
+      {
+        "code": "157002",
+        "name": "Bongao",
+        "zipCode": "7500"
+      },
+      {
+        "code": "157009",
+        "name": "Languyan",
+        "zipCode": ""
+      },
+      {
+        "code": "157003",
+        "name": "Mapun (cagayan de Tawi-Tawi)",
+        "zipCode": ""
+      },
+      {
+        "code": "157001",
+        "name": "Panglima Sugala (balimbing)",
+        "zipCode": ""
+      },
+      {
+        "code": "157010",
+        "name": "Sapa-sapa",
+        "zipCode": "7506"
+      },
+      {
+        "code": "157011",
+        "name": "Sibutu",
+        "zipCode": ""
+      },
+      {
+        "code": "157004",
+        "name": "Simunul",
+        "zipCode": "7505"
+      },
+      {
+        "code": "157005",
+        "name": "Sitangkai",
+        "zipCode": ""
+      },
+      {
+        "code": "157006",
+        "name": "South Ubian",
+        "zipCode": ""
+      },
+      {
+        "code": "157007",
+        "name": "Tandubas",
+        "zipCode": "7507"
+      },
+      {
+        "code": "157008",
+        "name": "Turtle Islands",
+        "zipCode": ""
+      }
+    ]
+  },
+  {
+    "name": "Zambales",
+    "region": "Region III (Central Luzon)",
+    "regionCode": "03",
+    "cities": [
+      {
+        "code": "037101",
+        "name": "Botolan",
+        "zipCode": "2208"
+      },
+      {
+        "code": "037102",
+        "name": "Cabangan",
+        "zipCode": "2208"
+      },
+      {
+        "code": "037103",
+        "name": "Candelaria",
+        "zipCode": "4323"
+      },
+      {
+        "code": "037104",
+        "name": "Castillejos",
+        "zipCode": "2207"
+      },
+      {
+        "code": "037105",
+        "name": "Iba",
+        "zipCode": "2201"
+      },
+      {
+        "code": "037106",
+        "name": "Masinloc",
+        "zipCode": "2206"
+      },
+      {
+        "code": "037107",
+        "name": "Olongapo City",
+        "zipCode": "2200"
+      },
+      {
+        "code": "037108",
+        "name": "Palauig",
+        "zipCode": "2208"
+      },
+      {
+        "code": "037109",
+        "name": "San Antonio",
+        "zipCode": "6409"
+      },
+      {
+        "code": "037110",
+        "name": "San Felipe",
+        "zipCode": ""
+      },
+      {
+        "code": "037111",
+        "name": "San Marcelino",
+        "zipCode": "2209"
+      },
+      {
+        "code": "037112",
+        "name": "San Narciso",
+        "zipCode": "4322"
+      },
+      {
+        "code": "037113",
+        "name": "Santa Cruz",
+        "zipCode": "8012"
+      },
+      {
+        "code": "037114",
+        "name": "Subic",
+        "zipCode": "2200"
+      }
+    ]
+  },
+  {
+    "name": "Zamboanga del Norte",
+    "region": "Region IX (Zamboanga Peninzula)",
+    "regionCode": "09",
+    "cities": [
+      {
+        "code": "097226",
+        "name": "Bacungan (leon T. Postigo)",
+        "zipCode": ""
+      },
+      {
+        "code": "097224",
+        "name": "Baliguian",
+        "zipCode": "7119"
+      },
+      {
+        "code": "097201",
+        "name": "Dapitan City",
+        "zipCode": "7101"
+      },
+      {
+        "code": "097202",
+        "name": "Dipolog City",
+        "zipCode": "7100"
+      },
+      {
+        "code": "097225",
+        "name": "Godod",
+        "zipCode": "7113"
+      },
+      {
+        "code": "097223",
+        "name": "Gutalac",
+        "zipCode": ""
+      },
+      {
+        "code": "097222",
+        "name": "Jose Dalman (ponot)",
+        "zipCode": ""
+      },
+      {
+        "code": "097227",
+        "name": "Kalawit",
+        "zipCode": ""
+      },
+      {
+        "code": "097203",
+        "name": "Katipunan",
+        "zipCode": ""
+      },
+      {
+        "code": "097204",
+        "name": "la Libertad",
+        "zipCode": ""
+      },
+      {
+        "code": "097205",
+        "name": "Labason",
+        "zipCode": "7113"
+      },
+      {
+        "code": "097206",
+        "name": "Liloy",
+        "zipCode": "7112"
+      },
+      {
+        "code": "097207",
+        "name": "Manukan",
+        "zipCode": "7106"
+      },
+      {
+        "code": "097208",
+        "name": "Mutia",
+        "zipCode": ""
+      },
+      {
+        "code": "097209",
+        "name": "Piñan (new Piñan)",
+        "zipCode": ""
+      },
+      {
+        "code": "097210",
+        "name": "Polanco",
+        "zipCode": "7104"
+      },
+      {
+        "code": "097211",
+        "name": "Pres. Manuel A. Roxas",
+        "zipCode": ""
+      },
+      {
+        "code": "097212",
+        "name": "Rizal",
+        "zipCode": "3805"
+      },
+      {
+        "code": "097213",
+        "name": "Salug",
+        "zipCode": ""
+      },
+      {
+        "code": "097214",
+        "name": "Sergio Osmeña Sr.",
+        "zipCode": ""
+      },
+      {
+        "code": "097215",
+        "name": "Siayan",
+        "zipCode": "7111"
+      },
+      {
+        "code": "097216",
+        "name": "Sibuco",
+        "zipCode": "7118"
+      },
+      {
+        "code": "097217",
+        "name": "Sibutad",
+        "zipCode": "7118"
+      },
+      {
+        "code": "097218",
+        "name": "Sindangan",
+        "zipCode": "7117"
+      },
+      {
+        "code": "097219",
+        "name": "Siocon",
+        "zipCode": "7119"
+      },
+      {
+        "code": "097220",
+        "name": "Sirawai",
+        "zipCode": ""
+      },
+      {
+        "code": "097221",
+        "name": "Tampilisan",
+        "zipCode": "7113"
+      }
+    ]
+  },
+  {
+    "name": "Zamboanga del Sur",
+    "region": "Region IX (Zamboanga Peninzula)",
+    "regionCode": "09",
+    "cities": [
+      {
+        "code": "097302",
+        "name": "Aurora",
+        "zipCode": "7015"
+      },
+      {
+        "code": "097303",
+        "name": "Bayog",
+        "zipCode": "7011"
+      },
+      {
+        "code": "097305",
+        "name": "Dimataling",
+        "zipCode": ""
+      },
+      {
+        "code": "097306",
+        "name": "Dinas",
+        "zipCode": ""
+      },
+      {
+        "code": "097307",
+        "name": "Dumalinao",
+        "zipCode": "7019"
+      },
+      {
+        "code": "097308",
+        "name": "Dumingag",
+        "zipCode": "7005"
+      },
+      {
+        "code": "097343",
+        "name": "Guipos",
+        "zipCode": ""
+      },
+      {
+        "code": "097337",
+        "name": "Josefina",
+        "zipCode": ""
+      },
+      {
+        "code": "097311",
+        "name": "Kumalarang",
+        "zipCode": "7104"
+      },
+      {
+        "code": "097312",
+        "name": "Labangan",
+        "zipCode": ""
+      },
+      {
+        "code": "097333",
+        "name": "Lakewood",
+        "zipCode": ""
+      },
+      {
+        "code": "097313",
+        "name": "Lapuyan",
+        "zipCode": ""
+      },
+      {
+        "code": "097315",
+        "name": "Mahayag",
+        "zipCode": "7011"
+      },
+      {
+        "code": "097317",
+        "name": "Margosatubig",
+        "zipCode": "7011"
+      },
+      {
+        "code": "097318",
+        "name": "Midsalip",
+        "zipCode": ""
+      },
+      {
+        "code": "097319",
+        "name": "Molave",
+        "zipCode": "7016"
+      },
+      {
+        "code": "097322",
+        "name": "Pagadian City",
+        "zipCode": "7015"
+      },
+      {
+        "code": "097338",
+        "name": "Pitogo",
+        "zipCode": "7015"
+      },
+      {
+        "code": "097323",
+        "name": "Ramon Magsaysay (liargo)",
+        "zipCode": ""
+      },
+      {
+        "code": "097324",
+        "name": "San Miguel",
+        "zipCode": "3011"
+      },
+      {
+        "code": "097325",
+        "name": "San Pablo",
+        "zipCode": "7011"
+      },
+      {
+        "code": "097340",
+        "name": "Sominot (don Mariano Marcos)",
+        "zipCode": ""
+      },
+      {
+        "code": "097327",
+        "name": "Tabina",
+        "zipCode": ""
+      },
+      {
+        "code": "097328",
+        "name": "Tambulig",
+        "zipCode": "7015"
+      },
+      {
+        "code": "097344",
+        "name": "Tigbao",
+        "zipCode": ""
+      },
+      {
+        "code": "097330",
+        "name": "Tukuran",
+        "zipCode": ""
+      },
+      {
+        "code": "097341",
+        "name": "Vincenzo A. Sagun",
+        "zipCode": ""
+      },
+      {
+        "code": "097332",
+        "name": "Zamboanga City",
+        "zipCode": "7000"
+      }
+    ]
+  },
+  {
+    "name": "Zamboanga Sibugay",
+    "region": "Region IX (Zamboanga Peninzula)",
+    "regionCode": "09",
+    "cities": [
+      {
+        "code": "098301",
+        "name": "Alicia",
+        "zipCode": "6318"
+      },
+      {
+        "code": "098302",
+        "name": "Buug",
+        "zipCode": "7011"
+      },
+      {
+        "code": "098303",
+        "name": "Diplahan",
+        "zipCode": "7028"
+      },
+      {
+        "code": "098304",
+        "name": "Imelda",
+        "zipCode": ""
+      },
+      {
+        "code": "098305",
+        "name": "Ipil",
+        "zipCode": "7001"
+      },
+      {
+        "code": "098306",
+        "name": "Kabasalan",
+        "zipCode": "7005"
+      },
+      {
+        "code": "098307",
+        "name": "Mabuhay",
+        "zipCode": ""
+      },
+      {
+        "code": "098308",
+        "name": "Malangas",
+        "zipCode": "7005"
+      },
+      {
+        "code": "098309",
+        "name": "Naga",
+        "zipCode": "6037"
+      },
+      {
+        "code": "098310",
+        "name": "Olutanga",
+        "zipCode": ""
+      },
+      {
+        "code": "098311",
+        "name": "Payao",
+        "zipCode": ""
+      },
+      {
+        "code": "098312",
+        "name": "Roseller Lim",
+        "zipCode": ""
+      },
+      {
+        "code": "098313",
+        "name": "Siay",
+        "zipCode": "7017"
+      },
+      {
+        "code": "098314",
+        "name": "Talusan",
+        "zipCode": ""
+      },
+      {
+        "code": "098315",
+        "name": "Titay",
+        "zipCode": "7021"
+      },
+      {
+        "code": "098316",
+        "name": "Tungawan",
+        "zipCode": "7025"
+      }
+    ]
+  }
+]

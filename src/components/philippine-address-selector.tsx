@@ -6,9 +6,10 @@ import {
   getProvincesList,
   getCitiesByProvince,
   getBarangaysByCity,
-  getCityZipCode
+  fetchBarangaysForCity,
+  getCityZipCode,
 } from '@/data/philippines-locations';
-import { MapPin, ChevronDown, Check, Search, AlertCircle } from 'lucide-react';
+import { MapPin, ChevronDown, Check, Search, AlertCircle, Loader2 } from 'lucide-react';
 
 interface SearchableDropdownProps {
   label: string;
@@ -19,6 +20,7 @@ interface SearchableDropdownProps {
   disabled?: boolean;
   disabledMessage?: string;
   required?: boolean;
+  loading?: boolean;
 }
 
 function SearchableDropdown({
@@ -29,7 +31,8 @@ function SearchableDropdown({
   placeholder,
   disabled = false,
   disabledMessage,
-  required = true
+  required = true,
+  loading = false,
 }: SearchableDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -54,8 +57,13 @@ function SearchableDropdown({
     return options.filter((opt) => opt.toLowerCase().includes(term));
   }, [options, searchTerm]);
 
+  // Limit rendered items to 150 for buttery 60fps scrolling performance
+  const displayedOptions = useMemo(() => {
+    return filteredOptions.slice(0, 150);
+  }, [filteredOptions]);
+
   const handleOpen = () => {
-    if (disabled) return;
+    if (disabled || loading) return;
     setIsOpen(!isOpen);
     setSearchTerm('');
     setTimeout(() => {
@@ -78,11 +86,13 @@ function SearchableDropdown({
       {/* Selector Trigger Button */}
       <button
         type="button"
-        disabled={disabled}
+        disabled={disabled || loading}
         onClick={handleOpen}
         className={`w-full px-3.5 py-2.5 text-xs rounded-xl border text-left flex items-center justify-between transition ${
           disabled
             ? 'bg-slate-100/80 border-slate-200 text-slate-400 cursor-not-allowed'
+            : loading
+            ? 'bg-slate-50 border-slate-300 text-slate-500 cursor-wait'
             : isOpen
             ? 'bg-white border-brand-700 ring-2 ring-brand-700/20 text-slate-900 shadow-sm'
             : value
@@ -90,8 +100,13 @@ function SearchableDropdown({
             : 'bg-slate-50 border-slate-300 text-slate-400 hover:border-slate-400'
         }`}
       >
-        <span className="truncate font-medium">
-          {disabled && disabledMessage ? disabledMessage : value || placeholder}
+        <span className="truncate font-medium flex items-center gap-1.5">
+          {loading && <Loader2 className="w-3.5 h-3.5 text-brand-600 animate-spin" />}
+          {disabled && disabledMessage
+            ? disabledMessage
+            : loading
+            ? 'Loading barangays...'
+            : value || placeholder}
         </span>
         <ChevronDown
           className={`w-4 h-4 shrink-0 transition-transform ${
@@ -101,7 +116,7 @@ function SearchableDropdown({
       </button>
 
       {/* Floating Searchable Dropdown Menu */}
-      {isOpen && !disabled && (
+      {isOpen && !disabled && !loading && (
         <div className="absolute z-50 left-0 right-0 mt-1 bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-100">
           {/* Search Header */}
           <div className="p-2 border-b border-slate-100 bg-slate-50/80">
@@ -115,8 +130,8 @@ function SearchableDropdown({
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     e.preventDefault();
-                    if (filteredOptions.length > 0) {
-                      handleSelect(filteredOptions[0]);
+                    if (displayedOptions.length > 0) {
+                      handleSelect(displayedOptions[0]);
                     } else if (searchTerm.trim()) {
                       handleSelect(searchTerm.trim());
                     }
@@ -128,12 +143,17 @@ function SearchableDropdown({
                 className="w-full pl-8 pr-3 py-1.5 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-700 text-slate-900 placeholder:text-slate-400"
               />
             </div>
+            {filteredOptions.length > 150 && (
+              <p className="text-[10px] text-slate-500 mt-1 px-1">
+                Showing first 150 of {filteredOptions.length} matches. Type to filter.
+              </p>
+            )}
           </div>
 
           {/* Options List */}
           <div className="max-h-56 overflow-y-auto divide-y divide-slate-50 text-xs">
-            {filteredOptions.length > 0 ? (
-              filteredOptions.map((opt) => {
+            {displayedOptions.length > 0 ? (
+              displayedOptions.map((opt) => {
                 const isSelected = opt === value;
                 return (
                   <button
@@ -153,7 +173,9 @@ function SearchableDropdown({
               })
             ) : searchTerm.trim() ? (
               <div className="p-3 text-center space-y-2">
-                <p className="text-slate-400 text-[11px]">No standard match for &ldquo;{searchTerm}&rdquo;</p>
+                <p className="text-slate-400 text-[11px]">
+                  No exact match for &ldquo;{searchTerm}&rdquo;
+                </p>
                 <button
                   type="button"
                   onClick={() => handleSelect(searchTerm.trim())}
@@ -195,8 +217,9 @@ export default function PhilippineAddressSelector({
   onBarangayChange,
   postalCode,
   onPostalCodeChange,
-  required = true
+  required = true,
 }: PhilippineAddressSelectorProps) {
+  // All 84 Philippine provinces / regions
   const provinces = useMemo(() => getProvincesList(), []);
 
   // Available cities based on chosen province
@@ -205,10 +228,45 @@ export default function PhilippineAddressSelector({
     return getCitiesByProvince(province).map((c) => c.name);
   }, [province]);
 
-  // Available barangays based on chosen province and city
-  const availableBarangays = useMemo(() => {
-    if (!province || !city) return [];
-    return getBarangaysByCity(province, city);
+  // Dynamic barangays list with asynchronous resolution
+  const [barangaysList, setBarangaysList] = useState<string[]>(() => {
+    if (province && city) {
+      return getBarangaysByCity(province, city);
+    }
+    return [];
+  });
+  const [loadingBarangays, setLoadingBarangays] = useState(false);
+
+  // Load barangays whenever province or city changes
+  useEffect(() => {
+    if (!province || !city) {
+      setBarangaysList([]);
+      setLoadingBarangays(false);
+      return;
+    }
+
+    // Check synchronous cache / popular list first
+    const syncList = getBarangaysByCity(province, city);
+    if (syncList.length > 0) {
+      setBarangaysList(syncList);
+      setLoadingBarangays(false);
+    } else {
+      setLoadingBarangays(true);
+    }
+
+    let isMounted = true;
+    fetchBarangaysForCity(province, city).then((list) => {
+      if (isMounted) {
+        if (list && list.length > 0) {
+          setBarangaysList(list);
+        }
+        setLoadingBarangays(false);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
   }, [province, city]);
 
   // When province changes, reset city & barangay
@@ -216,9 +274,10 @@ export default function PhilippineAddressSelector({
     onProvinceChange(newProvince);
     onCityChange('');
     onBarangayChange('');
+    onPostalCodeChange('');
   };
 
-  // When city changes, reset barangay and auto-fill zip code
+  // When city changes, reset barangay and auto-suggest zip code
   const handleCitySelect = (newCity: string) => {
     onCityChange(newCity);
     onBarangayChange('');
@@ -258,10 +317,11 @@ export default function PhilippineAddressSelector({
           label="Barangay"
           value={barangay}
           onChange={onBarangayChange}
-          options={availableBarangays}
-          placeholder="Choose Barangay"
+          options={barangaysList}
+          placeholder={loadingBarangays ? 'Loading barangays...' : 'Choose Barangay'}
           disabled={!city}
           disabledMessage="Select City first..."
+          loading={loadingBarangays}
           required={required}
         />
       </div>
@@ -288,7 +348,10 @@ export default function PhilippineAddressSelector({
       {!city && (
         <div className="flex items-center gap-1.5 text-[11px] text-amber-800 bg-amber-50 border border-amber-200/80 rounded-xl px-3 py-2">
           <AlertCircle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-          <span>Please select your <strong>City / Municipality</strong> first before selecting your <strong>Barangay</strong>.</span>
+          <span>
+            Please select your <strong>City / Municipality</strong> first before selecting your{' '}
+            <strong>Barangay</strong>.
+          </span>
         </div>
       )}
     </div>
