@@ -42,10 +42,9 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
 
     // Attempt to fetch fresh products from Supabase
     if (supabase) {
-      supabase
-        .from('products')
-        .select('*')
-        .then(({ data, error }) => {
+      const fetchProducts = async () => {
+        try {
+          const { data, error } = await supabase.from('products').select('*');
           if (!error && Array.isArray(data) && data.length > 0) {
             const mapped: Product[] = data.map((r: any) => ({
               id: r.id,
@@ -66,10 +65,11 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
             }));
             setProducts(mapped);
           }
-        })
-        .catch((err) => {
+        } catch (err: any) {
           console.warn('[SUPABASE_SYNC] Products fetch note:', err.message);
-        });
+        }
+      };
+      fetchProducts();
     }
   }, []);
 
