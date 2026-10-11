@@ -71,12 +71,50 @@ export default function CheckoutPage() {
   const payableAmount = paymentPlan === 'DOWNPAYMENT_50' ? total50PctDownpaymentPhp : subtotalPhp;
   const grandTotal = payableAmount + shippingFeePhp;
 
-  const handlePlaceOrder = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const generatedOrderNum = `PB-${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`;
-    setOrderNumber(generatedOrderNum);
-    setSubmitted(true);
-    clearCart();
+
+    try {
+      await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          orderNumber: generatedOrderNum,
+          items,
+          subtotalPhp,
+          shippingFeePhp,
+          totalAmountPhp: subtotalPhp + shippingFeePhp,
+          amountPaidPhp: paymentPlan === 'DOWNPAYMENT_50' ? payableAmount : subtotalPhp,
+          paymentPlan,
+          paymentMethod,
+          referenceNumber,
+          deliveryAddress: {
+            fullName,
+            phone,
+            email,
+            street,
+            barangay,
+            city,
+            province,
+            postalCode,
+          },
+          customerName: fullName,
+          customerEmail: email,
+          customerPhone: phone,
+        }),
+      });
+    } catch (err) {
+      console.warn('Order sync warning:', err);
+    } finally {
+      setOrderNumber(generatedOrderNum);
+      setSubmitted(true);
+      setIsSubmitting(false);
+      clearCart();
+    }
   };
 
   if (!isLoggedIn) {

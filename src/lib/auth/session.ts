@@ -41,3 +41,18 @@ export async function verifyJwtSession(token: string): Promise<UserSession | nul
     return null;
   }
 }
+
+/**
+ * Gets the authenticated user session from request cookies in Next.js App Router
+ */
+export async function getCurrentSessionUser(): Promise<UserSession | null> {
+  try {
+    const { cookies } = await import('next/headers');
+    const token = cookies().get('auth_token')?.value;
+    if (!token) return null;
+    return await verifyJwtSession(token);
+  } catch {
+    return null;
+  }
+}
+

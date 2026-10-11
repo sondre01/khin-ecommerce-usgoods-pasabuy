@@ -37,6 +37,19 @@ interface AuthContextType {
     phoneNumber?: string;
     shippingAddress?: any;
   }) => Promise<boolean>;
+  sendSignupOtp: (data: {
+    fullName: string;
+    email: string;
+    phoneNumber?: string;
+    shippingAddress?: any;
+  }) => Promise<{ success: boolean; email?: string; error?: string; simulatedOtp?: string }>;
+  verifySignupOtp: (data: {
+    email: string;
+    code: string;
+  }) => Promise<{ success: boolean; error?: string; user?: UserSession }>;
+  resendSignupOtp: (
+    email: string
+  ) => Promise<{ success: boolean; error?: string; simulatedOtp?: string }>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
   updateProfile: (data: { fullName?: string; phoneNumber?: string; email?: string }) => void;
@@ -377,6 +390,77 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const sendSignupOtp = async (data: {
+    fullName: string;
+    email: string;
+    phoneNumber?: string;
+    shippingAddress?: any;
+  }): Promise<{ success: boolean; email?: string; error?: string; simulatedOtp?: string }> => {
+    try {
+      const res = await fetch('/api/auth/signup/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      if (!res.ok) {
+        return { success: false, error: result.error || 'Failed to send verification code.' };
+      }
+      return {
+        success: true,
+        email: result.email,
+        simulatedOtp: result.simulatedOtp,
+      };
+    } catch (err: any) {
+      return { success: false, error: err.message || 'Network error sending verification code.' };
+    }
+  };
+
+  const verifySignupOtp = async (data: {
+    email: string;
+    code: string;
+  }): Promise<{ success: boolean; error?: string; user?: UserSession }> => {
+    try {
+      const res = await fetch('/api/auth/signup/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      if (!res.ok || !result.success) {
+        return { success: false, error: result.error || 'Invalid verification code.' };
+      }
+      const hydrated = hydrateUserData(result.user);
+      setUser(hydrated);
+      if (pendingCallback) {
+        pendingCallback();
+        setPendingCallback(null);
+      }
+      return { success: true, user: hydrated };
+    } catch (err: any) {
+      return { success: false, error: err.message || 'Network error verifying code.' };
+    }
+  };
+
+  const resendSignupOtp = async (
+    email: string
+  ): Promise<{ success: boolean; error?: string; simulatedOtp?: string }> => {
+    try {
+      const res = await fetch('/api/auth/signup/resend-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const result = await res.json();
+      if (!res.ok) {
+        return { success: false, error: result.error || 'Failed to resend code.' };
+      }
+      return { success: true, simulatedOtp: result.simulatedOtp };
+    } catch (err: any) {
+      return { success: false, error: err.message || 'Network error resending code.' };
+    }
+  };
+
   const logout = async () => {
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
@@ -400,6 +484,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isLoading,
         login,
         signup,
+        sendSignupOtp,
+        verifySignupOtp,
+        resendSignupOtp,
         logout,
         refreshUser,
         updateProfile,

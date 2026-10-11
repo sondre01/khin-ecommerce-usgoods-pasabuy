@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { RestockRequest, RestockRequestStatus } from '@/types';
 import { INITIAL_RESTOCK_REQUESTS } from '@/data/mock-data';
+import { supabase } from '@/lib/supabase/client';
 
 const RESTOCK_STORAGE_KEY = 'pasabuy_restock_requests';
 
@@ -67,6 +68,27 @@ export function RestockProvider({ children }: { children: React.ReactNode }) {
     };
 
     setRequests((prev) => [newReq, ...prev]);
+
+    // Sync to Supabase restock_requests table
+    if (supabase) {
+      supabase
+        .from('restock_requests')
+        .insert([
+          {
+            id: newReq.id,
+            product_id: newReq.productId,
+            product_title: newReq.productTitle,
+            customer_email: newReq.customerEmail,
+            customer_name: newReq.customerName,
+            status: newReq.status,
+            created_at: newReq.createdAt,
+          },
+        ])
+        .then(({ error }) => {
+          if (error) console.warn('[SUPABASE_SYNC] Restock request insert note:', error.message);
+        });
+    }
+
     return newReq;
   };
 

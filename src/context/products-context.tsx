@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product } from '@/types';
 import { INITIAL_PRODUCTS } from '@/data/mock-data';
 import { calculateLandedCost, DEFAULT_CONFIG } from '@/lib/pricing';
+import { supabase } from '@/lib/supabase/client';
 
 interface ProductsContextType {
   products: Product[];
@@ -23,7 +24,7 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
   const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load products from localStorage on mount
+  // Load products from localStorage on mount and sync with Supabase
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -37,6 +38,38 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
       console.error('Failed to load products from storage', e);
     } finally {
       setIsLoaded(true);
+    }
+
+    // Attempt to fetch fresh products from Supabase
+    if (supabase) {
+      supabase
+        .from('products')
+        .select('*')
+        .then(({ data, error }) => {
+          if (!error && Array.isArray(data) && data.length > 0) {
+            const mapped: Product[] = data.map((r: any) => ({
+              id: r.id,
+              title: r.title,
+              description: r.description || '',
+              category: r.category || 'Lifestyle',
+              retailerName: r.retailer_name || 'US Store',
+              sourceUrl: r.source_url || '',
+              imageUrls: Array.isArray(r.image_urls) && r.image_urls.length > 0 ? r.image_urls : ['/images/placeholder.jpg'],
+              weightLbs: Number(r.weight_lbs) || 1,
+              basePriceUsd: Number(r.base_price_usd) || 0,
+              sellingPricePhp: Number(r.selling_price_php) || 0,
+              isActive: r.is_active ?? true,
+              isCustomRequest: r.is_custom_request ?? false,
+              stockQuantity: r.stock_quantity ?? 5,
+              allocatedSlots: r.stock_quantity ?? 5,
+              claimedSlots: 0,
+            }));
+            setProducts(mapped);
+          }
+        })
+        .catch((err) => {
+          console.warn('[SUPABASE_SYNC] Products fetch note:', err.message);
+        });
     }
   }, []);
 
@@ -77,6 +110,32 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
     };
 
     setProducts((prev) => [newProduct, ...prev]);
+
+    // Sync to Supabase products table
+    if (supabase) {
+      supabase
+        .from('products')
+        .insert([
+          {
+            id: newProduct.id,
+            title: newProduct.title,
+            description: newProduct.description,
+            category: newProduct.category,
+            retailer_name: newProduct.retailerName,
+            source_url: newProduct.sourceUrl,
+            image_urls: newProduct.imageUrls,
+            weight_lbs: newProduct.weightLbs,
+            base_price_usd: newProduct.basePriceUsd,
+            selling_price_php: newProduct.sellingPricePhp,
+            stock_quantity: newProduct.stockQuantity,
+            is_active: newProduct.isActive,
+          },
+        ])
+        .then(({ error }) => {
+          if (error) console.warn('[SUPABASE_SYNC] Product insert note:', error.message);
+        });
+    }
+
     return newProduct;
   };
 
@@ -99,17 +158,51 @@ export function ProductsProvider({ children }: { children: React.ReactNode }) {
           newSellingPrice = breakdown.finalSellingPricePhp;
         }
 
-        return {
+        const updated = {
           ...p,
           ...updates,
           sellingPricePhp: newSellingPrice,
         };
+
+        // Sync to Supabase
+        if (supabase) {
+          const payload: any = {};
+          if (updates.title !== undefined) payload.title = updates.title;
+          if (updates.description !== undefined) payload.description = updates.description;
+          if (updates.category !== undefined) payload.category = updates.category;
+          if (updates.retailerName !== undefined) payload.retailer_name = updates.retailerName;
+          if (updates.basePriceUsd !== undefined) payload.base_price_usd = updates.basePriceUsd;
+          if (newSellingPrice !== undefined) payload.selling_price_php = newSellingPrice;
+          if (updates.stockQuantity !== undefined) payload.stock_quantity = updates.stockQuantity;
+          if (updates.isActive !== undefined) payload.is_active = updates.isActive;
+
+          if (Object.keys(payload).length > 0) {
+            supabase
+              .from('products')
+              .update(payload)
+              .eq('id', id)
+              .then(({ error }) => {
+                if (error) console.warn('[SUPABASE_SYNC] Product update note:', error.message);
+              });
+          }
+        }
+
+        return updated;
       })
     );
   };
 
   const deleteProduct = (id: string) => {
     setProducts((prev) => prev.filter((p) => p.id !== id));
+    if (supabase) {
+      supabase
+        .from('products')
+        .delete()
+        .eq('id', id)
+        .then(({ error }) => {
+          if (error) console.warn('[SUPABASE_SYNC] Product delete note:', error.message);
+        });
+    }
   };
 
   const toggleStockStatus = (id: string) => {

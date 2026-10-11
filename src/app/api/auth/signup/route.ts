@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { signJwtSession } from '@/lib/auth/session';
 import { generateUsername } from '@/lib/username';
+import { getSupabaseServiceClient } from '@/lib/supabase/server';
 
 export async function POST(req: NextRequest) {
   try {
@@ -31,6 +32,27 @@ export async function POST(req: NextRequest) {
         postalCode: '1000',
       },
     };
+
+    // Attempt to sync to Supabase users table
+    try {
+      const supabase = getSupabaseServiceClient();
+      if (supabase) {
+        await supabase.from('users').upsert(
+          {
+            id: sessionPayload.userId,
+            email: sessionPayload.email,
+            full_name: sessionPayload.fullName,
+            phone_number: sessionPayload.phoneNumber,
+            role: 'CUSTOMER',
+            shipping_address: sessionPayload.shippingAddress,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: 'email' }
+        );
+      }
+    } catch (err: any) {
+      console.warn('[SUPABASE_SYNC] User upsert notice in direct signup:', err.message);
+    }
 
     const token = await signJwtSession({
       userId: sessionPayload.userId,
