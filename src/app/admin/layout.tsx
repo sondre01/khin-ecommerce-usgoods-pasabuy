@@ -176,13 +176,15 @@ export default function AdminLayout({
 
         <div className="pt-6 border-t border-[#0d3d30] space-y-3 text-xs">
           <div className="p-3 bg-[#051c16] rounded-lg border border-[#0d3d30]">
-            <span className="text-[11px] text-emerald-300/60 block">Logged In Admin:</span>
             <div className="font-bold text-white text-xs mt-0.5">
               {user?.fullName || 'Khin Andrei Gamboa'}
             </div>
+            <div className="text-[10px] text-emerald-300/80 font-mono truncate">
+              {user?.email || 'gamboa.khinandrei@gmail.com'}
+            </div>
             <span className="font-semibold text-gold-400 flex items-center gap-1.5 mt-0.5 text-[11px]">
               <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
-              @{user?.username || 'khinag'} • {user?.username === 'khinag' || !user ? 'Head Admin' : 'Admin'}
+              @{user?.username || 'khinag'} • {user?.email === 'gamboa.khinandrei@gmail.com' || !user ? 'Head Admin' : 'Admin'}
             </span>
           </div>
 

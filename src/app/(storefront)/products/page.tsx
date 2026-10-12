@@ -174,10 +174,10 @@ function ProductCardItem({
 
           <div className="text-right">
             <span className="text-[10px] text-brand-700 font-semibold block uppercase">
-              50% Deposit
+              Payment Terms
             </span>
             <span className="text-sm font-bold text-brand-800">
-              ₱{Math.ceil(prod.sellingPricePhp * 0.5).toLocaleString()}
+              Full Upfront
             </span>
           </div>
         </div>
@@ -350,7 +350,7 @@ function ProductsContent() {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-800 text-xs font-semibold mb-2">
             <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-            Authentic US Outlet Deals • 50% Downpayment to Order
+            Authentic US Outlet Deals • Full Upfront Payment Prior to Checkout
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
             Shop US Outlet Finds
@@ -637,7 +637,7 @@ function ProductsContent() {
                         : 'Popular US Outlet Finds Available Now'}
                     </h3>
                     <p className="text-xs text-slate-500">
-                      Authentic outlet deals currently open for flexible 50% downpayment order.
+                      Authentic outlet deals open for orders with upfront payment before checkout.
                     </p>
                   </div>
                 </div>

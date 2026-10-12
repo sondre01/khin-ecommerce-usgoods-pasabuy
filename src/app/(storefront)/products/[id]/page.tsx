@@ -53,7 +53,7 @@ export default function ProductDetailPage() {
   const availableSizes = SIZES_BY_CATEGORY[product.category] || ['Standard'];
   const [selectedSize, setSelectedSize] = useState<string>(availableSizes[1] || availableSizes[0]);
   const [quantity, setQuantity] = useState<number>(1);
-  const [paymentOption, setPaymentOption] = useState<'DOWNPAYMENT_50' | 'FULL_PAYMENT'>('DOWNPAYMENT_50');
+  const paymentOption = 'FULL_PAYMENT';
   const [isAdding, setIsAdding] = useState(false);
 
   const isOutOfStock = !product.isActive || product.stockQuantity <= 0 || (product.allocatedSlots !== undefined && product.claimedSlots !== undefined && product.claimedSlots >= product.allocatedSlots);
@@ -426,48 +426,18 @@ export default function ProductDetailPage() {
                   </div>
                 </div>
 
-                {/* Payment Scheme Selection */}
-                <div className="space-y-2.5 pt-4 border-t border-slate-100">
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
-                    How would you like to pay?
-                  </label>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setPaymentOption('DOWNPAYMENT_50')}
-                      className={`p-3.5 rounded-2xl border text-left transition flex flex-col justify-between ${
-                        paymentOption === 'DOWNPAYMENT_50'
-                          ? 'border-brand-700 bg-brand-50/70 ring-2 ring-brand-700/20'
-                          : 'border-slate-200 hover:border-slate-300'
-                      }`}
-                    >
-                      <span className="text-xs font-bold text-slate-900">50% Downpayment</span>
-                      <span className="text-sm font-extrabold text-brand-800 mt-1">
-                        ₱{deposit50PctPhp.toLocaleString()}
+                {/* Payment Policy Notice */}
+                <div className="space-y-2 pt-4 border-t border-slate-100">
+                  <div className="p-3.5 rounded-2xl border border-brand-200 bg-brand-50/60 flex items-center justify-between">
+                    <div>
+                      <span className="text-xs font-bold text-slate-900 block">Full Payment Required Before Checkout</span>
+                      <span className="text-[11px] text-slate-500 mt-0.5 block">
+                        No pay later or COD. Paid directly via GCash, Maya, or BDO before order is processed.
                       </span>
-                      <span className="text-[10px] text-slate-500 mt-1 block">
-                        Pay rest in Manila
-                      </span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setPaymentOption('FULL_PAYMENT')}
-                      className={`p-3.5 rounded-2xl border text-left transition flex flex-col justify-between ${
-                        paymentOption === 'FULL_PAYMENT'
-                          ? 'border-brand-700 bg-brand-50/70 ring-2 ring-brand-700/20'
-                          : 'border-slate-200 hover:border-slate-300'
-                      }`}
-                    >
-                      <span className="text-xs font-bold text-slate-900">Pay in Full (100%)</span>
-                      <span className="text-sm font-extrabold text-slate-900 mt-1">
-                        ₱{totalPricePhp.toLocaleString()}
-                      </span>
-                      <span className="text-[10px] text-brand-700 mt-1 block font-medium">
-                        Fastest delivery
-                      </span>
-                    </button>
+                    </div>
+                    <span className="text-sm font-black text-brand-900 shrink-0 ml-3 font-mono">
+                      ₱{totalPricePhp.toLocaleString()} PHP
+                    </span>
                   </div>
                 </div>
 

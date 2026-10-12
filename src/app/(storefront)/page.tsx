@@ -51,7 +51,7 @@ export default function HomePage() {
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/20 border border-gold-400/30 text-gold-300 text-xs font-semibold backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
-              Authentic US Outlet Deals • 0% US Sales Tax • 50% Downpayment
+              Authentic US Outlet Deals • 0% US Sales Tax • Full Upfront Payment
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
@@ -135,8 +135,8 @@ export default function HomePage() {
                     <CreditCard className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-white">Pay Only 50% Downpayment</h4>
-                    <p className="text-xs text-emerald-200/70">Reserve with 50% deposit via GCash or Maya. Pay the rest only when your parcel arrives in Manila.</p>
+                    <h4 className="text-sm font-semibold text-white">Full Upfront Payment Required</h4>
+                    <p className="text-xs text-emerald-200/70">No pay later or COD. Paid directly via GCash, Maya, or BDO before items are procured.</p>
                   </div>
                 </div>
 
@@ -240,8 +240,8 @@ export default function HomePage() {
                         <span className="text-base font-black text-white">₱{item.sellingPricePhp.toLocaleString()}</span>
                       </div>
                       <div className="text-right">
-                        <span className="text-[10px] text-emerald-300 uppercase font-semibold block">50% Deposit</span>
-                        <span className="text-xs font-bold text-gold-300">₱{(Math.ceil(item.sellingPricePhp * 0.5)).toLocaleString()}</span>
+                        <span className="text-[10px] text-emerald-300 uppercase font-semibold block">US Outlet Find</span>
+                        <span className="text-xs font-bold text-gold-300">100% Authentic</span>
                       </div>
                     </div>
 
@@ -526,10 +526,10 @@ export default function HomePage() {
                     </div>
                     <div className="text-right">
                       <span className="text-[10px] text-brand-700 font-semibold block uppercase">
-                        50% Downpayment
+                        Payment Terms
                       </span>
                       <span className="text-sm font-bold text-brand-800">
-                        ₱{(Math.ceil(prod.sellingPricePhp * 0.5)).toLocaleString()}
+                        Full Upfront
                       </span>
                     </div>
                   </div>
@@ -593,7 +593,7 @@ export default function HomePage() {
             <Lock className="w-5 h-5 text-gold-400 mx-auto" />
             <div className="space-y-1">
               <h3 className="text-lg font-bold text-white">Sign up to view all outlet deals</h3>
-              <p className="text-xs text-emerald-200/80">Create an account to browse full catalog and order with 50% deposit.</p>
+              <p className="text-xs text-emerald-200/80">Create an account to browse full catalog and shop authentic US deals.</p>
             </div>
             <div className="flex justify-center gap-2.5 pt-1">
               <Link
@@ -670,9 +670,9 @@ export default function HomePage() {
 
             <div className="bg-white p-5 rounded-2xl border border-brand-100/80 shadow-sm space-y-2">
               <span className="w-8 h-8 rounded-full bg-brand-100 text-brand-900 font-bold text-xs flex items-center justify-center border border-gold-300">3</span>
-              <h4 className="font-bold text-sm text-slate-900">Checkout & Easy Payment</h4>
+              <h4 className="font-bold text-sm text-slate-900">Checkout & Full Upfront Payment</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Enter your delivery address and settle payment via GCash, Maya, or online bank transfer (BDO / BPI) with convenient downpayment or full settlement.
+                Enter your delivery address and settle full payment via GCash, Maya, or online bank transfer (BDO / BPI) before checking out. No pay later or COD.
               </p>
             </div>
 

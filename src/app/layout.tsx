@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'US Goods PasaBuy - Authentic US Retail Delivered to the Philippines',
-  description: 'Shop Amazon, Sephora, Target, and Coach directly from the US. Transparent landed costs, Oregon tax-free freight forwarder, and 50% downpayment option.',
+  description: 'Shop authentic US retail outlet goods directly from the US. Transparent landed costs, Oregon tax-free freight forwarder, direct personal shopping to your doorstep with full upfront payment.',
   icons: {
     icon: '/logo.jpg',
     apple: '/logo.jpg',

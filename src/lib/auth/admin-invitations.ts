@@ -28,6 +28,10 @@ export interface AdminInvitation {
   activatedAt?: string;
 }
 
+export const SUPER_ADMIN_EMAIL = 'gamboa.khinandrei@gmail.com';
+export const SUPER_ADMIN_NAME = 'Khin Andrei Gamboa';
+export const SUPER_ADMIN_USERNAME = 'khinag';
+
 // Global persistence store across hot-reloads in Node runtime
 const globalStore = global as unknown as {
   __adminUsers?: AdminUser[];
@@ -38,15 +42,21 @@ if (!globalStore.__adminUsers) {
   globalStore.__adminUsers = [
     {
       id: 'usr-admin-khinag',
-      fullName: 'Khin Andrei Gamboa',
-      username: 'khinag',
-      email: 'khinag@usgoodspasabuy.ph',
+      fullName: SUPER_ADMIN_NAME,
+      username: SUPER_ADMIN_USERNAME,
+      email: SUPER_ADMIN_EMAIL,
       role: 'ADMIN',
       isHeadAdmin: true,
       addedAt: '2026-10-01T00:00:00Z',
       lastLoginAt: new Date().toISOString(),
     },
   ];
+} else {
+  const headAdmin = globalStore.__adminUsers.find((a) => a.id === 'usr-admin-khinag' || a.isHeadAdmin);
+  if (headAdmin) {
+    headAdmin.email = SUPER_ADMIN_EMAIL;
+    headAdmin.fullName = SUPER_ADMIN_NAME;
+  }
 }
 
 if (!globalStore.__adminInvitations) {
@@ -90,7 +100,7 @@ export function getInvitationByEmail(email: string): AdminInvitation | null {
 export async function createAdminInvitation({
   fullName,
   email,
-  invitedBy = 'Khin Andrei Gamboa',
+  invitedBy = 'Khin Andrei Gamboa (gamboa.khinandrei@gmail.com)',
 }: {
   fullName: string;
   email: string;

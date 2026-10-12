@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
       shippingFeePhp = 150,
       totalAmountPhp,
       amountPaidPhp = 0,
-      paymentPlan = 'DOWNPAYMENT_50',
+      paymentPlan = 'FULL_PAYMENT',
       paymentMethod = 'GCASH',
       referenceNumber = '',
       proofReceiptUrl = '',
@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
               {
                 id: `pay-${Date.now().toString(36)}`,
                 order_id: orderId,
-                amount_php: Number(amountPaidPhp) || (paymentPlan === 'DOWNPAYMENT_50' ? Math.round(Number(totalAmountPhp) * 0.5) : Number(totalAmountPhp)),
+                amount_php: Number(amountPaidPhp) || Number(totalAmountPhp),
                 payment_type: paymentPlan,
                 method: paymentMethod,
                 reference_number: referenceNumber,

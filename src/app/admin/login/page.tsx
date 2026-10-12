@@ -11,7 +11,7 @@ function AdminLoginContent() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/admin';
 
-  const [usernameOrEmail, setUsernameOrEmail] = useState('khinag');
+  const [usernameOrEmail, setUsernameOrEmail] = useState('gamboa.khinandrei@gmail.com');
   const [password, setPassword] = useState('••••••••••••');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -30,7 +30,7 @@ function AdminLoginContent() {
           role: 'ADMIN',
           fullName: 'Khin Andrei Gamboa',
           username: isEmail ? undefined : usernameOrEmail.trim(),
-          email: isEmail ? usernameOrEmail.trim() : 'khinag@usgoodspasabuy.ph',
+          email: isEmail ? usernameOrEmail.trim() : 'gamboa.khinandrei@gmail.com',
         }),
       });
 
@@ -97,7 +97,7 @@ function AdminLoginContent() {
                 value={usernameOrEmail}
                 onChange={(e) => setUsernameOrEmail(e.target.value)}
                 required
-                placeholder="khinag"
+                placeholder="gamboa.khinandrei@gmail.com"
                 className="w-full pl-10 pr-4 py-2.5 text-xs bg-[#093529] border border-[#0e4d3a] rounded-xl text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-gold-400"
               />
             </div>
@@ -128,7 +128,7 @@ function AdminLoginContent() {
               <span>Authenticating...</span>
             ) : (
               <>
-                <span>Sign In as Khin Andrei Gamboa (@khinag)</span>
+                <span>Sign In as Khin Andrei Gamboa (gamboa.khinandrei@gmail.com)</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </>
             )}

@@ -554,8 +554,8 @@ function RestockInquiryContent() {
                   <strong className="text-slate-900">{selectedSize} • {preferredColor}</strong>
                 </div>
                 <div className="flex justify-between border-t border-slate-200 pt-2">
-                  <span className="text-slate-500">Estimated 50% Deposit (Pay Later):</span>
-                  <strong className="text-brand-800">₱{breakdown.minimum50PctDownpaymentPhp.toLocaleString()} PHP</strong>
+                  <span className="text-slate-500">Estimated Total Landed Price:</span>
+                  <strong className="text-brand-800">₱{breakdown.finalSellingPricePhp.toLocaleString()} PHP</strong>
                 </div>
               </div>
 
@@ -784,18 +784,29 @@ function RestockInquiryContent() {
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-2xl border border-brand-200 space-y-1.5 shadow-sm">
+            <div className="bg-white p-4 rounded-2xl border border-brand-200 space-y-2 shadow-sm">
               <div className="flex items-center justify-between text-xs">
                 <span className="font-bold text-brand-800 uppercase tracking-wider text-[11px]">
-                  50% Downpayment (Pay Later):
+                  Payment Policy:
                 </span>
                 <span className="text-sm font-black text-brand-900">
-                  ₱{breakdown.minimum50PctDownpaymentPhp.toLocaleString()} PHP
+                  Full Upfront Upon Confirmation
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 leading-relaxed">
-                No payment today! You only pay 50% via GCash/Maya after our seller confirms finding your item at the outlet and sends you photos. Settle the rest upon arrival in Manila.
+                No payment today! Once our shoppers find your item at the US outlet and message you live photos, you pay 100% in full via GCash/Maya before purchase. No pay later or COD.
               </p>
+              <div className="pt-1 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                <span className="text-slate-500">Facebook Support:</span>
+                <a
+                  href="https://www.facebook.com/profile.php?id=100066301916131"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-blue-700 hover:text-blue-900 hover:underline"
+                >
+                  US Goods PasaBuy →
+                </a>
+              </div>
             </div>
           </div>
         </div>

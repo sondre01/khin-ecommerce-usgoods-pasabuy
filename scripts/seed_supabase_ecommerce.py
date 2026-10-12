@@ -73,7 +73,7 @@ cur = conn.cursor()
 users_to_seed = [
     {
         'id': 'usr-admin-khinag',
-        'email': 'khinag@usgoodspasabuy.ph',
+        'email': 'gamboa.khinandrei@gmail.com',
         'password_hash': 'admin_authenticated',
         'full_name': 'Khin Andrei Gamboa',
         'phone_number': '+63 917 888 9999',

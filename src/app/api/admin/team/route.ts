@@ -26,9 +26,17 @@ export const GET = withAdminGuard(async () => {
   }
 });
 
-// POST /api/admin/team - Invite a new admin via Gmail and send verification code
+// POST /api/admin/team - Invite a new admin via Gmail and send verification code (Only gamboa.khinandrei@gmail.com can invite)
 export const POST = withAdminGuard(async (req: NextRequest, { user }) => {
   try {
+    const callerEmail = user?.email?.toLowerCase().trim();
+    if (callerEmail !== 'gamboa.khinandrei@gmail.com') {
+      return NextResponse.json(
+        { error: 'Access denied. Only the Head Administrator (gamboa.khinandrei@gmail.com) has the rights to give or manage admin access.' },
+        { status: 403 }
+      );
+    }
+
     const body = await req.json();
     const { fullName, email } = body;
 
@@ -76,9 +84,16 @@ export const POST = withAdminGuard(async (req: NextRequest, { user }) => {
   }
 });
 
-// DELETE /api/admin/team - Revoke an invitation or remove an admin
-export const DELETE = withAdminGuard(async (req: NextRequest) => {
+// DELETE /api/admin/team - Revoke an invitation or remove an admin (Only gamboa.khinandrei@gmail.com can revoke)
+export const DELETE = withAdminGuard(async (req: NextRequest, { user }) => {
   try {
+    const callerEmail = user?.email?.toLowerCase().trim();
+    if (callerEmail !== 'gamboa.khinandrei@gmail.com') {
+      return NextResponse.json(
+        { error: 'Access denied. Only the Head Administrator (gamboa.khinandrei@gmail.com) has the rights to revoke admin access.' },
+        { status: 403 }
+      );
+    }
     const { searchParams } = new URL(req.url);
     const invitationId = searchParams.get('invitationId');
     const adminId = searchParams.get('adminId');

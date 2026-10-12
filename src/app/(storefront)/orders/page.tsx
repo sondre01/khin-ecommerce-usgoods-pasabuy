@@ -319,7 +319,7 @@ export default function CustomerOrdersPage() {
               <div>
                 <h3 className="text-base font-bold text-slate-900">Payment & Receipts</h3>
                 <p className="text-xs text-slate-500">
-                  Payment: {selectedOrder.paymentPlan === 'DOWNPAYMENT_50' ? '50% Downpayment (Pay Half Later)' : 'Paid in Full'}
+                  Payment: {selectedOrder.paymentPlan === 'DOWNPAYMENT_50' ? 'Partial Downpayment' : 'Paid in Full Upfront'}
                 </p>
               </div>
               <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${

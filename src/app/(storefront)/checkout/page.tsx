@@ -17,7 +17,8 @@ import {
   Upload,
   AlertCircle,
   Lock,
-  Truck
+  Truck,
+  ExternalLink
 } from 'lucide-react';
 import PhilippineAddressSelector, { formatPhilippineAddress } from '@/components/philippine-address-selector';
 
@@ -59,22 +60,36 @@ export default function CheckoutPage() {
     }
   }, [user, selectedLocationId]);
 
-  // Payment Scheme
-  const [paymentPlan, setPaymentPlan] = useState<'DOWNPAYMENT_50' | 'FULL_PAYMENT'>('DOWNPAYMENT_50');
+  // Payment Scheme - Strictly Full Payment Required
+  const paymentPlan = 'FULL_PAYMENT';
   const [paymentMethod, setPaymentMethod] = useState<'GCASH' | 'MAYA' | 'BDO_BANK_TRANSFER'>('GCASH');
   const [referenceNumber, setReferenceNumber] = useState('');
+  const [receiptFileName, setReceiptFileName] = useState('');
   const [proofUploaded, setProofUploaded] = useState(false);
+  const [paymentError, setPaymentError] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [orderNumber, setOrderNumber] = useState('');
 
   const shippingFeePhp = 150; // Standard Metro Manila / Luzon Forwarder delivery
-  const payableAmount = paymentPlan === 'DOWNPAYMENT_50' ? total50PctDownpaymentPhp : subtotalPhp;
+  const payableAmount = subtotalPhp;
   const grandTotal = payableAmount + shippingFeePhp;
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPaymentError('');
+
+    if (!referenceNumber.trim()) {
+      setPaymentError('Payment Reference Number (Ref #) is required. You must pay before checking out.');
+      return;
+    }
+
+    if (!proofUploaded && !receiptFileName) {
+      setPaymentError('Please upload your payment receipt or screenshot to confirm payment before placing your order.');
+      return;
+    }
+
     setIsSubmitting(true);
     const generatedOrderNum = `PB-${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`;
 
@@ -87,11 +102,12 @@ export default function CheckoutPage() {
           items,
           subtotalPhp,
           shippingFeePhp,
-          totalAmountPhp: subtotalPhp + shippingFeePhp,
-          amountPaidPhp: paymentPlan === 'DOWNPAYMENT_50' ? payableAmount : subtotalPhp,
-          paymentPlan,
+          totalAmountPhp: grandTotal,
+          amountPaidPhp: grandTotal,
+          paymentPlan: 'FULL_PAYMENT',
           paymentMethod,
-          referenceNumber,
+          referenceNumber: referenceNumber.trim(),
+          proofReceiptUrl: receiptFileName ? `uploaded-${receiptFileName}` : 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=400&q=80',
           deliveryAddress: {
             fullName,
             phone,
@@ -181,7 +197,7 @@ export default function CheckoutPage() {
           <div className="flex justify-between border-b border-slate-100 pb-2">
             <span className="text-slate-500">Payment Option:</span>
             <span className="font-bold text-slate-900">
-              {paymentPlan === 'DOWNPAYMENT_50' ? '50% Downpayment (Half Paid)' : 'Fully Paid'}
+              Fully Paid Upfront (100%)
             </span>
           </div>
           <div className="flex justify-between border-b border-slate-100 pb-2">
@@ -221,9 +237,9 @@ export default function CheckoutPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-8 py-10 space-y-8">
       <div>
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Checkout & Delivery Details</h1>
+        <h1 className="text-3xl font-black text-slate-900 tracking-tight">Checkout & Order Payment</h1>
         <p className="text-xs text-slate-500 mt-1">
-          Enter your delivery address and choose how you want to pay (50% downpayment or full payment).
+          Enter your delivery address and settle your order in full prior to checkout.
         </p>
       </div>
 
@@ -339,62 +355,35 @@ export default function CheckoutPage() {
             />
           </div>
 
-          {/* Section 2: Choose Payment Option */}
-          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-              <CreditCard className="w-4 h-4 text-brand-700" />
-              <span>2. How Would You Like to Pay?</span>
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div
-                onClick={() => setPaymentPlan('DOWNPAYMENT_50')}
-                className={`p-4 rounded-2xl border cursor-pointer transition ${
-                  paymentPlan === 'DOWNPAYMENT_50'
-                    ? 'border-brand-800 bg-brand-50/70 ring-2 ring-brand-700/20'
-                    : 'border-slate-200 hover:border-slate-300'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-slate-900">50% Downpayment</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-200 text-brand-900">Popular</span>
-                </div>
-                <div className="text-base font-black text-brand-900 mt-2">
-                  ₱{total50PctDownpaymentPhp.toLocaleString()} PHP
-                </div>
-                <p className="text-[11px] text-slate-500 mt-1">
-                  Pay 50% deposit now to reserve your item. Pay the remaining 50% when it arrives in Manila.
-                </p>
-              </div>
-
-              <div
-                onClick={() => setPaymentPlan('FULL_PAYMENT')}
-                className={`p-4 rounded-2xl border cursor-pointer transition ${
-                  paymentPlan === 'FULL_PAYMENT'
-                    ? 'border-brand-800 bg-brand-50/70 ring-2 ring-brand-700/20'
-                    : 'border-slate-200 hover:border-slate-300'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-slate-900">Pay in Full (100%)</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-gold-200 text-slate-900">Fast Delivery</span>
-                </div>
-                <div className="text-base font-black text-slate-900 mt-2">
-                  ₱{subtotalPhp.toLocaleString()} PHP
-                </div>
-                <p className="text-[11px] text-slate-500 mt-1">
-                  Pay 100% upfront for faster processing and doorstep delivery upon arrival.
-                </p>
-              </div>
+          {/* Section 2: Strict Payment Policy Notice */}
+          <div className="bg-amber-50/90 border border-amber-300 rounded-3xl p-5 space-y-2 text-xs shadow-sm">
+            <div className="flex items-center gap-2 font-black text-amber-950 text-sm">
+              <ShieldCheck className="w-5 h-5 text-amber-700 shrink-0" />
+              <span>Full Payment Required Before Checkout</span>
             </div>
+            <p className="text-[11px] text-amber-900 leading-relaxed">
+              There is <strong>no pay-later or Cash on Delivery</strong> option on this website. All orders must be paid in full (100%) before checking out so our shoppers in the US can immediately buy and secure your items from the outlets.
+            </p>
           </div>
 
           {/* Section 3: GCash / Maya Payment Deposit */}
           <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-              <QrCode className="w-4 h-4 text-brand-700" />
-              <span>3. Payment Details & Proof of Payment</span>
-            </h3>
+            <div className="flex items-center justify-between">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                <QrCode className="w-4 h-4 text-brand-700" />
+                <span>2. Payment Transfer & Proof of Payment</span>
+              </h3>
+              <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                100% Upfront
+              </span>
+            </div>
+
+            {paymentError && (
+              <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs font-semibold flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                <span>{paymentError}</span>
+              </div>
+            )}
 
             <div className="grid grid-cols-3 gap-2">
               <button
@@ -433,7 +422,7 @@ export default function CheckoutPage() {
             </div>
 
             {/* Account Details Box */}
-            <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-1 text-xs">
+            <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-1.5 text-xs">
               <div className="flex justify-between font-bold text-slate-900">
                 <span>Account Name:</span>
                 <span>US Goods PasaBuy PH</span>
@@ -444,9 +433,31 @@ export default function CheckoutPage() {
                   {paymentMethod === 'GCASH' ? '0917-888-9999' : paymentMethod === 'MAYA' ? '0917-888-9999' : 'BDO: 0048-2918-4920'}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 pt-1">
-                Amount to send now: <strong className="text-slate-900">₱{grandTotal.toLocaleString()} PHP</strong>
-              </p>
+              <div className="flex justify-between pt-1 border-t border-slate-200/80 text-xs">
+                <span className="font-semibold text-slate-700">Total Due (Items + Delivery):</span>
+                <span className="font-black text-brand-900 font-mono text-sm">₱{grandTotal.toLocaleString()} PHP</span>
+              </div>
+            </div>
+
+            {/* Social Media Link for Payment Assistance */}
+            <div className="p-3 bg-blue-50/80 border border-blue-200 rounded-2xl flex items-center justify-between text-xs">
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4 fill-[#1877F2] shrink-0" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                <span className="text-[11px] text-blue-950 font-medium">
+                  Need assistance or verification? Message our Facebook page.
+                </span>
+              </div>
+              <a
+                href="https://www.facebook.com/profile.php?id=100066301916131"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] font-bold text-blue-700 hover:text-blue-900 hover:underline flex items-center gap-1 shrink-0 ml-2"
+              >
+                <span>US Goods PasaBuy</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -457,24 +468,49 @@ export default function CheckoutPage() {
                   required
                   placeholder="e.g. GCASH-19283719"
                   value={referenceNumber}
-                  onChange={(e) => setReferenceNumber(e.target.value)}
+                  onChange={(e) => {
+                    setReferenceNumber(e.target.value);
+                    setPaymentError('');
+                  }}
                   className="w-full px-3.5 py-2 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-700 focus:outline-none"
                 />
+                <span className="text-[10px] text-slate-400 mt-1 block">
+                  Enter the transaction reference from your receipt
+                </span>
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Payment Receipt / Screenshot *</label>
-                <div
-                  onClick={() => setProofUploaded(!proofUploaded)}
-                  className={`border border-dashed rounded-xl p-2 text-center cursor-pointer transition flex items-center justify-center gap-2 text-xs ${
-                    proofUploaded
+                <label
+                  className={`border border-dashed rounded-xl p-2.5 text-center cursor-pointer transition flex flex-col items-center justify-center gap-1 text-xs ${
+                    proofUploaded || receiptFileName
                       ? 'border-emerald-500 bg-emerald-50 text-emerald-800 font-bold'
                       : 'border-slate-300 bg-slate-50 text-slate-600 hover:bg-slate-100'
                   }`}
                 >
-                  <Upload className="w-3.5 h-3.5" />
-                  <span>{proofUploaded ? 'Receipt Attached ✓' : 'Click to Upload Receipt'}</span>
-                </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setReceiptFileName(file.name);
+                        setProofUploaded(true);
+                        setPaymentError('');
+                      }
+                    }}
+                  />
+                  <div className="flex items-center gap-1.5">
+                    <Upload className="w-3.5 h-3.5" />
+                    <span className="truncate max-w-[200px]">
+                      {receiptFileName ? `Attached: ${receiptFileName} ✓` : proofUploaded ? 'Receipt Attached ✓' : 'Click to Upload Screenshot'}
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-normal">
+                    JPG, PNG proof of payment
+                  </span>
+                </label>
               </div>
             </div>
           </div>
@@ -537,14 +573,21 @@ export default function CheckoutPage() {
 
           <button
             type="submit"
-            className="w-full py-4 bg-gradient-to-r from-brand-800 via-brand-700 to-brand-800 hover:from-brand-900 hover:to-brand-800 text-white font-black rounded-xl shadow-md text-xs flex items-center justify-center gap-2 transition ring-1 ring-gold-400/30"
+            disabled={isSubmitting}
+            className="w-full py-4 bg-gradient-to-r from-brand-800 via-brand-700 to-brand-800 hover:from-brand-900 hover:to-brand-800 text-white font-black rounded-xl shadow-md text-xs flex items-center justify-center gap-2 transition ring-1 ring-gold-400/30 disabled:opacity-50"
           >
-            <span>Place Order</span>
-            <ArrowRight className="w-4 h-4 text-gold-300" />
+            {isSubmitting ? (
+              <span>Verifying & Submitting...</span>
+            ) : (
+              <>
+                <span>Confirm Payment & Submit Order (₱{grandTotal.toLocaleString()} PHP)</span>
+                <ArrowRight className="w-4 h-4 text-gold-300" />
+              </>
+            )}
           </button>
 
           <p className="text-[11px] text-slate-400 text-center leading-relaxed">
-            Upon submission, we will reserve your items and purchase them directly from the US outlet.
+            Full payment is required prior to checkout. There is no pay later option. Please ensure payment has been sent and your receipt is attached above.
           </p>
         </div>
       </form>

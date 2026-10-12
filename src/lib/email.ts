@@ -151,7 +151,7 @@ export function getAdminOtpEmailHtml(fullName: string, otpCode: string, expiresM
 
     <div class="footer">
       US Goods PasaBuy Importers • Oregon Tax-Free Hub & Manila Logistics
-      <br>Head Administrator: Khin Andrei Gamboa (@khinag)
+      <br>Head Administrator: Khin Andrei Gamboa (gamboa.khinandrei@gmail.com)
     </div>
   </div>
 </body>

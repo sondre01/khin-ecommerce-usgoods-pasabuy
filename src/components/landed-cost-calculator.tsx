@@ -151,9 +151,9 @@ export default function LandedCostCalculator() {
                 </span>
               </div>
               <div className="text-right">
-                <span className="text-xs text-brand-700 font-semibold block">50% Downpayment (Pay Half Now)</span>
-                <span className="text-lg font-bold text-brand-800">
-                  ₱{breakdown.minimum50PctDownpaymentPhp.toLocaleString()}
+                <span className="text-xs text-brand-700 font-semibold block">Payment Terms</span>
+                <span className="text-sm font-extrabold text-brand-900">
+                  100% Full Upfront
                 </span>
               </div>
             </div>
@@ -161,7 +161,7 @@ export default function LandedCostCalculator() {
             <div className="bg-brand-100/70 border border-brand-200 rounded-lg p-2.5 flex items-start gap-2 text-[11px] text-brand-900">
               <Info className="w-4 h-4 text-brand-700 shrink-0 mt-0.5" />
               <span>
-                No hidden customs fees! Pay 50% downpayment now to reserve your item, and the remaining 50% when it arrives in Manila.
+                No hidden customs fees! Transparent landed price with full payment prior to checkout via GCash, Maya, or BDO Online.
               </span>
             </div>
           </div>

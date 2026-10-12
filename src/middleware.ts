@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { verifyJwtSession, signJwtSession } from '@/lib/auth/session';
+import { verifyJwtSession } from '@/lib/auth/session';
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -15,23 +15,11 @@ export async function middleware(req: NextRequest) {
     const token = req.cookies.get('auth_token')?.value;
     const session = token ? await verifyJwtSession(token) : null;
 
-    // If no active admin session, auto-provision local Admin session so developer is NEVER blocked by a 404
+    // If no active admin session, redirect to admin login page
     if (!session || session.role !== 'ADMIN') {
-      const adminToken = await signJwtSession({
-        userId: 'usr-admin-khinag',
-        email: 'khinag@usgoodspasabuy.ph',
-        fullName: 'Khin Andrei Gamboa',
-        username: 'khinag',
-        role: 'ADMIN',
-      });
-
-      const response = NextResponse.next();
-      response.cookies.set('auth_token', adminToken, {
-        httpOnly: true,
-        path: '/',
-        maxAge: 60 * 60 * 24 * 7,
-      });
-      return response;
+      const loginUrl = new URL('/admin/login', req.url);
+      loginUrl.searchParams.set('callbackUrl', pathname);
+      return NextResponse.redirect(loginUrl);
     }
 
     return NextResponse.next();

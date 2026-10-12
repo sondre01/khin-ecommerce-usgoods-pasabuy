@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '@/context/auth-context';
 import { generateUsername } from '@/lib/username';
 import {
   ShieldCheck,
@@ -16,6 +17,7 @@ import {
   X,
   AlertCircle,
   Key,
+  Lock,
   CheckCircle2,
   UserCheck
 } from 'lucide-react';
@@ -46,6 +48,8 @@ interface AdminInvitation {
 }
 
 export default function AdminTeamPage() {
+  const { user } = useAuth();
+  const isHeadAdmin = user?.email?.toLowerCase().trim() === 'gamboa.khinandrei@gmail.com';
   const [admins, setAdmins] = useState<AdminUser[]>([]);
   const [invitations, setInvitations] = useState<AdminInvitation[]>([]);
   const [loading, setLoading] = useState(true);
@@ -202,18 +206,25 @@ export default function AdminTeamPage() {
             <span>Admin Team & Privileged Access</span>
           </h1>
           <p className="text-xs text-slate-400 mt-1">
-            Manage store administrators, invite colleagues via Gmail, and authenticate access with single-use OTP codes.
+            Head Administrator: <strong className="text-gold-300">gamboa.khinandrei@gmail.com</strong>. Only the Head Administrator has rights to grant or revoke admin access.
           </p>
         </div>
 
-        <button
-          type="button"
-          onClick={handleOpenModal}
-          className="px-4 py-2.5 bg-gradient-to-r from-gold-500 via-gold-400 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-slate-950 font-black rounded-xl text-xs transition shadow-md flex items-center gap-2 shrink-0 self-start sm:self-auto"
-        >
-          <UserPlus className="w-4 h-4" />
-          <span>Add Admin via Gmail</span>
-        </button>
+        {isHeadAdmin ? (
+          <button
+            type="button"
+            onClick={handleOpenModal}
+            className="px-4 py-2.5 bg-gradient-to-r from-gold-500 via-gold-400 to-amber-500 hover:from-gold-600 hover:to-amber-600 text-slate-950 font-black rounded-xl text-xs transition shadow-md flex items-center gap-2 shrink-0 self-start sm:self-auto"
+          >
+            <UserPlus className="w-4 h-4" />
+            <span>Add Admin via Gmail</span>
+          </button>
+        ) : (
+          <div className="px-3.5 py-2 bg-slate-900 border border-slate-800 rounded-xl text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
+            <Lock className="w-3.5 h-3.5 text-amber-400" />
+            <span>Only gamboa.khinandrei@gmail.com can invite admins</span>
+          </div>
+        )}
       </div>
 
       {/* Grid: Active Admins & Pending Invitations */}

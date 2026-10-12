@@ -194,18 +194,18 @@ export default function CartPage() {
             </div>
           </div>
 
-          {/* 50% Downpayment Highlight Box */}
-          <div className="bg-brand-50 p-4 rounded-2xl border border-brand-200 space-y-1.5">
+          {/* Full Payment Policy Box */}
+          <div className="bg-amber-50/80 p-4 rounded-2xl border border-amber-200 space-y-1.5">
             <div className="flex items-center justify-between text-xs">
-              <span className="text-brand-800 font-bold uppercase tracking-wider text-[11px]">
-                Pay Only 50% Deposit Now:
+              <span className="text-amber-900 font-bold uppercase tracking-wider text-[11px]">
+                Full Payment Prior to Checkout:
               </span>
-              <span className="text-base font-black text-brand-900">
-                ₱{total50PctDownpaymentPhp.toLocaleString()} PHP
+              <span className="text-base font-black text-slate-900">
+                ₱{subtotalPhp.toLocaleString()} PHP
               </span>
             </div>
             <p className="text-[11px] text-slate-600 leading-relaxed">
-              Pay 50% upon ordering via GCash or Maya. Pay the remaining 50% only when the package arrives in Manila.
+              No pay later or COD. All orders require 100% upfront payment via GCash, Maya, or BDO Online before checkout is confirmed.
             </p>
           </div>
 

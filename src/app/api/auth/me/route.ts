@@ -8,5 +8,17 @@ export async function GET(req: NextRequest) {
   }
 
   const user = await verifyJwtSession(token);
+  // If token is invalid or corresponds to obsolete mock auto-provisioned admin email, invalidate cookie
+  if (!user || user.email === 'khinag@usgoodspasabuy.ph') {
+    const res = NextResponse.json({ user: null });
+    res.cookies.set('auth_token', '', {
+      httpOnly: true,
+      path: '/',
+      maxAge: 0,
+      expires: new Date(0),
+    });
+    return res;
+  }
+
   return NextResponse.json({ user });
 }
